@@ -9,5 +9,9 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultProfiles": [
+    { "username": "drstranger", "password": "changeme", "role": "patient", "name": "Dr. Strange", "idnumber": "1234", "image": "https://openclipart.org/image/800px/4749", "owner": "john@foo.com" }
   ]
 }
