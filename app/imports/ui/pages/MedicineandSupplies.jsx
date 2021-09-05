@@ -32,6 +32,9 @@ class ListStuff extends React.Component {
                   <Table.HeaderCell>Expiration Date</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
+              <Table.Body>
+                {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+              </Table.Body>
             </Tab.Pane> },
             { menuItem: 'Supplies', render: () => <Tab.Pane>
               <Table.Header>
@@ -41,10 +44,10 @@ class ListStuff extends React.Component {
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
+              <Table.Body>
+                {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+              </Table.Body>
             </Tab.Pane> }]}/>
-          <Table.Body>
-            {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-          </Table.Body>
         </Table>
       </Container>
     );
