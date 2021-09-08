@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader, Tab } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Tab, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
-import StuffItem from '../components/StuffItem';
+import CurrentMedicineandSupplies from '../components/CurrentMedicineandSupplies';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListStuff extends React.Component {
+/** Renders a table containing all of the Medicine documents. Use <MedicineItem> to render each row. */
+class ListMedicine extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -19,57 +19,59 @@ class ListStuff extends React.Component {
     return (
       <Container>
         <Header as="h2" textAlign="center">Medicine and Supplies</Header>
-        <Table celled>
-          <Tab panes={[
-            { menuItem: 'Medicine', render: () => <Tab.Pane>
+        <Tab panes={[
+          { menuItem: 'Medicine', render: () => <Tab.Pane>
+            <Table celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Lot #</Table.HeaderCell>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Type</Table.HeaderCell>
-                  <Table.HeaderCell>Location</Table.HeaderCell>
-                  <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>Expiration Date</Table.HeaderCell>
+                  <Table.HeaderCell><Button>Lot #</Button></Table.HeaderCell>
+                  <Table.HeaderCell><Button>Name</Button></Table.HeaderCell>
+                  <Table.HeaderCell><Button>Type</Button></Table.HeaderCell>
+                  <Table.HeaderCell><Button>Location</Button></Table.HeaderCell>
+                  <Table.HeaderCell><Button>Quantity</Button></Table.HeaderCell>
+                  <Table.HeaderCell><Button>Expiration Date</Button></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+                {this.props.stuffs.map((stuff) => <CurrentMedicineandSupplies key={stuff._id} stuff={stuff}/>)}
               </Table.Body>
-            </Tab.Pane> },
-            { menuItem: 'Supplies', render: () => <Tab.Pane>
+            </Table>
+          </Tab.Pane> },
+          { menuItem: 'Supplies', render: () => <Tab.Pane>
+            <Table celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Location</Table.HeaderCell>
-                  <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell><Button>Name</Button></Table.HeaderCell>
+                  <Table.HeaderCell><Button>Location</Button></Table.HeaderCell>
+                  <Table.HeaderCell><Button>Quantity</Button></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+                {this.props.stuffs.map((stuff) => <CurrentMedicineandSupplies key={stuff._id} stuff={stuff} />)}
               </Table.Body>
-            </Tab.Pane> }]}/>
-        </Table>
+            </Table>
+          </Tab.Pane> }]}/>
       </Container>
     );
   }
 }
 
 // Require an array of Medicine and Supplies documents in the props.
-ListStuff.propTypes = {
+ListMedicine.propTypes = {
   stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Medicine documents.
   const subscription = Meteor.subscribe(Stuffs.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
+  // Get the Medicine documents
   const stuffs = Stuffs.collection.find({}).fetch();
   return {
     stuffs,
     ready,
   };
-})(ListStuff);
+})(ListMedicine);
