@@ -17,11 +17,11 @@ class UserProfile extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Grid id="view-profile" container>
-        <Header as="h2" textAlign="center">List Stuff</Header>
+      <Grid container verticalAlign='middle' centered>
         {this.props.profiles.map((profile, index) => <ProfileItem key={index}
           profile={profile}/>)}
       </Grid>
+
     );
   }
 }

@@ -16,9 +16,9 @@ class ProfilesCollection {
     this.schema = new SimpleSchema({
       username: String,
       name: String,
-      password: String,
       idnumber: String,
       role: String,
+      image: String,
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

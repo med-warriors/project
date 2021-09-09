@@ -1,0 +1,16 @@
+
+
+#profile-grid {
+  margin-top: 50px;
+  box-shadow: none;
+  box: none;
+  border: none;
+}
+
+#profile-name, #profile-number, #profile-role {
+  margin-left: 50px;
+}
+
+#welcome-name {
+
+}

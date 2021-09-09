@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Grid, Header } from 'semantic-ui-react';
+import { Image, Grid, Header, Icon, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -7,19 +7,35 @@ import { withRouter } from 'react-router-dom';
 class ProfileItem extends React.Component {
   render() {
     return (
-      <Grid.Row>
-        <Grid.Column width={5}>
-          <Image src={this.props.profile.image} size='medium' rounded />
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <Header as="h1">
-            {this.props.profile.name}
+
+      <Grid id="profile-grid">
+        <Grid.Row>
+          <Header as='h2' id="welcome-name" icon textAlign='center'>
+            <Header.Content> <Header as='h3' block>
+              Welcome, {this.props.profile.username}
+            </Header></Header.Content>
           </Header>
-          <Header as="h3">
-            {this.props.profile.idnumber}
-          </Header>
-        </Grid.Column>
-      </Grid.Row>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={5}>
+            <Image src={this.props.profile.image} size='large' circular/>
+          </Grid.Column>
+          <Grid.Column width={8} floated='left'>
+            <Header id="profile-name" size={'huge'}>
+              {this.props.profile.name}
+            </Header>
+            <Header id="profile-number" as="h3">
+              ID # :{this.props.profile.idnumber}
+            </Header>
+            <Header id="profile-role" as="h3">
+              Affiliations :
+            </Header>
+            <List bulleted>
+              <List.Item>{this.props.profile.role}</List.Item>
+            </List>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
@@ -27,11 +43,12 @@ class ProfileItem extends React.Component {
 // Require a document to be passed to this component.
 ProfileItem.propTypes = {
   profile: PropTypes.shape({
-    name: PropTypes.string,
-    role: PropTypes.string,
     username: PropTypes.string,
+    name: PropTypes.string,
     idnumber: PropTypes.string,
+    role: PropTypes.string,
     image: PropTypes.string,
+    owner: PropTypes.string,
   }).isRequired,
 };
 
