@@ -4,7 +4,8 @@ import { Container, Table, Header, Loader, Tab, Button } from 'semantic-ui-react
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
-import CurrentMedicineandSupplies from '../components/CurrentMedicineandSupplies';
+import CurrentMedicine from '../components/CurrentMedicine';
+import CurrentSupplies from '../components/CurrentSupplies';
 
 /** Renders a table containing all of the Medicine documents. Use <MedicineItem> to render each row. */
 class ListMedicine extends React.Component {
@@ -33,7 +34,7 @@ class ListMedicine extends React.Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.stuffs.map((stuff) => <CurrentMedicineandSupplies key={stuff._id} stuff={stuff}/>)}
+                {this.props.stuffs.map((stuff) => <CurrentMedicine key={stuff._id} stuff={stuff}/>)}
               </Table.Body>
             </Table>
           </Tab.Pane> },
@@ -47,7 +48,7 @@ class ListMedicine extends React.Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.stuffs.map((stuff) => <CurrentMedicineandSupplies key={stuff._id} stuff={stuff} />)}
+                {this.props.stuffs.map((stuff) => <CurrentSupplies key={stuff._id} stuff={stuff} />)}
               </Table.Body>
             </Table>
           </Tab.Pane> }]}/>
@@ -56,7 +57,7 @@ class ListMedicine extends React.Component {
   }
 }
 
-// Require an array of Medicine and Supplies documents in the props.
+// Require an array of Medicine documents in the props.
 ListMedicine.propTypes = {
   stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
