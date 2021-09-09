@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import { _ } from 'meteor/underscore';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -11,7 +12,15 @@ class Signup extends React.Component {
   /* Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      error: '',
+      redirectToReferer: false,
+    };
   }
 
   /* Update the form controls each time the user interacts with them. */
@@ -21,19 +30,27 @@ class Signup extends React.Component {
 
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        this.setState({ error: '', redirectToReferer: true });
-      }
-    });
+    const { firstName, lastName, email, password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      this.setState({ error: 'The passwords do not match.  Please try again.' });
+    } else {
+      Accounts.createUser({ firstName, lastName, email, username: email, password }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          this.setState({ error: '', redirectToReferer: true });
+        }
+      });
+    }
   }
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
+    const { from } = this.props.location.state || { from: { pathname: '/home' } };
+    const status = ['Patient', 'Employee'];
+    const options = _.map(status, function (home) {
+      return { key: home, value: home, text: home };
+    });
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -48,6 +65,24 @@ class Signup extends React.Component {
             <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input
+                  label="First Name"
+                  id="signup-form-firstName"
+                  icon="user"
+                  iconPosition="left"
+                  name="firstName"
+                  placeholder="First Name"
+                  type="firstName"
+                  onChange={this.handleChange} required />
+                <Form.Input
+                  label="Last Name"
+                  id="signup-form-lastName"
+                  icon="user"
+                  iconPosition="left"
+                  name="lastName"
+                  placeholder="Last Name"
+                  type="lastName"
+                  onChange={this.handleChange} required />
+                <Form.Input
                   label="Email"
                   id="signup-form-email"
                   icon="user"
@@ -55,8 +90,7 @@ class Signup extends React.Component {
                   name="email"
                   type="email"
                   placeholder="E-mail address"
-                  onChange={this.handleChange}
-                />
+                  onChange={this.handleChange} required/>
                 <Form.Input
                   label="Password"
                   id="signup-form-password"
@@ -65,8 +99,24 @@ class Signup extends React.Component {
                   name="password"
                   placeholder="Password"
                   type="password"
-                  onChange={this.handleChange}
-                />
+                  onChange={this.handleChange} required/>
+                <Form.Input
+                  label="Confirm Password"
+                  id="signup-form-confirmPassword"
+                  icon="lock"
+                  iconPosition="left"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  type="password"
+                  onChange={this.handleChange} required/>
+                <Form.Select
+                  label="Status"
+                  id="signup-form-status"
+                  name="Status"
+                  type="Status"
+                  placeholder={'Patient or employee?'}
+                  options={options}
+                  onChange={this.handleChange} required/>
                 <Form.Button id="signup-form-submit" content="Submit"/>
               </Segment>
             </Form>
