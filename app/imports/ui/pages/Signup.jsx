@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
-import { _ } from 'meteor/underscore';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -16,6 +15,7 @@ class Signup extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
+      employeeID: '',
       password: '',
       confirmPassword: '',
       error: '',
@@ -30,11 +30,11 @@ class Signup extends React.Component {
 
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { firstName, lastName, email, password, confirmPassword } = this.state;
+    const { firstName, lastName, email, employeeID, password, confirmPassword } = this.state;
     if (password !== confirmPassword) {
       this.setState({ error: 'The passwords do not match.  Please try again.' });
     } else {
-      Accounts.createUser({ firstName, lastName, email, username: email, password }, (err) => {
+      Accounts.createUser({ firstName, lastName, email, employeeID, username: email, password }, (err) => {
         if (err) {
           this.setState({ error: err.reason });
         } else {
@@ -47,10 +47,6 @@ class Signup extends React.Component {
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/home' } };
-    const status = ['Patient', 'Employee'];
-    const options = _.map(status, function (home) {
-      return { key: home, value: home, text: home };
-    });
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -60,69 +56,86 @@ class Signup extends React.Component {
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
             <Header as="h2" textAlign="center">
-              Register your account
+              SIGN UP
             </Header>
             <Form onSubmit={this.submit}>
-              <Segment stacked>
-                <Form.Input
-                  label="First Name"
-                  id="signup-form-firstName"
-                  icon="user"
-                  iconPosition="left"
-                  name="firstName"
-                  placeholder="First Name"
-                  type="firstName"
-                  onChange={this.handleChange} required />
-                <Form.Input
-                  label="Last Name"
-                  id="signup-form-lastName"
-                  icon="user"
-                  iconPosition="left"
-                  name="lastName"
-                  placeholder="Last Name"
-                  type="lastName"
-                  onChange={this.handleChange} required />
-                <Form.Input
-                  label="Email"
-                  id="signup-form-email"
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange} required/>
-                <Form.Input
-                  label="Password"
-                  id="signup-form-password"
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.handleChange} required/>
-                <Form.Input
-                  label="Confirm Password"
-                  id="signup-form-confirmPassword"
-                  icon="lock"
-                  iconPosition="left"
-                  name="confirmPassword"
-                  placeholder="Confirm Password"
-                  type="password"
-                  onChange={this.handleChange} required/>
-                <Form.Select
-                  label="Status"
-                  id="signup-form-status"
-                  name="Status"
-                  type="Status"
-                  placeholder={'Patient or employee?'}
-                  options={options}
-                  onChange={this.handleChange} required/>
-                <Form.Button id="signup-form-submit" content="Submit"/>
-              </Segment>
+              <div className="ui equal width form">
+                <div className="fields">
+                  <div className="field">
+                    <Form.Input
+                      label="First Name"
+                      id="signup-form-firstName"
+                      icon="user"
+                      iconPosition="left"
+                      name="firstName"
+                      placeholder="First Name"
+                      type="firstName"
+                      onChange={this.handleChange} required />
+                  </div>
+                  <div className="field">
+                    <Form.Input
+                      label="Last Name"
+                      id="signup-form-lastName"
+                      icon="user"
+                      iconPosition="left"
+                      name="lastName"
+                      placeholder="Last Name"
+                      type="lastName"
+                      onChange={this.handleChange} required />
+                  </div>
+                </div>
+                <div className="fields">
+                  <div className="field">
+                    <Form.Input
+                      label="Email"
+                      id="signup-form-email"
+                      icon="envelope"
+                      iconPosition="left"
+                      name="email"
+                      type="email"
+                      placeholder="E-mail address"
+                      onChange={this.handleChange} required/>
+                  </div>
+                  <div className="field">
+                    <Form.Input
+                      label="Employee ID"
+                      id="signup-form-id"
+                      name="employeeID"
+                      type="employeeID"
+                      placeholder="Employee ID"
+                      onChange={this.handleChange} required/>
+                  </div>
+                </div>
+                <div className="fields">
+                  <div className="field">
+                    <Form.Input
+                      label="Password"
+                      id="signup-form-password"
+                      icon="lock"
+                      iconPosition="left"
+                      name="password"
+                      placeholder="Password"
+                      type="password"
+                      onChange={this.handleChange} required/>
+                  </div>
+                  <div className="field">
+                    <Form.Input
+                      label="Confirm Password"
+                      id="signup-form-confirmPassword"
+                      icon="lock"
+                      iconPosition="left"
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
+                      type="password"
+                      onChange={this.handleChange} required/>
+                  </div>
+                </div>
+              </div>
+              <Form.Button id="signup-form-submit" content="SUBMIT"/>
             </Form>
-            <Message>
-              Already have an account? Login <Link to="/signin">here</Link>
-            </Message>
+            <div className="message">
+              Already have an account? Login <Link to="/signin" className="link">here</Link>
+            </div>
             {this.state.error === '' ? (
               ''
             ) : (
