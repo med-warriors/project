@@ -1,13 +1,13 @@
 import React from 'react';
-import { Grid, Loader, Header, Divider, Container } from 'semantic-ui-react';
+import { Grid, Loader, Header, Divider, Container, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+// import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Stuffs } from '../../api/stuff/Stuff';
 
-const bridge = new SimpleSchema2Bridge(Stuffs.schema);
+// const bridge = new SimpleSchema2Bridge(Stuffs.schema);
 
 /** Renders the Page for editing a single document. */
 class PatientInformation extends React.Component {
@@ -32,33 +32,35 @@ class PatientInformation extends React.Component {
         <Grid.Column>
           <Header as="h2" textAlign="center">Patient Information</Header>
           <Container>
-            <p>
-              <b>Date:</b> 8/26/21<br/>
-              <b>Patient Name:</b> John Smith<br/>
-              <b>Email:</b> email@gmail.com <br/>
-              <b>Phone Number:</b> (808)123-4567<br/>
-              <b>Prescription:</b> <br/>
-              <ul>
-                <li>Tylenol 500mg</li>
-                <li>lot #1234</li>
-                <li>Exp. date: 6/5/2023</li>
-              </ul>
-            </p>
-            <Divider section/>
-            <p>
-              <b>Date:</b> 8/26/21<br/>
-              <b>Patient Name:</b> John Smith<br/>
-              <b>Email:</b> email@gmail.com <br/>
-              <b>Phone Number:</b> (808)123-4567<br/>
-              <b>Prescription:</b> <br/>
-              <ul>
-                <li>Tylenol 500mg</li>
-                <li>lot #1234</li>
-                <li>Exp. date: 6/5/2023</li>
-              </ul>
-            </p>
-          </Container>
+            <Segment>
+              <p>
+                <b>Date:</b> 8/26/21<br/>
+                <b>Patient Name:</b> John Smith<br/>
+                <b>Email:</b> email@gmail.com <br/>
+                <b>Phone Number:</b> (808)123-4567<br/>
+                <b>Prescription:</b> <br/>
+                <ul>
+                  <li>Tylenol 500mg</li>
+                  <li>lot #1234</li>
+                  <li>Exp. date: 6/5/2023</li>
+                </ul>
+              </p>
+              <Divider section/>
+              <p>
+                <b>Date:</b> 8/26/21<br/>
+                <b>Patient Name:</b> Jane Doe<br/>
+                <b>Email:</b> email@gmail.com <br/>
+                <b>Phone Number:</b> (808)123-4567<br/>
+                <b>Prescription:</b> <br/>
+                <ul>
+                  <li>Tylenol 500mg</li>
+                  <li>lot #1234</li>
+                  <li>Exp. date: 6/5/2023</li>
 
+                </ul>
+              </p>
+            </Segment>
+          </Container>
         </Grid.Column>
       </Grid>
     );
