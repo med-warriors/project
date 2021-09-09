@@ -53,89 +53,85 @@ class Signup extends React.Component {
     }
     return (
       <Container id="signup-page">
-        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
+        <div className="ui grid">
           <Grid.Column>
-            <Header as="h2" textAlign="center">
-              SIGN UP
-            </Header>
+            <Header as="h2" textAlign="center">SIGN UP</Header>
             <Form onSubmit={this.submit}>
-              <div className="ui equal width form">
-                <div className="fields">
-                  <div className="field">
-                    <Form.Input
-                      label="First Name"
-                      id="signup-form-firstName"
-                      icon="user"
-                      iconPosition="left"
-                      name="firstName"
-                      placeholder="First Name"
-                      type="firstName"
-                      onChange={this.handleChange} required />
-                  </div>
-                  <div className="field">
-                    <Form.Input
-                      label="Last Name"
-                      id="signup-form-lastName"
-                      icon="user"
-                      iconPosition="left"
-                      name="lastName"
-                      placeholder="Last Name"
-                      type="lastName"
-                      onChange={this.handleChange} required />
-                  </div>
+              <div className="equal width fields">
+                <div className="field">
+                  <Form.Input
+                    label="First Name"
+                    id="signup-form-firstName"
+                    icon="user"
+                    iconPosition="left"
+                    name="firstName"
+                    placeholder="First Name"
+                    type="firstName"
+                    onChange={this.handleChange} required />
                 </div>
-                <div className="fields">
-                  <div className="field">
-                    <Form.Input
-                      label="Email"
-                      id="signup-form-email"
-                      icon="envelope"
-                      iconPosition="left"
-                      name="email"
-                      type="email"
-                      placeholder="E-mail address"
-                      onChange={this.handleChange} required/>
-                  </div>
-                  <div className="field">
-                    <Form.Input
-                      label="Employee ID"
-                      id="signup-form-id"
-                      name="employeeID"
-                      type="employeeID"
-                      placeholder="Employee ID"
-                      onChange={this.handleChange} required/>
-                  </div>
+                <div className="field">
+                  <Form.Input
+                    label="Last Name"
+                    id="signup-form-lastName"
+                    icon="user"
+                    iconPosition="left"
+                    name="lastName"
+                    placeholder="Last Name"
+                    type="lastName"
+                    onChange={this.handleChange} required />
                 </div>
-                <div className="fields">
-                  <div className="field">
-                    <Form.Input
-                      label="Password"
-                      id="signup-form-password"
-                      icon="lock"
-                      iconPosition="left"
-                      name="password"
-                      placeholder="Password"
-                      type="password"
-                      onChange={this.handleChange} required/>
-                  </div>
-                  <div className="field">
-                    <Form.Input
-                      label="Confirm Password"
-                      id="signup-form-confirmPassword"
-                      icon="lock"
-                      iconPosition="left"
-                      name="confirmPassword"
-                      placeholder="Confirm Password"
-                      type="password"
-                      onChange={this.handleChange} required/>
-                  </div>
+              </div>
+              <div className="equal width fields">
+                <div className="field">
+                  <Form.Input
+                    label="Email"
+                    id="signup-form-email"
+                    icon="envelope"
+                    iconPosition="left"
+                    name="email"
+                    type="email"
+                    placeholder="E-mail address"
+                    onChange={this.handleChange} required/>
+                </div>
+                <div className="field">
+                  <Form.Input
+                    label="Employee ID"
+                    id="signup-form-id"
+                    name="employeeID"
+                    type="employeeID"
+                    placeholder="Employee ID"
+                    onChange={this.handleChange} required/>
+                </div>
+              </div>
+              <div className="equal width fields">
+                <div className="field">
+                  <Form.Input
+                    label="Password"
+                    id="signup-form-password"
+                    icon="lock"
+                    iconPosition="left"
+                    name="password"
+                    placeholder="Password"
+                    type="password"
+                    onChange={this.handleChange} required/>
+                </div>
+                <div className="field">
+                  <Form.Input
+                    label="Confirm Password"
+                    id="signup-form-confirmPassword"
+                    icon="lock"
+                    iconPosition="left"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    type="password"
+                    onChange={this.handleChange} required/>
                 </div>
               </div>
               <Form.Button id="signup-form-submit" content="SUBMIT"/>
+              <div className="message">
+                Already have an account? Login <Link to="/signin" className="link">here</Link>
+              </div>
             </Form>
-            <div className="message">
-              Already have an account? Login <Link to="/signin" className="link">here</Link>
-            </div>
             {this.state.error === '' ? (
               ''
             ) : (
@@ -146,7 +142,7 @@ class Signup extends React.Component {
               />
             )}
           </Grid.Column>
-        </Grid>
+        </div>
       </Container>
     );
   }
