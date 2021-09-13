@@ -18,6 +18,7 @@ import Signout from '../pages/Signout';
 import MedicineandSupplies from '../pages/MedicineandSupplies';
 import PatientInformation from '../pages/PatientInformation';
 import UserProfile from '../pages/UserProfile';
+import LowInventoryReport from '../pages/LowInventoryReport';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -36,6 +37,7 @@ class App extends React.Component {
             <ProtectedRoute path="/medicineandsupplies" component={MedicineandSupplies}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/patientinfo" component={PatientInformation}/>
+            <ProtectedRoute path="/lowinventory" component={LowInventoryReport}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>
