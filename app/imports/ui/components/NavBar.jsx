@@ -5,7 +5,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Icon, Header } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
-import MedicineandSupplies from '../pages/MedicineandSupplies';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
