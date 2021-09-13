@@ -1,5 +1,4 @@
 
-
 #profile-grid {
   margin-top: 50px;
   box-shadow: none;
@@ -14,3 +13,37 @@
 #welcome-name {
 
 }
+
+* {
+  font-family: 'Verdana', sans-serif;
+  text-align: center;
+}
+
+/* Sign up page */
+#signup-page {
+  height: 45em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#signup-page .ui-grid {
+  margin: 0 auto;
+}
+
+#signup-form-submit, .link {
+  background-color: transparent;
+  color: #DB2828;
+}
+
+#signup-form-submit:hover, .link:hover {
+  color: #418EC4;
+  transition: ease-in-out 1s;
+}
+
+.message {
+  box-shadow: none;
+  border: none !important;
+  background-color: transparent !important;
+}
+

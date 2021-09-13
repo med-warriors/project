@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 /**
@@ -11,7 +11,16 @@ class Signup extends React.Component {
   /* Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      employeeID: '',
+      password: '',
+      confirmPassword: '',
+      error: '',
+      redirectToReferer: false,
+    };
   }
 
   /* Update the form controls each time the user interacts with them. */
@@ -21,58 +30,108 @@ class Signup extends React.Component {
 
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        this.setState({ error: '', redirectToReferer: true });
-      }
-    });
+    const { firstName, lastName, email, employeeID, password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      this.setState({ error: 'The passwords do not match.  Please try again.' });
+    } else {
+      Accounts.createUser({ firstName, lastName, email, employeeID, username: email, password }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          this.setState({ error: '', redirectToReferer: true });
+        }
+      });
+    }
   }
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
+    const { from } = this.props.location.state || { from: { pathname: '/home' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
     return (
       <Container id="signup-page">
-        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
+        <div className="ui grid">
           <Grid.Column>
-            <Header as="h2" textAlign="center">
-              Register your account
-            </Header>
+            <Header as="h2" textAlign="center">SIGN UP</Header>
             <Form onSubmit={this.submit}>
-              <Segment stacked>
-                <Form.Input
-                  label="Email"
-                  id="signup-form-email"
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Password"
-                  id="signup-form-password"
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.handleChange}
-                />
-                <Form.Button id="signup-form-submit" content="Submit"/>
-              </Segment>
+              <div className="equal width fields">
+                <div className="field">
+                  <Form.Input
+                    label="First Name"
+                    id="signup-form-firstName"
+                    icon="user"
+                    iconPosition="left"
+                    name="firstName"
+                    placeholder="First Name"
+                    type="firstName"
+                    onChange={this.handleChange} required />
+                </div>
+                <div className="field">
+                  <Form.Input
+                    label="Last Name"
+                    id="signup-form-lastName"
+                    icon="user"
+                    iconPosition="left"
+                    name="lastName"
+                    placeholder="Last Name"
+                    type="lastName"
+                    onChange={this.handleChange} required />
+                </div>
+              </div>
+              <div className="equal width fields">
+                <div className="field">
+                  <Form.Input
+                    label="Email"
+                    id="signup-form-email"
+                    icon="envelope"
+                    iconPosition="left"
+                    name="email"
+                    type="email"
+                    placeholder="E-mail address"
+                    onChange={this.handleChange} required/>
+                </div>
+                <div className="field">
+                  <Form.Input
+                    label="Employee ID"
+                    id="signup-form-id"
+                    name="employeeID"
+                    type="employeeID"
+                    placeholder="Employee ID"
+                    onChange={this.handleChange} required/>
+                </div>
+              </div>
+              <div className="equal width fields">
+                <div className="field">
+                  <Form.Input
+                    label="Password"
+                    id="signup-form-password"
+                    icon="lock"
+                    iconPosition="left"
+                    name="password"
+                    placeholder="Password"
+                    type="password"
+                    onChange={this.handleChange} required/>
+                </div>
+                <div className="field">
+                  <Form.Input
+                    label="Confirm Password"
+                    id="signup-form-confirmPassword"
+                    icon="lock"
+                    iconPosition="left"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    type="password"
+                    onChange={this.handleChange} required/>
+                </div>
+              </div>
+              <Form.Button id="signup-form-submit" content="SUBMIT"/>
+              <div className="message">
+                Already have an account? Login <Link to="/signin" className="link">here</Link>
+              </div>
             </Form>
-            <Message>
-              Already have an account? Login <Link to="/signin">here</Link>
-            </Message>
             {this.state.error === '' ? (
               ''
             ) : (
@@ -83,7 +142,7 @@ class Signup extends React.Component {
               />
             )}
           </Grid.Column>
-        </Grid>
+        </div>
       </Container>
     );
   }
