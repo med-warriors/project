@@ -9,5 +9,10 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultProfiles": [
+    { "username": "jfoo", "role": "doctor", "name": "John Foo", "idnumber": "12345678", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "john@foo.com" },
+    { "username": "admin", "role": "patient", "name": "The Admin", "idnumber": "87654321", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "admin@foo.com" }
   ]
 }
