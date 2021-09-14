@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Grid, Header, Icon, List } from 'semantic-ui-react';
+import { Image, Grid, Header, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
