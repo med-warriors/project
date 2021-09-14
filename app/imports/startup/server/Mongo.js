@@ -6,14 +6,8 @@ import { Profiles } from '../../api/profile/Profile';
 
 // Initialize the database with a default data document.
 function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
+  console.log(`  Adding: ${data.lotNumber} (${data.owner})`);
   Stuffs.collection.insert(data);
-}
-
-// Initialize the database with a default data document.
-function addProfile(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Profiles.collection.insert(data);
 }
 
 // Initialize the StuffsCollection if empty.
@@ -22,6 +16,12 @@ if (Stuffs.collection.find().count() === 0) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.map(data => addData(data));
   }
+}
+
+// Initialize the database with a default data document.
+function addProfile(data) {
+  console.log(`  Adding: ${data.name} (${data.owner})`);
+  Profiles.collection.insert(data);
 }
 
 // Initialize the ProfilesCollection if empty.
