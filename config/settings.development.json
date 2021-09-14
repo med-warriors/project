@@ -1,18 +1,17 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP"
+    },
+    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
   ],
 
   "defaultData": [
-    { "lotNumber": 123456, "name": "Basket", "quantity": 3, "owner": "john@foo.com", "type": "excellent", "location": "there", "expirationDate": "01/04/2022" },
-    { "lotNumber": 234567, "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "type": "poor", "location": "there", "expirationDate": "01/04/2022" },
-    { "lotNumber": 2345678, "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "type": "good", "location": "there", "expirationDate": "01/04/2022" },
-    { "lotNumber": 2345699, "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "type": "excellent", "location": "there", "expirationDate": "01/04/2022" }
+    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
+    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
+    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
+    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
-
-  "defaultProfiles": [
-    { "username": "jfoo", "role": "doctor", "name": "John Foo", "idnumber": "12345678", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "john@foo.com" },
-    { "username": "admin", "role": "patient", "name": "The Admin", "idnumber": "87654321", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "admin@foo.com" }
-  ]
+  "public": {
+    "development": true
+  }
 }

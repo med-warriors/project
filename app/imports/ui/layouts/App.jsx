@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-/* import Footer from '../components/Footer'; */
+import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
@@ -15,10 +15,8 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import MedicineandSupplies from '../pages/MedicineandSupplies';
-import PatientInformation from '../pages/PatientInformation';
-import UserProfile from '../pages/UserProfile';
-import LowInventoryReport from '../pages/LowInventoryReport';
+import ManageDatabase from '../pages/ManageDatabase';
+import { ROLE } from '../../api/role/Role';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -32,16 +30,14 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
-            <ProtectedRoute path="/viewuser" component={UserProfile}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
-            <ProtectedRoute path="/medicineandsupplies" component={MedicineandSupplies}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/patientinfo" component={PatientInformation}/>
-            <ProtectedRoute path="/lowinventory" component={LowInventoryReport}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+            <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
             <Route component={NotFound}/>
           </Switch>
+          <Footer/>
         </div>
       </Router>
     );
@@ -76,7 +72,7 @@ const AdminProtectedRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={(props) => {
       const isLogged = Meteor.userId() !== null;
-      const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+      const isAdmin = Roles.userIsInRole(Meteor.userId(), ROLE.ADMIN);
       return (isLogged && isAdmin) ?
         (<Component {...props} />) :
         (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>

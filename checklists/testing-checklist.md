@@ -4,7 +4,7 @@ Best practices for unit, integration, and acceptance testing.
 
 ## Unit Test Checklist
 
-### TEST-UNIT-01: Each Collection has unit tests.
+### TU-01: Each Collection has unit tests.
 
 Collections are defined in the api/ directory. They are typically defined as a single Class instance that extend a base class such as "BaseCollection".
 
@@ -14,7 +14,7 @@ If an operation on the Collection has a relationship to another Collection, make
 
 ## Integration Test Checklist
 
-### TEST-INTEGRATION-01: Each Meteor Method has integration tests.
+### TI-01: Each Meteor Method has integration tests.
 
 Meteor Methods are remote procedure calls that are invoked by the client and run on the server. They are found in an api/ subdirectory, in a file with the suffix "methods.ts".
 
@@ -22,13 +22,13 @@ Every Meteor Method in the system should be tested through an integration test. 
 
 ## Acceptance Test Checklist
 
-### TEST-ACCEPTANCE-01: Each Page has an isDisplayed() acceptance test.
+### TA-01: Each Page has an isDisplayed() acceptance test.
 
 We use the "Page Object Model" to define one or more tests to exercise the behavior associated with the user interface.
 
 For each page in the user interface, there should be an acceptance test that verifies that the page can be displayed successfully.
 
-### TEST-ACCEPTANCE-02: Each form has an acceptance test.
+### TA-02: Each form has an acceptance test.
 
 If a page has a form, there is an associated acceptance test to ensure that it behaves correctly.
 

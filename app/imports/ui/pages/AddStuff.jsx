@@ -5,65 +5,60 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Stuffs } from '../../api/stuff/StuffCollection';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  lotNumber: Number,
   name: String,
-  type: {
+  quantity: Number,
+  condition: {
     type: String,
     allowedValues: ['excellent', 'good', 'fair', 'poor'],
     defaultValue: 'good',
   },
-  location: String,
-  quantity: Number,
-  expirationDate: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+const AddStuff = () => {
 
   // On submit, insert the data.
-  submit(data, formRef) {
-    const { lotNumber, name, type, location, quantity, expirationDate } = data;
+  const submit = (data, formRef) => {
+    const { name, quantity, condition } = data;
     const owner = Meteor.user().username;
-    Stuffs.collection.insert({ lotNumber, name, type, location, quantity, expirationDate, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
+    const collectionName = Stuffs.getCollectionName();
+    const definitionData = { name, quantity, condition, owner };
+    defineMethod.callPromise({ collectionName, definitionData })
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => {
+        swal('Success', 'Item added successfully', 'success');
+        formRef.reset();
       });
-  }
+  };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
-  render() {
-    let fRef = null;
-    return (
-      <Grid container centered>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Add Stuff</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-            <Segment>
-              <NumField name='lotNumber' decimal={false}/>
-              <TextField name='name'/>
-              <SelectField name='type'/>
-              <TextField name='location'/>
-              <NumField name='quantity' decimal={false}/>
-              <TextField name='expirationDate'/>
-              <SubmitField value='Submit'/>
-              <ErrorsField/>
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
-    );
-  }
-}
+  let fRef = null;
+  return (
+    <Grid id={PAGE_IDS.ADD_STUFF} container centered>
+      <Grid.Column>
+        <Header as="h2" textAlign="center">Add Stuff</Header>
+        <AutoForm ref={ref => {
+          fRef = ref;
+        }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+          <Segment>
+            <TextField name='name' />
+            <NumField name='quantity' decimal={false} />
+            <SelectField name='condition' />
+            <SubmitField value='Submit' />
+            <ErrorsField />
+          </Segment>
+        </AutoForm>
+      </Grid.Column>
+    </Grid>
+  );
+};
 
 export default AddStuff;
