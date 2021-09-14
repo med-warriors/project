@@ -8,9 +8,12 @@ class CurrentMedicine extends React.Component {
   render() {
     return (
       <Table.Row>
+        <Table.Cell>{this.props.stuff.lotNumber}</Table.Cell>
         <Table.Cell>{this.props.stuff.name}</Table.Cell>
+        <Table.Cell>{this.props.stuff.type}</Table.Cell>
+        <Table.Cell>{this.props.stuff.location}</Table.Cell>
         <Table.Cell>{this.props.stuff.quantity}</Table.Cell>
-        <Table.Cell>{this.props.stuff.condition}</Table.Cell>
+        <Table.Cell>{this.props.stuff.expirationDate}</Table.Cell>
         <Table.Cell>
           <Link to={`/edit/${this.props.stuff._id}`}>Edit</Link>
         </Table.Cell>
@@ -22,9 +25,12 @@ class CurrentMedicine extends React.Component {
 // Require a document to be passed to this component.
 CurrentMedicine.propTypes = {
   stuff: PropTypes.shape({
+    lotNumber: PropTypes.number,
     name: PropTypes.string,
+    type: PropTypes.string,
+    location: PropTypes.string,
     quantity: PropTypes.number,
-    condition: PropTypes.string,
+    expirationDate: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

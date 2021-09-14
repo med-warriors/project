@@ -5,10 +5,10 @@
   ],
 
   "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+    { "lotNumber": 123456, "name": "Basket", "quantity": 3, "owner": "john@foo.com", "type": "excellent", "Location": "there", "expirationDate": "01/04/2022" },
+    { "lotNumber": 234567, "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "type": "poor", "Location": "there", "expirationDate": "01/04/2022" },
+    { "lotNumber": 2345678, "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "type": "good", "Location": "there", "expirationDate": "01/04/2022" },
+    { "lotNumber": 2345699, "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "type": "excellent", "Location": "there", "expirationDate": "01/04/2022" }
   ],
 
   "defaultProfiles": [
