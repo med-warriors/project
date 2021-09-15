@@ -1,89 +1,69 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader, Tab, Button } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Tab } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Stuffs } from '../../api/stuff/StuffCollection';
 import CurrentMedicine from '../components/CurrentMedicine';
 import CurrentSupplies from '../components/CurrentSupplies';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
-/** Renders a table containing all of the Medicine documents. Use <MedicineItem> to render each row. */
-class ListMedicine extends React.Component {
-
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  // Render the page once subscriptions have been received.
-  renderPage() {
-    return (
-      <Container>
-        <Header as="h2" textAlign="center">Medicine and Supplies</Header>
-        <Tab panes={[
-          { menuItem: 'Medicine', render: () => <Tab.Pane>
-            <Table celled>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell><Button>Lot #</Button></Table.HeaderCell>
-                  <Table.HeaderCell><Button>Name</Button></Table.HeaderCell>
-                  <Table.HeaderCell><Button>Type</Button></Table.HeaderCell>
-                  <Table.HeaderCell><Button>Location</Button></Table.HeaderCell>
-                  <Table.HeaderCell><Button>Quantity</Button></Table.HeaderCell>
-                  <Table.HeaderCell><Button>Expiration Date</Button></Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {this.props.stuffs.map((stuff) => <CurrentMedicine key={stuff._id} stuff={stuff}/>)}
-              </Table.Body>
-            </Table>
-          </Tab.Pane> },
-          { menuItem: 'Supplies', render: () => <Tab.Pane>
-            <Table celled>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell><Button>Name</Button></Table.HeaderCell>
-                  <Table.HeaderCell><Button>Location</Button></Table.HeaderCell>
-                  <Table.HeaderCell><Button>Quantity</Button></Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {this.props.stuffs.map((stuff) => <CurrentSupplies key={stuff._id} stuff={stuff} />)}
-              </Table.Body>
-            </Table>
-          </Tab.Pane> }]}/>
-      </Container>
-    );
-  }
-}
+/** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
+const MedicineAndSupplies = ({ ready, stuffs }) => ((ready) ? (
+  <Container id={PAGE_IDS.LIST_STUFF}>
+    <Header as="h2" textAlign="center">Medicine and Supplies</Header>
+    <Tab panes = {[
+      // eslint-disable-next-line react/display-name
+      { menuItem: 'Medicine', render: () => <Tab.Pane>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Lot #</Table.HeaderCell>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Type</Table.HeaderCell>
+              <Table.HeaderCell>Location</Table.HeaderCell>
+              <Table.HeaderCell>Quantity</Table.HeaderCell>
+              <Table.HeaderCell>Expiration Date</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {stuffs.map((stuff) => <CurrentMedicine key={stuff._id} stuff={stuff}/>)}
+          </Table.Body>
+        </Table>
+      </Tab.Pane> },
+      // eslint-disable-next-line react/display-name
+      { menuItem: 'Supplies', render: () => <Tab.Pane>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Location</Table.HeaderCell>
+              <Table.HeaderCell>Quantity</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {stuffs.map((stuff) => <CurrentSupplies key={stuff._id} stuff={stuff} />)}
+          </Table.Body>
+        </Table>
+      </Tab.Pane> }]}/>
+  </Container>
+) : <Loader active>Getting data</Loader>);
 
 // Require an array of Medicine documents in the props.
-ListMedicine.propTypes = {
+MedicineAndSupplies.propTypes = {
   stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Medicine documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  // Get access to Stuff documents.
+  const subscription = Stuffs.subscribeStuff();
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Medicine documents
-  const stuffs = Stuffs.collection.find({}).fetch();
-  stuffs.sort((a, b) => {
-    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
+  // Get the Stuff documents and sort them by name.
+  const stuffs = Stuffs.find({}, { sort: { name: 1 } }).fetch();
   return {
     stuffs,
     ready,
   };
-})(ListMedicine);
+})(MedicineAndSupplies);
