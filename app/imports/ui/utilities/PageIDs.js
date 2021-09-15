@@ -10,6 +10,4 @@ export const PAGE_IDS = {
   SIGN_IN: 'sigin-in',
   SIGN_OUT: 'sign-out',
   SIGN_UP: 'sign-up',
-  MEDICINE_AND_SUPPLIES: 'medicine-and-supplies',
-  PATIENT_INFORMATION: 'patient-information',
 };

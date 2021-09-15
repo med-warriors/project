@@ -15,10 +15,6 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import MedicineandSupplies from '../pages/MedicineandSupplies';
-import PatientInformation from '../pages/PatientInformation';
-import UserProfile from '../pages/UserProfile';
-import LowInventoryReport from '../pages/LowInventoryReport';
 import ManageDatabase from '../pages/ManageDatabase';
 import { ROLE } from '../../api/role/Role';
 
@@ -34,12 +30,8 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
-            <ProtectedRoute path="/viewuser" component={UserProfile}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
-            <ProtectedRoute path="/medicineandsupplies" component={MedicineandSupplies}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/patientinfo" component={PatientInformation}/>
-            <ProtectedRoute path="/lowinventory" component={LowInventoryReport}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
