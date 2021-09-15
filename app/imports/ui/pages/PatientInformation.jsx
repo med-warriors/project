@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 // import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Stuffs } from '../../api/stuff/StuffCollection';
 
 // const bridge = new SimpleSchema2Bridge(Stuffs.schema);
 
@@ -15,7 +15,7 @@ class PatientInformation extends React.Component {
   // On successful submit, insert the data.
   submit(data) {
     const { name, quantity, condition, _id } = data;
-    Stuffs.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    Stuffs.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -83,7 +83,7 @@ export default withTracker(({ match }) => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the document
-  const doc = Stuffs.collection.findOne(documentId);
+  const doc = Stuffs.findOne(documentId);
   return {
     doc,
     ready,
