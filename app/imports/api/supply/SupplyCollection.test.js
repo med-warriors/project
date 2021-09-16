@@ -54,7 +54,7 @@ if (Meteor.isServer) {
         max: 10,
       });
       const owner = faker.lorem.words();
-      const docID = Stuffs.define({
+      const docID = Supplies.define({
         name,
         quantity,
         owner,

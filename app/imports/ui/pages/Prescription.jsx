@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Header, Button, Form } from 'semantic-ui-react';
-import { AutoForm, NumField, SelectField, TextField } from 'uniforms-semantic';
+import { Grid, Header, Button, Form } from 'semantic-ui-react';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders the Page for adding a document. */
