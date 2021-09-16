@@ -15,6 +15,7 @@
   "defaultProfiles": [
     { "username": "jfoo", "role": "doctor", "name": "John Foo", "idnumber": "12345678", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "john@foo.com" },
     { "username": "admin", "role": "patient", "name": "The Admin", "idnumber": "87654321", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "admin@foo.com" }
+  ],
 
   "defaultPatientHistory": [
     { "date": "2021-09-12T07:30", "name": "John Smith", "email": "john@foo.com", "phone_number": "808-123-4567", "prescription": "tylenol 600mg" },
