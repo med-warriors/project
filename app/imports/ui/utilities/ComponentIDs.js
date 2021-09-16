@@ -27,5 +27,6 @@ export const COMPONENT_IDS = {
   NAVBAR_MEDICINEANDSUPPLIES: 'medicine-and-supplies',
   NAVBAR_PATIENT_INFORMATION: 'patient-information',
   NAVBAR_PRESCRIPTION: 'prescription',
+  NAVBAR_LOW_INVENTORY: 'low-inventory',
   NAVBAR_VIEW_PROFILE: 'view-profile',
 };
