@@ -2,12 +2,15 @@ import React from 'react';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/StuffCollection';
-import StuffItem from '../components/StuffItem';
+import { Patients } from '../../api/patients/PatientCollection';
+import PatientItem from '../components/PatientItem';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const ListStuff = ({ ready, stuffs }) => ((ready) ? (
+const PatientInformation = ({ ready, patients }) => {
+  console.log(patients);
+  return ((ready) ? (
+
   <Container id={PAGE_IDS.LIST_STUFF}>
     <Header as="h2" textAlign="center">Patient History Information</Header>
     <Table celled>
@@ -18,31 +21,32 @@ const ListStuff = ({ ready, stuffs }) => ((ready) ? (
           <Table.HeaderCell>Email</Table.HeaderCell>
           <Table.HeaderCell>Phone Number</Table.HeaderCell>
           <Table.HeaderCell>Prescription</Table.HeaderCell>
+          <Table.HeaderCell>Edit</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+        {patients.map((patient) => <PatientItem key={patient._id} patient={patient} />)}
       </Table.Body>
     </Table>
   </Container>
-) : <Loader active>Getting data</Loader>);
+) : <Loader active>Getting data</Loader>);}
 
 // Require an array of Stuff documents in the props.
-ListStuff.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+PatientInformation.propTypes = {
+  patients: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Stuffs.subscribeStuff();
+  const subscription = Patients.subscribePatients();
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const stuffs = Stuffs.find({}, { sort: { name: 1 } }).fetch();
+  const patients = Patients.find({}).fetch();
   return {
-    stuffs,
+    patients,
     ready,
   };
-})(ListStuff);
+})(PatientInformation);
