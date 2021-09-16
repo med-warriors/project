@@ -18,6 +18,7 @@ class MedicinesCollection {
       type: String,
       location: String,
       quantity: Number,
+      should_have: Number,
       expirationDate: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
