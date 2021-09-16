@@ -11,7 +11,7 @@ import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'john@foo.com', password: 'changeme' };
 const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
-const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
+const newCredentials = { firstName: 'Robert', lastName: 'Johnson', username: 'robert@foo.com', employeeID: '44444444', password: 'changeme', confirmPassword: 'changeme' };
 
 fixture('matrp localhost test with default db')
   .page('http://localhost:3000');
@@ -30,7 +30,7 @@ test('Test that sign in and sign out work', async () => {
 
 test('Test that sign up and sign out work', async () => {
   await navBar.gotoSignupPage();
-  await signUpPage.signupUser(newCredentials.username, newCredentials.password);
+  await signUpPage.signupUser(newCredentials.firstName, newCredentials.lastName, newCredentials.username, newCredentials.employeeID, newCredentials.password, newCredentials.confirmPassword);
   await navBar.isLoggedIn(newCredentials.username);
   await navBar.logout();
   await signOutPage.isDisplayed();
