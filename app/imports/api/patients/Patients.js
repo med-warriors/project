@@ -1,26 +1,22 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
+import BaseCollection from '../base/BaseCollection';
 
 /**
  * The PatientsCollection. It encapsulates state and variable values for patients.
  */
-class PatientsCollection {
+class PatientsCollection extends BaseCollection {
   constructor() {
-    // The name of this collection.
-    this.name = 'PatientsCollection';
-    // Define the Mongo collection.
-    this.collection = new Mongo.Collection(this.name);
-    // Define the structure of each document in the collection.
-    this.schema = new SimpleSchema({
+    super('PatientsCollection', new SimpleSchema({
       date: Date,
       name: String,
       email: String,
       phone_number: Number,
       prescription: String,
-    }, { tracker: Tracker });
-    // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
-    this.collection.attachSchema(this.schema);
+      owner: String,
+    }));
+
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
