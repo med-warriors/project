@@ -29,4 +29,5 @@ export const COMPONENT_IDS = {
   NAVBAR_PRESCRIPTION: 'prescription',
   NAVBAR_LOW_INVENTORY: 'low-inventory',
   NAVBAR_VIEW_PROFILE: 'view-profile',
+  NAVBAR_HISTORY_REPORT: 'history-report',
 };
