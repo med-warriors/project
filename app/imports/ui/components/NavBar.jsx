@@ -17,11 +17,10 @@ const NavBar = ({ currentUser }) => {
         <Header inverted as='h1'>MED-Warriors</Header>
       </Menu.Item>
       {currentUser ? (
-        [<Menu.Item id={COMPONENT_IDS.NAVBAR_ADD_STUFF} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF} as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_MEDICINEANDSUPPLIES} as={NavLink} activeClassName="active" exact to="/medicineandsupplies" key='medicineandsupplies'>Medicine And Supplies</Menu.Item>,
+        [<Menu.Item id={COMPONENT_IDS.NAVBAR_MEDICINEANDSUPPLIES} as={NavLink} activeClassName="active" exact to="/medicineandsupplies" key='medicineandsupplies'>Medicine And Supplies</Menu.Item>,
           <Menu.Item id={COMPONENT_IDS.NAVBAR_SUPPLY_SOURCE} as={NavLink} activeClassName="active" exact to="/supplysource" key='supplysource'>Supply Source</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patientinfo" key='patientinfo'>Patient Information</Menu.Item>]
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patientinfo" key='patientinfo'>Patient Information</Menu.Item>,
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_PRESCRIPTION} as={NavLink} activeClassName="active" exact to="/prescription" key='prescription'>Prescription</Menu.Item>]
       ) : ''}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
         [<Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>,
