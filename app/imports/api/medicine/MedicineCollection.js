@@ -69,6 +69,7 @@ class MedicineCollection extends BaseCollection {
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
     }
+    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(should_have)) {
       updateData.should_have = should_have;
     }

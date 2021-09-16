@@ -21,13 +21,14 @@ if (Meteor.isServer) {
     it('Can define and removeIt', function test1(done) {
       fc.assert(
         fc.property(fc.integer(1, 10), fc.lorem(2), fc.integer(1, 10), fc.lorem(2), fc.lorem(2), fc.lorem(4), fc.lorem(1),
-          (lotNumber, name, quantity, type, location, expirationDate, owner) => {
+          (lotNumber, name, quantity, should_have, type, location, expirationDate, owner) => {
             const docID = Medicines.define({
               lotNumber,
               name,
               type,
               location,
               quantity,
+              should_have,
               expirationDate,
               owner,
             });
@@ -45,10 +46,11 @@ if (Meteor.isServer) {
       const type = faker.animal.dog();
       const location = faker.animal.dog();
       const quantity = faker.datatype.number({ min: 1, max: 5 });
+      const should_have = faker.datatype.number({ min: 1, max: 5 });
       const owner = faker.internet.email();
       const expirationDate = faker.animal.dog();
-      const docID1 = Medicines.define({ lotNumber, name, type, location, quantity, expirationDate, owner });
-      const docID2 = Medicines.define({ lotNumber, name, type, location, quantity, expirationDate, owner });
+      const docID1 = Medicines.define({ lotNumber, name, type, location, quantity, should_have, expirationDate, owner });
+      const docID2 = Medicines.define({ lotNumber, name, type, location, quantity, should_have, expirationDate, owner });
       expect(docID1).to.not.equal(docID2);
     });
 
@@ -64,6 +66,10 @@ if (Meteor.isServer) {
         min: 1,
         max: 10,
       });
+      const should_have = faker.datatype.number({
+        min: 1,
+        max: 10,
+      });
       const expirationDate = faker.lorem.words();
       const owner = faker.lorem.words();
       const docID = Medicines.define({
@@ -72,19 +78,21 @@ if (Meteor.isServer) {
         type,
         location,
         quantity,
+        should_have,
         expirationDate,
         owner,
       });
       // console.log(Stuffs.findDoc(docID));
       fc.assert(
         fc.property(fc.integer(10), fc.lorem(2), fc.lorem(2), fc.lorem(2), fc.integer(10), fc.lorem(4),
-          (newLotNumber, newName, newType, newLocation, newQuantity, newExpirationDate) => {
+          (newLotNumber, newName, newType, newLocation, newQuantity, newShould_have, newExpirationDate) => {
             Medicines.update(docID, {
               lotNumber: newLotNumber,
               name: newName,
               type: newType,
               location: newLocation,
               quantity: newQuantity,
+              should_have: newShould_have,
               expirationDate: newExpirationDate,
             });
             const medicine = Medicines.findDoc(docID);
@@ -93,6 +101,7 @@ if (Meteor.isServer) {
             expect(medicine.type).to.equal(newType);
             expect(medicine.location).to.equal(newLocation);
             expect(medicine.quantity).to.equal(newQuantity);
+            expect(medicine.should_have).to.equal(newShould_have);
             expect(medicine.expirationDate).to.equal(newExpirationDate);
           }),
       );
@@ -113,6 +122,7 @@ if (Meteor.isServer) {
       expect(doc.type).to.equal(origDoc.type);
       expect(doc.location).to.equal(origDoc.location);
       expect(doc.quantity).to.equal(origDoc.quantity);
+      expect(doc.should_have).to.equal(origDoc.should_have);
       expect(doc.expirationDate).to.equal(origDoc.expirationDate);
       expect(doc.owner).to.equal(origDoc.owner);
     });

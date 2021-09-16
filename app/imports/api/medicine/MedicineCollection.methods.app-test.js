@@ -27,6 +27,10 @@ if (Meteor.isClient) {
         min: 1,
         max: 10,
       });
+      definitionData.should_have = faker.datatype.number({
+        min: 1,
+        max: 10,
+      });
       definitionData.expirationDate = faker.lorem.words();
       definitionData.owner = username;
       // console.log(collectionName, definitionData);
@@ -38,6 +42,7 @@ if (Meteor.isClient) {
       expect(doc.type).to.equal(definitionData.type);
       expect(doc.location).to.equal(definitionData.location);
       expect(doc.quantity).to.equal(definitionData.quantity);
+      expect(doc.should_have).to.equal(definitionData.should_have);
       expect(doc.expirationDate).to.equal(definitionData.expirationDate);
       const updateData = {};
       updateData.id = docID;
@@ -52,6 +57,10 @@ if (Meteor.isClient) {
         min: 1,
         max: 10,
       });
+      updateData.should_have = faker.datatype.number({
+        min: 1,
+        max: 10,
+      });
       updateData.expirationDate = faker.lorem.words();
       await updateMethod.callPromise({ collectionName, updateData });
       doc = Medicines.findDoc(docID);
@@ -60,6 +69,7 @@ if (Meteor.isClient) {
       expect(doc.type).to.equal(updateData.type);
       expect(doc.location).to.equal(updateData.location);
       expect(doc.quantity).to.equal(updateData.quantity);
+      expect(doc.should_have).to.equal(updateData.should_have);
       expect(doc.expirationDate).to.equal(updateData.expirationDate);
       await removeItMethod.callPromise({ collectionName, instance: docID });
       expect(Medicines.isDefined(docID)).to.be.false;
