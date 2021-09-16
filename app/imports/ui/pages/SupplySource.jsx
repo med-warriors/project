@@ -16,7 +16,6 @@ const SupplySource = ({ supplySources, ready }) => ((ready) ? (
           <Table.HeaderCell>Location</Table.HeaderCell>
           <Table.HeaderCell>Phone Number</Table.HeaderCell>
           <Table.HeaderCell>Email</Table.HeaderCell>
-          <Table.HeaderCell>Owner</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
