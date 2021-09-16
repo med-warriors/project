@@ -1,44 +1,33 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import StuffItem from '../components/StuffItem';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class LowInventoryReport extends React.Component {
-
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  // Render the page once subscriptions have been received.
-  renderPage() {
-    return (
-      <Container>
-        <Header as="h2" textAlign="center">Low Inventory Report</Header>
-        <Table celled>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Expiration Date</Table.HeaderCell>
-              <Table.HeaderCell>Current Inventory</Table.HeaderCell>
-              <Table.HeaderCell>Status</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-          </Table.Body>
-        </Table>
-      </Container>
-    );
-  }
-}
+const ListStuff = ({ ready, stuffs }) => ((ready) ? (
+  <Container id={PAGE_IDS.LIST_STUFF}>
+    <Header as="h2" textAlign="center">Low Inventory Report</Header>
+    <Table celled>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Medicine Name</Table.HeaderCell>
+          <Table.HeaderCell>Quantity</Table.HeaderCell>
+          <Table.HeaderCell>Location in Van</Table.HeaderCell>
+          <Table.HeaderCell>Edit</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+      </Table.Body>
+    </Table>
+  </Container>
+) : <Loader active>Getting data</Loader>);
 
 // Require an array of Stuff documents in the props.
-LowInventoryReport.propTypes = {
+ListStuff.propTypes = {
   stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -46,13 +35,13 @@ LowInventoryReport.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  const subscription = Stuffs.subscribeStuff();
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  // Get the Stuff documents and sort them by name.
+  const stuffs = Stuffs.find({}, { sort: { name: 1 } }).fetch();
   return {
     stuffs,
     ready,
   };
-})(LowInventoryReport);
+})(ListStuff);
