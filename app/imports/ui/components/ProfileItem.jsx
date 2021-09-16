@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Grid, Header, Label, Segment } from 'semantic-ui-react';
+import { Image, Grid, Header, Label, Segment, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -19,6 +19,12 @@ class ProfileItem extends React.Component {
         <Grid.Row>
           <Grid.Column width={5}>
             <Image src={this.props.profile.image} size='large' circular/>
+            <Button animated id="edit-prof">
+              <Button.Content visible>Edit Profile</Button.Content>
+              <Button.Content hidden>
+                <Icon name='arrow right' />
+              </Button.Content>
+            </Button>
           </Grid.Column>
           <Grid.Column id="profile-info" width={9}>
             <Segment floated='right'>
@@ -27,10 +33,14 @@ class ProfileItem extends React.Component {
                   {this.props.profile.name}
                 </Header></Grid.Row>
               <Grid.Row><Header id="profile-number" as="h3" textAlign='left'>
-                ID # : <Label color='black'>{this.props.profile.idnumber}</Label>
+                  ID # : <Label color='black'>{this.props.profile.idnumber}</Label>
+              </Header>
+              </Grid.Row>
+              <Grid.Row><Header id="profile-username" as="h3" textAlign='left'>
+                Username : {this.props.profile.username}
               </Header></Grid.Row>
               <Grid.Row><Header id="profile-role" as="h3" textAlign='left'>
-                Affiliations : <Label circular>{this.props.profile.role}</Label>
+                  Affiliations : <Label circular>{this.props.profile.role}</Label>  <Label circular>staff</Label>
               </Header></Grid.Row></Segment>
           </Grid.Column>
         </Grid.Row>
