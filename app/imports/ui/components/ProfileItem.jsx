@@ -28,11 +28,8 @@ class ProfileItem extends React.Component {
               ID # :{this.props.profile.idnumber}
             </Header>
             <Header id="profile-role" as="h3">
-              Affiliations :
+              Affiliations :  {this.props.profile.role}
             </Header>
-            <List bulleted>
-              <List.Item>{this.props.profile.role}</List.Item>
-            </List>
           </Grid.Column>
         </Grid.Row>
       </Grid>
