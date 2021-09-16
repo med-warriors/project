@@ -27,6 +27,6 @@ class SuppliesCollection {
 
 /**
  * The singleton instance of the StuffsCollection.
- * @type {StuffsCollection}
+ * @type {SuppliesCollection}
  */
 export const Supplies = new SuppliesCollection();

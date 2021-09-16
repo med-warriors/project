@@ -6,7 +6,6 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const medicineConditions = ['excellent', 'good', 'fair', 'poor'];
 export const medicinePublications = {
   medicine: 'Medicine',
   medicineAdmin: 'MedicineAdmin',
