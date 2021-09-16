@@ -22,6 +22,7 @@ import UserProfile from '../pages/UserProfile';
 import LowInventoryReport from '../pages/LowInventoryReport';
 import ManageDatabase from '../pages/ManageDatabase';
 import Prescription from '../pages/Prescription';
+import HistoryReport from '../pages/HistoryReport';
 import { ROLE } from '../../api/role/Role';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -45,6 +46,7 @@ class App extends React.Component {
             <ProtectedRoute path="/medicineandsupplies" component={MedicineAndSupplies}/>
             <ProtectedRoute path="/supplysource" component={SupplySource}/>
             <ProtectedRoute path="/patientinfo" component={PatientInformation}/>
+            <ProtectedRoute path="/historyreport" component={HistoryReport}/>
             <ProtectedRoute path="/lowinventory" component={LowInventoryReport}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
