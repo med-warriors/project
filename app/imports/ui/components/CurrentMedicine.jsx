@@ -13,6 +13,7 @@ const CurrentMedicine = ({ stuff }) => (
     <Table.Cell>{stuff.location}</Table.Cell>
     <Table.Cell>{stuff.quantity}</Table.Cell>
     <Table.Cell>{stuff.expirationDate}</Table.Cell>
+    <Table.Cell>{stuff.source}</Table.Cell>
     <Table.Cell>
       <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/edit/${stuff._id}`}>Edit</Link>
     </Table.Cell>
@@ -28,6 +29,7 @@ CurrentMedicine.propTypes = {
     location: PropTypes.string,
     quantity: PropTypes.number,
     expirationDate: PropTypes.string,
+    source: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
