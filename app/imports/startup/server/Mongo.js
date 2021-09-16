@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/StuffCollection';
+import { Patients } from '../../api/patients/PatientCollection';
 import { Profiles } from '../../api/profile/Profile';
 
 /* eslint-disable no-console */
@@ -29,5 +30,19 @@ if (Profiles.collection.find().count() === 0) {
   if (Meteor.settings.defaultProfiles) {
     console.log('Creating default Profiles.');
     Meteor.settings.defaultProfiles.map(data => addProfile(data));
+  }
+}
+
+// Initialize the database with a default data document.
+function addPatients(data) {
+  console.log(`  Adding patient: ${data.date} (${data.name})`);
+  Patients.define(data);
+}
+
+// Initialize the PatientCollection if empty.
+if (Patients.count() === 0) {
+  if (Meteor.settings.defaultPatientHistory) {
+    console.log('Creating default patient data.');
+    Meteor.settings.defaultPatientHistory.map(data => addPatients(data));
   }
 }

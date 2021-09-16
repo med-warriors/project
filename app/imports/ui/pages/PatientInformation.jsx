@@ -1,91 +1,52 @@
 import React from 'react';
-import { Grid, Loader, Header, Divider, Container, Segment } from 'semantic-ui-react';
-import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
+import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-// import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Stuffs } from '../../api/stuff/StuffCollection';
+import { Patients } from '../../api/patients/PatientCollection';
+import PatientItem from '../components/PatientItem';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
-// const bridge = new SimpleSchema2Bridge(Stuffs.schema);
+/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+const PatientInformation = ({ ready, patients }) => {
+  console.log(patients);
+  return ((ready) ? (
 
-/** Renders the Page for editing a single document. */
-class PatientInformation extends React.Component {
+  <Container id={PAGE_IDS.LIST_STUFF}>
+    <Header as="h2" textAlign="center">Patient History Information</Header>
+    <Table celled>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Date</Table.HeaderCell>
+          <Table.HeaderCell>Patient Name</Table.HeaderCell>
+          <Table.HeaderCell>Email</Table.HeaderCell>
+          <Table.HeaderCell>Phone Number</Table.HeaderCell>
+          <Table.HeaderCell>Prescription</Table.HeaderCell>
+          <Table.HeaderCell>Edit</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {patients.map((patient) => <PatientItem key={patient._id} patient={patient} />)}
+      </Table.Body>
+    </Table>
+  </Container>
+) : <Loader active>Getting data</Loader>);}
 
-  // On successful submit, insert the data.
-  submit(data) {
-    const { name, quantity, condition, _id } = data;
-    Stuffs.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
-  }
-
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
-  renderPage() {
-    return (
-      <Grid container centered>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Patient Information</Header>
-          <Container>
-            <Segment>
-              <p>
-                <b>Date:</b> 8/26/21<br/>
-                <b>Patient Name:</b> John Smith<br/>
-                <b>Email:</b> email@gmail.com <br/>
-                <b>Phone Number:</b> (808)123-4567<br/>
-                <b>Prescription:</b> <br/>
-                <ul>
-                  <li>Tylenol 500mg</li>
-                  <li>lot #1234</li>
-                  <li>Exp. date: 6/5/2023</li>
-                </ul>
-              </p>
-              <Divider section/>
-              <p>
-                <b>Date:</b> 8/26/21<br/>
-                <b>Patient Name:</b> Jane Doe<br/>
-                <b>Email:</b> email@gmail.com <br/>
-                <b>Phone Number:</b> (808)123-4567<br/>
-                <b>Prescription:</b> <br/>
-                <ul>
-                  <li>Tylenol 500mg</li>
-                  <li>lot #1234</li>
-                  <li>Exp. date: 6/5/2023</li>
-
-                </ul>
-              </p>
-            </Segment>
-          </Container>
-        </Grid.Column>
-      </Grid>
-    );
-  }
-}
-
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+// Require an array of Stuff documents in the props.
 PatientInformation.propTypes = {
-  doc: PropTypes.object,
-  model: PropTypes.object,
+  patients: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-export default withTracker(({ match }) => {
-  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
-  const documentId = match.params._id;
+export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  const subscription = Patients.subscribePatients();
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the document
-  const doc = Stuffs.findOne(documentId);
+  // Get the Stuff documents and sort them by name.
+  const patients = Patients.find({}).fetch();
   return {
-    doc,
+    patients,
     ready,
   };
 })(PatientInformation);
