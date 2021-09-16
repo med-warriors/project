@@ -19,6 +19,7 @@ class MedicineCollection extends BaseCollection {
       type: String,
       location: String,
       quantity: Number,
+      should_have: Number,
       expirationDate: String,
     }));
   }
@@ -30,13 +31,14 @@ class MedicineCollection extends BaseCollection {
    * @param owner the owner of the item.
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, name, type, location, quantity, expirationDate }) {
+  define({ lotNumber, name, type, location, quantity, should_have, expirationDate }) {
     const docID = this._collection.insert({
       lotNumber,
       name,
       type,
       location,
       quantity,
+      should_have,
       expirationDate,
     });
     return docID;
@@ -49,7 +51,7 @@ class MedicineCollection extends BaseCollection {
    * @param quantity the new quantity (optional).
    * @param condition the new condition (optional).
    */
-  update(docID, { lotNumber, name, type, location, quantity, expirationDate }) {
+  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate }) {
     const updateData = {};
     if (_.isNumber(lotNumber)) {
       updateData.lotNumber = lotNumber;
@@ -66,6 +68,9 @@ class MedicineCollection extends BaseCollection {
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
+    }
+    if (_.isNumber(should_have)) {
+      updateData.should_have = should_have;
     }
     if (expirationDate) {
       updateData.expirationDate = expirationDate;
@@ -155,9 +160,10 @@ class MedicineCollection extends BaseCollection {
     const type = doc.type;
     const location = doc.location;
     const quantity = doc.quantity;
+    const should_have = doc.should_have;
     const expirationDate = doc.expirationDate;
     const owner = doc.owner;
-    return { lotNumber, name, type, location, quantity, expirationDate, owner };
+    return { lotNumber, name, type, location, quantity, should_have, expirationDate, owner };
   }
 }
 
