@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Profiles } from '../../api/profile/Profile';
+import { SupplySourecs } from '../../api/source/SupplySourceCollection';
 
 /* eslint-disable no-console */
 
@@ -16,6 +17,11 @@ function addProfile(data) {
   Profiles.collection.insert(data);
 }
 
+function addSource(data) {
+  console.log(`  Adding: ${data.name} `);
+  SupplySourecs.define(data);
+}
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.count() === 0) {
   if (Meteor.settings.defaultData) {
@@ -29,5 +35,11 @@ if (Profiles.collection.find().count() === 0) {
   if (Meteor.settings.defaultProfiles) {
     console.log('Creating default Profiles.');
     Meteor.settings.defaultProfiles.map(data => addProfile(data));
+  }
+}
+if (SupplySourecs.count() === 0) {
+  if (Meteor.settings.defaultSupplySource) {
+    console.log('Creating default data.');
+    Meteor.settings.defaultSupplySource.map(data => addSource(data));
   }
 }

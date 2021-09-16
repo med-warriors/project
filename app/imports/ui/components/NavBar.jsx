@@ -19,7 +19,8 @@ const NavBar = ({ currentUser }) => {
       {currentUser ? (
         [<Menu.Item id={COMPONENT_IDS.NAVBAR_ADD_STUFF} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
           <Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF} as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_MEDICINEANDSUPPLIES} as={NavLink} activeClassName="active" exact to="/medicineandsupplies" key='list'>Medicine And Supplies</Menu.Item>,
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_MEDICINEANDSUPPLIES} as={NavLink} activeClassName="active" exact to="/medicineandsupplies" key='medicineandsupplies'>Medicine And Supplies</Menu.Item>,
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_SUPPLY_SOURCE} as={NavLink} activeClassName="active" exact to="/supplysource" key='supplysource'>Supply Source</Menu.Item>,
           <Menu.Item id={COMPONENT_IDS.NAVBAR_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patientinfo" key='patientinfo'>Patient Information</Menu.Item>]
       ) : ''}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (

@@ -17,6 +17,11 @@
     { "username": "admin", "role": "patient", "name": "The Admin", "idnumber": "87654321", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "admin@foo.com" }
   ],
 
+  "defaultSupplySource": [
+    { "name": "aloha", "location": "aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" },
+    { "name": "aloha", "location": "aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" }
+  ],
+
   "public": {
     "development": true
   }

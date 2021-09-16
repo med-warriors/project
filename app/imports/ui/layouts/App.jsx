@@ -16,6 +16,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import MedicineAndSupplies from '../pages/MedicineandSupplies';
+import SupplySource from '../pages/SupplySource';
 import PatientInformation from '../pages/PatientInformation';
 import UserProfile from '../pages/UserProfile';
 import LowInventoryReport from '../pages/LowInventoryReport';
@@ -40,6 +41,7 @@ class App extends React.Component {
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/medicineandsupplies" component={MedicineAndSupplies}/>
+            <ProtectedRoute path="/supplysource" component={SupplySource}/>
             <ProtectedRoute path="/patientinfo" component={PatientInformation}/>
             <ProtectedRoute path="/lowinventory" component={LowInventoryReport}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
