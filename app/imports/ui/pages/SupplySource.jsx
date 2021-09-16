@@ -9,7 +9,7 @@ import SupplySourceItem from '../components/SupplySourceItem';
 const SupplySource = ({ supplySources, ready }) => ((ready) ? (
   <Container>
     <Header as="h2" textAlign="center">Supply Source</Header>
-    <Table celled>
+    <Table celled structured>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
