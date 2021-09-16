@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../stuff/StuffCollection';
+import { SupplySourecs } from '../source/SupplySourceCollection';
+import { Patients } from '../patients/PatientCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 
@@ -15,6 +17,8 @@ class MATRPClass {
     this.collections = [
       AdminProfiles,
       Stuffs,
+      SupplySourecs,
+      Patients,
       UserProfiles,
     ];
     /*
@@ -23,7 +27,9 @@ class MATRPClass {
     this.collectionLoadSequence = [
       AdminProfiles,
       UserProfiles,
+      SupplySourecs,
       Stuffs,
+      Patients,
     ];
 
     /*

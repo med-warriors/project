@@ -69,83 +69,71 @@ const Signup = ({ location }) => {
   }
   return (
     <Container id={PAGE_IDS.SIGN_UP}>
-      <div className="ui grid">
+      <Grid>
         <Grid.Column>
           <Header as="h2" textAlign="center">SIGN UP</Header>
           <Form onSubmit={submit}>
-            <div className="equal width fields">
-              <div className="field">
-                <Form.Input
-                  label="First Name"
-                  id={COMPONENT_IDS.SIGN_UP_FORM_FIRSTNAME}
-                  icon="user"
-                  iconPosition="left"
-                  name="firstName"
-                  placeholder="First Name"
-                  type="firstName"
-                  onChange={handleChange} />
-              </div>
-              <div className="field">
-                <Form.Input
-                  label="Last Name"
-                  id={COMPONENT_IDS.SIGN_UP_FORM_LASTNAME}
-                  icon="user"
-                  iconPosition="left"
-                  name="lastName"
-                  placeholder="Last Name"
-                  type="lastName"
-                  onChange={handleChange} />
-              </div>
-            </div>
-            <div className="equal width fields">
-              <div className="field">
-                <Form.Input
-                  label="Email"
-                  id={COMPONENT_IDS.SIGN_UP_FORM_EMAIL}
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="field">
-                <Form.Input
-                  label="Employee ID"
-                  id={COMPONENT_IDS.SIGN_UP_FORM_EMPLOYEEID}
-                  name="employeeID"
-                  type="employeeID"
-                  placeholder="Employee ID"
-                  onChange={handleChange}/>
-              </div>
-            </div>
-            <div className="equal width fields">
-              <div className="field">
-                <Form.Input
-                  label="Password"
-                  id={COMPONENT_IDS.SIGN_UP_FORM_PASSWORD}
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="field">
-                <Form.Input
-                  label="Confirm Password"
-                  id={COMPONENT_IDS.SIGN_UP_FORM_CONFIRMPASSWORD}
-                  icon="lock"
-                  iconPosition="left"
-                  name="confirmPassword"
-                  placeholder="Confirm Password"
-                  type="password"
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
+            <Form.Group widths='equal'>
+              <Form.Input
+                label="First Name"
+                id={COMPONENT_IDS.SIGN_UP_FORM_FIRSTNAME}
+                icon="user"
+                iconPosition="left"
+                name="firstName"
+                placeholder="First Name"
+                type="firstName"
+                onChange={handleChange} />
+              <Form.Input
+                label="Last Name"
+                id={COMPONENT_IDS.SIGN_UP_FORM_LASTNAME}
+                icon="user"
+                iconPosition="left"
+                name="lastName"
+                placeholder="Last Name"
+                type="lastName"
+                onChange={handleChange} />
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <Form.Input
+                label="Email"
+                id={COMPONENT_IDS.SIGN_UP_FORM_EMAIL}
+                icon="user"
+                iconPosition="left"
+                name="email"
+                type="email"
+                placeholder="E-mail address"
+                onChange={handleChange}
+              />
+              <Form.Input
+                label="Employee ID"
+                id={COMPONENT_IDS.SIGN_UP_FORM_EMPLOYEEID}
+                name="employeeID"
+                type="employeeID"
+                placeholder="Employee ID"
+                onChange={handleChange}/>
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <Form.Input
+                label="Password"
+                id={COMPONENT_IDS.SIGN_UP_FORM_PASSWORD}
+                icon="lock"
+                iconPosition="left"
+                name="password"
+                placeholder="Password"
+                type="password"
+                onChange={handleChange}
+              />
+              <Form.Input
+                label="Confirm Password"
+                id={COMPONENT_IDS.SIGN_UP_FORM_CONFIRMPASSWORD}
+                icon="lock"
+                iconPosition="left"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                type="password"
+                onChange={handleChange}
+              />
+            </Form.Group>
             <Form.Button id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} content="Submit" />
           </Form>
           <Message>
@@ -161,7 +149,7 @@ const Signup = ({ location }) => {
             />
           )}
         </Grid.Column>
-      </div>
+      </Grid>
     </Container>
   );
 };
