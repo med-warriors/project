@@ -55,9 +55,9 @@ const NavBar = ({ currentUser }) => {
 
 // Declare the types of all properties.
 NavBar.propTypes =
-    {
-      currentUser: PropTypes.string,
-    };
+{
+  currentUser: PropTypes.string,
+};
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 const NavBarContainer = withTracker(() => {
