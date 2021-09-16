@@ -8,8 +8,9 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 const CurrentSupplies = ({ stuff }) => (
   <Table.Row>
     <Table.Cell>{stuff.name}</Table.Cell>
+    <Table.Cell>{stuff.location}</Table.Cell>
     <Table.Cell>{stuff.quantity}</Table.Cell>
-    <Table.Cell>{stuff.condition}</Table.Cell>
+    <Table.Cell>{stuff.source}</Table.Cell>
     <Table.Cell>
       <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/edit/${stuff._id}`}>Edit</Link>
     </Table.Cell>
@@ -21,7 +22,8 @@ CurrentSupplies.propTypes = {
   stuff: PropTypes.shape({
     name: PropTypes.string,
     quantity: PropTypes.number,
-    condition: PropTypes.string,
+    location: PropTypes.string,
+    source: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
