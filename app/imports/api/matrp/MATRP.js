@@ -4,6 +4,7 @@ import { SupplySourecs } from '../source/SupplySourceCollection';
 import { Patients } from '../patients/PatientCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
+import { Medicines } from '../medicine/MedicineCollection'
 
 class MATRPClass {
   collections;
@@ -20,6 +21,7 @@ class MATRPClass {
       SupplySourecs,
       Patients,
       UserProfiles,
+      Medicines
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -30,6 +32,7 @@ class MATRPClass {
       SupplySourecs,
       Stuffs,
       Patients,
+      Medicines,
     ];
 
     /*
