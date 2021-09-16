@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+// import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the Patient Info table. See pages/PatientInformation.jsx. */
 const PatientItem = ({ patient }) => (
