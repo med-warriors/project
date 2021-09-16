@@ -23,5 +23,6 @@ export const COMPONENT_IDS = {
   SIGN_UP_FORM_CONFIRMPASSWORD: 'sign-in-form-confirmpassword',
   NAVBAR_MEDICINEANDSUPPLIES: 'medicine-and-supplies',
   NAVBAR_PATIENT_INFORMATION: 'patient-information',
+  NAVBAR_LOW_INVENTORY: 'low-inventory',
   NAVBAR_VIEW_PROFILE: 'view-profile',
 };
