@@ -151,4 +151,4 @@ class PatientCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Stuffs = new PatientCollection();
+export const Patients = new PatientCollection();

@@ -31,4 +31,4 @@ class PatientsCollection {
  * The singleton instance of the PatientsCollection.
  * @type {PatientsCollection}
  */
-export const Stuffs = new PatientsCollection();
+export const Patients = new PatientsCollection();
