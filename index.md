@@ -228,7 +228,7 @@ The BaseCollection class wraps the Mongo.collection. It defines several helpful 
 #### Stuffs
 Each Stuffs document has the following fields: name, quantity, condition, and username.
 
-The Stuffs collection is defined in [imports/api/stuff/StuffCollection.js](https://github.com/ics-software-engineering/matrp/blob/master/app/imports/api/stuff/StuffCollection.js).
+The Stuffs collection is defined in [imports/api/stuff/MedicineCollection.js](https://github.com/ics-software-engineering/matrp/blob/master/app/imports/api/stuff/MedicineCollection.js).
 
 The Stuffs collection is initialized in [imports/startup/server/Mongo.js](https://github.com/ics-software-engineering/matrp/blob/master/app/imports/startup/server/Mongo.js).
 
@@ -308,7 +308,7 @@ I20210811-10:41:24.507(-10)? --------------------------------
 I20210811-10:41:24.507(-10)? 
 I20210811-10:41:24.507(-10)? 
 I20210811-10:41:24.508(-10)? 
-I20210811-10:41:24.508(-10)?   StuffCollection
+I20210811-10:41:24.508(-10)?   MedicineCollection
 I20210811-10:41:24.508(-10)? Monti APM: completed instrumenting the app
 => Started your app.
 
@@ -391,7 +391,7 @@ I20210811-10:51:38.880(-10)? Monti APM: completed instrumenting the app
 I20210811-10:51:39.208(-10)? HeadlessChrome/92.0.4512.0
 I20210811-10:51:40.838(-10)? Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
 I20210811-10:51:41.794(-10)? 
-I20210811-10:51:41.795(-10)?   StuffCollection Meteor Methods
+I20210811-10:51:41.795(-10)?   MedicineCollection Meteor Methods
 W20210811-10:51:42.108(-10)? (STDERR) waitFor is deprecated and will be removed in a future release. See https://github.com/puppeteer/puppeteer/issues/6214 for details and how to migrate your code.
 I20210811-10:51:42.348(-10)?     ✓ Can define, update, and removeIt (551ms)
 I20210811-10:51:42.349(-10)?   AdminProfileCollection Meteor Methods

@@ -15,10 +15,14 @@ class SignupPage {
   }
 
   /** Signs up a new user, then checks to see that they are logged in by checking the navbar. */
-  async signupUser(username, password) {
+  async signupUser(firstName, lastName, username, employeeID, password, confirmPassword) {
     await this.isDisplayed();
+    await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_FIRSTNAME}`, firstName);
+    await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_LASTNAME}`, lastName);
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_EMAIL}`, username);
+    await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_EMPLOYEEID}`, employeeID);
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_PASSWORD}`, password);
+    await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_CONFIRMPASSWORD}`, confirmPassword);
     await t.click(`#${COMPONENT_IDS.SIGN_UP_FORM_SUBMIT}`);
     await navBar.isLoggedIn(username);
   }

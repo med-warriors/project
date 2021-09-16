@@ -1,5 +1,6 @@
 export const COMPONENT_IDS = {
   LIST_STUFF_EDIT: 'list-stuff-edit',
+  PATIENT_INFO_EDIT: 'patient-info-edit',
   NAVBAR_ADD_STUFF: 'navbar-add-stuff',
   NAVBAR_LIST_STUFF: 'navbar-list-stuff',
   NAVBAR_LIST_STUFF_ADMIN: 'navbar-list-stuff-admin',
@@ -11,6 +12,7 @@ export const COMPONENT_IDS = {
   NAVBAR_MANAGE_DROPDOWN: 'navbar-manage-dropdown',
   NAVBAR_MANAGE_DROPDOWN_DATABASE: 'navbar-manage-dropdown-database',
   NAVBAR_SIGN_OUT: 'navbar-sign-out',
+  NAVBAR_SUPPLY_SOURCE: 'navbar-supplu-source',
   SIGN_IN_FORM_EMAIL: 'sign-in-form-email',
   SIGN_IN_FORM_PASSWORD: 'sign-in-form-password',
   SIGN_IN_FORM_SUBMIT: 'sign-in-form-submit',
@@ -21,8 +23,10 @@ export const COMPONENT_IDS = {
   SIGN_UP_FORM_LASTNAME: 'sign-up-form-lastname',
   SIGN_UP_FORM_EMPLOYEEID: 'sign-up-form-employeeid',
   SIGN_UP_FORM_CONFIRMPASSWORD: 'sign-in-form-confirmpassword',
+  SUPPLY_SOURCE_EDIT: 'supply-source-edit',
   NAVBAR_MEDICINEANDSUPPLIES: 'medicine-and-supplies',
   NAVBAR_PATIENT_INFORMATION: 'patient-information',
+  NAVBAR_PRESCRIPTION: 'prescription',
   NAVBAR_LOW_INVENTORY: 'low-inventory',
   NAVBAR_VIEW_PROFILE: 'view-profile',
 };
