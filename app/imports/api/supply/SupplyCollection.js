@@ -6,39 +6,35 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const medicineConditions = ['excellent', 'good', 'fair', 'poor'];
-export const medicinePublications = {
-  medicine: 'Medicine',
-  medicineAdmin: 'MedicineAdmin',
+export const supplyPublications = {
+  supply: 'Supply',
+  supplyAdmin: 'SupplyAdmin',
 };
 
-class MedicineCollection extends BaseCollection {
+class SupplyCollection extends BaseCollection {
   constructor() {
-    super('Medicines', new SimpleSchema({
-      lotNumber: Number,
+    super('Supplies', new SimpleSchema({
       name: String,
-      type: String,
       location: String,
       quantity: Number,
-      expirationDate: String,
+      owner: String,
     }));
   }
 
   /**
-   * Defines a new Medicine item.
+   * Defines a new Stuff item.
    * @param name the name of the item.
+   * @param location the location of the item.
    * @param quantity how many.
    * @param owner the owner of the item.
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, name, type, location, quantity, expirationDate }) {
+  define({ name, location, quantity, owner }) {
     const docID = this._collection.insert({
-      lotNumber,
       name,
-      type,
       location,
       quantity,
-      expirationDate,
+      owner,
     });
     return docID;
   }
@@ -47,19 +43,13 @@ class MedicineCollection extends BaseCollection {
    * Updates the given document.
    * @param docID the id of the document to update.
    * @param name the new name (optional).
+   * @param location the new location (optional).
    * @param quantity the new quantity (optional).
-   * @param condition the new condition (optional).
    */
-  update(docID, { lotNumber, name, type, location, quantity, expirationDate }) {
+  update(docID, { name, location, quantity }) {
     const updateData = {};
-    if (_.isNumber(lotNumber)) {
-      updateData.lotNumber = lotNumber;
-    }
     if (name) {
       updateData.name = name;
-    }
-    if (type) {
-      updateData.type = type;
     }
     if (location) {
       updateData.location = location;
@@ -67,9 +57,6 @@ class MedicineCollection extends BaseCollection {
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
-    }
-    if (expirationDate) {
-      updateData.expirationDate = expirationDate;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -92,10 +79,10 @@ class MedicineCollection extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      // get the MedicineCollection instance.
+      // get the SupplyCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(medicinePublications.medicine, function publish() {
+      Meteor.publish(supplyPublications.stuff, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -104,7 +91,7 @@ class MedicineCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(medicinePublications.medicineAdmin, function publish() {
+      Meteor.publish(supplyPublications.supplyAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -114,11 +101,11 @@ class MedicineCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for medicine owned by the current user.
+   * Subscription method for stuff owned by the current user.
    */
   subscribeMedicine() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.medicine);
+      return Meteor.subscribe(supplyPublications.supply);
     }
     return null;
   }
@@ -127,9 +114,9 @@ class MedicineCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeMedicineAdmin() {
+  subscribeSupplyAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.stuffAdmin);
+      return Meteor.subscribe(supplyPublications.supplyAdmin);
     }
     return null;
   }
@@ -151,18 +138,15 @@ class MedicineCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const lotNumber = doc.lotNumber;
     const name = doc.name;
-    const type = doc.type;
-    const location = doc.location;
     const quantity = doc.quantity;
-    const expirationDate = doc.expirationDate;
+    const location = doc.location;
     const owner = doc.owner;
-    return { lotNumber, name, type, location, quantity, expirationDate, owner };
+    return { name, quantity, location, owner };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Medicines = new MedicineCollection();
+export const Supplies = new SupplyCollection();
