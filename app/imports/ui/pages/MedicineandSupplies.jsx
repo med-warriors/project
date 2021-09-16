@@ -9,7 +9,7 @@ import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
-const MedicineAndSupplies = ({ ready, dispatch, column, data, direction }) => ((ready) ? (
+const MedicineAndSupplies = ({ ready, stuffs, dispatch, column, data, direction }) => ((ready) ? (
   <Container id={PAGE_IDS.LIST_STUFF}>
     <Header as="h2" textAlign="center">Medicine and Supplies</Header>
     <Tab panes = {[
@@ -45,7 +45,7 @@ const MedicineAndSupplies = ({ ready, dispatch, column, data, direction }) => ((
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {data.map((stuff) => <CurrentMedicine key={stuff._id} stuff={stuff}/>)}
+            {stuffs.map((stuff) => <CurrentMedicine key={stuff._id} stuff={stuff}/>)}
           </Table.Body>
         </Table>
       </Tab.Pane> },
@@ -93,7 +93,7 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Medicine documents and sort them by name.
-  const stuffs = Stuffs.find().fetch();
+  const stuffs = Stuffs.find({}, { sort: { name: 1 } }).fetch();
   // Reduce the Medicine documents in sortable table cell.
   const sortReducer = (state, action) => {
     switch (action.type) {
@@ -123,6 +123,7 @@ export default withTracker(() => {
   });
   const { column, data, direction } = state;
   return {
+    stuffs,
     dispatch,
     column,
     data,

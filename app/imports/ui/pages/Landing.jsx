@@ -5,7 +5,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 /** A simple static component to render some text for the landing page. */
 const Landing = () => (
   <Grid id={PAGE_IDS.LANDING} verticalAlign='middle' textAlign='center' container centered stackable columns={3}>
-    <Image fluid src='https://gray-khnl-prod.cdn.arcpublishing.com/resizer/wKrMDX6-cwwjWHL8Y1Hi7-IazNs=/980x0/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/XUWXBOR2LJCC3DN2NZTME6QFIY.jpg'/>
+    <Image className="landing_image" fluid src='http://cdn.cnn.com/cnnnext/dam/assets/201230100452-10-2021-travel-destinations-hawaii.jpg'/>
     <Grid.Column textAlign='center'>
       <Icon name='clipboard' size='huge'/>
       <Header as='h1'>Inventory</Header>
