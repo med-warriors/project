@@ -88,10 +88,10 @@ class SupplySourceCollection extends BaseCollection {
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(supplySourcePublications.supplies, function publish() {
-        if (this.userId) {
-          return instance._collection.find({ name: 'aloha' });
-        }
-        return this.ready();
+        // if (this.userId) {
+        // return instance._collection.find({ name: 'aloha' });
+        // }
+        return instance._collection.find();
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */

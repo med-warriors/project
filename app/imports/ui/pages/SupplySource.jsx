@@ -38,7 +38,7 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort by owner then name
-  const supplySources = SupplySourecs.find({}, { sort: { name: 1 } }).fetch();
+  const supplySources = SupplySourecs.find({}).fetch();
   // console.log(stuffs, ready);
   return {
     supplySources,

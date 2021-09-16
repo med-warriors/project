@@ -18,8 +18,10 @@
   ],
 
   "defaultSupplySource": [
-    { "name": "aloha", "location": "aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" },
-    { "name": "aloha", "location": "aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" }
+    { "name": "Aloha", "location": "aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" },
+    { "name": "John", "location": "King st", "phoneNumber": 801111222, "email": "John@aloha.com" },
+    { "name": "Aaron", "location": "School st", "phoneNumber": 808666111, "email": "Aaron@aloha.com" },
+    { "name": "Mahalo", "location": "Mahalo st", "phoneNumber": 808333444, "email": "Mahalo@aloha.com" }
   ],
   "defaultPatientHistory": [
     { "date": "2021-09-12T07:30", "name": "John Smith", "email": "john@foo.com", "phone_number": "808-123-4567", "prescription": "tylenol 600mg" },
