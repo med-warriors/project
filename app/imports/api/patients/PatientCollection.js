@@ -17,7 +17,7 @@ class PatientCollection extends BaseCollection {
       date: Date,
       name: String,
       email: String,
-      phone_number: Number,
+      phone_number: String,
       prescription: String,
     }));
   }
@@ -31,12 +31,13 @@ class PatientCollection extends BaseCollection {
    * @param prescription the prescription of the patient.
    * @return {String} the docID of the new document.
    */
-  define({ name, quantity, owner, condition }) {
+  define({ date, name, email, phone_number, prescription }) {
     const docID = this._collection.insert({
+      date,
       name,
-      quantity,
-      owner,
-      condition,
+      email,
+      phone_number,
+      prescription,
     });
     return docID;
   }
@@ -84,12 +85,12 @@ class PatientCollection extends BaseCollection {
       // get the PatientCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(patientPublications.stuff, function publish() {
-        if (this.userId) {
-          const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ owner: username });
-        }
-        return this.ready();
+      Meteor.publish(patientPublications.patients, function publish() {
+        // if (this.userId) {
+        //   const username = Meteor.users.findOne(this.userId).username;
+        //   return instance._collection.find({ owner: username });
+        // }
+        return instance._collection.find();
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
@@ -105,11 +106,12 @@ class PatientCollection extends BaseCollection {
   /**
    * Subscription method for stuff owned by the current user.
    */
-  subscribeStuff() {
-    if (Meteor.isClient) {
-      return Meteor.subscribe(patientPublications.stuff);
-    }
-    return null;
+  subscribePatients() {
+    // if (Meteor.isClient) {
+    return Meteor.subscribe(patientPublications.patients);
+    // }
+    // return null;
+    // }
   }
 
   /**
@@ -118,7 +120,7 @@ class PatientCollection extends BaseCollection {
    */
   subscribeStuffAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(patientPublications.stuffAdmin);
+      return Meteor.subscribe(patientPublications.patientAdmin);
     }
     return null;
   }
@@ -136,15 +138,16 @@ class PatientCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), condition: *, quantity: *, name}}
+   * @return {{owner: (*|number), date: *, name: *, email: *, phone: *, prescription: *}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
+    const date = doc.date;
     const name = doc.name;
-    const quantity = doc.quantity;
-    const condition = doc.condition;
-    const owner = doc.owner;
-    return { name, quantity, condition, owner };
+    const email = doc.email;
+    const phone = doc.phone_number;
+    const prescription = doc.prescription();
+    return { date, name, email, phone, prescription };
   }
 }
 
