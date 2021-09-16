@@ -26,5 +26,6 @@ export const COMPONENT_IDS = {
   SUPPLY_SOURCE_EDIT: 'supply-source-edit',
   NAVBAR_MEDICINEANDSUPPLIES: 'medicine-and-supplies',
   NAVBAR_PATIENT_INFORMATION: 'patient-information',
+  NAVBAR_PRESCRIPTION: 'prescription',
   NAVBAR_VIEW_PROFILE: 'view-profile',
 };

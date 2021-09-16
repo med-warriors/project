@@ -7,13 +7,13 @@ import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const supplySourcePublications = {
-  supplies: 'Supplies',
-  suppliesAdmin: 'SuppliesAdmin',
+  supplySources: 'SupplySources',
+  supplySourcesAdmin: 'SupplySourcesAdmin',
 };
 
 class SupplySourceCollection extends BaseCollection {
   constructor() {
-    super('Supplies', new SimpleSchema({
+    super('SupplySources', new SimpleSchema({
       name: String,
       location: String,
       phoneNumber: Number,
@@ -87,7 +87,7 @@ class SupplySourceCollection extends BaseCollection {
       // get the StuffCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(supplySourcePublications.supplies, function publish() {
+      Meteor.publish(supplySourcePublications.supplySources, function publish() {
         // if (this.userId) {
         // return instance._collection.find({ name: 'aloha' });
         // }
@@ -95,7 +95,7 @@ class SupplySourceCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(supplySourcePublications.suppliesAdmin, function publish() {
+      Meteor.publish(supplySourcePublications.supplySourcesAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -109,7 +109,7 @@ class SupplySourceCollection extends BaseCollection {
      */
   subscribeSupplySource() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(supplySourcePublications.supplies);
+      return Meteor.subscribe(supplySourcePublications.supplySources);
     }
     return null;
   }
@@ -120,7 +120,7 @@ class SupplySourceCollection extends BaseCollection {
      */
   subscribeSupplySourceAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(supplySourcePublications.suppliesAdmin);
+      return Meteor.subscribe(supplySourcePublications.supplySourcesAdmin);
     }
     return null;
   }
