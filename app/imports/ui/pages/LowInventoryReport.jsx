@@ -13,14 +13,25 @@ const ListStuff = ({ ready, stuffs }) => ((ready) ? (
     <Table celled>
       <Table.Header>
         <Table.Row>
+          <Table.HeaderCell>Lot #</Table.HeaderCell>
           <Table.HeaderCell>Medicine Name</Table.HeaderCell>
+          <Table.HeaderCell>Type</Table.HeaderCell>
+          <Table.HeaderCell>Location</Table.HeaderCell>
           <Table.HeaderCell>Quantity</Table.HeaderCell>
-          <Table.HeaderCell>Location in Van</Table.HeaderCell>
-          <Table.HeaderCell>Edit</Table.HeaderCell>
+          <Table.HeaderCell>Expiration Date</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+        {/* Example */}
+        <Table.Row negative>
+          <Table.Cell>12456</Table.Cell>
+          <Table.Cell>Ibuprofen</Table.Cell>
+          <Table.Cell>Medicine</Table.Cell>
+          <Table.Cell>Car 1</Table.Cell>
+          <Table.Cell>0</Table.Cell>
+          <Table.Cell>6-1-2023</Table.Cell>
+        </Table.Row>
       </Table.Body>
     </Table>
   </Container>
