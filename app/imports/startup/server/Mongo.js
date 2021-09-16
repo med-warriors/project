@@ -41,8 +41,10 @@ if (Profiles.collection.find().count() === 0) {
 
 if (SupplySourecs.count() === 0) {
   if (Meteor.settings.defaultSupplySource) {
-    console.log('Creating default data.');
+    console.log('Creating default supplies data.');
     Meteor.settings.defaultSupplySource.map(data => addSource(data));
+  }
+}
 
 // Initialize the database with a default data document.
 function addPatients(data) {
