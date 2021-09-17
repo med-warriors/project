@@ -12,7 +12,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 const NavBar = ({ currentUser }) => {
   const menuStyle = { marginBottom: '10px', backgroundColor: '#25A18E' };
   return (
-    <Menu style={menuStyle} attached="top" borderless>
+    <Menu style={menuStyle} attached="top" inverted borderless>
       <Menu.Item id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} activeClassName="" exact to="/">
         <Header inverted as='h1'>MED-Warriors</Header>
       </Menu.Item>
