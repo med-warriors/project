@@ -15,7 +15,7 @@ const History = ({ ready, stuffs }) => ((ready) ? (
         <Table.Row>
           <Table.HeaderCell>Date</Table.HeaderCell>
           <Table.HeaderCell>Transaction</Table.HeaderCell>
-          <Table.HeaderCell>Medicine</Table.HeaderCell>
+          <Table.HeaderCell>Medicine/Supply</Table.HeaderCell>
           <Table.HeaderCell>Patient Name</Table.HeaderCell>
           <Table.HeaderCell>Prescription</Table.HeaderCell>
           <Table.HeaderCell>Employee</Table.HeaderCell>

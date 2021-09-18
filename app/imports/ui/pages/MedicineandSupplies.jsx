@@ -40,7 +40,8 @@ const MedicineAndSupplies = ({ ready, stuffs, dispatch, column, direction }) => 
               <Table.HeaderCell
                 sorted={column === 'expirationdate' ? direction : null}
                 onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'expirationdate' })}
-              >Expiration Date</Table.HeaderCell>
+              >Exp Date</Table.HeaderCell>
+              <Table.HeaderCell>Source</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -65,6 +66,7 @@ const MedicineAndSupplies = ({ ready, stuffs, dispatch, column, direction }) => 
                 sorted={column === 'quantity' ? direction : null}
                 onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'quantity' })}
               >Quantity</Table.HeaderCell>
+              <Table.HeaderCell>Source</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>

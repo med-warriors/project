@@ -13,6 +13,7 @@ const SupplySource = ({ supplySources, ready }) => ((ready) ? (
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
+          <Table.HeaderCell rowSpan='2'>Type</Table.HeaderCell>
           <Table.HeaderCell colSpan='3'>Contact Information</Table.HeaderCell>
         </Table.Row>
         <Table.Row>

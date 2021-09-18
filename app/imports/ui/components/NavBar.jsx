@@ -17,20 +17,30 @@ const NavBar = ({ currentUser }) => {
         <Header inverted as='h1'>MED-Warriors</Header>
       </Menu.Item>
       {currentUser ? (
-        [<Menu.Item id={COMPONENT_IDS.NAVBAR_MEDICINEANDSUPPLIES} as={NavLink} activeClassName="active" exact to="/medicineandsupplies" key='medicineandsupplies'>Medicine And Supplies</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_SUPPLY_SOURCE} as={NavLink} activeClassName="active" exact to="/supplysource" key='supplysource'>Supply Source</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patientinfo" key='patientinfo'>Patient Information</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_PRESCRIPTION} as={NavLink} activeClassName="active" exact to="/prescription" key='prescription'>Prescription</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_LOW_INVENTORY} as={NavLink} activeClassName="active" exact to="/lowinventory" key='lowinventory'>Low Inventory Report</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_HISTORY_REPORT} as={NavLink} activeClassName="active" exact to="/historyreport" key='historyreport'>History Report</Menu.Item>]
+        [<Dropdown id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN} item text="Information" key="list-dropdown">
+          <Dropdown.Menu>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_MEDICINE_AND_SUPPLIES} as={NavLink} activeClassName="active" exact to="/medicineandsupplies" key='medicineandsupplies'>Medicine And Supplies</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_LOW_INVENTORY} as={NavLink} activeClassName="active" exact to="/lowinventory" key='lowinventory'>Low Inventory Report</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_SUPPLY_SOURCE} as={NavLink} activeClassName="active" exact to="/supplysource" key='supplysource'>Supply Source</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_HISTORY_REPORT} as={NavLink} activeClassName="active" exact to="/historyreport" key='historyreport'>History Report</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patientinfo" key='patientinfo'>Patient Information</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>,
+        <Dropdown id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN} item text="Transaction" key="transaction-dropdown">
+          <Dropdown.Menu>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_PRESCRIPTION} as={NavLink} activeClassName="active" exact to="/prescription" key='prescription'>Prescription</Dropdown.Item>
+            <Dropdown.Item>Add Medicine</Dropdown.Item>
+            <Dropdown.Item>Add Supplies</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>,
+        ]
       ) : ''}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-        [<Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>,
-          <Dropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} item text="Manage" key="manage-dropdown">
-            <Dropdown.Menu>
-              <Dropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} exact to="/manage-database" content="Database" />
-            </Dropdown.Menu>
-          </Dropdown>]
+        [<Dropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} item text="Manage" key="manage-dropdown">
+          <Dropdown.Menu>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} exact to="/manage-database" content="Database" />
+          </Dropdown.Menu>
+        </Dropdown>]
       ) : ''}
       <Menu.Item position="right">
         {currentUser === '' ? (
