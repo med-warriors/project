@@ -14,24 +14,30 @@ export const medicinePublications = {
 class MedicineCollection extends BaseCollection {
   constructor() {
     super('Medicines', new SimpleSchema({
-      lotNumber: Number,
+      lotNumber: String,
       name: String,
       type: String,
       location: String,
       quantity: Number,
       should_have: Number,
-      expirationDate: String,
+      expirationDate: Date,
+      source: String,
     }));
   }
 
   /**
    * Defines a new Medicine item.
+   * @param lotNumber the number of the item.
    * @param name the name of the item.
+   * @param type the type of the item.
+   * @param location the location of the item.
    * @param quantity how many.
-   * @param owner the owner of the item.
+   * @param should_have how many should have.
+   * @param expirationdate the date of expiration.
+   * @param source the source of itm from.
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, name, type, location, quantity, should_have, expirationDate }) {
+  define({ lotNumber, name, type, location, quantity, should_have, expirationDate, source }) {
     const docID = this._collection.insert({
       lotNumber,
       name,
@@ -40,6 +46,7 @@ class MedicineCollection extends BaseCollection {
       quantity,
       should_have,
       expirationDate,
+      source,
     });
     return docID;
   }
@@ -47,13 +54,18 @@ class MedicineCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
+   * @param lotNumber the new name (optional).
    * @param name the new name (optional).
-   * @param quantity the new quantity (optional).
-   * @param condition the new condition (optional).
+   * @param type the new quantity (optional).
+   * @param location the new condition (optional).
+   * @param quantity the new name (optional).
+   * @param should_have the new quantity (optional).
+   * @param expirationDate the new condition (optional).
+   * @param source the new name (optional).
    */
-  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate }) {
+  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate, source }) {
     const updateData = {};
-    if (_.isNumber(lotNumber)) {
+    if (lotNumber) {
       updateData.lotNumber = lotNumber;
     }
     if (name) {
@@ -73,8 +85,11 @@ class MedicineCollection extends BaseCollection {
     if (_.isNumber(should_have)) {
       updateData.should_have = should_have;
     }
-    if (expirationDate) {
+    if (_.data(expirationDate)) {
       updateData.expirationDate = expirationDate;
+    }
+    if (source) {
+      updateData.source = source;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -102,8 +117,7 @@ class MedicineCollection extends BaseCollection {
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(medicinePublications.medicine, function publish() {
         if (this.userId) {
-          const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ owner: username });
+          return instance._collection.find();
         }
         return this.ready();
       });
@@ -134,7 +148,7 @@ class MedicineCollection extends BaseCollection {
    */
   subscribeMedicineAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.stuffAdmin);
+      return Meteor.subscribe(medicinePublications.medicineAdmin);
     }
     return null;
   }
@@ -163,8 +177,8 @@ class MedicineCollection extends BaseCollection {
     const quantity = doc.quantity;
     const should_have = doc.should_have;
     const expirationDate = doc.expirationDate;
-    const owner = doc.owner;
-    return { lotNumber, name, type, location, quantity, should_have, expirationDate, owner };
+    const source = doc.source;
+    return { lotNumber, name, type, location, quantity, should_have, expirationDate, source };
   }
 }
 

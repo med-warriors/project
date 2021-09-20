@@ -5,30 +5,30 @@ import { withRouter, Link } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
-const CurrentMedicine = ({ stuff }) => (
+const CurrentMedicine = ({ medicine }) => (
   <Table.Row>
-    <Table.Cell>{stuff.lotNumber}</Table.Cell>
-    <Table.Cell>{stuff.name}</Table.Cell>
-    <Table.Cell>{stuff.type}</Table.Cell>
-    <Table.Cell>{stuff.location}</Table.Cell>
-    <Table.Cell>{stuff.quantity}</Table.Cell>
-    <Table.Cell>{stuff.expirationDate}</Table.Cell>
-    <Table.Cell>{stuff.source}</Table.Cell>
+    <Table.Cell>{medicine.lotNumber}</Table.Cell>
+    <Table.Cell>{medicine.name}</Table.Cell>
+    <Table.Cell>{medicine.type}</Table.Cell>
+    <Table.Cell>{medicine.location}</Table.Cell>
+    <Table.Cell>{medicine.quantity}</Table.Cell>
+    <Table.Cell>{medicine.expirationDate.toDateString()}</Table.Cell>
+    <Table.Cell>{medicine.source}</Table.Cell>
     <Table.Cell>
-      <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/edit/${stuff._id}`}>Update</Link>
+      <Link className={COMPONENT_IDS.LIST_MEDICINE_EDIT} to={`/edit/${medicine._id}`}>Update</Link>
     </Table.Cell>
   </Table.Row>
 );
 
 // Require a document to be passed to this component.
 CurrentMedicine.propTypes = {
-  stuff: PropTypes.shape({
-    lotNumber: PropTypes.number,
+  medicine: PropTypes.shape({
+    lotNumber: PropTypes.string,
     name: PropTypes.string,
     type: PropTypes.string,
     location: PropTypes.string,
     quantity: PropTypes.number,
-    expirationDate: PropTypes.string,
+    expirationDate: PropTypes.instanceOf(Date),
     source: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,

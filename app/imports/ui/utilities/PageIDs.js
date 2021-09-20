@@ -7,6 +7,7 @@ export const PAGE_IDS = {
   LANDING: 'landing',
   LIST_STUFF: 'list-stuff',
   LIST_STUFF_ADMIN: 'list-stuff-admin',
+  LIST_MEDICINES: 'list_medicines',
   MANAGE_DATABASE: 'manage-database',
   NOT_FOUND: 'not-found',
   SIGN_IN: 'sigin-in',

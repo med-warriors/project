@@ -5,21 +5,21 @@ import { withRouter, Link } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the List Supplies table. See pages/MedicineandSupplies.jsx. */
-const CurrentSupplies = ({ stuff }) => (
+const CurrentSupplies = ({ supply }) => (
   <Table.Row>
-    <Table.Cell>{stuff.name}</Table.Cell>
-    <Table.Cell>{stuff.location}</Table.Cell>
-    <Table.Cell>{stuff.quantity}</Table.Cell>
-    <Table.Cell>{stuff.source}</Table.Cell>
+    <Table.Cell>{supply.name}</Table.Cell>
+    <Table.Cell>{supply.location}</Table.Cell>
+    <Table.Cell>{supply.quantity}</Table.Cell>
+    <Table.Cell>{supply.source}</Table.Cell>
     <Table.Cell>
-      <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/edit/${stuff._id}`}>Update</Link>
+      <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/edit/${supply._id}`}>Update</Link>
     </Table.Cell>
   </Table.Row>
 );
 
 // Require a document to be passed to this component.
 CurrentSupplies.propTypes = {
-  stuff: PropTypes.shape({
+  supply: PropTypes.shape({
     name: PropTypes.string,
     quantity: PropTypes.number,
     location: PropTypes.string,

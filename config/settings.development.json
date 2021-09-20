@@ -30,6 +30,12 @@
     { "date": "2021-09-13T07:30", "name": "Captain America", "email": "john@foo.com", "phone_number": "808-123-4567", "prescription": "tylenol 600mg" }
   ],
 
+  "defaultMedicines": [
+    { "lotNumber": "a5", "name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "location": "Case 2", "quantity": "19", "should_have": "15", "expirationDate": "2021-09-13T07:30", "source": "name"}
+  ],
+
+  "defaultSupplies": [],
+
   "public": {
     "development": true
   }
