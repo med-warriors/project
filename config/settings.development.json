@@ -34,7 +34,9 @@
     { "lotNumber": "a5", "name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "location": "Case 2", "quantity": "19", "should_have": "15", "expirationDate": "2021-09-13T07:30", "source": "name"}
   ],
 
-  "defaultSupplies": [],
+  "defaultSupplies": [
+    { "name": "Theraband - Green", "location": "Cabinet 2", "quantity": "1" , "source": "name"}
+  ],
 
   "defaultHistory": [
     {"date": "2021-09-13T07:30", "transact": "Out", "type": "Medicine", "patientName": "Jane Doe", "prescription": "tylenol 600mg", "employee":  "123456" }
