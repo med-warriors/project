@@ -33,19 +33,19 @@ function addPatients(data) {
 
 // Initialize the database with a default data document.
 function addMedicine(data) {
-  console.log(`  Adding medicine: ${data.date} (${data.name})`);
+  console.log(`  Adding medicine: ${data.lotNumber} (${data.name})`);
   Medicines.define(data);
 }
 
 // Initialize the database with a default data document.
 function addSupply(data) {
-  console.log(`  Adding supply: ${data.date} (${data.name})`);
+  console.log(`  Adding supply: ${data.name} `);
   Supplies.define(data);
 }
 
 // Initialize the database with a default data document.
 function addHistory(data) {
-  console.log(`  Adding history: ${data.date} (${data.name})`);
+  console.log(`  Adding history: ${data.date} (${data.transact})`);
   Histories.define(data);
 }
 

@@ -44,7 +44,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {supplies.map((supply) => <CurrentSupplies key={supply._id} medicine={supply} />)}
+            {supplies.map((supply) => <CurrentSupplies key={supply._id} supply={supply} />)}
           </Table.Body>
         </Table>
       </Tab.Pane> }]}/>
