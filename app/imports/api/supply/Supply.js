@@ -3,7 +3,7 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /**
- * The StuffsCollection. It encapsulates state and variable values for stuff.
+ * The SuppliesCollection. It encapsulates state and variable values for stuff.
  */
 class SuppliesCollection {
   constructor() {

@@ -17,24 +17,21 @@ class SupplyCollection extends BaseCollection {
       name: String,
       location: String,
       quantity: Number,
-      owner: String,
     }));
   }
 
   /**
-   * Defines a new Stuff item.
+   * Defines a new Supply item.
    * @param name the name of the item.
    * @param location the location of the item.
    * @param quantity how many.
-   * @param owner the owner of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity, owner }) {
+  define({ name, location, quantity }) {
     const docID = this._collection.insert({
       name,
       location,
       quantity,
-      owner,
     });
     return docID;
   }
@@ -82,10 +79,10 @@ class SupplyCollection extends BaseCollection {
       // get the SupplyCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(supplyPublications.stuff, function publish() {
+      Meteor.publish(supplyPublications.supply, function publish() {
         if (this.userId) {
-          const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ owner: username });
+          // const username = Meteor.users.findOne(this.userId).username;
+          return instance._collection.find();
         }
         return this.ready();
       });
@@ -103,7 +100,7 @@ class SupplyCollection extends BaseCollection {
   /**
    * Subscription method for stuff owned by the current user.
    */
-  subscribeMedicine() {
+  subscribeSupply() {
     if (Meteor.isClient) {
       return Meteor.subscribe(supplyPublications.supply);
     }
@@ -141,8 +138,7 @@ class SupplyCollection extends BaseCollection {
     const name = doc.name;
     const quantity = doc.quantity;
     const location = doc.location;
-    const owner = doc.owner;
-    return { name, quantity, location, owner };
+    return { name, quantity, location };
   }
 }
 

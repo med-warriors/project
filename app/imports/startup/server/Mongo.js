@@ -67,7 +67,7 @@ if (Profiles.collection.find().count() === 0) {
 
 if (SupplySourecs.count() === 0) {
   if (Meteor.settings.defaultSupplySource) {
-    console.log('Creating default supplies data.');
+    console.log('Creating default sources data.');
     Meteor.settings.defaultSupplySource.map(data => addSource(data));
   }
 }

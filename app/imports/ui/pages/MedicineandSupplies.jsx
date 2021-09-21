@@ -6,9 +6,10 @@ import { Medicines } from '../../api/medicine/MedicineCollection';
 import CurrentMedicine from '../components/CurrentMedicine';
 import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { Supplies } from '../../api/supply/SupplyCollection';
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
-const MedicineAndSupplies = ({ ready, medicines }) => ((ready) ? (
+const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((readyM, readyS) ? (
   <Container id={PAGE_IDS.LIST_MEDICINES}>
     <Header as="h2" textAlign="center">Medicine and Supplies</Header>
     <Tab panes = {[
@@ -43,7 +44,7 @@ const MedicineAndSupplies = ({ ready, medicines }) => ((ready) ? (
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {medicines.map((medicine) => <CurrentSupplies key={medicine._id} medicine={medicine} />)}
+            {supplies.map((supply) => <CurrentSupplies key={supply._id} medicine={supply} />)}
           </Table.Body>
         </Table>
       </Tab.Pane> }]}/>
@@ -53,19 +54,27 @@ const MedicineAndSupplies = ({ ready, medicines }) => ((ready) ? (
 // Require an array of Medicine documents in the props.
 MedicineAndSupplies.propTypes = {
   medicines: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
+  readyM: PropTypes.bool.isRequired,
+  supplies: PropTypes.array.isRequired,
+  readyS: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Medicine and supplies documents.
-  const subscription = Medicines.subscribeMedicine();
+  const subscriptionM = Medicines.subscribeMedicine();
+  const subscriptionS = Supplies.subscribeSupply();
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const readyM = subscriptionM.ready();
+  const readyS = subscriptionS.ready();
   // Get the Medicine documents and sort them by name.
   const medicines = Medicines.find({}, { sort: { name: 1 } }).fetch();
+  // Get the Supply documents and sort them by name.
+  const supplies = Supplies.find({}, { sort: { name: 1 } }).fetch();
   return {
     medicines,
-    ready,
+    readyM,
+    supplies,
+    readyS,
   };
 })(MedicineAndSupplies);
