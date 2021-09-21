@@ -36,6 +36,10 @@
 
   "defaultSupplies": [],
 
+  "defaultHistory": [
+    {"date": "2021-09-13T07:30", "transact": "Out", "type": "Medicine", "patientName": "Jane Doe", "prescription": "tylenol 600mg", "employee":  "123456" }
+  ],
+
   "public": {
     "development": true
   }

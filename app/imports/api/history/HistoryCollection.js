@@ -15,7 +15,7 @@ export const historyPublications = {
 
 class HistoryCollection extends BaseCollection {
   constructor() {
-    super('History', new SimpleSchema({
+    super('Histories', new SimpleSchema({
       date: Date,
       transact: {
         type: String,
@@ -174,4 +174,4 @@ class HistoryCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const History = new HistoryCollection();
+export const Histories = new HistoryCollection();

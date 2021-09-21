@@ -9,7 +9,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
 const MedicineAndSupplies = ({ ready, medicines }) => ((ready) ? (
-  <Container id={PAGE_IDS.LIST_Medicines}>
+  <Container id={PAGE_IDS.LIST_MEDICINES}>
     <Header as="h2" textAlign="center">Medicine and Supplies</Header>
     <Tab panes = {[
       // eslint-disable-next-line react/display-name

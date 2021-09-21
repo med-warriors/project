@@ -5,10 +5,10 @@ import { Tracker } from 'meteor/tracker';
 /**
  * The HistoryCollection. It encapsulates state and variable values for History.
  */
-class HistoryCollection {
+class HistoriesCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'HistoryCollection';
+    this.name = 'HistoriesCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -37,7 +37,7 @@ class HistoryCollection {
 }
 
 /**
- * The singleton instance of the HistoryCollection.
- * @type {HistoryCollection}
+ * The singleton instance of the HistoriesCollection.
+ * @type {HistoriesCollection}
  */
-export const History = new HistoryCollection();
+export const Histories = new HistoriesCollection();

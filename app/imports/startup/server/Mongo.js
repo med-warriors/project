@@ -5,6 +5,7 @@ import { Profiles } from '../../api/profile/Profile';
 import { SupplySourecs } from '../../api/source/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
+import { Histories } from '../../api/history/HistoryCollection';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -40,6 +41,12 @@ function addMedicine(data) {
 function addSupply(data) {
   console.log(`  Adding supply: ${data.date} (${data.name})`);
   Supplies.define(data);
+}
+
+// Initialize the database with a default data document.
+function addHistory(data) {
+  console.log(`  Adding history: ${data.date} (${data.name})`);
+  Histories.define(data);
 }
 
 // Initialize the StuffsCollection if empty.
@@ -86,5 +93,13 @@ if (Supplies.count() === 0) {
   if (Meteor.settings.defaultSupplies) {
     console.log('Creating default supplies data.');
     Meteor.settings.defaultSupplies.map(data => addSupply(data));
+  }
+}
+
+// Initialize the SupplyCollection if empty.
+if (Histories.count() === 0) {
+  if (Meteor.settings.defaultHistory) {
+    console.log('Creating default history data.');
+    Meteor.settings.defaultHistory.map(data => addHistory(data));
   }
 }
