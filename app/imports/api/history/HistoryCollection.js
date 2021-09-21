@@ -106,11 +106,11 @@ class HistoryCollection extends BaseCollection {
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(historyPublications.history, function publish() {
-        if (this.userId) {
-          // const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find();
-        }
-        return this.ready();
+        // if (this.userId) {
+        // const username = Meteor.users.findOne(this.userId).username;
+        //  return instance._collection.find();
+      //  }
+        return instance._collection.find();
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
@@ -127,10 +127,10 @@ class HistoryCollection extends BaseCollection {
    * Subscription method for history owned by the current user.
    */
   subscribeHistory() {
-    if (Meteor.isClient) {
-      return Meteor.subscribe(historyPublications.history);
-    }
-    return null;
+    // if (Meteor.isClient) {
+    //   return Meteor.subscribe(historyPublications.history);
+    // }
+    return Meteor.subscribe(historyPublications.history);
   }
 
   /**

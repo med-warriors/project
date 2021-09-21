@@ -45,7 +45,7 @@ function addSupply(data) {
 
 // Initialize the database with a default data document.
 function addHistory(data) {
-  console.log(`  Adding history: ${data.date} (${data.transact})`);
+  console.log(`  Adding history: ${data.date}`);
   Histories.define(data);
 }
 

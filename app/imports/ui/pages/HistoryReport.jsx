@@ -41,7 +41,7 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const histories = Histories.find({}, { sort: { date: 1 } }).fetch();
+  const histories = Histories.find({}).fetch();
   return {
     histories,
     ready,
