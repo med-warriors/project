@@ -17,12 +17,12 @@ class HistoriesCollection {
       transact: {
         type: String,
         allowedValues: ['In', 'Out'],
-        defaultValue: '',
+        defaultValue: 'In',
       },
       type: {
         type: String,
         allowedValues: ['Medicine', 'Supply'],
-        defaultValue: '',
+        defaultValue: 'Medicine',
       },
       patientName: String,
       prescription: String,

@@ -20,12 +20,12 @@ class HistoryCollection extends BaseCollection {
       transact: {
         type: String,
         allowedValues: historyTranConditions,
-        defaultValue: '',
+        defaultValue: 'In',
       },
       type: {
         type: String,
         allowedValues: historyTypeConditions,
-        defaultValue: '',
+        defaultValue: 'Medicine',
       },
       patientName: String,
       prescription: String,
@@ -89,8 +89,8 @@ class HistoryCollection extends BaseCollection {
    * @param { String | Object } name A document or docID in this collection.
    * @returns true
    */
-  removeIt(date) {
-    const doc = this.findDoc(date);
+  removeIt(employee) {
+    const doc = this.findDoc(employee);
     check(doc, Object);
     this._collection.remove(doc._id);
     return true;
