@@ -20,7 +20,9 @@ const NavBar = ({ currentUser }) => {
         [<Menu.Item id={COMPONENT_IDS.NAVBAR_ADD_STUFF} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
           <Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF} as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>,
           <Menu.Item id={COMPONENT_IDS.NAVBAR_MEDICINEANDSUPPLIES} as={NavLink} activeClassName="active" exact to="/medicineandsupplies" key='list'>Medicine And Supplies</Menu.Item>,
-          <Menu.Item id={COMPONENT_IDS.NAVBAR_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patientinfo" key='patientinfo'>Patient Information</Menu.Item>]
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patientinfo" key='patientinfo'>Patient Information</Menu.Item>,
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_ADD_MEDICINE} as={NavLink} activeClassName="active" exact to="/addmedicine" key='add'>Add Medicine</Menu.Item>,
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_ADD_STUFF} as={NavLink} activeClassName="active" exact to="/addsupply" key='add'>Add Supply</Menu.Item>]
       ) : ''}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
         [<Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>,
