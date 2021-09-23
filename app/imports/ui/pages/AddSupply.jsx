@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -23,10 +23,10 @@ const AddSupply = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, quantity, location } = data;
+    const { name, quantity, condition } = data;
     const owner = Meteor.user().username;
     const collectionName = Stuffs.getCollectionName();
-    const definitionData = { name, quantity, location, owner };
+    const definitionData = { name, quantity, condition, owner };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -40,14 +40,14 @@ const AddSupply = () => {
   return (
     <Grid id={PAGE_IDS.ADD_SUPPLY} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Add Stuff</Header>
+        <Header as="h2" textAlign="center">Add Supply</Header>
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <TextField name='name' />
             <NumField name='quantity' decimal={false} />
-            <SelectField name='location' />
+            <TextField name='location' />
             <SubmitField value='Submit' />
             <ErrorsField />
           </Segment>

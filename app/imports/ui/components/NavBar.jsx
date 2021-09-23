@@ -29,8 +29,8 @@ const NavBar = ({ currentUser }) => {
         <Dropdown id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN} item text="Transaction" key="transaction-dropdown">
           <Dropdown.Menu>
             <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_PRESCRIPTION} as={NavLink} activeClassName="active" exact to="/prescription" key='prescription'>Prescription</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_MEDICINE} as={NavLink} activeClassName="active" exact to="/addmedicine" key='addmedicine'>Add Medicine</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_SUPPLIES} as={NavLink} activeClassName="active" exact to="/addsupplies" key='addsupplies'>Add Supplies</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_MEDICINE} as={NavLink} activeClassName="active" exact to="/addmedicine" key='add'>Add Medicine</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_SUPPLIES} as={NavLink} activeClassName="active" exact to="/addsupplies" key='add'>Add Supply</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>,
         ]

@@ -44,6 +44,8 @@ class App extends React.Component {
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/medicineandsupplies" component={MedicineAndSupplies}/>
+            <ProtectedRoute path="/addmedicine" component={AddMedicine}/>
+            <ProtectedRoute path="/addsupply" component={AddSupply}/>
             <ProtectedRoute path="/patientinfo" component={PatientInformation}/>
             <ProtectedRoute path="/prescription" component={Prescription}/>
             <ProtectedRoute path="/addmedicine" component={AddMedicine}/>

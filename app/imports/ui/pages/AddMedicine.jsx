@@ -16,7 +16,7 @@ const formSchema = new SimpleSchema({
   type: String,
   location: String,
   quantity: Number,
-  expDate: Date,
+  expDate: Number,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -26,10 +26,10 @@ const AddMedicine = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { lotNumber, medName, type, location, quantity, expDate } = data;
+    const { name, quantity } = data;
     const owner = Meteor.user().username;
     const collectionName = Stuffs.getCollectionName();
-    const definitionData = { lotNumber, medName, type, location, quantity, expDate, owner };
+    const definitionData = { name, quantity, owner };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -43,17 +43,16 @@ const AddMedicine = () => {
   return (
     <Grid id={PAGE_IDS.ADD_MEDICINE} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Add Stuff</Header>
+        <Header as="h2" textAlign="center">Add Medicine</Header>
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <TextField name='medName' />
             <NumField name='quantity' decimal={false} />
-            <TextField name='condition' />
             <TextField name='location' />
             <NumField name='lotNumber' />
-            <DateField name='date' />
+            <DateField name='expDate' />
             <SubmitField value='Submit' />
             <ErrorsField />
           </Segment>
