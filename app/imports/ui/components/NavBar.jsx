@@ -30,7 +30,7 @@ const NavBar = ({ currentUser }) => {
           <Dropdown.Menu>
             <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_PRESCRIPTION} as={NavLink} activeClassName="active" exact to="/prescription" key='prescription'>Prescription</Dropdown.Item>
             <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_MEDICINE} as={NavLink} activeClassName="active" exact to="/addmedicine" key='add'>Add Medicine</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_SUPPLIES} as={NavLink} activeClassName="active" exact to="/addsupplies" key='add'>Add Supply</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_SUPPLIES} as={NavLink} activeClassName="active" exact to="/addsupply" key='add'>Add Supply</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>,
         ]
