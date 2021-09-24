@@ -10,7 +10,6 @@ import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -26,6 +25,7 @@ import SupplySource from '../pages/SupplySource';
 import AddMedicine from '../pages/AddMedicine';
 import AddSupply from '../pages/AddSupply';
 import { ROLE } from '../../api/role/Role';
+import EditProfile from '../pages/EditProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -39,10 +39,10 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
+            <Route path="/editprof" component={EditProfile}/>
             <ProtectedRoute path="/viewuser" component={UserProfile}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/medicineandsupplies" component={MedicineAndSupplies}/>
             <ProtectedRoute path="/addmedicine" component={AddMedicine}/>
             <ProtectedRoute path="/addsupply" component={AddSupply}/>

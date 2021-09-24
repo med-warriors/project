@@ -9,7 +9,7 @@ import { Tracker } from 'meteor/tracker';
 class ProfilesCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'ProfilesCollection';
+    this.name = 'UserProfilesCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.

@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Patients } from '../../api/patients/PatientCollection';
+// import { UserProfiles } from '../../api/profile/UserProfileCollection';
 import { Profiles } from '../../api/profile/Profile';
 import { SupplySourecs } from '../../api/source/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
