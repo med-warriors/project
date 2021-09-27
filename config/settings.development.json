@@ -38,7 +38,7 @@
     { "name": "Theraband - Green", "location": "Cabinet 2", "quantity": "1" , "source": "name"}
   ],
 
-  "defaultHistory": [
+  "defaultTransationHistory": [
     {"date": "2021-09-13T07:30", "transact": "Out", "type": "Medicine", "patientName": "Jane Doe", "prescription": "tylenol 600mg", "employee":  "123456" }
   ],
 

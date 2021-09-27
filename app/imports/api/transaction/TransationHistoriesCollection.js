@@ -6,27 +6,17 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const historyTranConditions = ['In', 'Out'];
-export const historyTypeConditions = ['Medicine', 'Supply'];
-export const historyPublications = {
-  history: 'history',
-  historyAdmin: 'historyAdmin',
+export const transationHistoriesPublications = {
+  transationHistory: 'TransationHistory',
+  transationHistoryAdmin: 'TransationHistoryAdmin',
 };
 
-class HistoryCollection extends BaseCollection {
+class TransationHistoriesCollection extends BaseCollection {
   constructor() {
-    super('Histories', new SimpleSchema({
+    super('TransationHistories', new SimpleSchema({
       date: Date,
-      transact: {
-        type: String,
-        allowedValues: historyTranConditions,
-        defaultValue: 'In',
-      },
-      type: {
-        type: String,
-        allowedValues: historyTypeConditions,
-        defaultValue: 'Medicine',
-      },
+      transact: String,
+      type: String,
       patientName: String,
       prescription: String,
       employee: Number,
@@ -89,8 +79,8 @@ class HistoryCollection extends BaseCollection {
    * @param { String | Object } name A document or docID in this collection.
    * @returns true
    */
-  removeIt(employee) {
-    const doc = this.findDoc(employee);
+  removeIt(date) {
+    const doc = this.findDoc(date);
     check(doc, Object);
     this._collection.remove(doc._id);
     return true;
@@ -98,23 +88,22 @@ class HistoryCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the History associated to an owner.
+   * It publishes the entire collection for admin and just the stuff associated to an owner.
    */
   publish() {
     if (Meteor.isServer) {
-      // get the HistoryCollection instance.
+      // get the MedicineCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(historyPublications.history, function publish() {
-        // if (this.userId) {
-        // const username = Meteor.users.findOne(this.userId).username;
-        //  return instance._collection.find();
-      //  }
-        return instance._collection.find();
+      Meteor.publish(transationHistoriesPublications.transationHistory, function publish() {
+        if (this.userId) {
+          return instance._collection.find();
+        }
+        return this.ready();
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(historyPublications.historyAdmin, function publish() {
+      Meteor.publish(transationHistoriesPublications.transationHistoryAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -124,22 +113,22 @@ class HistoryCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for history owned by the current user.
+   * Subscription method for medicine owned by the current user.
    */
-  subscribeHistory() {
-    // if (Meteor.isClient) {
-    //   return Meteor.subscribe(historyPublications.history);
-    // }
-    return Meteor.subscribe(historyPublications.history);
+  subscribeTransationHistory() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(transationHistoriesPublications.transationHistory);
+    }
+    return null;
   }
 
   /**
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeHistoryAdmin() {
+  subscribeTransationHistoryAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(historyPublications.historyAdmin);
+      return Meteor.subscribe(transationHistoriesPublications.transationHistoryAdmin);
     }
     return null;
   }
@@ -174,4 +163,4 @@ class HistoryCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Histories = new HistoryCollection();
+export const TransationHistories = new TransationHistoriesCollection();

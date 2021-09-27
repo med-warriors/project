@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
-const HistoryItem = ({ history }) => (
+const HistoryItem = ({ transationHistory }) => (
   <Table.Row>
-    <Table.Cell>{history.date.toDateString()}</Table.Cell>
-    <Table.Cell>{history.transact}</Table.Cell>
-    <Table.Cell>{history.type}</Table.Cell>
-    <Table.Cell>{history.patientName}</Table.Cell>
-    <Table.Cell>{history.prescription}</Table.Cell>
-    <Table.Cell>{history.employee}</Table.Cell>
+    <Table.Cell>{transationHistory.date.toDateString()}</Table.Cell>
+    <Table.Cell>{transationHistory.transact}</Table.Cell>
+    <Table.Cell>{transationHistory.type}</Table.Cell>
+    <Table.Cell>{transationHistory.patientName}</Table.Cell>
+    <Table.Cell>{transationHistory.prescription}</Table.Cell>
+    <Table.Cell>{transationHistory.employee}</Table.Cell>
   </Table.Row>
 );
 
 // Require a document to be passed to this component.
 HistoryItem.propTypes = {
-  history: PropTypes.shape({
+  transationHistory: PropTypes.shape({
     date: PropTypes.instanceOf(Date),
     transact: PropTypes.string,
     type: PropTypes.string,
