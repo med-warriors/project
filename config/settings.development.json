@@ -31,11 +31,17 @@
   ],
 
   "defaultMedicines": [
-    { "lotNumber": "a5", "name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "location": "Case 2", "quantity": "19", "should_have": "15", "expirationDate": "2021-09-13T07:30", "source": "name"}
+    { "lotNumber": "a5", "name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "location": "Case 2", "quantity": "19", "should_have": "15", "expirationDate": "2021-09-13T07:30", "source": "name"},
+    { "lotNumber": "a42", "name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Inflammatory", "location": "Case 4", "quantity": "60", "should_have": "60", "expirationDate": "2022-04-17T07:30", "source": "name"},
+    { "lotNumber": "a70", "name": "Metoprolol 50 mg", "type": "Antihypertensives", "location": "Case 7", "quantity": "115", "should_have": "30", "expirationDate": "2022-04-30T07:30", "source": "name"},
+    { "lotNumber": "a95", "name": "Fluconazole 150 mg", "type": "Antimicrobials", "location": "Freezer", "quantity": "3", "should_have": "3", "expirationDate": "2021-02-17T07:30", "source": "name"}
   ],
 
   "defaultSupplies": [
-    { "name": "Theraband - Green", "location": "Cabinet 2", "quantity": "1" , "source": "name"}
+    { "name": "Theraband - Green", "location": "Cabinet 2", "quantity": "1" , "source": "name"},
+    { "name": "Rapid Strep Strips", "location": "Refrig Closet", "quantity": "25" , "source": "name"},
+    { "name": "Pregnancy Tests", "location": "Refrigerator", "quantity": "20" , "source": "name"},
+    { "name": "Thermometers - Patient Supplies", "location": "Case 4", "quantity": "3" , "source": "name"}
   ],
 
   "defaultTransationHistory": [
