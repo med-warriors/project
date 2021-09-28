@@ -24,10 +24,10 @@
     { "name": "Mahalo", "location": "Mahalo st", "phoneNumber": 808333444, "email": "Mahalo@aloha.com" }
   ],
   "defaultPatientHistory": [
-    { "date": "2021-09-12T07:30", "name": "John Smith", "email": "john@foo.com", "phone_number": "808-123-4567", "prescription": "tylenol 600mg" },
-    { "date": "2021-09-12T07:30", "name": "Jane Doe", "email": "john@foo.com", "phone_number": "808-123-4567", "prescription": "tylenol 600mg" },
-    { "date": "2021-09-13T08:30", "name": "Keanu Reeves", "email": "john@foo.com", "phone_number": "808-123-4567", "prescription": "tylenol 600mg" },
-    { "date": "2021-09-13T07:30", "name": "Captain America", "email": "john@foo.com", "phone_number": "808-123-4567", "prescription": "tylenol 600mg" }
+    { "date": "2021-09-12T07:30", "id": "Xu8HM8EpsfLhP3"},
+    { "date": "2021-09-12T07:30", "id": "4CgJr3ZQ2xn7Uq"},
+    { "date": "2021-09-13T08:30", "id": "XZxwCqnFCkvJ7B"},
+    { "date": "2021-09-13T07:30", "id": "2XYRFenBbYCvbn"}
   ],
 
   "defaultMedicines": [
