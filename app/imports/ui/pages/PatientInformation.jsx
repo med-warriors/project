@@ -17,10 +17,7 @@ const PatientInformation = ({ ready, patients }) => {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Date</Table.HeaderCell>
-            <Table.HeaderCell>Patient Name</Table.HeaderCell>
-            <Table.HeaderCell>Email</Table.HeaderCell>
-            <Table.HeaderCell>Phone Number</Table.HeaderCell>
-            <Table.HeaderCell>Prescription</Table.HeaderCell>
+            <Table.HeaderCell>Patient ID</Table.HeaderCell>
             <Table.HeaderCell>Edit</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
