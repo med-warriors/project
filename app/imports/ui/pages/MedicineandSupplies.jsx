@@ -1,4 +1,5 @@
 import React from 'react';
+import SelectSearch from 'react-select-search';
 import { Container, Table, Header, Loader, Tab } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -8,46 +9,66 @@ import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
 
+const medicineTypes = [
+  { name: 'Allergy & Cold Medicines', value: 'Allergy & Cold Medicines' },
+  { name: 'Analgesics/Inflammatory', value: 'Analgesics/Inflammatory' },
+  { name: 'Antihypertensives', value: 'Antihypertensives' },
+  { name: 'Antimicrobials', value: 'Antimicrobials' },
+];
+
+const supplyLocation = [
+  { name: 'Cabinet 2', value: 'Cabinet 2' },
+  { name: 'Case 4', value: 'Case 4' },
+  { name: 'Refrigerator', value: 'Refrigerator' },
+  { name: 'Refrig Closet', value: 'Refrig Closet' },
+];
+
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
 const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((readyM, readyS) ? (
   <Container id={PAGE_IDS.LIST_MEDICINES}>
     <Header as="h2" textAlign="center">Medicine and Supplies</Header>
-    <Tab panes = {[
+    <Tab panes={[
       // eslint-disable-next-line react/display-name
-      { menuItem: 'Medicine', render: () => <Tab.Pane>
-        <Table>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Lot #</Table.HeaderCell>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Type</Table.HeaderCell>
-              <Table.HeaderCell>Location</Table.HeaderCell>
-              <Table.HeaderCell>Quantity</Table.HeaderCell>
-              <Table.HeaderCell>Exp Date</Table.HeaderCell>
-              <Table.HeaderCell>Source</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {medicines.map((medicine) => <CurrentMedicine key={medicine._id} medicine={medicine}/>)}
-          </Table.Body>
-        </Table>
-      </Tab.Pane> },
+      {
+        menuItem: 'Medicine', render: () => <Tab.Pane>
+          <SelectSearch options={medicineTypes} value="Allergy & Cold Medicines" placeholder="Choose your type" />
+          <Table>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Lot #</Table.HeaderCell>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Type</Table.HeaderCell>
+                <Table.HeaderCell>Location</Table.HeaderCell>
+                <Table.HeaderCell>Quantity</Table.HeaderCell>
+                <Table.HeaderCell>Exp Date</Table.HeaderCell>
+                <Table.HeaderCell>Source</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {medicines.map((medicine) => <CurrentMedicine key={medicine._id} medicine={medicine}/>)}
+            </Table.Body>
+          </Table>
+        </Tab.Pane>
+      },
       // eslint-disable-next-line react/display-name
-      { menuItem: 'Supplies', render: () => <Tab.Pane>
-        <Table>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Location</Table.HeaderCell>
-              <Table.HeaderCell>Quantity</Table.HeaderCell>
-              <Table.HeaderCell>Source</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {supplies.map((supply) => <CurrentSupplies key={supply._id} supply={supply} />)}
-          </Table.Body>
-        </Table>
-      </Tab.Pane> }]}/>
+      {
+        menuItem: 'Supplies', render: () => <Tab.Pane>
+          <SelectSearch options={supplyLocation} value="Cabinet 2" placeholder="Choose your location" fluid />
+          <Table>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Location</Table.HeaderCell>
+                <Table.HeaderCell>Quantity</Table.HeaderCell>
+                <Table.HeaderCell>Source</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {supplies.map((supply) => <CurrentSupplies key={supply._id} supply={supply}/>)}
+            </Table.Body>
+          </Table>
+        </Tab.Pane>
+      }]}/>
   </Container>
 ) : <Loader active>Getting data</Loader>);
 
