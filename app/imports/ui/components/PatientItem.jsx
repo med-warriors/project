@@ -8,10 +8,7 @@ import { withRouter, Link } from 'react-router-dom';
 const PatientItem = ({ patient }) => (
   <Table.Row>
     <Table.Cell>{patient.date.toDateString()}</Table.Cell>
-    <Table.Cell>{patient.name}</Table.Cell>
-    <Table.Cell>{patient.email}</Table.Cell>
-    <Table.Cell>{patient.phone_number}</Table.Cell>
-    <Table.Cell>{patient.prescription}</Table.Cell>
+    <Table.Cell>{patient.id}</Table.Cell>
     <Table.Cell>
       <Link to={`/edit/${patient._id}`}>Edit</Link>
     </Table.Cell>
@@ -22,10 +19,7 @@ const PatientItem = ({ patient }) => (
 PatientItem.propTypes = {
   patient: PropTypes.shape({
     date: PropTypes.instanceOf(Date),
-    name: PropTypes.string,
-    email: PropTypes.string,
-    phone_number: PropTypes.string,
-    prescription: PropTypes.string,
+    id: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
+// import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
@@ -15,29 +15,20 @@ class PatientCollection extends BaseCollection {
   constructor() {
     super('Patients', new SimpleSchema({
       date: Date,
-      name: String,
-      email: String,
-      phone_number: String,
-      prescription: String,
+      id: String,
     }));
   }
 
   /**
    * Defines a new Patient item.
    * @param date the date of visit
-   * @param name the name of the patient.
-   * @param email the email of patient.
-   * @param phone_number the phone number of the patient.
-   * @param prescription the prescription of the patient.
+   * @param id the id of the patient.
    * @return {String} the docID of the new document.
    */
-  define({ date, name, email, phone_number, prescription }) {
+  define({ date, id }) {
     const docID = this._collection.insert({
       date,
-      name,
-      email,
-      phone_number,
-      prescription,
+      id,
     });
     return docID;
   }
@@ -45,21 +36,12 @@ class PatientCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
-   * @param name the new name (optional).
-   * @param phone_number the new number (optional).
-   * @param email the new email (optional).
+   * @param id the new id (optional).
    */
-  update(docID, { name, phoneNum, email }) {
+  update(docID, { id }) {
     const updateData = {};
-    if (name) {
-      updateData.name = name;
-    }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(phoneNum)) {
-      updateData.phone_number = phoneNum;
-    }
-    if (email) {
-      updateData.email = email;
+    if (id) {
+      updateData.id = id;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -143,11 +125,8 @@ class PatientCollection extends BaseCollection {
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const date = doc.date;
-    const name = doc.name;
-    const email = doc.email;
-    const phone = doc.phone_number;
-    const prescription = doc.prescription();
-    return { date, name, email, phone, prescription };
+    const id = doc.id;
+    return { date, id };
   }
 }
 

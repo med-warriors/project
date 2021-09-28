@@ -10,11 +10,7 @@ class PatientsCollection extends BaseCollection {
   constructor() {
     super('PatientsCollection', new SimpleSchema({
       date: Date,
-      name: String,
-      email: String,
-      phone_number: Number,
-      prescription: String,
-      owner: String,
+      id: String,
     }));
 
     // Define names for publications and subscriptions
