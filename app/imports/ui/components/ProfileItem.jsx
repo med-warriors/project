@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Grid, Header, Label, Segment, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Profile table. See pages/ViewProfile.jsx. */
 class ProfileItem extends React.Component {
@@ -19,11 +19,8 @@ class ProfileItem extends React.Component {
         <Grid.Row>
           <Grid.Column width={5}>
             <Image src={this.props.profile.image} size='large' circular/>
-            <Button animated id="edit-prof">
-              <Button.Content visible>Edit Profile</Button.Content>
-              <Button.Content hidden>
-                <Icon name='arrow right' />
-              </Button.Content>
+            <Button id="edit-prof">
+              <Button.Content visible as={NavLink} activeClassName="active" exact to="/editprof" key='editprof'>Edit Profile <Icon name='arrow right' /></Button.Content>
             </Button>
           </Grid.Column>
           <Grid.Column id="profile-info" width={9}>
@@ -40,7 +37,7 @@ class ProfileItem extends React.Component {
                 Username : {this.props.profile.username}
               </Header></Grid.Row>
               <Grid.Row><Header id="profile-role" as="h3" textAlign='left'>
-                  Affiliations : <Label circular>{this.props.profile.role}</Label>  <Label circular>staff</Label>
+                  Affiliations : <Label circular>{this.props.profile.role}</Label>
               </Header></Grid.Row></Segment>
           </Grid.Column>
         </Grid.Row>

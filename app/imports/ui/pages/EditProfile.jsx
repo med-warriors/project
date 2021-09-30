@@ -1,22 +1,23 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Grid, Form, Loader, Header, Segment, Button, Icon } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { NavLink } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profile';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
-
   // On successful submit, insert the data.
   submit(data) {
-    const { name, bio, image, _id } = data;
-    Profiles.collection.update(_id, { $set: { name, bio, image } }, (error) => (error ?
+    const { username, name, idnumber, role, image, _id } = data;
+
+    Profiles.collection.update(_id, { $set: { username, name, idnumber, role, image } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -34,7 +35,21 @@ class EditProfile extends React.Component {
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Profile</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data) } model={this.props.doc}>
+            <Segment>
+              <Form.Group widths='equal'>
+                <TextField id='input-name' name='name'/>
+                <TextField id='input-username' name='username'/>
+              </Form.Group>
+              <TextField id='input-id' name='idnumber'/>
+              <TextField id='input-image' name='image'/>
+              <SubmitField id='submit' value='Submit'/>
+              <ErrorsField/>
+              <HiddenField name='owner' />
+            </Segment>
           </AutoForm>
+          <Button id="edit-prof">
+            <Button.Content visible as={NavLink} activeClassName="active" exact to="/viewuser" key='viewuser'><Icon name='arrow left' />Back</Button.Content>
+          </Button>
         </Grid.Column>
       </Grid>
     );

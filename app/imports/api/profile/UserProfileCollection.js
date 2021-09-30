@@ -13,11 +13,16 @@ export const profilePublications = {
 
 class UserProfileCollection extends BaseCollection {
   constructor() {
-    super('Stuffs', new SimpleSchema({
+    super('Profiles', new SimpleSchema({
       username: String,
       name: String,
       idnumber: String,
-      role: String,
+      role: Array,
+      'role.$': {
+        type: String,
+        allowedValues: ['student', 'doctor', 'admin'],
+        optional: true,
+      },
       image: String,
       owner: String,
     }));
@@ -50,7 +55,7 @@ class UserProfileCollection extends BaseCollection {
    * @param quantity the new quantity (optional).
    * @param condition the new condition (optional).
    */
-  update(docID, { username, name, idnumber, role, image, owner }) {
+  updatep(docID, { username, name, idnumber, role, image, owner }) {
     const updateData = {};
     if (username) {
       updateData.username = username;

@@ -17,7 +17,12 @@ class ProfilesCollection {
       username: String,
       name: String,
       idnumber: String,
-      role: String,
+      role: Array,
+      'role.$': {
+        type: String,
+        allowedValues: ['student', 'doctor', 'admin'],
+        optional: true,
+      },
       image: String,
       owner: String,
     }, { tracker: Tracker });
@@ -27,6 +32,12 @@ class ProfilesCollection {
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
     this.public = `${this.name}.publication.value`;
+    this.collection.allow({
+      update: function (userId, doc) {
+        /* return true to allow update() */
+        return true;
+      },
+    });
   }
 }
 
