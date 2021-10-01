@@ -1,17 +1,24 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
+import PropTypes from 'prop-types';
+import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { withTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { Medicines } from '../../api/medicine/MedicineCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  medicine: String,
+  medicine: {
+    type: String,
+    // set values to the medicines database [ '_id, medicines, quantity' ]
+    allowedValues: [],
+  },
   patientName: String,
   quantity: Number,
   detail: String,
@@ -21,11 +28,11 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Prescription = () => {
+const Prescription = (ready, doc) => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { patientName, medicine } = data;
+    const { patientName, medicine, quantity, _id } = data;
     // Get the current date, time, and default data.
     const date = new Date();
     const prescription = medicine;
@@ -35,37 +42,62 @@ const Prescription = () => {
     // edit the this following line.
     const employee = Meteor.user().username;
     // -------------.
-    const collectionName = TransationHistories.getCollectionName();
+    const collectionNameTran = TransationHistories.getCollectionName();
+    const collectionNameMed = Medicines.getCollectionName();
     const definitionData = { date, transact, type, patientName, prescription };
-    defineMethod.callPromise({ collectionName, definitionData })
+    const updateData = { id: _id, quantity };
+    // update the medicine.
+    updateMethod.callPromise({ collectionNameMed, updateData })
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => swal('Success', 'Item updated successfully', 'success'));
+    // add prescription as new transaction.
+    defineMethod.callPromise({ collectionNameTran, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        swal('Success', 'Item added successfully', 'success');
+        swal('Success', 'Prescription output successfully', 'success');
         formRef.reset();
       });
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-  return (
+  return (ready) ? (
     <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
       <Grid.Column>
         <Header as="h2" textAlign="center">Prescription</Header>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+        }} schema={bridge} onSubmit={data => submit(data, fRef)} model={doc}>
           <Segment>
-            <TextField name='medicine' />
-            <TextField name='patientName' />
+            <SelectField name='medicine'/>
+            <TextField name='patientName'/>
             <NumField name='quantity' decimal={false} />
-            <TextField name='detail' />
-            <SubmitField value='Submit' />
+            <TextField name='detail'/>
+            <SubmitField value='Submit'/>
             <ErrorsField />
           </Segment>
         </AutoForm>
       </Grid.Column>
     </Grid>
-  );
+  ) : <Loader active>Getting data</Loader>;
 };
 
-export default Prescription;
+// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+Prescription.propTypes = {
+  medicines: PropTypes.array,
+  ready: PropTypes.bool.isRequired,
+};
+
+// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+export default withTracker(() => {
+  // Get access to Medicines documents.
+  const subscription = Medicines.subscribeMedicine();
+  // Determine if the subscription is ready
+  const ready = subscription.ready();
+  // Get the document
+  const medicines = Medicines.find().fetch();
+  return {
+    medicines,
+    ready,
+  };
+})(Prescription);
