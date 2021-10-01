@@ -2,10 +2,9 @@ import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Stuffs } from '../../api/stuff/StuffCollection';
+import { Supplies } from '../../api/supply/SupplyCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
@@ -23,10 +22,9 @@ const AddSupply = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, quantity, condition } = data;
-    const owner = Meteor.user().username;
-    const collectionName = Stuffs.getCollectionName();
-    const definitionData = { name, quantity, condition, owner };
+    const { name, location, quantity } = data;
+    const collectionName = Supplies.getCollectionName();
+    const definitionData = { name, location, quantity };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
