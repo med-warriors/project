@@ -11,6 +11,7 @@ const CurrentSupplies = ({ supply }) => (
     <Table.Cell>{supply.location}</Table.Cell>
     <Table.Cell>{supply.quantity}</Table.Cell>
     <Table.Cell>{supply.source}</Table.Cell>
+    <Table.Cell>{supply.status}</Table.Cell>
     <Table.Cell>
       <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/edit/${supply._id}`}>Update</Link>
     </Table.Cell>
@@ -24,6 +25,7 @@ CurrentSupplies.propTypes = {
     quantity: PropTypes.number,
     location: PropTypes.string,
     source: PropTypes.string,
+    status: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

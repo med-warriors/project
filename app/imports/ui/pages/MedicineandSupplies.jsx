@@ -42,6 +42,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
                 <Table.HeaderCell>Exp Date</Table.HeaderCell>
                 <Table.HeaderCell>Source</Table.HeaderCell>
+                <Table.HeaderCell>Status</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -61,6 +62,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
                 <Table.HeaderCell>Location</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
                 <Table.HeaderCell>Source</Table.HeaderCell>
+                <Table.HeaderCell>Status</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
