@@ -13,13 +13,7 @@ body {
   border: none;
 }
 
-#profile-name {
-  padding-top: 50px;
-  padding-bottom: 10px;
-  padding-left: 50px;
-}
-
-#profile-number, #profile-role {
+#profile-number, #profile-role, #profile-username, #profile-name {
   padding-top: 50px;
   padding-bottom: 10px;
   padding-left: 50px;
@@ -33,6 +27,10 @@ body {
 
 #profile-info {
   margin-left: 100px;
+}
+
+#edit-prof {
+  margin-top: 20px;
 }
 
 * {

@@ -6,23 +6,25 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const stuffConditions = ['excellent', 'good', 'fair', 'poor'];
-export const stuffPublications = {
-  stuff: 'Stuff',
-  stuffAdmin: 'StuffAdmin',
+export const profilePublications = {
+  profile: 'Profile',
+  profileAdmin: 'ProfileAdmin',
 };
 
-class StuffCollection extends BaseCollection {
+class UserProfileCollection extends BaseCollection {
   constructor() {
-    super('Stuffs', new SimpleSchema({
+    super('Profiles', new SimpleSchema({
+      username: String,
       name: String,
-      quantity: Number,
-      owner: String,
-      condition: {
+      idnumber: String,
+      role: Array,
+      'role.$': {
         type: String,
-        allowedValues: stuffConditions,
-        defaultValue: 'good',
+        allowedValues: ['student', 'doctor', 'admin'],
+        optional: true,
       },
+      image: String,
+      owner: String,
     }));
   }
 
@@ -34,12 +36,14 @@ class StuffCollection extends BaseCollection {
    * @param condition the condition of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, quantity, owner, condition }) {
+  define({ username, name, idnumber, role, image, owner }) {
     const docID = this._collection.insert({
+      username,
       name,
-      quantity,
+      idnumber,
+      role,
+      image,
       owner,
-      condition,
     });
     return docID;
   }
@@ -51,17 +55,25 @@ class StuffCollection extends BaseCollection {
    * @param quantity the new quantity (optional).
    * @param condition the new condition (optional).
    */
-  update(docID, { name, quantity, condition }) {
+  updatep(docID, { username, name, idnumber, role, image, owner }) {
     const updateData = {};
+    if (username) {
+      updateData.username = username;
+    }
     if (name) {
       updateData.name = name;
     }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(quantity)) {
-      updateData.quantity = quantity;
+    if (_.isNumber(idnumber)) {
+      updateData.idnumber = idnumber;
     }
-    if (condition) {
-      updateData.condition = condition;
+    if (role) {
+      updateData.role = role;
+    }
+    if (image) {
+      updateData.image = image;
+    }
+    if (owner) {
+      updateData.owner = owner;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -87,7 +99,7 @@ class StuffCollection extends BaseCollection {
       // get the StuffCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(stuffPublications.stuff, function publish() {
+      Meteor.publish(profilePublications.medicine, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -96,7 +108,7 @@ class StuffCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(stuffPublications.stuffAdmin, function publish() {
+      Meteor.publish(profilePublications.medicineAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -108,9 +120,9 @@ class StuffCollection extends BaseCollection {
   /**
    * Subscription method for stuff owned by the current user.
    */
-  subscribeStuff() {
+  subscribeProfiles() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(stuffPublications.stuff);
+      return Meteor.subscribe(profilePublications.profile);
     }
     return null;
   }
@@ -121,7 +133,7 @@ class StuffCollection extends BaseCollection {
    */
   subscribeStuffAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(stuffPublications.stuffAdmin);
+      return Meteor.subscribe(profilePublications.profileAdmin);
     }
     return null;
   }
@@ -154,4 +166,4 @@ class StuffCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Stuffs = new StuffCollection();
+export const UserProfiles = new UserProfileCollection();
