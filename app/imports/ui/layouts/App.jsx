@@ -43,16 +43,14 @@ class App extends React.Component {
             <ProtectedRoute path="/viewuser" component={UserProfile}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/medicineandsupplies" component={MedicineAndSupplies}/>
-            <ProtectedRoute path="/addmedicine" component={AddMedicine}/>
-            <ProtectedRoute path="/addsupply" component={AddSupply}/>
-            <ProtectedRoute path="/patientinfo" component={PatientInformation}/>
+            <ProtectedRoute path="/medicine-and-supplies" component={MedicineAndSupplies}/>
+            <ProtectedRoute path="/add-medicine" component={AddMedicine}/>
+            <ProtectedRoute path="/add-supply" component={AddSupply}/>
+            <ProtectedRoute path="/patient-info" component={PatientInformation}/>
             <ProtectedRoute path="/prescription" component={Prescription}/>
-            <ProtectedRoute path="/addmedicine" component={AddMedicine}/>
-            <ProtectedRoute path="/addsupply" component={AddSupply}/>
-            <ProtectedRoute path="/supplysource" component={SupplySource}/>
-            <ProtectedRoute path="/historyreport" component={HistoryReport}/>
-            <ProtectedRoute path="/lowinventory" component={LowInventoryReport}/>
+            <ProtectedRoute path="/supply-source" component={SupplySource}/>
+            <ProtectedRoute path="/history-report" component={HistoryReport}/>
+            <ProtectedRoute path="/low-inventory" component={LowInventoryReport}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
             <Route component={NotFound}/>
