@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
@@ -17,7 +16,7 @@ const formSchema = new SimpleSchema({
   medicine: {
     type: String,
     // set values to the medicines database [ '_id, medicines, quantity' ]
-    allowedValues: [],
+    allowedValues: ['Benzonatate Capsules', 'Fluconazole 150 mg', 'Ibuprofen 800 mg tabs'],
   },
   patientName: String,
   quantity: Number,
@@ -31,8 +30,8 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const Prescription = (ready, doc) => {
 
   // On submit, insert the data.
-  const submit = (data, formRef) => {
-    const { patientName, medicine, quantity, _id } = data;
+  const submitTran = (data, formRef) => {
+    const { patientName, medicine, } = data;
     // Get the current date, time, and default data.
     const date = new Date();
     const prescription = medicine;
@@ -40,18 +39,12 @@ const Prescription = (ready, doc) => {
     const type = 'Medicine';
     // Get the current employee ID number.
     // edit the this following line.
-    const employee = Meteor.user().username;
+    const employee = 12345;
     // -------------.
-    const collectionNameTran = TransationHistories.getCollectionName();
-    const collectionNameMed = Medicines.getCollectionName();
-    const definitionData = { date, transact, type, patientName, prescription };
-    const updateData = { id: _id, quantity };
-    // update the medicine.
-    updateMethod.callPromise({ collectionNameMed, updateData })
-      .catch(error => swal('Error', error.message, 'error'))
-      .then(() => swal('Success', 'Item updated successfully', 'success'));
+    const collectionName = TransationHistories.getCollectionName();
+    const definitionData = { date, transact, type, patientName, prescription, employee };
     // add prescription as new transaction.
-    defineMethod.callPromise({ collectionNameTran, definitionData })
+    defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Prescription output successfully', 'success');
@@ -59,15 +52,31 @@ const Prescription = (ready, doc) => {
       });
   };
 
+  // On submit, insert the data.
+  const submitMed = (data) => {
+    const { _id, quantity } = data;
+    const collectionName = Medicines.getCollectionName();
+    const updateData = { id: _id, quantity };
+    // update the medicine.
+    updateMethod.callPromise({ collectionName, updateData })
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => swal('Success', 'Item updated successfully', 'success'));
+  };
+
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
+  const handleSubmit = (data) => {
+    submitTran(data, fRef);
+    submitMed(data);
+  };
+
   return (ready) ? (
     <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
       <Grid.Column>
         <Header as="h2" textAlign="center">Prescription</Header>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => submit(data, fRef)} model={doc}>
+        }} schema={bridge} onSubmit={data => handleSubmit(data)} model={doc}>
           <Segment>
             <SelectField name='medicine'/>
             <TextField name='patientName'/>
