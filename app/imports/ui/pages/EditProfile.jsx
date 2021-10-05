@@ -44,6 +44,7 @@ class EditProfile extends React.Component {
               <TextField id='input-image' name='image'/>
               <SubmitField id='submit' value='Submit'/>
               <ErrorsField/>
+              <HiddenField name='role'/>
               <HiddenField name='owner' />
             </Segment>
           </AutoForm>

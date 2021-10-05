@@ -14,7 +14,7 @@
 
   "defaultProfiles": [
     { "username": "jfoo", "role": "doctor", "name": "John Foo", "idnumber": "12345678", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "john@foo.com" },
-    { "username": "admin", "role": "admin", "name": "The Admin", "idnumber": "87654321", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "admin@foo.com" }
+    { "username": "admin", "role": "admin", "name": "Admin User", "idnumber": "87654321", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "admin@foo.com" }
   ],
 
   "defaultSupplySource": [
