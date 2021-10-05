@@ -66,8 +66,9 @@ const Prescription = (ready, doc) => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   const handleSubmit = (data) => {
-    submitTran(data, fRef);
-    submitMed(data);
+    if (submitMed(data)) {
+      submitTran(data, fRef);
+    }
   };
 
   return (ready) ? (
