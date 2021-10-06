@@ -26,6 +26,7 @@ import AddMedicine from '../pages/AddMedicine';
 import AddSupply from '../pages/AddSupply';
 import { ROLE } from '../../api/role/Role';
 import EditProfile from '../pages/EditProfile';
+import EditSupply from '../pages/EditSupply';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -43,6 +44,7 @@ class App extends React.Component {
             <ProtectedRoute path="/viewuser" component={UserProfile}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
+            <ProtectedRoute path="/edit/:_id" component={EditSupply}/>
             <ProtectedRoute path="/medicine-and-supplies" component={MedicineAndSupplies}/>
             <ProtectedRoute path="/add-medicine" component={AddMedicine}/>
             <ProtectedRoute path="/add-supply" component={AddSupply}/>
