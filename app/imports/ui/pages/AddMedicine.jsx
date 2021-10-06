@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, DateField, SubmitField, TextField } from 'uniforms-semantic';
+import { Form, Grid, Segment, Header } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, AutoField, NumField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -19,6 +19,14 @@ const formSchema = new SimpleSchema({
   expirationDate: Date,
   source: String,
 });
+
+const medicineTypes = [
+  ['Antihypertensives'], ['Allergy & Cold Medicines'], ['Analgesics/Inflammatory'], ['Antimicrobials'],
+];
+
+const locations = [
+  ['Case 1'], ['Case 2'], ['Case 3'], ['Case 4'], ['Case 5'], ['Case 6'], ['Case 7'], ['Case 8'], ['Freezer'],
+];
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
@@ -48,13 +56,20 @@ const AddMedicine = () => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
-            <TextField name='name' />
-            <NumField name='quantity' decimal={false} />
-            <TextField name='location' />
-            <NumField name='lotNumber' />
-            <DateField name='expirationDate' />
-            <NumField name='should_have' />
-            <TextField name='source' />
+            <Form.Group widths='equal'>
+              <TextField label='Medicine Name' name='name' />
+              <SelectField label='Medicine Type' name='type'
+                allowedValues={medicineTypes}/>
+              <NumField name='quantity' decimal={false} />
+              <SelectField name='location'
+                allowedValues={locations}/>
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <AutoField name='lotNumber'/>
+              <DateField name='expirationDate'/>
+              <NumField name='should_have' />
+              <TextField name='source' />
+            </Form.Group>
             <SubmitField value='Submit' />
             <ErrorsField />
           </Segment>
