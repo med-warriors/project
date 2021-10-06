@@ -40,6 +40,14 @@ body {
   text-align: center;
 }
 
+/* Medicine and Supplies page */
+#med-supply {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
 /* Sign up page */
 #signup-page {
   height: 45em;

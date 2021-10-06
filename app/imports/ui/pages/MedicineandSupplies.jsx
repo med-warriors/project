@@ -1,6 +1,5 @@
 import React from 'react';
-import { AutoForm, SelectField } from 'uniforms-semantic';
-import { Container, Table, Header, Loader, Tab, Input } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Tab, Input, Dropdown, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Medicines } from '../../api/medicine/MedicineCollection';
@@ -8,27 +7,20 @@ import CurrentMedicine from '../components/CurrentMedicine';
 import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
-import SimpleSchema from 'simpl-schema';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 
-const medTypeSchema = new SimpleSchema({
-  medicineType: {
-    type: String,
-    defaultValue: 'Allergy & Cold Medicines',
-    allowedValues: ['Allergy & Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials'],
-  },
-});
+const medTypeOptions = [
+  { key: 'allergy', value: 'allergy', text: 'Allergy & Cold Medicines' },
+  { key: 'anal', value: 'anal', text: 'Analgesics/Antiinflammatory' },
+  { key: 'antihyp', value: 'antihyp', text: 'Antihypertensives' },
+  { key: 'antimic', value: 'antimic', text: 'Antimicrobials' },
+];
 
-const supplySchema = new SimpleSchema({
-  supplyLocation: {
-    type: String,
-    defaultValue: 'Cabinet 2',
-    allowedValues: ['Cabinet 2', 'Case 4', 'Refrig Closet', 'Refrigerator'],
-  },
-});
-
-const bridge = new SimpleSchema2Bridge(medTypeSchema);
-const bridge2 = new SimpleSchema2Bridge(supplySchema);
+const supplyLocationOptions = [
+  { key: 'cabinet2', value: 'cabinet2', text: 'Cabinet 2' },
+  { key: 'case4', value: 'case4', text: 'Case 4' },
+  { key: 'closet', value: 'closet', text: 'Refrig Closet' },
+  { key: 'refrig', value: 'refrig', text: 'Refrigerator' },
+];
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
 const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((readyM, readyS) ? (
@@ -38,10 +30,10 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
       // eslint-disable-next-line react/display-name
       {
         menuItem: 'Medicine', render: () => <Tab.Pane>
-          <AutoForm schema={bridge}>
-            <SelectField name="medicineType"/>
-            <Input type='text' placeholder='Search by name' icon='search'/>
-          </AutoForm>
+          <Grid container columns='equal' id='med-supply' stackable>
+            <Dropdown placeholder='Choose a type' search selection options={medTypeOptions}/>
+            <Input type='search' placeholder='Search by name' icon='search'/>
+          </Grid>
           <Table>
             <Table.Header>
               <Table.Row>
@@ -63,11 +55,11 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
       },
       // eslint-disable-next-line react/display-name
       {
-        menuItem: 'Supplies', render: () => <Tab.Pane>
-          <AutoForm schema={bridge2}>
-            <SelectField name="supplyLocation"/>
-            <Input type='text' placeholder='Search by name' icon='search'/>
-          </AutoForm>
+        menuItem: ' Supplies', render: () => <Tab.Pane>
+          <Grid container columns='equal' id='med-supply' stackable>
+            <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions}/>
+            <Input type=' search' placeholder=' Search by name' icon=' search'/>
+          </Grid>
           <Table>
             <Table.Header>
               <Table.Row>
