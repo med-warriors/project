@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, DateField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, DateField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -10,9 +10,16 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  lotNumber: String,
+  lotNumber: {
+    type: Number,
+    allowedValues: [1, 2, 3],
+  },
   name: String,
-  type: String,
+  type: {
+    type: String,
+    allowedValues: ['Allergy and Cold Medicine', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
+    'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'],
+  },
   location: String,
   quantity: Number,
   should_have: Number,
@@ -49,9 +56,10 @@ const AddMedicine = () => {
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <TextField name='name' />
+            <SelectField name='type' />
             <NumField name='quantity' decimal={false} />
             <TextField name='location' />
-            <NumField name='lotNumber' />
+            <SelectField name='lotNumber' />
             <DateField name='expirationDate' />
             <NumField name='should_have' />
             <TextField name='source' />
