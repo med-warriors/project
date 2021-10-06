@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
+import { Grid, Form, Segment, Header } from 'semantic-ui-react';
+import { AutoForm, SelectField, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -38,15 +38,18 @@ const AddSupply = () => {
   return (
     <Grid id={PAGE_IDS.ADD_SUPPLY} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Add Supply</Header>
+        <Header as="h2" textAlign="center">Add Supplies</Header>
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
-            <TextField name='name' />
-            <NumField name='quantity' decimal={false} />
-            <TextField name='location' />
-            <SubmitField value='Submit' />
+            <Form.Group widths='equal'>
+              <TextField name='name' />
+              <NumField name='quantity' decimal={false} />
+              <SelectField name='location'
+                options={[{ label: 'Case 1' }, { label: 'Case 2' }]}/>
+            </Form.Group>
+            <SubmitField value='Submit'/>
             <ErrorsField />
           </Segment>
         </AutoForm>
