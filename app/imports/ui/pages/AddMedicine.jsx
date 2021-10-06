@@ -11,26 +11,19 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   lotNumber: String,
-  name: String,
-  type: String,
-  location: String,
+  name: { type: String,
+    allowedValues: ['Benzonatate Capsules', 'Fluconazole 150 mg', 'Ibuprofen 800 mg tabs', 'Metoprolol 50 mg'] },
+  type: {
+    type: String,
+    allowedValues: ['Antihypertensives', 'Allergy & Cold Medicines', 'Analgesics/Inflammatory', 'Antimicrobials'] },
+  location: {
+    type: String,
+    allowedValues: ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Freezer'] },
   quantity: Number,
   should_have: Number,
   expirationDate: Date,
   source: String,
 });
-
-const medicineNames = [
-  ['Benzonatate Capsules'], ['Ibuprofen 800 mg tabs'], ['Metoprolol 50 mg'], ['Fluconazole 150 mg'],
-];
-
-const medicineTypes = [
-  ['Antihypertensives'], ['Allergy & Cold Medicines'], ['Analgesics/Inflammatory'], ['Antimicrobials'],
-];
-
-const locations = [
-  ['Case 1'], ['Case 2'], ['Case 3'], ['Case 4'], ['Case 5'], ['Case 6'], ['Case 7'], ['Case 8'], ['Freezer'],
-];
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
@@ -61,13 +54,10 @@ const AddMedicine = () => {
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <Form.Group widths='equal'>
-              <SelectField label='Medicine Name' name='name'
-                allowedValues={medicineNames}/>
-              <SelectField label='Medicine Type' name='type'
-                allowedValues={medicineTypes}/>
+              <SelectField label='Medicine Name' name='name'/>
+              <SelectField label='Medicine Type' name='type'/>
               <NumField name='quantity' decimal={false} />
-              <SelectField name='location'
-                allowedValues={locations}/>
+              <SelectField name='location'/>
             </Form.Group>
             <Form.Group widths='equal'>
               <AutoField name='lotNumber'/>
