@@ -29,9 +29,9 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 const Prescription = (ready, doc) => {
 
-  // On submit, insert the data.
+  // On submit, insert the data to transaction history.
   const submitTran = (data, formRef) => {
-    const { patientName, medicine, } = data;
+    const { patientName, medicine } = data;
     // Get the current date, time, and default data.
     const date = new Date();
     const prescription = medicine;
@@ -52,11 +52,14 @@ const Prescription = (ready, doc) => {
       });
   };
 
-  // On submit, insert the data.
+  // On submit, edit Medicines the data.
   const submitMed = (data) => {
-    const { _id, quantity } = data;
+    const { outQuantity } = data;
+    // find the selected Medicines
+    const { _id, lotNumber, name, type, location, oldQuantity, should_have, expirationDate, source } = [];
+    const quantity = oldQuantity - outQuantity;
     const collectionName = Medicines.getCollectionName();
-    const updateData = { id: _id, quantity };
+    const updateData = { id: _id, lotNumber, name, type, location, quantity, should_have, expirationDate, source };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -65,6 +68,7 @@ const Prescription = (ready, doc) => {
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
+  // On submit, update the Medicines the data if success insert the transaction data.
   const handleSubmit = (data) => {
     if (submitMed(data)) {
       submitTran(data, fRef);
@@ -77,7 +81,7 @@ const Prescription = (ready, doc) => {
         <Header as="h2" textAlign="center">Prescription</Header>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => handleSubmit(data)} model={doc}>
+        }} schema={bridge} onSubmit={data => handleSubmit(data)}>
           <Segment>
             <SelectField name='medicine'/>
             <TextField name='patientName'/>
@@ -94,7 +98,6 @@ const Prescription = (ready, doc) => {
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
 Prescription.propTypes = {
-  medicines: PropTypes.array,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -104,10 +107,7 @@ export default withTracker(() => {
   const subscription = Medicines.subscribeMedicine();
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the document
-  const medicines = Medicines.find().fetch();
   return {
-    medicines,
     ready,
   };
 })(Prescription);
