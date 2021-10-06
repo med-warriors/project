@@ -20,6 +20,10 @@ const formSchema = new SimpleSchema({
   source: String,
 });
 
+const medicineNames = [
+  ['Benzonatate Capsules'], ['Ibuprofen 800 mg tabs'], ['Metoprolol 50 mg'], ['Fluconazole 150 mg'],
+];
+
 const medicineTypes = [
   ['Antihypertensives'], ['Allergy & Cold Medicines'], ['Analgesics/Inflammatory'], ['Antimicrobials'],
 ];
@@ -57,7 +61,8 @@ const AddMedicine = () => {
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <Form.Group widths='equal'>
-              <TextField label='Medicine Name' name='name' />
+              <SelectField label='Medicine Name' name='name'
+                allowedValues={medicineNames}/>
               <SelectField label='Medicine Type' name='type'
                 allowedValues={medicineTypes}/>
               <NumField name='quantity' decimal={false} />
