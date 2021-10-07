@@ -36,7 +36,7 @@ class MedicineCollection extends BaseCollection {
 
   /**
    * Defines a new Medicine item.
-   * @param lotNumber the number of the item.
+   * @param lotNumber the unique number of the item.
    * @param name the name of the item.
    * @param type the type of the item.
    * @param location the location of the item.
