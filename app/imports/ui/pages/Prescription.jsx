@@ -39,7 +39,7 @@ const Prescription = (ready, doc) => {
     const type = 'Medicine';
     // Get the current employee ID number.
     // edit the this following line.
-    const employee = 12345;
+    const employee = '12345';
     // -------------.
     const collectionName = TransationHistories.getCollectionName();
     const definitionData = { date, transact, type, patientName, prescription, employee };
