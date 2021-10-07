@@ -13,8 +13,7 @@ const formSchema = new SimpleSchema({
   lotNumber: {
     type: Number,
   },
-  name: { type: String,
-    allowedValues: ['Benzonatate Capsules', 'Fluconazole 150 mg', 'Ibuprofen 800 mg tabs', 'Metoprolol 50 mg'] },
+  name: String,
   type: {
     type: String,
     allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
@@ -53,13 +52,13 @@ const AddMedicine = () => {
   return (
     <Grid id={PAGE_IDS.ADD_MEDICINE} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Add Medicine</Header>
+        <Header as="h2" textAlign="center">Add New Medicine</Header>
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <Form.Group widths='equal'>
-              <SelectField label='Medicine Name' name='name'/>
+              <TextField label='Medicine Name' name='name'/>
               <SelectField label='Medicine Type' name='type'/>
               <NumField name='quantity' decimal={false} />
               <SelectField name='location'/>
