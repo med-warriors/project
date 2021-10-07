@@ -18,7 +18,7 @@
   ],
 
   "defaultSupplySource": [
-    { "name": "Aloha", "location": "aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" },
+    { "name": "Aloha", "location": "Aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" },
     { "name": "John", "location": "King st", "phoneNumber": 801111222, "email": "John@aloha.com" },
     { "name": "Aaron", "location": "School st", "phoneNumber": 808666111, "email": "Aaron@aloha.com" },
     { "name": "Mahalo", "location": "Mahalo st", "phoneNumber": 808333444, "email": "Mahalo@aloha.com" }
@@ -32,8 +32,8 @@
   ],
 
   "defaultMedicines": [
-    { "lotNumber": "a5", "name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "location": "Case 2", "quantity": "19", "should_have": "15", "expirationDate": "2021-09-13T07:30", "source": "name", "status": ""},
-    { "lotNumber": "a42", "name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Inflammatory", "location": "Case 4", "quantity": "60", "should_have": "60", "expirationDate": "2022-04-17T07:30", "source": "name", "status": ""},
+    { "lotNumber": "a5", "name": "Benzonatate Capsules", "type": "Allergy and Cold Medicines", "location": "Case 2", "quantity": "19", "should_have": "15", "expirationDate": "2021-09-13T07:30", "source": "name", "status": ""},
+    { "lotNumber": "a42", "name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Antiinflammatory", "location": "Case 4", "quantity": "60", "should_have": "60", "expirationDate": "2022-04-17T07:30", "source": "name", "status": ""},
     { "lotNumber": "a70", "name": "Metoprolol 50 mg", "type": "Antihypertensives", "location": "Case 7", "quantity": "115", "should_have": "30", "expirationDate": "2022-04-30T07:30", "source": "name", "status": ""},
     { "lotNumber": "a95", "name": "Fluconazole 150 mg", "type": "Antimicrobials", "location": "Freezer", "quantity": "3", "should_have": "3", "expirationDate": "2021-02-17T07:30", "source": "name", "status": ""}
   ],
