@@ -65,7 +65,7 @@ const AddMedicine = () => {
               <SelectField name='location'/>
             </Form.Group>
             <Form.Group widths='equal'>
-              <AutoField name='lotNumber'/>
+              <TextField name='lotNumber'/>
               <DateField name='expirationDate'/>
               <NumField name='should_have' />
               <TextField name='source' />
