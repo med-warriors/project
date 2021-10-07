@@ -43,8 +43,6 @@ body {
 /* Medicine and Supplies page */
 #med-supply {
   display: inline-block;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
 }
 

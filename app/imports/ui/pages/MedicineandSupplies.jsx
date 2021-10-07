@@ -30,7 +30,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
       // eslint-disable-next-line react/display-name
       {
         menuItem: 'Medicine', render: () => <Tab.Pane>
-          <Grid container columns='equal' id='med-supply' stackable>
+          <Grid id='med-supply' centered stackable columns='equal'>
             <Dropdown placeholder='Choose a type' search selection options={medTypeOptions}/>
             <Input type='search' placeholder='Search by name' icon='search'/>
           </Grid>
