@@ -7,9 +7,10 @@ import CurrentMedicine from '../components/CurrentMedicine';
 import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
+import Search from '../../components/Search';
 
 const medTypeOptions = [
-  { key: 'allergy', value: 'allergy', text: 'Allergy & Cold Medicines' },
+  { key: 'allergy', value: 'allergy', text: 'Allergy and Cold Medicines' },
   { key: 'anal', value: 'anal', text: 'Analgesics/Antiinflammatory' },
   { key: 'antihyp', value: 'antihyp', text: 'Antihypertensives' },
   { key: 'antimic', value: 'antimic', text: 'Antimicrobials' },
@@ -22,6 +23,10 @@ const supplyLocationOptions = [
   { key: 'refrig', value: 'refrig', text: 'Refrigerator' },
 ];
 
+const { search } = window.location;
+const query = new URLSearchParams(search).get('s');
+const filteredMedicines = filterMedicines(Medicines, query);
+
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
 const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((readyM, readyS) ? (
   <Container id={PAGE_IDS.LIST_MEDICINES}>
@@ -32,7 +37,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
         menuItem: 'Medicine', render: () => <Tab.Pane>
           <Grid id='med-supply' centered stackable columns='equal'>
             <Dropdown placeholder='Choose a type' search selection options={medTypeOptions}/>
-            <Input type='search' placeholder='Search by name' icon='search'/>
+            <Search />
           </Grid>
           <Table>
             <Table.Header>
@@ -48,7 +53,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {medicines.map((medicine) => <CurrentMedicine key={medicine._id} medicine={medicine}/>)}
+              {filteredMedicines.map((medicine) => <CurrentMedicine key={medicine._id} medicine={medicine}/>)}
             </Table.Body>
           </Table>
         </Tab.Pane>
