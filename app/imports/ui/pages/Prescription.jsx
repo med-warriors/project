@@ -70,9 +70,8 @@ const Prescription = (ready, doc) => {
   let fRef = null;
   // On submit, update the Medicines the data if success insert the transaction data.
   const handleSubmit = (data) => {
-    if (submitMed(data)) {
-      submitTran(data, fRef);
-    }
+    submitMed(data);
+    submitTran(data, fRef);
   };
 
   return (ready) ? (
@@ -81,7 +80,7 @@ const Prescription = (ready, doc) => {
         <Header as="h2" textAlign="center">Prescription</Header>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => handleSubmit(data)}>
+        }} schema={bridge} onSubmit={data => handleSubmit(data)} model={doc}>
           <Segment>
             <SelectField name='medicine'/>
             <TextField name='patientName'/>
