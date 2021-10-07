@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Table, Header, Loader, Tab, Input, Dropdown, Grid } from 'semantic-ui-react';
+import SelectSearch from 'react-select-search';
+import { Container, Table, Header, Loader, Tab } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Medicines } from '../../api/medicine/MedicineCollection';
@@ -8,18 +9,18 @@ import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
 
-const medTypeOptions = [
-  { key: 'allergy', value: 'allergy', text: 'Allergy & Cold Medicines' },
-  { key: 'anal', value: 'anal', text: 'Analgesics/Antiinflammatory' },
-  { key: 'antihyp', value: 'antihyp', text: 'Antihypertensives' },
-  { key: 'antimic', value: 'antimic', text: 'Antimicrobials' },
+const medicineTypes = [
+  { name: 'Allergy & Cold Medicines', value: 'Allergy & Cold Medicines' },
+  { name: 'Analgesics/Inflammatory', value: 'Analgesics/Inflammatory' },
+  { name: 'Antihypertensives', value: 'Antihypertensives' },
+  { name: 'Antimicrobials', value: 'Antimicrobials' },
 ];
 
-const supplyLocationOptions = [
-  { key: 'cabinet2', value: 'cabinet2', text: 'Cabinet 2' },
-  { key: 'case4', value: 'case4', text: 'Case 4' },
-  { key: 'closet', value: 'closet', text: 'Refrig Closet' },
-  { key: 'refrig', value: 'refrig', text: 'Refrigerator' },
+const supplyLocation = [
+  { name: 'Cabinet 2', value: 'Cabinet 2' },
+  { name: 'Case 4', value: 'Case 4' },
+  { name: 'Refrigerator', value: 'Refrigerator' },
+  { name: 'Refrig Closet', value: 'Refrig Closet' },
 ];
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
@@ -30,10 +31,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
       // eslint-disable-next-line react/display-name
       {
         menuItem: 'Medicine', render: () => <Tab.Pane>
-          <Grid id='med-supply' centered stackable columns='equal'>
-            <Dropdown placeholder='Choose a type' search selection options={medTypeOptions}/>
-            <Input type='search' placeholder='Search by name' icon='search'/>
-          </Grid>
+          <SelectSearch options={medicineTypes} value="Allergy & Cold Medicines" placeholder="Choose your type" />
           <Table>
             <Table.Header>
               <Table.Row>
@@ -55,11 +53,8 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
       },
       // eslint-disable-next-line react/display-name
       {
-        menuItem: ' Supplies', render: () => <Tab.Pane>
-          <Grid container columns='equal' id='med-supply' stackable>
-            <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions}/>
-            <Input type=' search' placeholder=' Search by name' icon=' search'/>
-          </Grid>
+        menuItem: 'Supplies', render: () => <Tab.Pane>
+          <SelectSearch options={supplyLocation} value="Cabinet 2" placeholder="Choose your location" fluid />
           <Table>
             <Table.Header>
               <Table.Row>
