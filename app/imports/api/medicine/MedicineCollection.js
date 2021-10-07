@@ -6,8 +6,7 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const lotSpace = [1, 2, 3];
-export const medType = ['Allergy and Cold Medicine', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
+export const medType = ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
   'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'];
 
 export const medicinePublications = {
@@ -18,16 +17,16 @@ export const medicinePublications = {
 class MedicineCollection extends BaseCollection {
   constructor() {
     super('Medicines', new SimpleSchema({
-      lotNumber: {
-        type: Number,
-        allowedValues: lotSpace,
-      },
+      lotNumber: String,
       name: String,
       type: {
         type: String,
         allowedValues: medType,
       },
-      location: String,
+      location: {
+        type: String,
+        allowedValues: ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit']
+      },
       quantity: Number,
       should_have: Number,
       expirationDate: Date,
@@ -106,7 +105,7 @@ class MedicineCollection extends BaseCollection {
 
   /**
    * A stricter form of remove that throws an error if the document or docID could not be found in this collection.
-   * @param { String | Object } name A document or docID in this collection.
+   * @param { String | Object } lotNumber A document or docID in this collection.
    * @returns true
    */
   removeIt(lotNumber) {

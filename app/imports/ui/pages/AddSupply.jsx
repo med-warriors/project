@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -11,7 +11,10 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   name: String,
-  location: String,
+  location: {
+    type: String,
+    allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4']
+  },
   quantity: Number,
 });
 
@@ -28,7 +31,7 @@ const AddSupply = () => {
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        swal('Success', 'Item added successfully', 'success');
+        swal('Success', 'Supply added successfully', 'success');
         formRef.reset();
       });
   };
@@ -45,7 +48,7 @@ const AddSupply = () => {
           <Segment>
             <TextField name='name' />
             <NumField name='quantity' decimal={false} />
-            <TextField name='location' />
+            <SelectField name='location' />
             <SubmitField value='Submit' />
             <ErrorsField />
           </Segment>
