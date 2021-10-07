@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Header, Loader, Tab, Input, Dropdown, Grid } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Tab, Input, Dropdown, Grid, Button, Select } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Medicines } from '../../api/medicine/MedicineCollection';
@@ -22,6 +22,21 @@ const supplyLocationOptions = [
   { key: 'refrig', value: 'refrig', text: 'Refrigerator' },
 ];
 
+const searchOptions = [
+  { key: 'lotNumber', text: 'Lot Number', value: 'lotNumber' },
+  { key: 'name', text: 'Name', value: 'name' },
+  { key: 'location', text: 'Location', value: 'location' },
+  { key: 'quantity', text: 'Quantity', value: 'quantity' },
+  { key: 'expirationDate', text: 'Exp Date', value: 'expirationDate' },
+  { key: 'source', text: 'Source', value: 'source' },
+];
+
+const searchOptions2 = [
+  { key: 'name', text: 'Name', value: 'name' },
+  { key: 'quantity', text: 'Quantity', value: 'quantity' },
+  { key: 'source', text: 'Source', value: 'source' },
+];
+
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
 const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((readyM, readyS) ? (
   <Container id={PAGE_IDS.LIST_MEDICINES}>
@@ -32,7 +47,11 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
         menuItem: 'Medicine', render: () => <Tab.Pane>
           <Grid id='med-supply' centered stackable columns='equal'>
             <Dropdown placeholder='Choose a type' search selection options={medTypeOptions}/>
-            <Input type='search' placeholder='Search by name' icon='search'/>
+            <Input type='text' placeholder='Search...' action>
+              <input />
+              <Select id="medicineSelect" compact options={searchOptions} defaultValue='lotNumber'/>
+              <Button type='submit'>Search</Button>
+            </Input>
           </Grid>
           <Table>
             <Table.Header>
@@ -58,7 +77,11 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
         menuItem: 'Supplies', render: () => <Tab.Pane>
           <Grid id='med-supply' centered stackable columns='equal'>
             <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions}/>
-            <Input type=' search' placeholder=' Search by name' icon=' search'/>
+            <Input type='text' placeholder='Search...' action>
+              <input />
+              <Select id="supplySelect" compact options={searchOptions2} defaultValue='name'/>
+              <Button type='submit'>Search</Button>
+            </Input>
           </Grid>
           <Table>
             <Table.Header>
