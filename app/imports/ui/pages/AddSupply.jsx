@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Form, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -10,11 +10,17 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  name: String,
+  name: {
+    type: String,
+    allowedValues: ['Benzonatate Capsules', 'Fluconazole 150 mg', 'Ibuprofen 800 mg tabs', 'Metoprolol 50 mg'] },
+  type: {
+    type: String,
+    allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol',
+      'Dermatologic Preparations', 'Diabetes', 'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation',
+      'Vitamins and Supplements'] },
   location: {
     type: String,
-    allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4']
-  },
+    allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4'] },
   quantity: Number,
 });
 
@@ -41,15 +47,18 @@ const AddSupply = () => {
   return (
     <Grid id={PAGE_IDS.ADD_SUPPLY} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Add Supply</Header>
+        <Header as="h2" textAlign="center">Add Supplies</Header>
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
-            <TextField name='name' />
-            <NumField name='quantity' decimal={false} />
-            <SelectField name='location' />
-            <SubmitField value='Submit' />
+            <Form.Group widths='equal'>
+              <SelectField name='name' />
+              <SelectField name='type' />
+              <NumField name='quantity' decimal={false} />
+              <SelectField name='location' />
+            </Form.Group>
+            <SubmitField value='Submit'/>
             <ErrorsField />
           </Segment>
         </AutoForm>

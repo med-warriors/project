@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, DateField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
+import { Form, Grid, Segment, Header } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, AutoField, NumField, DateField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -13,7 +13,8 @@ const formSchema = new SimpleSchema({
   lotNumber: {
     type: Number,
   },
-  name: String,
+  name: { type: String,
+    allowedValues: ['Benzonatate Capsules', 'Fluconazole 150 mg', 'Ibuprofen 800 mg tabs', 'Metoprolol 50 mg'] },
   type: {
     type: String,
     allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
@@ -21,7 +22,7 @@ const formSchema = new SimpleSchema({
   },
   location: {
     type: String,
-    allowedValues: ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit']
+    allowedValues: ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'],
   },
   quantity: Number,
   should_have: Number,
@@ -57,14 +58,18 @@ const AddMedicine = () => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
-            <TextField name='name' />
-            <SelectField name='type' />
-            <NumField name='quantity' decimal={false} />
-            <SelectField name='location' />
-            <TextField name='lotNumber' />
-            <DateField name='expirationDate' />
-            <NumField name='should_have' />
-            <TextField name='source' />
+            <Form.Group widths='equal'>
+              <SelectField label='Medicine Name' name='name'/>
+              <SelectField label='Medicine Type' name='type'/>
+              <NumField name='quantity' decimal={false} />
+              <SelectField name='location'/>
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <AutoField name='lotNumber'/>
+              <DateField name='expirationDate'/>
+              <NumField name='should_have' />
+              <TextField name='source' />
+            </Form.Group>
             <SubmitField value='Submit' />
             <ErrorsField />
           </Segment>
