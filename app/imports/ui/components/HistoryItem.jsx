@@ -23,7 +23,7 @@ HistoryItem.propTypes = {
     type: PropTypes.string,
     patientName: PropTypes.string,
     prescription: PropTypes.string,
-    employee: PropTypes.number,
+    employee: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

@@ -27,7 +27,7 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Prescription = (ready, doc) => {
+const Prescription = (ready, doc, currentUser) => {
 
   // On submit, insert the data to transaction history.
   const submitTran = (data, formRef) => {
@@ -38,8 +38,8 @@ const Prescription = (ready, doc) => {
     const transact = 'Out';
     const type = 'Medicine';
     // Get the current employee ID number.
-    // edit the this following line.
-    const employee = 12345;
+    // Todo: edit the this following line.
+    const employee = currentUser;
     // -------------.
     const collectionName = TransationHistories.getCollectionName();
     const definitionData = { date, transact, type, patientName, prescription, employee };
@@ -78,6 +78,7 @@ const Prescription = (ready, doc) => {
     <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
       <Grid.Column>
         <Header as="h2" textAlign="center">Prescription</Header>
+        {currentUser}
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => handleSubmit(data)} model={doc}>
@@ -97,6 +98,7 @@ const Prescription = (ready, doc) => {
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
 Prescription.propTypes = {
+  currentUser: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -106,7 +108,12 @@ export default withTracker(() => {
   const subscription = Medicines.subscribeMedicine();
   // Determine if the subscription is ready
   const ready = subscription.ready();
+  // Get the User document.
+  // Todo: edit the following line to get user Id.
+  const currentUser = '';
+  // ---------------.
   return {
+    currentUser,
     ready,
   };
 })(Prescription);
