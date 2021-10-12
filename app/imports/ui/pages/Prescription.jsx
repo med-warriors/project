@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { Grid, Segment, Header, Loader, Form } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -20,7 +20,7 @@ const formSchema = new SimpleSchema({
   },
   patientName: String,
   quantity: Number,
-  detail: String,
+  notes: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -83,10 +83,12 @@ const Prescription = (ready, doc, currentUser) => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => handleSubmit(data)} model={doc}>
           <Segment>
-            <SelectField name='medicine'/>
-            <TextField name='patientName'/>
-            <NumField name='quantity' decimal={false} />
-            <TextField name='detail'/>
+            <Form.Group widths='equal'>
+              <TextField name='patientName'/>
+              <SelectField name='medicine'/>
+              <NumField name='quantity' decimal={false} />
+            </Form.Group>
+            <LongTextField name='notes'/>
             <SubmitField value='Submit'/>
             <ErrorsField />
           </Segment>
