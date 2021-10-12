@@ -55,24 +55,22 @@ const Prescription = (ready, doc, currentUser) => {
   // On submit, edit Medicines the data.
   const submitMed = (data) => {
     const { outQuantity } = data;
-    // find the selected Medicines
-    const { _id, lotNumber, name, type, location, oldQuantity, should_have, expirationDate, source } = [];
-    const quantity = oldQuantity - outQuantity;
+  const submitMed = (data, fRef) => {
+    const { _id, quantity } = data;
     const collectionName = Medicines.getCollectionName();
-    const updateData = { id: _id, lotNumber, name, type, location, quantity, should_have, expirationDate, source };
+    const updateData = { id: _id, quantity };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
-      .then(() => swal('Success', 'Item updated successfully', 'success'));
+      .then(() => {
+        swal('Success', 'Item updated successfully', 'success');
+        submitTran(data, fRef);
+        fRef.reset();
+      });
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-  // On submit, update the Medicines the data if success insert the transaction data.
-  const handleSubmit = (data) => {
-    submitMed(data);
-    submitTran(data, fRef);
-  };
 
   return (ready) ? (
     <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
@@ -81,7 +79,7 @@ const Prescription = (ready, doc, currentUser) => {
         {currentUser}
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => handleSubmit(data)} model={doc}>
+        }} schema={bridge} onSubmit={data => submitMed(data, fRef)} model={doc}>
           <Segment>
             <Form.Group widths='equal'>
               <TextField name='patientName'/>
