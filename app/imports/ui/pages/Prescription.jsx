@@ -33,9 +33,7 @@ const Prescription = (ready, doc, currentUser) => {
     const transact = 'Out';
     const type = 'Medicine';
     // Get the current employee ID number.
-    // Todo: edit the this following line.
     const employee = currentUser;
-    // -------------.
     const collectionName = TransationHistories.getCollectionName();
     const definitionData = { date, transact, type, patientID, prescription, employee };
     // add prescription as new transaction.
@@ -48,6 +46,7 @@ const Prescription = (ready, doc, currentUser) => {
   };
 
   // On submit, edit Medicines the data.
+  // Todo: subtract the output quantity of storage.
   const submitMed = (data, fRef) => {
     const { _id, quantity } = data;
     const collectionName = Medicines.getCollectionName();
@@ -71,11 +70,14 @@ const Prescription = (ready, doc, currentUser) => {
         <Header as="h2" textAlign="center">Prescription</Header>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => submitMed(data, fRef)} model={doc}>
+        }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Grid.Row>
               <Search/>
-               list of Medicine; for choose to output
+              {/*
+               // Todo: Show the Searched output.
+               // onClick: select the Medicine as output prescription.
+               */}
             </Grid.Row>
             <Segment>
               <Form.Group widths='equal'>
@@ -106,7 +108,7 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the User document.
-  // Todo: edit the following line to get user Id.
+  // Todo: edit the following line to get user employee ID.
   const currentUser = '';
   // ---------------.
   return {
