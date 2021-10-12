@@ -16,7 +16,7 @@ class TransationHistoriesCollection {
       date: Date,
       transact: String,
       type: String,
-      patientName: String,
+      patientID: String,
       prescription: String,
       employee: String,
     }, { tracker: Tracker });
