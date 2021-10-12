@@ -53,8 +53,6 @@ const Prescription = (ready, doc, currentUser) => {
   };
 
   // On submit, edit Medicines the data.
-  const submitMed = (data) => {
-    const { outQuantity } = data;
   const submitMed = (data, fRef) => {
     const { _id, quantity } = data;
     const collectionName = Medicines.getCollectionName();
