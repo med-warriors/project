@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Segment, Header, Loader, Form, Search } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
+import { Grid, Segment, Header, Loader, Form, Search, Text } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField, DateField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -13,6 +13,12 @@ import { Medicines } from '../../api/medicine/MedicineCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
+  lotNumber: String,
+  name: String,
+  type: String,
+  location: String,
+  quantity: Number,
+  expirationDate: Date,
   patientID: String,
   prescriptionQuantity: Number,
   notes: String,
@@ -74,12 +80,25 @@ const Prescription = (ready, doc, currentUser) => {
           <Grid.Row>
             <Grid.Row>
               <Search/>
-              {/*
+              <Segment>
+                {/*
                // Todo: Show the Searched output.
                // onClick: select the Medicine as output prescription.
                */}
+                <Header as="h5" textAlign="center">Medicine Information</Header>
+                <Form.Group widths='equal'>
+                  <TextField name='lotNumber'/>
+                  <TextField label='Medicine Name' name='name'/>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                  <TextField name='location'/>
+                  <NumField name='quantity' decimal={false} />
+                  <DateField name='expirationDate'/>
+                </Form.Group>
+              </Segment>
             </Grid.Row>
             <Segment>
+              <Header as="h5" textAlign="center">Patient Prescription</Header>
               <Form.Group widths='equal'>
                 <TextField name='patientID'/>
                 <NumField name='prescriptionQuantity' decimal={false} />
