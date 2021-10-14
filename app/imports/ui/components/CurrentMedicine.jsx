@@ -21,7 +21,6 @@ const CurrentMedicine = ({ medicine }) => (
     <Table.Cell style={{ color: getColor(medicine.quantity) }}>{medicine.quantity}</Table.Cell>
     <Table.Cell>{medicine.expirationDate.toDateString()}</Table.Cell>
     <Table.Cell>{medicine.source}</Table.Cell>
-    <Table.Cell>{medicine.status}</Table.Cell>
     <Table.Cell>
       <Link className={COMPONENT_IDS.LIST_MEDICINE_EDIT} to={`/edit/${medicine._id}`}>Update</Link>
     </Table.Cell>
@@ -38,7 +37,6 @@ CurrentMedicine.propTypes = {
     quantity: PropTypes.number,
     expirationDate: PropTypes.instanceOf(Date),
     source: PropTypes.string,
-    status: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
