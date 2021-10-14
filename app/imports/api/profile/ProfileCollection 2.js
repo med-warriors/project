@@ -6,39 +6,40 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const supplyPublications = {
-  supply: 'Supply',
-  supplyAdmin: 'SupplyAdmin',
+export const stuffConditions = ['excellent', 'good', 'fair', 'poor'];
+export const stuffPublications = {
+  stuff: 'Stuff',
+  stuffAdmin: 'StuffAdmin',
 };
 
-class SupplyCollection extends BaseCollection {
+class StuffCollection extends BaseCollection {
   constructor() {
-    super('Supplies', new SimpleSchema({
+    super('Stuffs', new SimpleSchema({
       name: String,
-      location: {
-        type: String,
-        allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4']
-      },
       quantity: Number,
-      source: String,
-      status: String,
+      owner: String,
+      condition: {
+        type: String,
+        allowedValues: stuffConditions,
+        defaultValue: 'good',
+      },
     }));
   }
 
   /**
-   * Defines a new Supply item.
+   * Defines a new Stuff item.
    * @param name the name of the item.
-   * @param location the location of the item.
    * @param quantity how many.
+   * @param owner the owner of the item.
+   * @param condition the condition of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity, source, status }) {
+  define({ name, quantity, owner, condition }) {
     const docID = this._collection.insert({
       name,
-      location,
       quantity,
-      source,
-      status,
+      owner,
+      condition,
     });
     return docID;
   }
@@ -47,26 +48,20 @@ class SupplyCollection extends BaseCollection {
    * Updates the given document.
    * @param docID the id of the document to update.
    * @param name the new name (optional).
-   * @param location the new location (optional).
    * @param quantity the new quantity (optional).
+   * @param condition the new condition (optional).
    */
-  update(docID, { name, location, quantity, source, status }) {
+  update(docID, { name, quantity, condition }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
-    }
-    if (location) {
-      updateData.location = location;
     }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
     }
-    if (source) {
-      updateData.source = source;
-    }
-    if (status) {
-      updateData.status = status;
+    if (condition) {
+      updateData.condition = condition;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -89,19 +84,19 @@ class SupplyCollection extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      // get the SupplyCollection instance.
+      // get the StuffCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(supplyPublications.supply, function publish() {
+      Meteor.publish(stuffPublications.stuff, function publish() {
         if (this.userId) {
-          // const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find();
+          const username = Meteor.users.findOne(this.userId).username;
+          return instance._collection.find({ owner: username });
         }
         return this.ready();
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(supplyPublications.supplyAdmin, function publish() {
+      Meteor.publish(stuffPublications.stuffAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -113,9 +108,9 @@ class SupplyCollection extends BaseCollection {
   /**
    * Subscription method for stuff owned by the current user.
    */
-  subscribeSupply() {
+  subscribeStuff() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(supplyPublications.supply);
+      return Meteor.subscribe(stuffPublications.stuff);
     }
     return null;
   }
@@ -124,9 +119,9 @@ class SupplyCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeSupplyAdmin() {
+  subscribeStuffAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(supplyPublications.supplyAdmin);
+      return Meteor.subscribe(stuffPublications.stuffAdmin);
     }
     return null;
   }
@@ -150,14 +145,13 @@ class SupplyCollection extends BaseCollection {
     const doc = this.findDoc(docID);
     const name = doc.name;
     const quantity = doc.quantity;
-    const location = doc.location;
-    const source = doc.source;
-    const status = doc.status;
-    return { name, quantity, location, source, status };
+    const condition = doc.condition;
+    const owner = doc.owner;
+    return { name, quantity, condition, owner };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Supplies = new SupplyCollection();
+export const Stuffs = new StuffCollection();

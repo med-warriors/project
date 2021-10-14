@@ -14,7 +14,10 @@ class SuppliesCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      location: String,
+      location: {
+        type: String,
+        allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4']
+      },
       quantity: Number,
       source: String,
       status: String,

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { Grid, Segment, Header, Loader, Form, Search, Text } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField, DateField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -13,36 +13,35 @@ import { Medicines } from '../../api/medicine/MedicineCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  medicine: {
-    type: String,
-    // set values to the medicines database [ '_id, medicines, quantity' ]
-    allowedValues: ['Benzonatate Capsules', 'Fluconazole 150 mg', 'Ibuprofen 800 mg tabs'],
-  },
-  patientName: String,
+  lotNumber: String,
+  name: String,
+  type: String,
+  location: String,
   quantity: Number,
-  detail: String,
+  expirationDate: Date,
+  patientID: String,
+  prescriptionQuantity: Number,
+  notes: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Prescription = (ready, doc) => {
+const Prescription = (ready, doc, currentUser) => {
 
-  // On submit, insert the data.
+  // On submit, insert the data to transaction history.
   const submitTran = (data, formRef) => {
-    const { patientName, medicine, } = data;
+    const { patientID, medicine } = data;
     // Get the current date, time, and default data.
     const date = new Date();
     const prescription = medicine;
     const transact = 'Out';
     const type = 'Medicine';
     // Get the current employee ID number.
-    // edit the this following line.
-    const employee = 12345;
-    // -------------.
+    const employee = currentUser;
     const collectionName = TransationHistories.getCollectionName();
-    const definitionData = { date, transact, type, patientName, prescription, employee };
+    const definitionData = { date, transact, type, patientID, prescription, employee };
     // add prescription as new transaction.
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -52,24 +51,24 @@ const Prescription = (ready, doc) => {
       });
   };
 
-  // On submit, insert the data.
-  const submitMed = (data) => {
+  // On submit, edit Medicines the data.
+  // Todo: subtract the output quantity of storage.
+  const submitMed = (data, fRef) => {
     const { _id, quantity } = data;
     const collectionName = Medicines.getCollectionName();
     const updateData = { id: _id, quantity };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
-      .then(() => swal('Success', 'Item updated successfully', 'success'));
+      .then(() => {
+        swal('Success', 'Item updated successfully', 'success');
+        submitTran(data, fRef);
+        fRef.reset();
+      });
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-  const handleSubmit = (data) => {
-    if (submitMed(data)) {
-      submitTran(data, fRef);
-    }
-  };
 
   return (ready) ? (
     <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
@@ -77,15 +76,38 @@ const Prescription = (ready, doc) => {
         <Header as="h2" textAlign="center">Prescription</Header>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => handleSubmit(data)} model={doc}>
-          <Segment>
-            <SelectField name='medicine'/>
-            <TextField name='patientName'/>
-            <NumField name='quantity' decimal={false} />
-            <TextField name='detail'/>
-            <SubmitField value='Submit'/>
-            <ErrorsField />
-          </Segment>
+        }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
+          <Grid.Row>
+            <Grid.Row>
+              <Search/>
+              <Segment>
+                {/*
+               // Todo: Show the Searched output.
+               // onClick: select the Medicine as output prescription.
+               */}
+                <Header as="h5" textAlign="center">Medicine Information</Header>
+                <Form.Group widths='equal'>
+                  <TextField name='lotNumber'/>
+                  <TextField label='Medicine Name' name='name'/>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                  <TextField name='location'/>
+                  <NumField name='quantity' decimal={false} />
+                  <DateField name='expirationDate'/>
+                </Form.Group>
+              </Segment>
+            </Grid.Row>
+            <Segment>
+              <Header as="h5" textAlign="center">Patient Prescription</Header>
+              <Form.Group widths='equal'>
+                <TextField name='patientID'/>
+                <NumField name='prescriptionQuantity' decimal={false} />
+              </Form.Group>
+              <LongTextField name='notes'/>
+              <SubmitField value='Submit'/>
+              <ErrorsField />
+            </Segment>
+          </Grid.Row>
         </AutoForm>
       </Grid.Column>
     </Grid>
@@ -94,7 +116,7 @@ const Prescription = (ready, doc) => {
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
 Prescription.propTypes = {
-  medicines: PropTypes.array,
+  currentUser: PropTypes.string,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -104,10 +126,12 @@ export default withTracker(() => {
   const subscription = Medicines.subscribeMedicine();
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the document
-  const medicines = Medicines.find().fetch();
+  // Get the User document.
+  // Todo: edit the following line to get user employee ID.
+  const currentUser = '';
+  // ---------------.
   return {
-    medicines,
+    currentUser,
     ready,
   };
 })(Prescription);

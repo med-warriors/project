@@ -6,6 +6,9 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
+export const medType = ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
+  'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'];
+
 export const medicinePublications = {
   medicine: 'Medicine',
   medicineAdmin: 'MedicineAdmin',
@@ -16,8 +19,14 @@ class MedicineCollection extends BaseCollection {
     super('Medicines', new SimpleSchema({
       lotNumber: String,
       name: String,
-      type: String,
-      location: String,
+      type: {
+        type: String,
+        allowedValues: medType,
+      },
+      location: {
+        type: String,
+        allowedValues: ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit']
+      },
       quantity: Number,
       should_have: Number,
       expirationDate: Date,
@@ -27,7 +36,7 @@ class MedicineCollection extends BaseCollection {
 
   /**
    * Defines a new Medicine item.
-   * @param lotNumber the number of the item.
+   * @param lotNumber the unique number of the item.
    * @param name the name of the item.
    * @param type the type of the item.
    * @param location the location of the item.
@@ -96,7 +105,7 @@ class MedicineCollection extends BaseCollection {
 
   /**
    * A stricter form of remove that throws an error if the document or docID could not be found in this collection.
-   * @param { String | Object } name A document or docID in this collection.
+   * @param { String | Object } lotNumber A document or docID in this collection.
    * @returns true
    */
   removeIt(lotNumber) {
