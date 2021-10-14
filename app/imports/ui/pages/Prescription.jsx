@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Segment, Header, Loader, Form, Search, Text } from 'semantic-ui-react';
+import { Grid, Segment, Header, Loader, Form, Search } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField, DateField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
@@ -28,7 +28,7 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Prescription = (ready, doc, currentUser) => {
+const Prescription = (ready, currentUser) => {
 
   // On submit, insert the data to transaction history.
   const submitTran = (data, formRef) => {
@@ -114,7 +114,7 @@ const Prescription = (ready, doc, currentUser) => {
   ) : <Loader active>Getting data</Loader>;
 };
 
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+// Require the presence of a Prescription document in the props object. Uniforms adds 'model' to the props, which we use.
 Prescription.propTypes = {
   currentUser: PropTypes.string,
   ready: PropTypes.bool.isRequired,
