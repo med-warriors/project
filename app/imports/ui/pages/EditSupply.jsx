@@ -1,11 +1,12 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button, Icon } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import { Supplies } from '../../api/supply/SupplyCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
@@ -19,7 +20,7 @@ const supplyLocation = [
   { label: 'Refrig Closet', value: 'Refrig Closet' },
 ];
 
-/** Renders the Page for editing a single document. */
+/** Renders the Page for editing supply document. */
 const EditSupply = ({ doc, ready }) => {
 
   // On successful submit, insert the data.
@@ -47,6 +48,9 @@ const EditSupply = ({ doc, ready }) => {
             <SubmitField value='Submit' />
             <ErrorsField />
           </Segment>
+          <Button id="edit-prof">
+            <Button.Content visible as={NavLink} activeClassName="active" exact to="/medicine-and-supplies" key='medicine-and-supplies'><Icon name='arrow left' />Back</Button.Content>
+          </Button>
         </AutoForm>
       </Grid.Column>
     </Grid>
