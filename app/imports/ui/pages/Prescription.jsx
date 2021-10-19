@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Segment, Header, Loader, Form, Search } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField, DateField } from 'uniforms-semantic';
+import { Meteor } from 'meteor/meteor';
+import { Grid, Segment, Header, Loader, Form } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField, SelectField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -9,16 +10,14 @@ import SimpleSchema from 'simpl-schema';
 import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import { Medicines } from '../../api/medicine/MedicineCollection';
+import { Medicines, medName } from '../../api/medicine/MedicineCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  lotNumber: String,
-  name: String,
-  type: String,
-  location: String,
-  quantity: Number,
-  expirationDate: Date,
+  name: {
+    type: String,
+    allowedValues: medName },
+  med: Object,
   patientID: String,
   prescriptionQuantity: Number,
   notes: String,
@@ -28,18 +27,18 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Prescription = (ready, currentUser) => {
+const Prescription = (ready, medicines) => {
 
   // On submit, insert the data to transaction history.
   const submitTran = (data, formRef) => {
-    const { patientID, medicine } = data;
+    const { patientID, name } = data;
     // Get the current date, time, and default data.
     const date = new Date();
-    const prescription = medicine;
+    const prescription = name;
     const transact = 'Out';
     const type = 'Medicine';
     // Get the current employee ID number.
-    const employee = currentUser;
+    const employee = Meteor.user() ? Meteor.user().username : '';
     const collectionName = TransationHistories.getCollectionName();
     const definitionData = { date, transact, type, patientID, prescription, employee };
     // add prescription as new transaction.
@@ -79,22 +78,14 @@ const Prescription = (ready, currentUser) => {
         }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Grid.Row>
-              <Search/>
               <Segment>
-                {/*
-               // Todo: Show the Searched output.
-               // onClick: select the Medicine as output prescription.
-               */}
                 <Header as="h5" textAlign="center">Medicine Information</Header>
-                <Form.Group widths='equal'>
-                  <TextField name='lotNumber'/>
-                  <TextField label='Medicine Name' name='name'/>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                  <TextField name='location'/>
-                  <NumField name='quantity' decimal={false} />
-                  <DateField name='expirationDate'/>
-                </Form.Group>
+                <SelectField label='Medicine Name' name='name'/>
+                {/*
+                // Todo: set a list of medicine from the selectField above.
+                // with the onClick setting for select the output medicine.
+                
+                 */}
               </Segment>
             </Grid.Row>
             <Segment>
@@ -116,7 +107,7 @@ const Prescription = (ready, currentUser) => {
 
 // Require the presence of a Prescription document in the props object. Uniforms adds 'model' to the props, which we use.
 Prescription.propTypes = {
-  currentUser: PropTypes.string,
+  medicines: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -126,12 +117,10 @@ export default withTracker(() => {
   const subscription = Medicines.subscribeMedicine();
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the User document.
-  // Todo: edit the following line to get user employee ID.
-  const currentUser = '';
-  // ---------------.
+  // Get the Medicine documents and sort them by name.
+  const medicines = Medicines.find({}, { sort: { name: 1 } }).fetch();
   return {
-    currentUser,
+    medicines,
     ready,
   };
 })(Prescription);
