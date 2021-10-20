@@ -7,12 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
-
-const options = [
-  { label: 'Admin', value: 'ADMIN' },
-  { label: 'Students', value: 'USER' },
-  { label: 'Doctor', value: 'DOCTOR' },
-];
+import { ROLE } from '../../api/role/Role';
 
 const formSchema = new SimpleSchema({
   userEmail: String,
@@ -24,8 +19,7 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-const ChangeRole = () => {
-
+const ChangeRole = (propTypes) => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { doctor, student, admin, userEmail } = data;
@@ -34,21 +28,29 @@ const ChangeRole = () => {
     } else if (doctor === true && student === true) {
       swal('Error', 'Role NOT Updated successfully', 'error');
     }
-    if (this.props.users.find(user => user.email === userEmail)) {
-      const user1 = this.props.users.find(user => user.email === userEmail);
+    const user1 = propTypes.users.find(user => user.username === userEmail);
+    if (user1) {
       if (doctor === true && student === false && admin === false) {
-        Meteor.call('changeRoles', user1._id, 'DOCTOR');
+        Meteor.call('changeRoles', user1._id, ROLE.DOCTOR);
+        swal('Success', 'Role Updated successfully', 'success');
+        formRef.reset();
       } else if (doctor === false && student === true && admin === false) {
-        Meteor.call('changeRoles', user1._id, 'USER');
+        Meteor.call('changeRoles', user1._id, ROLE.USER);
+        swal('Success', 'Role Updated successfully', 'success');
+        formRef.reset();
       } else if (doctor === false && student === false && admin === true) {
-        Meteor.call('changeRoles', user1._id, 'ADMIN');
+        Meteor.call('changeRoles', user1._id, ROLE.ADMIN);
+        swal('Success', 'Role Updated successfully', 'success');
+        formRef.reset();
       } else if (doctor === true && student === false && admin === true) {
-        Meteor.call('changeRoles2', user1._id, 'DOCTOR', 'ADMIN');
+        Meteor.call('changeRoles2', user1._id, ROLE.DOCTOR, ROLE.ADMIN);
+        swal('Success', 'Role Updated successfully', 'success');
+        formRef.reset();
       } else if (doctor === false && student === true && admin === true) {
-        Meteor.call('changeRoles2', user1._id, 'USER', 'ADMIN');
+        Meteor.call('changeRoles2', user1._id, ROLE.USER, ROLE.ADMIN);
+        swal('Success', 'Role Updated successfully', 'success');
+        formRef.reset();
       }
-      swal('Success', 'Role Updated successfully', 'success');
-      formRef.reset();
     } else {
       swal('Error', 'Role NOT Updated successfully', 'error');
     }
