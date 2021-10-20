@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, BoolField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -16,10 +16,9 @@ const options = [
 
 const formSchema = new SimpleSchema({
   userEmail: String,
-  role: {
-    type: String,
-    allowedValues: ['ADMIN', 'USER', 'DOCTOR'],
-  },
+  doctor: Boolean,
+  student: Boolean,
+  admin: Boolean,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -29,10 +28,25 @@ const ChangeRole = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { role, userEmail } = data;
+    const { doctor, student, admin, userEmail } = data;
+    if (doctor === false && student === false && admin === false) {
+      swal('Error', 'Role NOT Updated successfully', 'error');
+    } else if (doctor === true && student === true) {
+      swal('Error', 'Role NOT Updated successfully', 'error');
+    }
     if (this.props.users.find(user => user.email === userEmail)) {
       const user1 = this.props.users.find(user => user.email === userEmail);
-      Meteor.call('changeRoles', user1._id, role);
+      if (doctor === true && student === false && admin === false) {
+        Meteor.call('changeRoles', user1._id, 'DOCTOR');
+      } else if (doctor === false && student === true && admin === false) {
+        Meteor.call('changeRoles', user1._id, 'USER');
+      } else if (doctor === false && student === false && admin === true) {
+        Meteor.call('changeRoles', user1._id, 'ADMIN');
+      } else if (doctor === true && student === false && admin === true) {
+        Meteor.call('changeRoles2', user1._id, 'DOCTOR', 'ADMIN');
+      } else if (doctor === false && student === true && admin === true) {
+        Meteor.call('changeRoles2', user1._id, 'USER', 'ADMIN');
+      }
       swal('Success', 'Role Updated successfully', 'success');
       formRef.reset();
     } else {
@@ -50,7 +64,9 @@ const ChangeRole = () => {
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} >
           <Segment>
             <TextField name='userEmail'/>
-            <SelectField name="role" options={options} />
+            <BoolField name="doctor"/>
+            <BoolField name="student"/>
+            <BoolField name="admin"/>
             <SubmitField value='Submit'/>
             <ErrorsField/>
           </Segment>
