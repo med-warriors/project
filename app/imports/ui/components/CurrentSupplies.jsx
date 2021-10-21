@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Modal, Icon, Container, Header, List } from 'semantic-ui-react';
+import { Table, Button, Modal, Icon, Container, Header, List, Divider } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -49,6 +49,19 @@ const CurrentSupplies = ({ supply }) => {
                     <List.Content>
                       <List.Header>Status :</List.Header>{supply.status}
                     </List.Content>
+                  </List.Item>
+                </List>
+                <Divider section/>
+                <List bulleted >
+                  <Header as='h5'>Notes <Icon name='sticky note'/></Header>
+                  <List.Item floated="left">
+                      Item must be stored in a room temperature environment.
+                  </List.Item>
+                  <List.Item floated="left">
+                      Let Staff know before updating inventory using the form.
+                  </List.Item>
+                  <List.Item floated="left">
+                      Please put extra supplies in bags in the right hand side of the van.
                   </List.Item>
                 </List>
               </Container>

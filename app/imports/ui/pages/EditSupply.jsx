@@ -33,11 +33,11 @@ const EditSupply = ({ doc, ready }) => {
       .then(() => swal('Success', 'Item updated successfully', 'success'));
   };
 
-  // need to add drop down fields for source, status, name. and use quantity to remove not update
+  // need to add drop down fields for source, status, name. and use quantity to remove not update?
   return (ready) ? (
     <Grid id={PAGE_IDS.EDIT_STUFF} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Edit Stuff</Header>
+        <Header as="h2" textAlign="center">Update Supply</Header>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Segment>
             <TextField name='name' />
@@ -57,7 +57,7 @@ const EditSupply = ({ doc, ready }) => {
   ) : <Loader active>Getting data</Loader>;
 };
 
-// Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
+// Require the presence of a Supply document in the props object. Uniforms adds 'model' to the props, which we use.
 EditSupply.propTypes = {
   doc: PropTypes.object,
   ready: PropTypes.bool.isRequired,
