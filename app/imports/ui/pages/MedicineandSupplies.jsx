@@ -27,10 +27,14 @@ const medTypeOptions = [
 ];
 
 const supplyLocationOptions = [
+  { key: 'backcab', value: 'Back Cabinet', text: 'Back Cabinet' },
   { key: 'cabinet2', value: 'Cabinet 2', text: 'Cabinet 2' },
   { key: 'case4', value: 'Case 4', text: 'Case 4' },
   { key: 'closet', value: 'Refrig Closet', text: 'Refrig Closet' },
+  { key: 'drawer6', value: 'Drawer 6', text: 'Drawer 6' },
+  { key: 'drawer9', value: 'Drawer 9', text: 'Drawer 9' },
   { key: 'refrig', value: 'Refrigerator', text: 'Refrigerator' },
+  { key: 'showerclos', value: 'Shower Closet', text: 'Shower Closet' },
 ];
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
