@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Segment, Header, Loader, Form, Search, Text } from 'semantic-ui-react';
+import { Grid, Segment, Header, Loader, Form, Search } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField, DateField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
@@ -79,7 +79,7 @@ const Prescription = (ready, doc, currentUser) => {
         }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Grid.Row>
-              <Search/>
+              <Search placeholder="Search Medicines..."/>
               <Segment>
                 {/*
                // Todo: Show the Searched output.
