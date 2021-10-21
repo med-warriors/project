@@ -25,15 +25,15 @@ const EditSupply = ({ doc, ready }) => {
 
   // On successful submit, insert the data.
   const submit = (data) => {
-    const { name, location, quantity, source, status, _id } = data;
+    const { name, location, quantity, status, _id } = data;
     const collectionName = Supplies.getCollectionName();
-    const updateData = { id: _id, name, location, quantity, source, status };
+    const updateData = { id: _id, name, location, quantity, status };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => swal('Success', 'Item updated successfully', 'success'));
   };
 
-  // need to add drop down fields for source, status, name. and use quantity to remove not update?
+  // need to add drop down fields for status, name. and use quantity to remove not update?
   return (ready) ? (
     <Grid id={PAGE_IDS.EDIT_STUFF} container centered>
       <Grid.Column>
@@ -43,7 +43,6 @@ const EditSupply = ({ doc, ready }) => {
             <TextField name='name' />
             <NumField name='quantity' decimal={false} />
             <SelectField name='location' options={supplyLocation} />
-            <TextField name='source' />
             <TextField name='status' />
             <SubmitField value='Submit' />
             <ErrorsField />
