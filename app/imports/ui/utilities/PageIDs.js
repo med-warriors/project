@@ -5,6 +5,7 @@ export const PAGE_IDS = {
   ADD_SUPPLY: 'add-supply',
   EDIT_STUFF: 'edit-stuff',
   EDIT_SUPPLY: 'edit-supply',
+  EDIT_MEDICINE: 'edit-medicine',
   LANDING: 'landing',
   LIST_STUFF: 'list-stuff',
   LIST_STUFF_ADMIN: 'list-stuff-admin',

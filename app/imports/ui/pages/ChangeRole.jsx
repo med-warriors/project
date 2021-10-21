@@ -1,38 +1,50 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, BoolField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
-
-const options = [
-  { label: 'Admin', value: 'ADMIN' },
-  { label: 'Students', value: 'USER' },
-  { label: 'Doctor', value: 'DOCTOR' },
-];
+import { ROLE } from '../../api/role/Role';
 
 const formSchema = new SimpleSchema({
   userEmail: String,
-  role: {
-    type: String,
-    allowedValues: ['ADMIN', 'USER', 'DOCTOR'],
-  },
+  doctor: { type: Boolean, defaultValue: false },
+  student: { type: Boolean, defaultValue: false },
+  admin: { type: Boolean, defaultValue: false },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-const ChangeRole = () => {
-
+const ChangeRole = (propTypes) => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { role, userEmail } = data;
-    if (this.props.users.find(user => user.email === userEmail)) {
-      const user1 = this.props.users.find(user => user.email === userEmail);
-      Meteor.call('changeRoles', user1._id, role);
+    const { doctor, student, admin, userEmail } = data;
+    const user1 = propTypes.users.find(user => user.username === userEmail);
+    if ((doctor === false && student === false && admin === false)) {
+      swal('Error', 'Did not pick a role to change to', 'error');
+    } else if (doctor === true && student === true) {
+      swal('Error', 'Student cannot be doctor', 'error');
+    } else if (user1) {
+      if (doctor === true && student === false && admin === false) {
+        Meteor.call('changeRoles', user1._id, ROLE.DOCTOR);
+        formRef.reset();
+      } else if (doctor === false && student === true && admin === false) {
+        Meteor.call('changeRoles', user1._id, ROLE.USER);
+        formRef.reset();
+      } else if (doctor === false && student === false && admin === true) {
+        Meteor.call('changeRoles', user1._id, ROLE.ADMIN);
+        formRef.reset();
+      } else if (doctor === true && student === false && admin === true) {
+        Meteor.call('changeRoles2', user1._id, ROLE.DOCTOR, ROLE.ADMIN);
+        formRef.reset();
+      } else if (doctor === false && student === true && admin === true) {
+        Meteor.call('changeRoles2', user1._id, ROLE.USER, ROLE.ADMIN);
+        formRef.reset();
+      }
       swal('Success', 'Role Updated successfully', 'success');
       formRef.reset();
     } else {
@@ -50,7 +62,9 @@ const ChangeRole = () => {
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} >
           <Segment>
             <TextField name='userEmail'/>
-            <SelectField name="role" options={options} />
+            <BoolField name="doctor"/>
+            <BoolField name="student"/>
+            <BoolField name="admin"/>
             <SubmitField value='Submit'/>
             <ErrorsField/>
           </Segment>

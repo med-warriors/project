@@ -27,6 +27,7 @@ import AddSupply from '../pages/AddSupply';
 import { ROLE } from '../../api/role/Role';
 import EditProfile from '../pages/EditProfile';
 import EditSupply from '../pages/EditSupply';
+import EditMedicine from '../pages/EditMedicine';
 import ChangeRole from '../pages/ChangeRole';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -45,7 +46,7 @@ class App extends React.Component {
             <ProtectedRoute path="/viewuser" component={UserProfile}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/edit/:_id" component={EditSupply}/>
+            <ProtectedRoute path="/edit-sup/:_id" component={EditSupply}/>
             <ProtectedRoute path="/medicine-and-supplies" component={MedicineAndSupplies}/>
             <ProtectedRoute path="/add-medicine" component={AddMedicine}/>
             <ProtectedRoute path="/add-supply" component={AddSupply}/>
@@ -54,6 +55,7 @@ class App extends React.Component {
             <ProtectedRoute path="/supply-source" component={SupplySource}/>
             <ProtectedRoute path="/history-report" component={HistoryReport}/>
             <ProtectedRoute path="/low-inventory" component={LowInventoryReport}/>
+            <ProtectedRoute path="/edit-med/:_id" component={EditMedicine}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
             <AdminProtectedRoute path="/ChangeRole/" component={ChangeRole}/>
