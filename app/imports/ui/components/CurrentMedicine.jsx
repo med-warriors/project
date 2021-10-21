@@ -15,7 +15,7 @@ const getColor = (quantity) => {
 const CurrentMedicine = ({ medicine }) => {
 
   let highlight;
-  if (medicine.quantity < 5) {
+  if (medicine.quantity < 10) {
     highlight = 'error';
   } else
   if (medicine.quantity < 20) {
