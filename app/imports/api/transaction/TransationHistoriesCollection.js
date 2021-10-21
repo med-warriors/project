@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
@@ -17,9 +16,9 @@ class TransationHistoriesCollection extends BaseCollection {
       date: Date,
       transact: String,
       type: String,
-      patientName: String,
+      patientID: String,
       prescription: String,
-      employee: Number,
+      employee: String,
     }));
   }
 
@@ -28,16 +27,16 @@ class TransationHistoriesCollection extends BaseCollection {
    * @param Date the date of transact.
    * @param transact the transact of the item.
    * @param type the type of item.
-   * @param patientName the Patient Name of transact.
+   * @param patientID the Patient Name of transact.
    * @param employee the employee of transact.
    * @return {String} the docID of the new document.
    */
-  define({ date, transact, type, patientName, prescription, employee }) {
+  define({ date, transact, type, patientID, prescription, employee }) {
     const docID = this._collection.insert({
       date,
       transact,
       type,
-      patientName,
+      patientID,
       prescription,
       employee,
     });
@@ -49,11 +48,11 @@ class TransationHistoriesCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param transact the new transact (optional).
    * @param type the new type (optional).
-   * @param patientName the new condition (optional).
+   * @param patientID the new condition (optional).
    * @param prescription the new prescription (optional).
    * @param employee the new employee (optional).
    */
-  update(docID, { transact, type, patientName, prescription, employee }) {
+  update(docID, { transact, type, patientID, prescription, employee }) {
     const updateData = {};
     if (transact) {
       updateData.transact = transact;
@@ -61,14 +60,13 @@ class TransationHistoriesCollection extends BaseCollection {
     if (type) {
       updateData.type = type;
     }
-    if (patientName) {
-      updateData.patientName = patientName;
+    if (patientID) {
+      updateData.patientID = patientID;
     }
     if (prescription) {
       updateData.prescription = prescription;
     }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(employee)) {
+    if (employee) {
       updateData.employee = employee;
     }
     this._collection.update(docID, { $set: updateData });
@@ -88,7 +86,7 @@ class TransationHistoriesCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the stuff associated to an owner.
+   * It publishes the entire collection for admin and just the history associated to an owner.
    */
   publish() {
     if (Meteor.isServer) {
@@ -146,17 +144,17 @@ class TransationHistoriesCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), condition: *, quantity: *, name}}
+   * @return {{owner: (*|number), transact: *, type: *, patientID: *, prescription: *, employee: *, date}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const date = doc.date;
     const transact = doc.transact;
     const type = doc.type;
-    const patientName = doc.patientName;
+    const patientID = doc.patientID;
     const prescription = doc.prescription;
     const employee = doc.employee;
-    return { date, transact, type, patientName, prescription, employee };
+    return { date, transact, type, patientID, prescription, employee };
   }
 }
 

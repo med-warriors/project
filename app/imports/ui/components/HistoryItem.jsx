@@ -9,7 +9,7 @@ const HistoryItem = ({ transationHistory }) => (
     <Table.Cell>{transationHistory.date.toDateString()}</Table.Cell>
     <Table.Cell>{transationHistory.transact}</Table.Cell>
     <Table.Cell>{transationHistory.type}</Table.Cell>
-    <Table.Cell>{transationHistory.patientName}</Table.Cell>
+    <Table.Cell>{transationHistory.patientID}</Table.Cell>
     <Table.Cell>{transationHistory.prescription}</Table.Cell>
     <Table.Cell>{transationHistory.employee}</Table.Cell>
   </Table.Row>
@@ -21,9 +21,9 @@ HistoryItem.propTypes = {
     date: PropTypes.instanceOf(Date),
     transact: PropTypes.string,
     type: PropTypes.string,
-    patientName: PropTypes.string,
+    patientID: PropTypes.string,
     prescription: PropTypes.string,
-    employee: PropTypes.number,
+    employee: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

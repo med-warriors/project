@@ -7,6 +7,7 @@ import { UserProfiles } from '../user/UserProfileCollection';
 import { Medicines } from '../medicine/MedicineCollection';
 import { Supplies } from '../supply/SupplyCollection';
 import { TransationHistories } from '../transaction/TransationHistoriesCollection';
+import { DoctorProfiles } from '../user/DoctorProfileCollection';
 
 class MATRPClass {
   collections;
@@ -19,6 +20,7 @@ class MATRPClass {
     // list of all the MATRP collections
     this.collections = [
       AdminProfiles,
+      DoctorProfiles,
       Stuffs,
       SupplySourecs,
       Patients,
@@ -33,6 +35,7 @@ class MATRPClass {
     this.collectionLoadSequence = [
       AdminProfiles,
       UserProfiles,
+      DoctorProfiles,
       SupplySourecs,
       Stuffs,
       Patients,
