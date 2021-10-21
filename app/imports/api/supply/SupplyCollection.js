@@ -15,7 +15,10 @@ class SupplyCollection extends BaseCollection {
   constructor() {
     super('Supplies', new SimpleSchema({
       name: String,
-      location: String,
+      location: {
+        type: String,
+        allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4']
+      },
       quantity: Number,
     }));
   }

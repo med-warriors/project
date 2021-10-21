@@ -107,7 +107,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
           menuItem: 'Supplies', render: () => <Tab.Pane>
             <Grid id='med-supply' centered stackable columns='equal'>
               <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions} onChange={handleChange}/>
-              <Input type=' search' placeholder=' Search by name' icon=' search' onChange={handleSearch}/>
+              <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
             </Grid>
             <Table>
               <Table.Header>
