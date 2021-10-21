@@ -10,17 +10,27 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
 
 const medTypeOptions = [
-  { key: 'allergy', value: 'allergy', text: 'Allergy and Cold Medicines' },
-  { key: 'anal', value: 'anal', text: 'Analgesics/Antiinflammatory' },
-  { key: 'antihyp', value: 'antihyp', text: 'Antihypertensives' },
-  { key: 'antimic', value: 'antimic', text: 'Antimicrobials' },
+  { key: 'allergy', value: 'Allergy and Cold Medicines', text: 'Allergy and Cold Medicines' },
+  { key: 'anal', value: 'Analgesics/Antiinflammatory', text: 'Analgesics/Antiinflammatory' },
+  { key: 'antihyp', value: 'Antihypertensives', text: 'Antihypertensives' },
+  { key: 'antimic', value: 'Antimicrobials', text: 'Antimicrobials' },
+  { key: 'cardiac', value: 'Cardiac/Cholesterol', text: 'Cardiac/Cholesterol' },
+  { key: 'derm', value: 'Dermatologic Preparations', text: 'Dermatologic Preparations' },
+  { key: 'diabetes', value: 'Diabetes', text: 'Diabetes' },
+  { key: 'eareye', value: 'Ear and Eye Preparations', text: 'Ear and Eye Preparations' },
+  { key: 'emerg', value: 'Emergency Kit', text: 'Emergency Kit' },
+  { key: 'gi', value: 'GI Meds', text: 'GI Meds' },
+  { key: 'gyn', value: 'GYN Meds', text: 'GYN Meds' },
+  { key: 'pulm', value: 'Pulmonary', text: 'Pulmonary' },
+  { key: 'smoke', value: 'Smoking Cessation', text: 'Smoking Cessation' },
+  { key: 'vita', value: 'Vitamins and Supplements', text: 'Vitamins and Supplements' },
 ];
 
 const supplyLocationOptions = [
-  { key: 'cabinet2', value: 'cabinet2', text: 'Cabinet 2' },
-  { key: 'case4', value: 'case4', text: 'Case 4' },
-  { key: 'closet', value: 'closet', text: 'Refrig Closet' },
-  { key: 'refrig', value: 'refrig', text: 'Refrigerator' },
+  { key: 'cabinet2', value: 'Cabinet 2', text: 'Cabinet 2' },
+  { key: 'case4', value: 'Case 4', text: 'Case 4' },
+  { key: 'closet', value: 'Refrig Closet', text: 'Refrig Closet' },
+  { key: 'refrig', value: 'Refrigerator', text: 'Refrigerator' },
 ];
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
@@ -47,20 +57,16 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
     return searchItem.name.toLowerCase().startsWith(lowerCase);
   };
   if (readyM) {
-    if (filter === 'quantity') {
-      medSort = _.sortBy(medicines, filter).reverse();
-    } else {
-      medSort = _.sortBy(medicines, filter);
+    if (filter) {
+      medSort = medicines.filter(medicine => medicine.type === filter);
     }
     if (search) {
       medSort = _.sortBy(medicines.filter(medicine => medSearch(medicine)), 'name');
     }
   }
   if (readyS) {
-    if (filter === 'quantity') {
-      supplySort = _.sortBy(supplies, filter).reverse();
-    } else {
-      supplySort = _.sortBy(supplies, filter);
+    if (filter) {
+      supplySort = supplies.filter(supply => supply.location === filter);
     }
     if (search) {
       supplySort = _.sortBy(supplies.filter(supply => supplySearch(supply)), 'name');
@@ -74,7 +80,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
         {
           menuItem: 'Medicine', render: () => <Tab.Pane>
             <Grid id='med-supply' centered stackable columns='equal'>
-              <Dropdown placeholder='Choose a type' search selection options={medTypeOptions} onClick ={handleChange}/>
+              <Dropdown placeholder='Choose a type' search selection options={medTypeOptions} onClick={handleChange}/>
               <Input type=' search' placeholder=' Search by name' icon='search' onChange={handleSearch}/>
             </Grid>
             <Table>
