@@ -63,13 +63,14 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
                 <Table.HeaderCell>Exp Date</Table.HeaderCell>
                 <Table.HeaderCell>Source</Table.HeaderCell>
+                <Table.HeaderCell>Update</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               {medicines.map((medicine) => <CurrentMedicine key={medicine._id} medicine={medicine}/>)}
             </Table.Body>
           </Table>
-        </Tab.Pane>
+        </Tab.Pane>,
       },
       // eslint-disable-next-line react/display-name
       {
@@ -89,13 +90,14 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
                 <Table.HeaderCell>Location</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
                 <Table.HeaderCell>Source</Table.HeaderCell>
+                <Table.HeaderCell>Update</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               {supplies.map((supply) => <CurrentSupplies key={supply._id} supply={supply}/>)}
             </Table.Body>
           </Table>
-        </Tab.Pane>
+        </Tab.Pane>,
       }]}/>
   </Container>
 ) : <Loader active>Getting data</Loader>);

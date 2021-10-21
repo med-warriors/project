@@ -12,8 +12,16 @@ const getColor = (quantity) => {
 };
 
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
-const CurrentMedicine = ({ medicine }) => (
-  <Table.Row>
+const CurrentMedicine = ({ medicine }) => {
+
+  let highlight;
+  if (medicine.quantity < 5) {
+    highlight = 'error';
+  } else
+  if (medicine.quantity < 20) {
+    highlight = 'warning';
+  }
+  return (<Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
     <Table.Cell>{medicine.lotNumber}</Table.Cell>
     <Table.Cell>{medicine.name}</Table.Cell>
     <Table.Cell>{medicine.type}</Table.Cell>
@@ -24,8 +32,8 @@ const CurrentMedicine = ({ medicine }) => (
     <Table.Cell>
       <Link className={COMPONENT_IDS.LIST_MEDICINE_EDIT} to={`/edit/${medicine._id}`}>Update</Link>
     </Table.Cell>
-  </Table.Row>
-);
+  </Table.Row>);
+};
 
 // Require a document to be passed to this component.
 CurrentMedicine.propTypes = {
