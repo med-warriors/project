@@ -23,26 +23,26 @@ class SupplySource extends React.Component {
     const { search } = this.state;
     const filteredSites = this.props.supplySources.filter(site => (site.name.toLowerCase().indexOf(search.toLowerCase()) !== -1));
     return (
-        <Container>
-          <Header as="h2" textAlign="center">Supply Source</Header>
-          <Input icon="search" placeholder="Search by names..." onChange={this.onchange}/>
-          <Table celled structured>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
-                <Table.HeaderCell colSpan='3'>Contact Information</Table.HeaderCell>
-              </Table.Row>
-              <Table.Row>
-                <Table.HeaderCell>Location</Table.HeaderCell>
-                <Table.HeaderCell>Phone Number</Table.HeaderCell>
-                <Table.HeaderCell>Email</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {filteredSites.map((supplySource) => <SupplySourceItem key={supplySource._id} supplysource={ supplySource }/>)}
-            </Table.Body>
-          </Table>
-        </Container>
+      <Container>
+        <Header as="h2" textAlign="center">Supply Source</Header>
+        <Input icon="search" placeholder="Search by names..." onChange={this.onchange}/>
+        <Table celled structured>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
+              <Table.HeaderCell colSpan='3'>Contact Information</Table.HeaderCell>
+            </Table.Row>
+            <Table.Row>
+              <Table.HeaderCell>Location</Table.HeaderCell>
+              <Table.HeaderCell>Phone Number</Table.HeaderCell>
+              <Table.HeaderCell>Email</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {filteredSites.map((supplySource) => <SupplySourceItem key={supplySource._id} supplysource={ supplySource }/>)}
+          </Table.Body>
+        </Table>
+      </Container>
     );
   }
 }
