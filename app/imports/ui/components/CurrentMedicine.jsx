@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Divider, Header, Icon, List, Modal, Table } from 'semantic-ui-react';
+import { Button, Container, Header, Icon, Label, List, Modal, Segment, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -35,31 +35,42 @@ const CurrentMedicine = ({ medicine }) => {
         onClose={() => setFirstOpen(false)}
         onOpen={() => setFirstOpen(true)}
         open={firstOpen}
+        style={{ background: 'red' }}
         trigger={<Button size='mini' icon='minus' color='grey'/>}
         id={COMPONENT_IDS.LIST_MEDICINE_EDIT}>
-        <Modal.Header>Supply Information</Modal.Header>
+        <Modal.Header>Medicine Information</Modal.Header>
         <Modal.Content image>
-          <div className='image'></div>
-          <Modal.Description>
-            <Header as='h3'>{medicine.name}</Header>
-            <Container id={PAGE_IDS.LIST_MEDICINES}>
+          <Container fluid id={PAGE_IDS.LIST_MEDICINES}>
+            <Segment><Modal.Description>
               <List size='small'>
                 <List.Item>
-                  <List.Header>Name :</List.Header>{medicine.name}
+                  <Label id="information-label"> Name </Label>
                 </List.Item>
                 <List.Item>
-                  <List.Header>Location :</List.Header>{medicine.location}
+                  {medicine.name}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Quantity :</List.Header>{medicine.quantity}
+                  <Label id="information-label"> Location </Label>
                 </List.Item>
                 <List.Item>
-                  <List.Content>
-                    <List.Header>Source :</List.Header>{medicine.source}
-                  </List.Content>
+                  {medicine.location}
+                </List.Item>
+                <List.Item>
+                  <Label id="information-label"> Quantity </Label>
+                </List.Item>
+                <List.Item>
+                  {medicine.quantity}
+                </List.Item>
+                <List.Item>
+                  <Label id="information-label"> Source </Label>
+                </List.Item>
+                <List.Item>
+                  {medicine.source}
                 </List.Item>
               </List>
-              <Divider section/>
+            </Modal.Description></Segment>
+
+            <Segment><Modal.Description>
               <List bulleted>
                 <Header as='h5'>Notes <Icon name='sticky note'/></Header>
                 <List.Item floated="left">
@@ -72,12 +83,13 @@ const CurrentMedicine = ({ medicine }) => {
                   Please put extra supplies in bags in the right hand side of the van.
                 </List.Item>
               </List>
-            </Container>
-          </Modal.Description>
+
+            </Modal.Description></Segment>
+          </Container>
         </Modal.Content>
         <Modal.Actions>
-          <Button>
-            <Link className={COMPONENT_IDS.LIST_MEDICINE_EDIT} to={`/edit-med/${medicine._id}`}>Update<Icon name='exclamation'/></Link>
+          <Button id="update-button">
+            <Link className={COMPONENT_IDS.LIST_MEDICINE_EDIT} to={`/edit-med/${medicine._id}`}>Update<Icon name='angle right'/></Link>
           </Button>
         </Modal.Actions>
       </Modal>

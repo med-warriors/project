@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Modal, Icon, Container, Header, List, Divider } from 'semantic-ui-react';
+import { Table, Button, Modal, Icon, Container, Header, List, Segment, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -30,27 +30,37 @@ const CurrentSupplies = ({ supply }) => {
           id={COMPONENT_IDS.LIST_SUPPLY_EDIT}>
           <Modal.Header>Supply Information</Modal.Header>
           <Modal.Content image>
-            <div className='image'></div>
-            <Modal.Description>
-              <Header as='h3'>{supply.name}</Header>
-              <Container id={PAGE_IDS.LIST_MEDICINES}>
+            <Container id={PAGE_IDS.LIST_MEDICINES}>
+              <Segment><Modal.Description>
                 <List size='small'>
                   <List.Item>
-                    <List.Header>Name :</List.Header>{supply.name}
+                    <Label id="information-label"> Name </Label>
                   </List.Item>
                   <List.Item>
-                    <List.Header>Location :</List.Header>{supply.location}
+                    {supply.name}
                   </List.Item>
                   <List.Item>
-                    <List.Header>Quantity :</List.Header>{supply.quantity}
+                    <Label id="information-label"> Location </Label>
                   </List.Item>
                   <List.Item>
-                    <List.Content>
-                      <List.Header>Source :</List.Header>{supply.source}
-                    </List.Content>
+                    {supply.location}
+                  </List.Item>
+                  <List.Item>
+                    <Label id="information-label"> Quantity </Label>
+                  </List.Item>
+                  <List.Item>
+                    {supply.quantity}
+                  </List.Item>
+                  <List.Item>
+                    <Label id="information-label"> Source </Label>
+                  </List.Item>
+                  <List.Item>
+                    {supply.source}
                   </List.Item>
                 </List>
-                <Divider section/>
+              </Modal.Description></Segment>
+
+              <Segment><Modal.Description>
                 <List bulleted>
                   <Header as='h5'>Notes <Icon name='sticky note'/></Header>
                   <List.Item floated="left">
@@ -63,12 +73,12 @@ const CurrentSupplies = ({ supply }) => {
                   Please put extra supplies in bags in the right hand side of the van.
                   </List.Item>
                 </List>
-              </Container>
-            </Modal.Description>
+              </Modal.Description></Segment>
+            </Container>
           </Modal.Content>
           <Modal.Actions>
-            <Button>
-              <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/edit-sup/${supply._id}`}>Update<Icon name='exclamation'/></Link>
+            <Button id="update-button">
+              <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/edit-sup/${supply._id}`}>Update<Icon name='angle right'/></Link>
             </Button>
           </Modal.Actions>
         </Modal>
