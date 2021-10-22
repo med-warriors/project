@@ -10,6 +10,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
 
 const medTypeOptions = [
+  { key: '', value: '', text: 'Choose a type' },
   { key: 'allergy', value: 'Allergy and Cold Medicines', text: 'Allergy and Cold Medicines' },
   { key: 'anal', value: 'Analgesics/Antiinflammatory', text: 'Analgesics/Antiinflammatory' },
   { key: 'antihyp', value: 'Antihypertensives', text: 'Antihypertensives' },
@@ -27,6 +28,7 @@ const medTypeOptions = [
 ];
 
 const supplyLocationOptions = [
+  { key: '', value: '', text: 'Pick a location' },
   { key: 'backcab', value: 'Back Cabinet', text: 'Back Cabinet' },
   { key: 'cabinet2', value: 'Cabinet 2', text: 'Cabinet 2' },
   { key: 'case4', value: 'Case 4', text: 'Case 4' },
@@ -97,7 +99,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
                   <Table.HeaderCell>Exp Date</Table.HeaderCell>
                   <Table.HeaderCell>Source</Table.HeaderCell>
-                  <Table.HeaderCell>Status</Table.HeaderCell>
+                  <Table.HeaderCell>Update</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -120,7 +122,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                   <Table.HeaderCell>Location</Table.HeaderCell>
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
                   <Table.HeaderCell>Source</Table.HeaderCell>
-                  <Table.HeaderCell>Status</Table.HeaderCell>
+                  <Table.HeaderCell>Update</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
