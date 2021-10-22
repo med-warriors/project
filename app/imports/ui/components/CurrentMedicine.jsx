@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -12,11 +12,10 @@ const CurrentMedicine = ({ medicine }) => (
     <Table.Cell>{medicine.type}</Table.Cell>
     <Table.Cell>{medicine.location}</Table.Cell>
     <Table.Cell>{medicine.quantity}</Table.Cell>
-    <Table.Cell>{medicine.expirationDate.toDateString()}</Table.Cell>
-    <Table.Cell>{medicine.source}</Table.Cell>
-    <Table.Cell>{medicine.status}</Table.Cell>
     <Table.Cell>
-      <Link className={COMPONENT_IDS.LIST_MEDICINE_EDIT} to={`/edit/${medicine._id}`}>Update</Link>
+      <Button color='red' content='ADD'/>
+      <Button color='green' content= 'UPDATE'/>
+      <Button color='blue' icon= 'angle down' />
     </Table.Cell>
   </Table.Row>
 );
@@ -29,9 +28,6 @@ CurrentMedicine.propTypes = {
     type: PropTypes.string,
     location: PropTypes.string,
     quantity: PropTypes.number,
-    expirationDate: PropTypes.instanceOf(Date),
-    source: PropTypes.string,
-    status: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

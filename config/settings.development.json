@@ -39,6 +39,11 @@
     { "lotNumber": "a95", "name": "Fluconazole 150 mg", "type": "Antimicrobials", "location": "Freezer", "quantity": "3", "should_have": "3", "expirationDate": "2021-02-17T07:30", "source": "name", "status": ""}
   ],
 
+  "defaultMedSource": [
+    { "name": "Benzonatate Capsules", "amount": "20", "expDate": "2021-11-15T7:30", "sourceName": "Johnny Doe Indusrty",
+      "aquired": "Donated", "purchasedAmount": "0", "inputDate": "2021-10-21T7:30"},
+  ],
+
   "defaultSupplies": [
     { "name": "Theraband - Green", "location": "Cabinet 2", "quantity": "1" , "source": "name", "status": ""},
     { "name": "Rapid Strep Strips", "location": "Refrig Closet", "quantity": "25" , "source": "name", "status": ""},

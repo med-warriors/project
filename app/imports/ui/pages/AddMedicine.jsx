@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, AutoField, NumField, DateField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, DateField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -12,6 +12,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 const formSchema = new SimpleSchema({
   lotNumber: {
     type: Number,
+    allowedValues: ['a1', 'b2', 'c3'],
   },
   name: String,
   type: {
@@ -64,7 +65,7 @@ const AddMedicine = () => {
               <SelectField name='location'/>
             </Form.Group>
             <Form.Group widths='equal'>
-              <TextField name='lotNumber'/>
+              <SelectField name='lotNumber'/>
               <DateField name='expirationDate'/>
               <NumField name='should_have' />
               <TextField name='source' />
