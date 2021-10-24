@@ -1,8 +1,7 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { withRouter } from 'react-router-dom';
 
 // Changes text to red, yellow, or green, based on quantity of medicine
 const getColor = (quantity) => {
@@ -13,7 +12,6 @@ const getColor = (quantity) => {
 
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
 const CurrentMedicine = ({ medicine }) => {
-
   let highlight;
   if (medicine.quantity < 10) {
     highlight = 'error';
@@ -22,15 +20,15 @@ const CurrentMedicine = ({ medicine }) => {
     highlight = 'warning';
   }
   return (<Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
-    <Table.Cell>{medicine.lotNumber}</Table.Cell>
     <Table.Cell>{medicine.name}</Table.Cell>
     <Table.Cell>{medicine.type}</Table.Cell>
+    <Table.Cell>{medicine.lotNumber}</Table.Cell>
     <Table.Cell>{medicine.location}</Table.Cell>
     <Table.Cell style={{ color: getColor(medicine.quantity) }}>{medicine.quantity}</Table.Cell>
-    <Table.Cell>{medicine.expirationDate.toDateString()}</Table.Cell>
-    <Table.Cell>{medicine.source}</Table.Cell>
     <Table.Cell>
-      <Link className={COMPONENT_IDS.LIST_MEDICINE_EDIT} to={`/edit/${medicine._id}`}>Update</Link>
+      <Button color='red' content='ADD'/>
+      <Button color='green' content= 'UPDATE'/>
+      <Button color='blue' icon= 'angle down' />
     </Table.Cell>
   </Table.Row>);
 };
@@ -43,8 +41,6 @@ CurrentMedicine.propTypes = {
     type: PropTypes.string,
     location: PropTypes.string,
     quantity: PropTypes.number,
-    expirationDate: PropTypes.instanceOf(Date),
-    source: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

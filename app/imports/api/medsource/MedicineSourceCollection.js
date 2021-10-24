@@ -1,78 +1,57 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
+// import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
-
-// All medical type of medicine given in excel document.
-// CONSIDER: creating a collection to insert more types
-export const medType = ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
-  'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'];
-
-// All location of medicine given in excel document.
-// CONSIDER: creating a collection to insert more location spot
-export const locSpot = ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'];
-
-// Sample lot numbers made by developer
-// CONSIDER: creating a collection to insert more lot numbers
-export const lotValue = ['a1', 'b2', 'c3'];
 
 export const medicinePublications = {
   medicine: 'Medicine',
   medicineAdmin: 'MedicineAdmin',
 };
 
-class MedicineCollection extends BaseCollection {
+const aquiredType = ['Donated', 'Purchased'];
+
+class MedicineSourceCollection extends BaseCollection {
   constructor() {
     super('Medicines', new SimpleSchema({
-      lotNumber: {
+      medName: String,
+      quantityReceived: Number,
+      sourceName: String,
+      aquired: {
         type: String,
-        allowedValues: lotValue,
+        allowedValues: aquiredType,
       },
-      name: String,
-      type: {
+      purchasedAmount: {
         type: String,
-        allowedValues: medType,
+        // allowedValues is defaulted to type: String ('Donated')
+        // if aquired = 'Donated', else type: Number
+        allowedValues: aquiredType,
+        default: 'Donated',
       },
-      location: {
-        type: String,
-        allowedValues: locSpot,
-      },
-      quantity: Number,
-      should_have: Number,
-      note: String,
+      inputDate: Date,
+      expDate: Date,
     }));
   }
 
   /**
-   * Defines a new Medicine item.
-   * @param lotNumber the unique number of the item.
-   * @param name the name of the item.
-   * @param type the type of the item.
-   * @param location the location of the item.
-   * @param quantity how many.
-   * @param should_have how many should have.
-   * @param expirationdate the date of expiration.
-   * @param source the source of itm from.
+   * Defines a new Medicine Origin object.
+   * @param medName the name of the item.
+   * @param quantityReceived how many.
+   * @param sourceName the name of the source
+   * @param aquired how the item was aquired. (Donated or Purchased?)
+   * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, name, type, location, quantity, should_have, expirationDate, source, note }) {
+  define({ medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate }) {
     const docID = this._collection.insert({
-      lotNumber,
-      name,
-      type,
-      location,
-      quantity,
-      should_have,
-      expirationDate,
-      source,
-      note,
+      medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate,
     });
     return docID;
   }
 
+  // Might reuse
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
@@ -84,8 +63,7 @@ class MedicineCollection extends BaseCollection {
    * @param should_have the new quantity (optional).
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
-   */
-  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate, source, note }) {
+  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate, source }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;
@@ -113,11 +91,9 @@ class MedicineCollection extends BaseCollection {
     if (source) {
       updateData.source = source;
     }
-    if (note) {
-      updateData.note = note;
-    }
     this._collection.update(docID, { $set: updateData });
   }
+*/
 
   /**
    * A stricter form of remove that throws an error if the document or docID could not be found in this collection.
@@ -137,7 +113,7 @@ class MedicineCollection extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      // get the MedicineCollection instance.
+      // get the MedicineSourceCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(medicinePublications.medicine, function publish() {
@@ -193,22 +169,21 @@ class MedicineCollection extends BaseCollection {
    * @param docID
    * @return {{owner: (*|number), condition: *, quantity: *, name}}
    */
+
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const lotNumber = doc.lotNumber;
-    const name = doc.name;
-    const type = doc.type;
-    const location = doc.location;
-    const quantity = doc.quantity;
-    const should_have = doc.should_have;
-    const expirationDate = doc.expirationDate;
-    const source = doc.source;
-    const note = doc.note;
-    return { lotNumber, name, type, location, quantity, should_have, expirationDate, source, note };
+    const medName = doc.medName;
+    const quantityReceived = doc.quantityReceived;
+    const sourceName = doc.sourceName;
+    const aquired = doc.aquired;
+    const purchasedAmount = doc.purchasedAmount;
+    const inputDate = doc.inputDate;
+    const expDate = doc.expDate;
+    return { medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Medicines = new MedicineCollection();
+export const MedicineSource = new MedicineSourceCollection();

@@ -97,9 +97,6 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                   <Table.HeaderCell>Type</Table.HeaderCell>
                   <Table.HeaderCell>Location</Table.HeaderCell>
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>Exp Date</Table.HeaderCell>
-                  <Table.HeaderCell>Source</Table.HeaderCell>
-                  <Table.HeaderCell>Update</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -121,7 +118,6 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>Location</Table.HeaderCell>
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>Source</Table.HeaderCell>
                   <Table.HeaderCell>Update</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
