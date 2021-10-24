@@ -3,6 +3,13 @@ import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
+// Changes text to red, yellow, or green, based on quantity of medicine
+const getColor = (quantity) => {
+  if (quantity >= 50) return '#25A18E';
+  if (quantity > 10 && quantity < 50) return '#A18E25';
+  return '#A12358';
+};
+
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
 const CurrentMedicine = ({ medicine }) => (
   <Table.Row>
@@ -10,7 +17,7 @@ const CurrentMedicine = ({ medicine }) => (
     <Table.Cell>{medicine.type}</Table.Cell>
     <Table.Cell>{medicine.lotNumber}</Table.Cell>
     <Table.Cell>{medicine.location}</Table.Cell>
-    <Table.Cell>{medicine.quantity}</Table.Cell>
+    <Table.Cell style={{ color: getColor(medicine.quantity) }}>{medicine.quantity}</Table.Cell>
     <Table.Cell>
       <Button color='red' content='ADD'/>
       <Button color='green' content= 'UPDATE'/>
