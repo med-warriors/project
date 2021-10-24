@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -10,10 +10,10 @@ const CurrentSupplies = ({ supply }) => (
     <Table.Cell>{supply.name}</Table.Cell>
     <Table.Cell>{supply.location}</Table.Cell>
     <Table.Cell>{supply.quantity}</Table.Cell>
-    <Table.Cell>{supply.source}</Table.Cell>
-    <Table.Cell>{supply.status}</Table.Cell>
     <Table.Cell>
-      <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/edit/${supply._id}`}>Update</Link>
+      <Button>
+        <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/edit/${supply._id}`}>Update</Link>
+      </Button>
     </Table.Cell>
   </Table.Row>
 );
@@ -24,8 +24,6 @@ CurrentSupplies.propTypes = {
     name: PropTypes.string,
     quantity: PropTypes.number,
     location: PropTypes.string,
-    source: PropTypes.string,
-    status: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

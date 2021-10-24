@@ -56,9 +56,9 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
           <Table>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Lot #</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Type</Table.HeaderCell>
+                <Table.HeaderCell>Lot #</Table.HeaderCell>
                 <Table.HeaderCell>Location</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
                 <Table.HeaderCell>Misc</Table.HeaderCell>
@@ -87,15 +87,14 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => ((ready
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Location</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Source</Table.HeaderCell>
-                <Table.HeaderCell>Status</Table.HeaderCell>
+                <Table.HeaderCell>Misc.</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               {supplies.map((supply) => <CurrentSupplies key={supply._id} supply={supply}/>)}
             </Table.Body>
           </Table>
-        </Tab.Pane>
+        </Tab.Pane>,
       }]}/>
   </Container>
 ) : <Loader active>Getting data</Loader>);

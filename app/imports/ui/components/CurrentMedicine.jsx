@@ -1,15 +1,14 @@
 import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
 const CurrentMedicine = ({ medicine }) => (
   <Table.Row>
-    <Table.Cell>{medicine.lotNumber}</Table.Cell>
     <Table.Cell>{medicine.name}</Table.Cell>
     <Table.Cell>{medicine.type}</Table.Cell>
+    <Table.Cell>{medicine.lotNumber}</Table.Cell>
     <Table.Cell>{medicine.location}</Table.Cell>
     <Table.Cell>{medicine.quantity}</Table.Cell>
     <Table.Cell>
