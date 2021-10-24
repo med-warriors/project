@@ -10,9 +10,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  name: {
-    type: String,
-    allowedValues: ['Benzonatate Capsules', 'Fluconazole 150 mg', 'Ibuprofen 800 mg tabs', 'Metoprolol 50 mg'] },
+  name: String,
   type: {
     type: String,
     allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol',
@@ -53,7 +51,7 @@ const AddSupply = () => {
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <Form.Group widths='equal'>
-              <SelectField name='name' />
+              <TextField name='name' />
               <SelectField name='type' />
               <NumField name='quantity' decimal={false} />
               <SelectField name='location' />

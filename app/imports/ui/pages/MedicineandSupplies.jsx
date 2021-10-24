@@ -97,7 +97,6 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                   <Table.HeaderCell>Type</Table.HeaderCell>
                   <Table.HeaderCell>Location</Table.HeaderCell>
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>Misc</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
