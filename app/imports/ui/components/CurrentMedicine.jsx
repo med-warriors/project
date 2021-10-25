@@ -11,7 +11,7 @@ const getColor = (quantity) => {
   return '#A12358';
 };
 
-/** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
+/** Renders a single row in the List Medicine table. See pages/MedicineAndSupplies.jsx. */
 const CurrentMedicine = ({ medicine }) => {
 
   let highlight;

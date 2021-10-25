@@ -14,7 +14,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import MedicineAndSupplies from '../pages/MedicineandSupplies';
+import MedicineAndSupplies from '../pages/MedicineAndSupplies';
 import PatientInformation from '../pages/PatientInformation';
 import UserProfile from '../pages/UserProfile';
 import LowInventoryReport from '../pages/LowInventoryReport';

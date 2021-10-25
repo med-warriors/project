@@ -11,7 +11,7 @@ const getColor = (quantity) => {
   return '#A12358';
 };
 
-/** Renders a single row in the List Supplies table. See pages/MedicineandSupplies.jsx. */
+/** Renders a single row in the List Supplies table. See pages/MedicineAndSupplies.jsx. */
 const CurrentSupplies = ({ supply }) => (
   <Table.Row>
     <Table.Cell>{supply.name}</Table.Cell>
