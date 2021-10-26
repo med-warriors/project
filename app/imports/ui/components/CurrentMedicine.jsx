@@ -25,6 +25,7 @@ const CurrentMedicine = ({ medicine, ready, inventory }) => {
   if (medicine.should_have === totalQuantity) {
     highlight = 'warning';
   }
+  
 
   return ((ready) ? (<Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
     <Table.Cell>{medicine.name}</Table.Cell>
