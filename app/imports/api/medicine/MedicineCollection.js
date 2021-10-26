@@ -11,36 +11,24 @@ import { ROLE } from '../role/Role';
 export const medType = ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
   'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'];
 
-// All location of medicine given in excel document.
-// CONSIDER: creating a collection to insert more location spot
-export const locSpot = ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'];
-
-// Sample lot numbers made by developer
-// CONSIDER: creating a collection to insert more lot numbers
-export const lotValue = ['a1', 'b2', 'c3'];
+export const medForm = ['tablets', 'solution', 'bottle'];
 
 export const medicinePublications = {
   medicine: 'Medicine',
   medicineAdmin: 'MedicineAdmin',
 };
 
+/**
+ * The MedicineCollection is the Medicine default values declare by admin.
+ */
 class MedicineCollection extends BaseCollection {
   constructor() {
     super('Medicines', new SimpleSchema({
-      lotNumber: {
-        type: String,
-        allowedValues: lotValue,
-      },
       name: String,
       type: {
         type: String,
         allowedValues: medType,
       },
-      location: {
-        type: String,
-        allowedValues: locSpot,
-      },
-      quantity: Number,
       should_have: Number,
       note: String,
     }));
@@ -48,26 +36,16 @@ class MedicineCollection extends BaseCollection {
 
   /**
    * Defines a new Medicine item.
-   * @param lotNumber the unique number of the item.
    * @param name the name of the item.
    * @param type the type of the item.
-   * @param location the location of the item.
-   * @param quantity how many.
-   * @param should_have how many should have.
-   * @param expirationdate the date of expiration.
-   * @param source the source of itm from.
+   * @param note the detail information.
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, name, type, location, quantity, should_have, expirationDate, source, note }) {
+  define({ name, type, should_have, note }) {
     const docID = this._collection.insert({
-      lotNumber,
       name,
       type,
-      location,
-      quantity,
       should_have,
-      expirationDate,
-      source,
       note,
     });
     return docID;
@@ -76,42 +54,22 @@ class MedicineCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
-   * @param lotNumber the new name (optional).
    * @param name the new name (optional).
    * @param type the new quantity (optional).
-   * @param location the new condition (optional).
-   * @param quantity the new name (optional).
    * @param should_have the new quantity (optional).
-   * @param expirationDate the new condition (optional).
-   * @param source the new name (optional).
+   * @param note the new name (optional).
    */
-  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate, source, note }) {
+  update(docID, { name, type, should_have, note }) {
     const updateData = {};
-    if (lotNumber) {
-      updateData.lotNumber = lotNumber;
-    }
     if (name) {
       updateData.name = name;
     }
     if (type) {
       updateData.type = type;
     }
-    if (location) {
-      updateData.location = location;
-    }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(quantity)) {
-      updateData.quantity = quantity;
-    }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(should_have)) {
       updateData.should_have = should_have;
-    }
-    if (_.data(expirationDate)) {
-      updateData.expirationDate = expirationDate;
-    }
-    if (source) {
-      updateData.source = source;
     }
     if (note) {
       updateData.note = note;
@@ -121,11 +79,11 @@ class MedicineCollection extends BaseCollection {
 
   /**
    * A stricter form of remove that throws an error if the document or docID could not be found in this collection.
-   * @param { String | Object } lotNumber A document or docID in this collection.
+   * @param { String | Object } name A document or docID in this collection.
    * @returns true
    */
-  removeIt(lotNumber) {
-    const doc = this.findDoc(lotNumber);
+  removeIt(name) {
+    const doc = this.findDoc(name);
     check(doc, Object);
     this._collection.remove(doc._id);
     return true;
@@ -195,16 +153,11 @@ class MedicineCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const lotNumber = doc.lotNumber;
     const name = doc.name;
     const type = doc.type;
-    const location = doc.location;
-    const quantity = doc.quantity;
     const should_have = doc.should_have;
-    const expirationDate = doc.expirationDate;
-    const source = doc.source;
     const note = doc.note;
-    return { lotNumber, name, type, location, quantity, should_have, expirationDate, source, note };
+    return { name, type, should_have, note };
   }
 }
 

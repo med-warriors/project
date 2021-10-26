@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import { SimpleSchema } from 'simpl-schema/dist/SimpleSchema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, DateField, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
-import { MedicineSource } from '../../api/medsource/MedicineSourceCollection';
+import { MedicineSource } from '../../api/medInventory/MedicineSourceCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
 

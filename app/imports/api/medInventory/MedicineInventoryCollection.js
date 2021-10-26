@@ -11,42 +11,52 @@ export const medicinePublications = {
   medicineAdmin: 'MedicineAdmin',
 };
 
-const aquiredType = ['Donated', 'Purchased'];
+// All location of medicine given in excel document.
+// CONSIDER: creating a collection to insert more location spot
+export const locSpot = ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'];
 
-class MedicineSourceCollection extends BaseCollection {
+export const acquiredType = ['Donated', 'Purchased'];
+
+export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
+
+class MedicineInventoryCollection extends BaseCollection {
   constructor() {
     super('Medicines', new SimpleSchema({
+      lotNumber: String,
       medName: String,
-      quantityReceived: Number,
+      quantity: Number,
       sourceName: String,
-      aquired: {
+      acquire: {
         type: String,
-        allowedValues: aquiredType,
+        allowedValues: acquiredType,
       },
-      purchasedAmount: {
+      cost: Number,
+      location: {
         type: String,
-        // allowedValues is defaulted to type: String ('Donated')
-        // if aquired = 'Donated', else type: Number
-        allowedValues: aquiredType,
-        default: 'Donated',
+        allowedValues: locSpot,
       },
-      inputDate: Date,
+      receiveDate: Date,
       expDate: Date,
+      state: {
+        type: String,
+        allowedValues: medState,
+        defaultValue: 'Reserves',
+      },
     }));
   }
 
   /**
    * Defines a new Medicine Origin object.
    * @param medName the name of the item.
-   * @param quantityReceived how many.
+   * @param quantity how many.
    * @param sourceName the name of the source
    * @param aquired how the item was aquired. (Donated or Purchased?)
    * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate }) {
+  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
     const docID = this._collection.insert({
-      medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate,
+      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
     });
     return docID;
   }
@@ -172,18 +182,20 @@ class MedicineSourceCollection extends BaseCollection {
 
   dumpOne(docID) {
     const doc = this.findDoc(docID);
+    const lotNumber = doc.lotNumber;
     const medName = doc.medName;
-    const quantityReceived = doc.quantityReceived;
+    const quantity = doc.quantity;
     const sourceName = doc.sourceName;
-    const aquired = doc.aquired;
-    const purchasedAmount = doc.purchasedAmount;
-    const inputDate = doc.inputDate;
+    const acquire = doc.acquire;
+    const cost = doc.cost;
+    const receiveDate = doc.receiveDate;
     const expDate = doc.expDate;
-    return { medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate };
+    const state = doc.state;
+    return { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const MedicineSource = new MedicineSourceCollection();
+export const MedicineInventory = new MedicineInventoryCollection();
