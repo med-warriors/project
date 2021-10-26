@@ -5,6 +5,7 @@ import { Patients } from '../patients/PatientCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 import { Medicines } from '../medicine/MedicineCollection';
+import { MedicineSource } from '../medsource/MedicineSourceCollection';
 import { Supplies } from '../supply/SupplyCollection';
 import { TransationHistories } from '../transaction/TransationHistoriesCollection';
 import { DoctorProfiles } from '../user/DoctorProfileCollection';
@@ -26,6 +27,7 @@ class MATRPClass {
       Patients,
       UserProfiles,
       Medicines,
+      MedicineSource,
       Supplies,
       TransationHistories,
     ];
@@ -40,6 +42,7 @@ class MATRPClass {
       Stuffs,
       Patients,
       Medicines,
+      MedicineSource,
       Supplies,
       TransationHistories,
     ];

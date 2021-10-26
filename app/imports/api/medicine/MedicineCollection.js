@@ -41,7 +41,7 @@ class MedicineCollection extends BaseCollection {
         allowedValues: locSpot,
       },
       quantity: Number,
-      should_have: Number,
+      shouldHave: Number,
       note: String,
     }));
   }
@@ -53,19 +53,19 @@ class MedicineCollection extends BaseCollection {
    * @param type the type of the item.
    * @param location the location of the item.
    * @param quantity how many.
-   * @param should_have how many should have.
+   * @param shouldHave how many should have.
    * @param expirationdate the date of expiration.
    * @param source the source of itm from.
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, name, type, location, quantity, should_have, expirationDate, source, note }) {
+  define({ lotNumber, name, type, location, quantity, shouldHave, expirationDate, source, note }) {
     const docID = this._collection.insert({
       lotNumber,
       name,
       type,
       location,
       quantity,
-      should_have,
+      shouldHave,
       expirationDate,
       source,
       note,
@@ -81,11 +81,11 @@ class MedicineCollection extends BaseCollection {
    * @param type the new quantity (optional).
    * @param location the new condition (optional).
    * @param quantity the new name (optional).
-   * @param should_have the new quantity (optional).
+   * @param shouldHave the new quantity (optional).
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
    */
-  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate, source, note }) {
+  update(docID, { lotNumber, name, type, location, quantity, shouldHave, expirationDate, source, note }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;
@@ -104,8 +104,8 @@ class MedicineCollection extends BaseCollection {
       updateData.quantity = quantity;
     }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(should_have)) {
-      updateData.should_have = should_have;
+    if (_.isNumber(shouldHave)) {
+      updateData.shouldHave = shouldHave;
     }
     if (_.data(expirationDate)) {
       updateData.expirationDate = expirationDate;
@@ -200,11 +200,11 @@ class MedicineCollection extends BaseCollection {
     const type = doc.type;
     const location = doc.location;
     const quantity = doc.quantity;
-    const should_have = doc.should_have;
+    const shouldHave = doc.shouldHave;
     const expirationDate = doc.expirationDate;
     const source = doc.source;
     const note = doc.note;
-    return { lotNumber, name, type, location, quantity, should_have, expirationDate, source, note };
+    return { lotNumber, name, type, location, quantity, shouldHave, expirationDate, source, note };
   }
 }
 

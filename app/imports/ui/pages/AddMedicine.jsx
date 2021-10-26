@@ -11,7 +11,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   lotNumber: {
-    type: Number,
+    type: String,
     allowedValues: ['a1', 'b2', 'c3'],
   },
   name: String,
@@ -25,9 +25,8 @@ const formSchema = new SimpleSchema({
     allowedValues: ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'],
   },
   quantity: Number,
-  should_have: Number,
-  expirationDate: Date,
-  source: String,
+  shouldHave: Number,
+  note: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -37,9 +36,9 @@ const AddMedicine = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { lotNumber, name, type, location, quantity, should_have, expirationDate, source } = data;
+    const { lotNumber, name, type, location, quantity, shouldHave, note } = data;
     const collectionName = Medicines.getCollectionName();
-    const definitionData = { lotNumber, name, type, location, quantity, should_have, expirationDate, source };
+    const definitionData = { lotNumber, name, type, location, quantity, shouldHave, note };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -67,8 +66,9 @@ const AddMedicine = () => {
             <Form.Group widths='equal'>
               <SelectField name='lotNumber'/>
               <DateField name='expirationDate'/>
-              <NumField name='should_have' />
+              <NumField name='shouldHave' />
               <TextField name='source' />
+              <TextField name='note'/>
             </Form.Group>
             <SubmitField value='Submit' />
             <ErrorsField />

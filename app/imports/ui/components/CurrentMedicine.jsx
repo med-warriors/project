@@ -1,22 +1,24 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import AddMedicineInventory from './IncreaseMedication';
 
 // Changes text to red, yellow, or green, based on quantity of medicine
-const getColor = (quantity) => {
-  if (quantity >= 50) return '#25A18E';
-  if (quantity > 10 && quantity < 50) return '#A18E25';
+const getColor = (quantity, threshold) => {
+  if (quantity >= threshold) return '#25A18E';
+  if (quantity < threshold) return '#A18E25';
   return '#A12358';
 };
 
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
 const CurrentMedicine = ({ medicine }) => {
+
   let highlight;
-  if (medicine.quantity < 10) {
+  if (medicine.quantity < medicine.shouldHave) {
     highlight = 'error';
   } else
-  if (medicine.quantity < 20) {
+  if (medicine.quantity === 0) {
     highlight = 'warning';
   }
   return (<Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
@@ -24,11 +26,10 @@ const CurrentMedicine = ({ medicine }) => {
     <Table.Cell>{medicine.type}</Table.Cell>
     <Table.Cell>{medicine.lotNumber}</Table.Cell>
     <Table.Cell>{medicine.location}</Table.Cell>
-    <Table.Cell style={{ color: getColor(medicine.quantity) }}>{medicine.quantity}</Table.Cell>
+    <Table.Cell style={{ color: getColor(medicine.quantity, medicine.shouldHave) }}>{medicine.quantity}</Table.Cell>
+    <Table.Cell>{medicine.shouldHave}</Table.Cell>
     <Table.Cell>
-      <Button color='red' content='ADD'/>
-      <Button color='green' content= 'UPDATE'/>
-      <Button color='blue' icon= 'angle down' />
+      <AddMedicineInventory mName={medicine.name}/>
     </Table.Cell>
   </Table.Row>);
 };
@@ -41,6 +42,7 @@ CurrentMedicine.propTypes = {
     type: PropTypes.string,
     location: PropTypes.string,
     quantity: PropTypes.number,
+    shouldHave: PropTypes.number,
     _id: PropTypes.string,
   }).isRequired,
 };
