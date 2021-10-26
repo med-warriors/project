@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -16,6 +16,7 @@ const InventoryItem = ({ inventories }) => (
     <Table.Cell>{inventories.receiveDate.toDateString()}</Table.Cell>
     <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
     <Table.Cell>{inventories.state}</Table.Cell>
+    <Button color='green' content= 'UPDATE'/>
   </Table.Row>
 );
 
