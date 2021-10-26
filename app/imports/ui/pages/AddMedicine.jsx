@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, DateField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -65,9 +65,7 @@ const AddMedicine = () => {
             </Form.Group>
             <Form.Group widths='equal'>
               <SelectField name='lotNumber'/>
-              <DateField name='expirationDate'/>
               <NumField name='shouldHave' />
-              <TextField name='source' />
               <TextField name='note'/>
             </Form.Group>
             <SubmitField value='Submit' />
