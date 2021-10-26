@@ -185,13 +185,14 @@ class MedicineInventoryCollection extends BaseCollection {
     const lotNumber = doc.lotNumber;
     const medName = doc.medName;
     const quantity = doc.quantity;
+    const location = doc.location;
     const sourceName = doc.sourceName;
     const acquire = doc.acquire;
     const cost = doc.cost;
     const receiveDate = doc.receiveDate;
     const expDate = doc.expDate;
     const state = doc.state;
-    return { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
+    return { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
   }
 }
 

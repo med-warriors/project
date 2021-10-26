@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import ListInventory from './ListInventory'
 
 // Changes text to red, yellow, or green, based on quantity of medicine
 const getColor = (quantity) => {
@@ -24,11 +25,10 @@ const CurrentMedicine = ({ medicine }) => {
     <Table.Cell>{medicine.type}</Table.Cell>
     <Table.Cell>{medicine.should_have}</Table.Cell>
     <Table.Cell>{medicine.note}</Table.Cell>
-    <Table.Cell style={{ color: getColor(medicine.should_have) }}>{medicine.should_have}</Table.Cell>
     <Table.Cell>
       <Button color='red' content='ADD'/>
       <Button color='green' content= 'UPDATE'/>
-      <Button color='blue' icon= 'angle down' />
+      <ListInventory medicine={medicine}/>
     </Table.Cell>
   </Table.Row>);
 };
