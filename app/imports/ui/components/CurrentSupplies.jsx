@@ -21,9 +21,6 @@ const CurrentSupplies = ({ supply }) => {
     highlight = 'warning';
   }
   return (<Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
-/** Renders a single row in the List Supplies table. See pages/MedicineAndSupplies.jsx. */
-const CurrentSupplies = ({ supply }) => (
-  <Table.Row>
     <Table.Cell>{supply.name}</Table.Cell>
     <Table.Cell>{supply.location}</Table.Cell>
     <Table.Cell style={{ color: getColor(supply.quantity) }}>{supply.quantity}</Table.Cell>

@@ -13,7 +13,6 @@ const getColor = (quantity, threshold) => {
 
 /** Renders a single row in the List Medicine table. See pages/MedicineAndSupplies.jsx. */
 const CurrentMedicine = ({ medicine }) => {
-
   let highlight;
   if (medicine.quantity < medicine.shouldHave) {
     highlight = 'error';
