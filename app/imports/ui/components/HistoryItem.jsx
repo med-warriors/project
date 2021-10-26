@@ -3,7 +3,7 @@ import { Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-/** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
+/** Renders a single row in the List Medicine table. See pages/MedicineAndSupplies.jsx. */
 const HistoryItem = ({ transationHistory }) => (
   <Table.Row>
     <Table.Cell>{transationHistory.date.toDateString()}</Table.Cell>

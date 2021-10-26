@@ -42,6 +42,8 @@ body {
 #med-supply {
   display: inline-block;
   padding: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Sign up page */
