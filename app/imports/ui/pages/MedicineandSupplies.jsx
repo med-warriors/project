@@ -82,8 +82,8 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
     <Container id={PAGE_IDS.LIST_MEDICINES}>
       <Header as="h2" textAlign="center">Medicine and Supplies</Header>
       <Tab panes={[
-        // eslint-disable-next-line react/display-name
         {
+          // eslint-disable-next-line react/display-name
           menuItem: 'Medicine', render: () => <Tab.Pane>
             <Grid id='med-supply' centered stackable columns='equal'>
               <Dropdown placeholder='Choose a type' search selection options={medTypeOptions} onChange={handleChange}/>
@@ -94,11 +94,9 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                 <Table.Row>
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>Type</Table.HeaderCell>
-                  <Table.HeaderCell>Lot#</Table.HeaderCell>
-                  <Table.HeaderCell>Location</Table.HeaderCell>
-                  <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>Should Have</Table.HeaderCell>
-                  <Table.HeaderCell>Misc.</Table.HeaderCell>
+                  <Table.HeaderCell>Required Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>Total Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>Note</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -107,8 +105,8 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
             </Table>
           </Tab.Pane>,
         },
-        // eslint-disable-next-line react/display-name
         {
+          // eslint-disable-next-line react/display-name
           menuItem: 'Supplies', render: () => <Tab.Pane>
             <Grid id='med-supply' centered stackable columns='equal'>
               <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions} onChange={handleChange}/>

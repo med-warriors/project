@@ -16,61 +16,45 @@ if (Meteor.isClient) {
       await withSubscriptions();
       const collectionName = Medicines.getCollectionName();
       const definitionData = {};
-      definitionData.lotNumber = faker.datatype.number({
-        min: 1,
-        max: 10,
-      });
       definitionData.name = faker.lorem.words();
       definitionData.type = faker.lorem.words();
-      definitionData.location = faker.lorem.words();
-      definitionData.quantity = faker.datatype.number({
-        min: 1,
-        max: 10,
-      });
+      definitionData.form = faker.lorem.words();
+      definitionData.unity = faker.lorem.words();
+      definitionData.note = faker.lorem.words();
       definitionData.should_have = faker.datatype.number({
         min: 1,
         max: 10,
       });
-      definitionData.expirationDate = faker.lorem.words();
       definitionData.owner = username;
       // console.log(collectionName, definitionData);
       const docID = await defineMethod.callPromise({ collectionName, definitionData });
       expect(Medicines.isDefined(docID)).to.be.true;
       let doc = Medicines.findDoc(docID);
-      expect(doc.lotNumber).to.equal(definitionData.lotNumber);
       expect(doc.name).to.equal(definitionData.name);
       expect(doc.type).to.equal(definitionData.type);
-      expect(doc.location).to.equal(definitionData.location);
-      expect(doc.quantity).to.equal(definitionData.quantity);
+      expect(doc.form).to.equal(definitionData.form);
+      expect(doc.unity).to.equal(definitionData.unity);
       expect(doc.should_have).to.equal(definitionData.should_have);
-      expect(doc.expirationDate).to.equal(definitionData.expirationDate);
+      expect(doc.note).to.equal(definitionData.note);
       const updateData = {};
       updateData.id = docID;
-      updateData.lotNumber = faker.datatype.number({
-        min: 1,
-        max: 10,
-      });
       updateData.name = faker.lorem.words();
       updateData.type = faker.lorem.words();
-      updateData.location = faker.lorem.words();
-      updateData.quantity = faker.datatype.number({
-        min: 1,
-        max: 10,
-      });
+      updateData.form = faker.lorem.words();
       updateData.should_have = faker.datatype.number({
         min: 1,
         max: 10,
       });
-      updateData.expirationDate = faker.lorem.words();
+      updateData.unity = faker.lorem.words();
+      updateData.note = faker.lorem.words();
       await updateMethod.callPromise({ collectionName, updateData });
       doc = Medicines.findDoc(docID);
-      expect(doc.lotNumber).to.equal(updateData.lotNumber);
       expect(doc.name).to.equal(updateData.name);
       expect(doc.type).to.equal(updateData.type);
-      expect(doc.location).to.equal(updateData.location);
-      expect(doc.quantity).to.equal(updateData.quantity);
+      expect(doc.form).to.equal(updateData.form);
+      expect(doc.unity).to.equal(updateData.unity);
       expect(doc.should_have).to.equal(updateData.should_have);
-      expect(doc.expirationDate).to.equal(updateData.expirationDate);
+      expect(doc.note).to.equal(updateData.note);
       await removeItMethod.callPromise({ collectionName, instance: docID });
       expect(Medicines.isDefined(docID)).to.be.false;
     });

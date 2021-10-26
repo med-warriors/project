@@ -33,11 +33,23 @@
   ],
 
   "defaultMedicines": [
-    { "lotNumber": "a1", "name": "Benzonatate Capsules", "type": "Allergy and Cold Medicines", "location": "Case 2", "quantity": "19", "shouldHave": "15", "expirationDate": "2021-09-13T07:30", "source": "name",
-      "note": "This is a note about Benzonatate Capsule"},
-    { "lotNumber": "b2", "name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Antiinflammatory", "location": "Case 4", "quantity": "60", "shouldHave": "60", "expirationDate": "2022-04-17T07:30", "source": "name", "note": "This is a note about Ibuprofen 800 mg tabs"},
-    { "lotNumber": "c3", "name": "Metoprolol 50 mg", "type": "Antihypertensives", "location": "Case 7", "quantity": "115", "shouldHave": "30", "expirationDate": "2022-04-30T07:30", "source": "name", "note": "This is a note about Metoprolol 50 mg"},
-    { "lotNumber": "b2", "name": "Fluconazole 150 mg", "type": "Antimicrobials", "location": "Freezer", "quantity": "3", "shouldHave": "3", "expirationDate": "2021-02-17T07:30", "source": "name", "note": "This is a note about Fluconazole 150 mg"}
+    {"name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "should_have": 15, "note": "use for xxxxxx"},
+    {"name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Antiinflammatory", "should_have": 60, "note": "use for xxxxxx"},
+    {"name": "Metoprolol 50 mg", "type": "Antihypertensives", "should_have": 30, "note": "use for xxxxxx"},
+    {"name": "Fluconazole 150 mg", "type": "Antimicrobials", "should_have": 3, "note": "use for xxxxxx"}
+  ],
+
+  "defaultMedicineInventory": [
+    { "lotNumber": "a5", "medName": "Benzonatate Capsules", "location": "Case 2", "quantity": "19", "expDate": "2021-09-13T07:30", "sourceName": "sourceName",
+      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted"},
+    { "lotNumber": "b5", "medName": "Benzonatate Capsules", "location": "Case 1", "quantity": "30", "expDate": "2022-09-13T07:30", "sourceName": "sourceName",
+      "acquire": "Purchased", "cost": 100, "receiveDate": "2021-03-17T07:30", "state": "Reserves"},
+    { "lotNumber": "a42", "medName": "Ibuprofen 800 mg tabs", "location": "Case 4", "quantity": "60", "expDate": "2022-04-17T07:30", "sourceName": "sourceName",
+      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted"},
+    { "lotNumber": "a70", "medName": "Metoprolol 50 mg", "location": "Case 7", "quantity": "115", "expDate": "2022-04-30T07:30", "sourceName": "sourceName",
+      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted" },
+    { "lotNumber": "a95", "medName": "Fluconazole 150 mg", "location": "Freezer", "quantity": "3", "expDate": "2021-02-17T07:30", "sourceName": "sourceName",
+      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted"}
   ],
 
   "defaultSupplies": [
