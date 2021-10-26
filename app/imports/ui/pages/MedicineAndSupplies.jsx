@@ -9,6 +9,7 @@ import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
 
+// Options for medicine types for medicine dropdown
 const medTypeOptions = [
   { key: '', value: '', text: 'Choose a type' },
   { key: 'allergy', value: 'Allergy and Cold Medicines', text: 'Allergy and Cold Medicines' },
@@ -27,6 +28,7 @@ const medTypeOptions = [
   { key: 'vita', value: 'Vitamins and Supplements', text: 'Vitamins and Supplements' },
 ];
 
+// Options for supply locations for supply dropdown
 const supplyLocationOptions = [
   { key: '', value: '', text: 'Pick a location' },
   { key: 'backcab', value: 'Back Cabinet', text: 'Back Cabinet' },
@@ -44,37 +46,51 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
   // state functions
   const [filter, setFilter] = useState('');
   const [search, setSearch] = useState('');
+  // variable to sort medicine
   let medSort = medicines;
+  // variable to sort supplies
   let supplySort = supplies;
+  // variable that lets user choose value in dropdown
   const handleChange = (e, data) => {
     e.preventDefault();
+    // sets filter state to filter value
     setFilter(data.value);
   };
+  // variable that lets user to type name of medicine/supply in search bar
   const handleSearch = (e, data) => {
     e.preventDefault();
+    // sets search state to search value
     setSearch(data.value);
   };
+  // variable used to help find name of medicine
   const medSearch = (searchItem) => {
+    // allows user to type name of medicine in lowercase
     const lowerCase = search.toLowerCase();
+    // searches medicine item based on name
     return searchItem.name.toLowerCase().startsWith(lowerCase);
   };
+  // variable used to help find name of supply
   const supplySearch = (searchItem) => {
     const lowerCase = search.toLowerCase();
     return searchItem.name.toLowerCase().startsWith(lowerCase);
   };
   if (readyM) {
     if (filter) {
+      // sorts items via filter value in medicine tab
       medSort = medicines.filter(medicine => medicine.type === filter);
     }
     if (search) {
+      // filters medicine items by search value and sorts them by name
       medSort = _.sortBy(medicines.filter(medicine => medSearch(medicine)), 'name');
     }
   }
   if (readyS) {
     if (filter) {
+      // sorts items via filter value in supplies tab
       supplySort = supplies.filter(supply => supply.location === filter);
     }
     if (search) {
+      // filters supply items by search value and sorts them by name
       supplySort = _.sortBy(supplies.filter(supply => supplySearch(supply)), 'name');
     }
   }
@@ -85,13 +101,18 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
         // eslint-disable-next-line react/display-name
         {
           menuItem: 'Medicine', render: () => <Tab.Pane>
-            <Grid id='med-supply' centered stackable columns='equal'>
-              <Dropdown placeholder='Choose a type' search selection options={medTypeOptions} onChange={handleChange}/>
-              <Input type=' search' placeholder=' Search by name' icon='search' onChange={handleSearch}/>
+            <Grid id='med-supply' centered doubling columns={2}>
+              <Grid.Column>
+                <Dropdown placeholder='Choose a type' search selection options={medTypeOptions} onChange={handleChange}/>
+              </Grid.Column>
+              <Grid.Column>
+                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+              </Grid.Column>
             </Grid>
             <Table>
               <Table.Header>
                 <Table.Row>
+                  <Table.HeaderCell value='lotNumber'>Lot #</Table.HeaderCell>
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>Type</Table.HeaderCell>
                   <Table.HeaderCell>Lot#</Table.HeaderCell>
@@ -110,9 +131,13 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
         // eslint-disable-next-line react/display-name
         {
           menuItem: 'Supplies', render: () => <Tab.Pane>
-            <Grid id='med-supply' centered stackable columns='equal'>
-              <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions} onChange={handleChange}/>
-              <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+            <Grid id='med-supply' centered doubling columns={2}>
+              <Grid.Column>
+                <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions} onChange={handleChange}/>
+              </Grid.Column>
+              <Grid.Column>
+                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+              </Grid.Column>
             </Grid>
             <Table>
               <Table.Header>
