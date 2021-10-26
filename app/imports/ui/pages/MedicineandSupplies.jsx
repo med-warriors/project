@@ -92,11 +92,13 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
             <Table>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Lot #</Table.HeaderCell>
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>Type</Table.HeaderCell>
+                  <Table.HeaderCell>Lot#</Table.HeaderCell>
                   <Table.HeaderCell>Location</Table.HeaderCell>
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>Should Have</Table.HeaderCell>
+                  <Table.HeaderCell>Misc.</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>

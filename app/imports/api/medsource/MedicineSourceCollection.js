@@ -1,21 +1,20 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-// import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const medicinePublications = {
-  medicine: 'Medicine',
-  medicineAdmin: 'MedicineAdmin',
+export const medicineSourcePublications = {
+  medicineSource: 'MedicineSource',
+  medicineSourceAdmin: 'MedicineSourceAdmin',
 };
 
 const aquiredType = ['Donated', 'Purchased'];
 
 class MedicineSourceCollection extends BaseCollection {
   constructor() {
-    super('Medicines', new SimpleSchema({
+    super('MedicineSource', new SimpleSchema({
       medName: String,
       quantityReceived: Number,
       sourceName: String,
@@ -23,14 +22,7 @@ class MedicineSourceCollection extends BaseCollection {
         type: String,
         allowedValues: aquiredType,
       },
-      purchasedAmount: {
-        type: String,
-        // allowedValues is defaulted to type: String ('Donated')
-        // if aquired = 'Donated', else type: Number
-        allowedValues: aquiredType,
-        default: 'Donated',
-      },
-      inputDate: Date,
+      purchasedAmount: Number,
       expDate: Date,
     }));
   }
@@ -44,9 +36,9 @@ class MedicineSourceCollection extends BaseCollection {
    * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate }) {
+  define({ medName, quantityReceived, sourceName, aquired, purchasedAmount, expDate }) {
     const docID = this._collection.insert({
-      medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate,
+      medName, quantityReceived, sourceName, aquired, purchasedAmount, expDate,
     });
     return docID;
   }
@@ -116,7 +108,7 @@ class MedicineSourceCollection extends BaseCollection {
       // get the MedicineSourceCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(medicinePublications.medicine, function publish() {
+      Meteor.publish(medicineSourcePublications.medicineSource, function publish() {
         if (this.userId) {
           return instance._collection.find();
         }
@@ -124,7 +116,7 @@ class MedicineSourceCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(medicinePublications.medicineAdmin, function publish() {
+      Meteor.publish(medicineSourcePublications.medicineSourceAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -138,7 +130,7 @@ class MedicineSourceCollection extends BaseCollection {
    */
   subscribeMedicine() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.medicine);
+      return Meteor.subscribe(medicineSourcePublications.medicine);
     }
     return null;
   }
@@ -149,7 +141,7 @@ class MedicineSourceCollection extends BaseCollection {
    */
   subscribeMedicineAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.medicineAdmin);
+      return Meteor.subscribe(medicineSourcePublications.medicineAdmin);
     }
     return null;
   }
@@ -177,9 +169,8 @@ class MedicineSourceCollection extends BaseCollection {
     const sourceName = doc.sourceName;
     const aquired = doc.aquired;
     const purchasedAmount = doc.purchasedAmount;
-    const inputDate = doc.inputDate;
     const expDate = doc.expDate;
-    return { medName, quantityReceived, sourceName, aquired, purchasedAmount, inputDate, expDate };
+    return { medName, quantityReceived, sourceName, aquired, purchasedAmount, expDate };
   }
 }
 
