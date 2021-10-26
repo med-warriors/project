@@ -13,18 +13,18 @@ const getColor = (quantity) => {
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
 const CurrentMedicine = ({ medicine }) => {
   let highlight;
-  if (medicine.quantity < 10) {
+  if (medicine.should_have < 10) {
     highlight = 'error';
   } else
-  if (medicine.quantity < 20) {
+  if (medicine.should_have < 20) {
     highlight = 'warning';
   }
   return (<Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
     <Table.Cell>{medicine.name}</Table.Cell>
     <Table.Cell>{medicine.type}</Table.Cell>
-    <Table.Cell>{medicine.lotNumber}</Table.Cell>
-    <Table.Cell>{medicine.location}</Table.Cell>
-    <Table.Cell style={{ color: getColor(medicine.quantity) }}>{medicine.quantity}</Table.Cell>
+    <Table.Cell>{medicine.should_have}</Table.Cell>
+    <Table.Cell>{medicine.note}</Table.Cell>
+    <Table.Cell style={{ color: getColor(medicine.should_have) }}>{medicine.should_have}</Table.Cell>
     <Table.Cell>
       <Button color='red' content='ADD'/>
       <Button color='green' content= 'UPDATE'/>
@@ -36,11 +36,10 @@ const CurrentMedicine = ({ medicine }) => {
 // Require a document to be passed to this component.
 CurrentMedicine.propTypes = {
   medicine: PropTypes.shape({
-    lotNumber: PropTypes.string,
     name: PropTypes.string,
     type: PropTypes.string,
-    location: PropTypes.string,
-    quantity: PropTypes.number,
+    should_have: PropTypes.number,
+    note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

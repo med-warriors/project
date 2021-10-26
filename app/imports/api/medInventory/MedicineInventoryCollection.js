@@ -7,8 +7,8 @@ import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const medicinePublications = {
-  medicine: 'Medicine',
-  medicineAdmin: 'MedicineAdmin',
+  medicineInventory: 'MedicineInventory',
+  medicineInventoryAdmin: 'MedicineInventoryAdmin',
 };
 
 // All location of medicine given in excel document.
@@ -21,7 +21,7 @@ export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
 
 class MedicineInventoryCollection extends BaseCollection {
   constructor() {
-    super('Medicines', new SimpleSchema({
+    super('MedicineInventory', new SimpleSchema({
       lotNumber: String,
       medName: String,
       quantity: Number,
@@ -54,9 +54,9 @@ class MedicineInventoryCollection extends BaseCollection {
    * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
+  define({ lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
     const docID = this._collection.insert({
-      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
+      lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
     });
     return docID;
   }
@@ -126,7 +126,7 @@ class MedicineInventoryCollection extends BaseCollection {
       // get the MedicineSourceCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(medicinePublications.medicine, function publish() {
+      Meteor.publish(medicinePublications.medicineInventory, function publish() {
         if (this.userId) {
           return instance._collection.find();
         }
@@ -134,7 +134,7 @@ class MedicineInventoryCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(medicinePublications.medicineAdmin, function publish() {
+      Meteor.publish(medicinePublications.medicineInventoryAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -146,9 +146,9 @@ class MedicineInventoryCollection extends BaseCollection {
   /**
    * Subscription method for medicine owned by the current user.
    */
-  subscribeMedicine() {
+  subscribeMedicineInventory() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.medicine);
+      return Meteor.subscribe(medicinePublications.medicineInventory);
     }
     return null;
   }
@@ -157,9 +157,9 @@ class MedicineInventoryCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeMedicineAdmin() {
+  subscribeMedicineInventoryAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.medicineAdmin);
+      return Meteor.subscribe(medicinePublications.medicineInventoryAdmin);
     }
     return null;
   }
