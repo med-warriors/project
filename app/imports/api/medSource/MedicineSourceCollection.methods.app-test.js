@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import faker from 'faker';
-import { Medicines } from './MedicineSourceCollection';
+import { MedicineSource } from './MedicineSourceourceCollection';
 import { defineTestUser, withLoggedInUser, withSubscriptions } from '../../test-utilities/test-utilities';
 import { defineMethod, updateMethod, removeItMethod } from '../base/BaseCollection.methods';
 
@@ -14,7 +14,7 @@ if (Meteor.isClient) {
       const { username, password } = await defineTestUser.callPromise();
       await withLoggedInUser({ username, password });
       await withSubscriptions();
-      const collectionName = Medicines.getCollectionName();
+      const collectionName = MedicineSource.getCollectionName();
       const definitionData = {};
       definitionData.lotNumber = faker.datatype.number({
         min: 1,
@@ -35,8 +35,8 @@ if (Meteor.isClient) {
       definitionData.owner = username;
       // console.log(collectionName, definitionData);
       const docID = await defineMethod.callPromise({ collectionName, definitionData });
-      expect(Medicines.isDefined(docID)).to.be.true;
-      let doc = Medicines.findDoc(docID);
+      expect(MedicineSource.isDefined(docID)).to.be.true;
+      let doc = MedicineSource.findDoc(docID);
       expect(doc.lotNumber).to.equal(definitionData.lotNumber);
       expect(doc.name).to.equal(definitionData.name);
       expect(doc.type).to.equal(definitionData.type);
@@ -63,7 +63,7 @@ if (Meteor.isClient) {
       });
       updateData.expirationDate = faker.lorem.words();
       await updateMethod.callPromise({ collectionName, updateData });
-      doc = Medicines.findDoc(docID);
+      doc = MedicineSource.findDoc(docID);
       expect(doc.lotNumber).to.equal(updateData.lotNumber);
       expect(doc.name).to.equal(updateData.name);
       expect(doc.type).to.equal(updateData.type);
@@ -72,7 +72,7 @@ if (Meteor.isClient) {
       expect(doc.should_have).to.equal(updateData.should_have);
       expect(doc.expirationDate).to.equal(updateData.expirationDate);
       await removeItMethod.callPromise({ collectionName, instance: docID });
-      expect(Medicines.isDefined(docID)).to.be.false;
+      expect(MedicineSource.isDefined(docID)).to.be.false;
     });
   });
 }

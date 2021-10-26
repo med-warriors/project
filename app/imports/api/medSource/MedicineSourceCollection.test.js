@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import faker from 'faker';
 import fc from 'fast-check';
-import { Medicines } from './MedicineSourceCollection';
+import { MedicineSource } from './MedicineSourceourceCollection';
 import { removeAllEntities } from '../base/BaseUtilities';
 
 /* eslint prefer-arrow-callback: "off",  no-unused-expressions: "off" */
@@ -22,7 +22,7 @@ if (Meteor.isServer) {
       fc.assert(
         fc.property(fc.integer(1, 10), fc.lorem(2), fc.integer(1, 10), fc.lorem(2), fc.lorem(2), fc.lorem(4), fc.lorem(1),
           (lotNumber, name, quantity, should_have, type, location, expirationDate, owner) => {
-            const docID = Medicines.define({
+            const docID = MedicineSource.define({
               lotNumber,
               name,
               type,
@@ -32,9 +32,9 @@ if (Meteor.isServer) {
               expirationDate,
               owner,
             });
-            expect(Medicines.isDefined(docID)).to.be.true;
-            Medicines.removeIt(docID);
-            expect(Medicines.isDefined(docID)).to.be.false;
+            expect(MedicineSource.isDefined(docID)).to.be.true;
+            MedicineSource.removeIt(docID);
+            expect(MedicineSource.isDefined(docID)).to.be.false;
           }),
       );
       done();
@@ -49,8 +49,8 @@ if (Meteor.isServer) {
       const should_have = faker.datatype.number({ min: 1, max: 5 });
       const owner = faker.internet.email();
       const expirationDate = faker.animal.dog();
-      const docID1 = Medicines.define({ lotNumber, name, type, location, quantity, should_have, expirationDate, owner });
-      const docID2 = Medicines.define({ lotNumber, name, type, location, quantity, should_have, expirationDate, owner });
+      const docID1 = MedicineSource.define({ lotNumber, name, type, location, quantity, should_have, expirationDate, owner });
+      const docID2 = MedicineSource.define({ lotNumber, name, type, location, quantity, should_have, expirationDate, owner });
       expect(docID1).to.not.equal(docID2);
     });
 
@@ -72,7 +72,7 @@ if (Meteor.isServer) {
       });
       const expirationDate = faker.lorem.words();
       const owner = faker.lorem.words();
-      const docID = Medicines.define({
+      const docID = MedicineSource.define({
         lotNumber,
         name,
         type,
@@ -86,7 +86,7 @@ if (Meteor.isServer) {
       fc.assert(
         fc.property(fc.integer(10), fc.lorem(2), fc.lorem(2), fc.lorem(2), fc.integer(10), fc.lorem(4),
           (newLotNumber, newName, newType, newLocation, newQuantity, newShould_have, newExpirationDate) => {
-            Medicines.update(docID, {
+            MedicineSource.update(docID, {
               lotNumber: newLotNumber,
               name: newName,
               type: newType,
@@ -95,7 +95,7 @@ if (Meteor.isServer) {
               should_have: newShould_have,
               expirationDate: newExpirationDate,
             });
-            const medicine = Medicines.findDoc(docID);
+            const medicine = MedicineSource.findDoc(docID);
             expect(medicine.lotNumber).to.equal(newLotNumber);
             expect(medicine.name).to.equal(newName);
             expect(medicine.type).to.equal(newType);
@@ -109,14 +109,14 @@ if (Meteor.isServer) {
     });
 
     it('Can dumpOne, removeIt, and restoreOne', function test4() {
-      const origDoc = Medicines.findOne({});
+      const origDoc = MedicineSource.findOne({});
       let docID = origDoc._id;
-      const dumpObject = Medicines.dumpOne(docID);
-      Medicines.removeIt(docID);
-      expect(Medicines.isDefined(docID)).to.be.false;
-      docID = Medicines.restoreOne(dumpObject);
-      expect(Medicines.isDefined(docID)).to.be.true;
-      const doc = Medicines.findDoc(docID);
+      const dumpObject = MedicineSource.dumpOne(docID);
+      MedicineSource.removeIt(docID);
+      expect(MedicineSource.isDefined(docID)).to.be.false;
+      docID = MedicineSource.restoreOne(dumpObject);
+      expect(MedicineSource.isDefined(docID)).to.be.true;
+      const doc = MedicineSource.findDoc(docID);
       expect(doc.lotNumber).to.equal(origDoc.lotNumber);
       expect(doc.name).to.equal(origDoc.name);
       expect(doc.type).to.equal(origDoc.type);
