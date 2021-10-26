@@ -33,10 +33,10 @@
   ],
 
   "defaultMedicines": [
-    {"name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "should_have": 15, "note": "use for xxxxxx"},
-    {"name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Antiinflammatory", "should_have": 60, "note": "use for xxxxxx"},
-    {"name": "Metoprolol 50 mg", "type": "Antihypertensives", "should_have": 30, "note": "use for xxxxxx"},
-    {"name": "Fluconazole 150 mg", "type": "Antimicrobials", "should_have": 3, "note": "use for xxxxxx"}
+    {"name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "shouldHave": 15, "note": "use for Cold"},
+    {"name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Antiinflammatory", "shouldHave": 60, "note": "use for Headache"},
+    {"name": "Metoprolol 50 mg", "type": "Antihypertensives", "shouldHave": 30, "note": "use for High Blood Pressure"},
+    {"name": "Fluconazole 150 mg", "type": "Antimicrobials", "shouldHave": 3, "note": "use for Fungal Infection"}
   ],
 
   "defaultMedicineInventory": [

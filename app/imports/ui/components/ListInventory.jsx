@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Modal, Loader, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { MedicineInventory } from '../../api/medInventory/MedicineInventoryCollection';
+import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import InventoryItem from './InventoryItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -16,7 +16,7 @@ const ListInventory = ({ ready, inventory, medicine }) => {
       onOpen={() => setOpen(true)}
       open={open}
       size={'large'}
-      trigger={<Button color='blue' icon= 'angle down' />}
+      trigger={<Button color='blue'>DI</Button>}
     >
       <Modal.Header>{medicine.name}</Modal.Header>
       <Modal.Content>
@@ -60,11 +60,11 @@ ListInventory.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ medicine }) => {
   // Get access to Stuff documents.
-  const subscription = MedicineInventory.subscribeMedicineInventory();
+  const subscription = MedicineSource.subscribeMedicineSource();
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const inventory = MedicineInventory.find({ medName: medicine.name }, { sort: { name: 1 } }).fetch();
+  const inventory = MedicineSource.find({ medName: medicine.name }, { sort: { name: 1 } }).fetch();
   return {
     inventory,
     ready,

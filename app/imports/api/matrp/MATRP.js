@@ -5,11 +5,10 @@ import { Patients } from '../patients/PatientCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 import { Medicines } from '../medicine/MedicineCollection';
-import { MedicineSource } from '../medsource/MedicineSourceCollection';
+import { MedicineSource } from '../medSource/MedicineSourceCollection';
 import { Supplies } from '../supply/SupplyCollection';
 import { TransationHistories } from '../transaction/TransationHistoriesCollection';
 import { DoctorProfiles } from '../user/DoctorProfileCollection';
-import { MedicineInventory } from '../medInventory/MedicineInventoryCollection';
 
 class MATRPClass {
   collections;
@@ -31,7 +30,6 @@ class MATRPClass {
       MedicineSource,
       Supplies,
       TransationHistories,
-      MedicineInventory,
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -47,7 +45,6 @@ class MATRPClass {
       MedicineSource,
       Supplies,
       TransationHistories,
-      MedicineInventory,
     ];
 
     /*

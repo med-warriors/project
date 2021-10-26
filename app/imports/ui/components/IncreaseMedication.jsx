@@ -13,7 +13,7 @@ import {
   SubmitField,
   TextField,
 } from 'uniforms-semantic';
-import { MedicineSource } from '../../api/medsource/MedicineSourceCollection';
+import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 const formSchema = new SimpleSchema({

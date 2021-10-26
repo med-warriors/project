@@ -29,11 +29,6 @@ class MedicineCollection extends BaseCollection {
         type: String,
         allowedValues: medType,
       },
-      location: {
-        type: String,
-        allowedValues: locSpot,
-      },
-      quantity: Number,
       shouldHave: Number,
       note: String,
     }));
@@ -46,11 +41,11 @@ class MedicineCollection extends BaseCollection {
    * @param note the detail information.
    * @return {String} the docID of the new document.
    */
-  define({ name, type, should_have, note }) {
+  define({ name, type, shouldHave, note }) {
     const docID = this._collection.insert({
       name,
       type,
-      should_have,
+      shouldHave,
       note,
     });
     return docID;
@@ -64,7 +59,7 @@ class MedicineCollection extends BaseCollection {
    * @param should_have the new quantity (optional).
    * @param note the new name (optional).
    */
-  update(docID, { name, type, should_have, note }) {
+  update(docID, { name, type, shouldHave, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
