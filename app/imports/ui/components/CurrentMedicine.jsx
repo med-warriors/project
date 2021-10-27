@@ -23,7 +23,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
   let highlight;
   if (totalQuantity / medicine.shouldHave <= 0.5) {
     highlight = 'warning';
-  } else if (totalQuantity / medicine.shouldHave <= 0.1) {
+  } else if (totalQuantity / medicine.shouldHave <= 0.1 || totalQuantity / medicine.shouldHave === 0 || totalQuantity / medicine.shouldHave === undefined) {
     highlight = 'error';
   } else {
     highlight = 'positive';
@@ -37,11 +37,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
       <Table.Cell>{medicine.note}</Table.Cell>
       <Table.Cell>
         <AddMedicineInventory mName={medicine.name}/>
-      </Table.Cell>
-      <Table.Cell>
         <Button color='green' content= 'UPDATE'/>
-      </Table.Cell>
-      <Table.Cell>
         <ListInventory medicine={medicine}/>
       </Table.Cell>
     </Table.Row>) : <Loader active>Getting data</Loader>);
