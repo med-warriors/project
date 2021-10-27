@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import faker from 'faker';
-import { Medicines } from './MedicineCollection';
+import { MedicineSource } from './MedicineSourceourceCollection';
 import { defineTestUser, withLoggedInUser, withSubscriptions } from '../../test-utilities/test-utilities';
 import { defineMethod, updateMethod, removeItMethod } from '../base/BaseCollection.methods';
 
@@ -14,49 +14,65 @@ if (Meteor.isClient) {
       const { username, password } = await defineTestUser.callPromise();
       await withLoggedInUser({ username, password });
       await withSubscriptions();
-      const collectionName = Medicines.getCollectionName();
+      const collectionName = MedicineSource.getCollectionName();
       const definitionData = {};
+      definitionData.lotNumber = faker.datatype.number({
+        min: 1,
+        max: 10,
+      });
       definitionData.name = faker.lorem.words();
       definitionData.type = faker.lorem.words();
-      definitionData.form = faker.lorem.words();
-      definitionData.unity = faker.lorem.words();
-      definitionData.note = faker.lorem.words();
+      definitionData.location = faker.lorem.words();
+      definitionData.quantity = faker.datatype.number({
+        min: 1,
+        max: 10,
+      });
       definitionData.should_have = faker.datatype.number({
         min: 1,
         max: 10,
       });
+      definitionData.expirationDate = faker.lorem.words();
       definitionData.owner = username;
       // console.log(collectionName, definitionData);
       const docID = await defineMethod.callPromise({ collectionName, definitionData });
-      expect(Medicines.isDefined(docID)).to.be.true;
-      let doc = Medicines.findDoc(docID);
+      expect(MedicineSource.isDefined(docID)).to.be.true;
+      let doc = MedicineSource.findDoc(docID);
+      expect(doc.lotNumber).to.equal(definitionData.lotNumber);
       expect(doc.name).to.equal(definitionData.name);
       expect(doc.type).to.equal(definitionData.type);
-      expect(doc.form).to.equal(definitionData.form);
-      expect(doc.unity).to.equal(definitionData.unity);
+      expect(doc.location).to.equal(definitionData.location);
+      expect(doc.quantity).to.equal(definitionData.quantity);
       expect(doc.should_have).to.equal(definitionData.should_have);
-      expect(doc.note).to.equal(definitionData.note);
+      expect(doc.expirationDate).to.equal(definitionData.expirationDate);
       const updateData = {};
       updateData.id = docID;
+      updateData.lotNumber = faker.datatype.number({
+        min: 1,
+        max: 10,
+      });
       updateData.name = faker.lorem.words();
       updateData.type = faker.lorem.words();
-      updateData.form = faker.lorem.words();
+      updateData.location = faker.lorem.words();
+      updateData.quantity = faker.datatype.number({
+        min: 1,
+        max: 10,
+      });
       updateData.should_have = faker.datatype.number({
         min: 1,
         max: 10,
       });
-      updateData.unity = faker.lorem.words();
-      updateData.note = faker.lorem.words();
+      updateData.expirationDate = faker.lorem.words();
       await updateMethod.callPromise({ collectionName, updateData });
-      doc = Medicines.findDoc(docID);
+      doc = MedicineSource.findDoc(docID);
+      expect(doc.lotNumber).to.equal(updateData.lotNumber);
       expect(doc.name).to.equal(updateData.name);
       expect(doc.type).to.equal(updateData.type);
-      expect(doc.form).to.equal(updateData.form);
-      expect(doc.unity).to.equal(updateData.unity);
+      expect(doc.location).to.equal(updateData.location);
+      expect(doc.quantity).to.equal(updateData.quantity);
       expect(doc.should_have).to.equal(updateData.should_have);
-      expect(doc.note).to.equal(updateData.note);
+      expect(doc.expirationDate).to.equal(updateData.expirationDate);
       await removeItMethod.callPromise({ collectionName, instance: docID });
-      expect(Medicines.isDefined(docID)).to.be.false;
+      expect(MedicineSource.isDefined(docID)).to.be.false;
     });
   });
 }

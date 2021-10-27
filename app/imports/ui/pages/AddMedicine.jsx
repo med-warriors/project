@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, AutoField, NumField, DateField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -10,23 +10,14 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  lotNumber: {
-    type: Number,
-  },
   name: String,
   type: {
     type: String,
     allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
     'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'],
   },
-  location: {
-    type: String,
-    allowedValues: ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'],
-  },
-  quantity: Number,
-  should_have: Number,
-  expirationDate: Date,
-  source: String,
+  shouldHave: Number,
+  note: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -36,9 +27,9 @@ const AddMedicine = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { lotNumber, name, type, location, quantity, should_have, expirationDate, source } = data;
+    const { name, type, shouldHave, note } = data;
     const collectionName = Medicines.getCollectionName();
-    const definitionData = { lotNumber, name, type, location, quantity, should_have, expirationDate, source };
+    const definitionData = { name, type, shouldHave, note };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -61,13 +52,10 @@ const AddMedicine = () => {
               <TextField label='Medicine Name' name='name'/>
               <SelectField label='Medicine Type' name='type'/>
               <NumField name='quantity' decimal={false} />
-              <SelectField name='location'/>
             </Form.Group>
             <Form.Group widths='equal'>
-              <TextField name='lotNumber'/>
-              <DateField name='expirationDate'/>
-              <NumField name='should_have' />
-              <TextField name='source' />
+              <NumField name='shouldHave' />
+              <TextField name='note'/>
             </Form.Group>
             <SubmitField value='Submit' />
             <ErrorsField />

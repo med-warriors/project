@@ -79,7 +79,7 @@ const Prescription = (ready, doc, currentUser) => {
         }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Grid.Row>
-              <Search/>
+              <Search placeholder="Search Medicines..."/>
               <Segment>
                 {/*
                // Todo: Show the Searched output.

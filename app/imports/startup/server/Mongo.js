@@ -5,9 +5,9 @@ import { Patients } from '../../api/patients/PatientCollection';
 import { Profiles } from '../../api/profile/Profile';
 import { SupplySourecs } from '../../api/source/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
+import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
 import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
-/* eslint-disable no-console */
 
 // Initialize the database with a default data document.
 function addData(data) {
@@ -34,8 +34,14 @@ function addPatients(data) {
 
 // Initialize the database with a default data document.
 function addMedicine(data) {
-  console.log(`  Adding medicine: ${data.lotNumber} (${data.name})`);
+  console.log(`  Adding medicine: ${data.name} `);
   Medicines.define(data);
+}
+
+// Initialize the database with a default data document.
+function addMedicineInventory(data) {
+  console.log(`  Adding inventory: ${data.lotNumber} (${data.name})`);
+  MedicineSource.define(data);
 }
 
 // Initialize the database with a default data document.
@@ -86,6 +92,14 @@ if (Medicines.count() === 0) {
   if (Meteor.settings.defaultMedicines) {
     console.log('Creating default medicines data.');
     Meteor.settings.defaultMedicines.map(data => addMedicine(data));
+  }
+}
+
+// Initialize the MedicineCollection if empty.
+if (MedicineSource.count() === 0) {
+  if (Meteor.settings.defaultMedicineInventory) {
+    console.log('Creating default medicines data.');
+    Meteor.settings.defaultMedicineInventory.map(data => addMedicineInventory(data));
   }
 }
 
