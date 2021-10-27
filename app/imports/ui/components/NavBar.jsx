@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Header } from 'semantic-ui-react';
+import { Menu, Dropdown, Header, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -19,18 +19,17 @@ const NavBar = ({ currentUser }) => {
       {currentUser ? (
         [<Dropdown id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN} item text="Information" key="list-dropdown">
           <Dropdown.Menu>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_MEDICINE_AND_SUPPLIES} as={NavLink} activeClassName="active" exact to="/medicine-and-supplies" key='medicine-and-supplies'>Medicine And Supplies</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_LOW_INVENTORY} as={NavLink} activeClassName="active" exact to="/low-inventory" key='low-inventory'>Low Inventory Report</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_SUPPLY_SOURCE} as={NavLink} activeClassName="active" exact to="/supply-source" key='supply-source'>Supply Source</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_HISTORY_REPORT} as={NavLink} activeClassName="active" exact to="/history-report" key='history-report'>History Report</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patient-info" key='patient-info'>Patient Information</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_MEDICINE_AND_SUPPLIES} as={NavLink} activeClassName="active" exact to="/medicine-and-supplies" key='medicine-and-supplies'><Icon name="medkit"/>Medicine And Supplies</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_SUPPLY_SOURCE} as={NavLink} activeClassName="active" exact to="/supply-source" key='supply-source'><Icon name="box"/>Supply Source</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_HISTORY_REPORT} as={NavLink} activeClassName="active" exact to="/history-report" key='history-report'><Icon name="wait"/>History Report</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_PATIENT_INFORMATION} as={NavLink} activeClassName="active" exact to="/patient-info" key='patient-info'><Icon name="user"/>Patient Information</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>,
         <Dropdown id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN} item text="Transaction" key="transaction-dropdown">
           <Dropdown.Menu>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_PRESCRIPTION} as={NavLink} activeClassName="active" exact to="/prescription" key='prescription'>Prescription</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_MEDICINE} as={NavLink} activeClassName="active" exact to="/add-medicine" key='add-medicine'>Add Medicine</Dropdown.Item>
-            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_SUPPLIES} as={NavLink} activeClassName="active" exact to="/add-supply" key='add-supply'>Add Supply</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_PRESCRIPTION} as={NavLink} activeClassName="active" exact to="/prescription" key='prescription'><Icon name="pills"/>Prescription</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_MEDICINE} as={NavLink} activeClassName="active" exact to="/add-medicine" key='add-medicine'><Icon name="plus"/>Add Medicine</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_ADD_SUPPLIES} as={NavLink} activeClassName="active" exact to="/add-supply" key='add-supply'><Icon name="plus"/>Add Supply</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>,
         ]
