@@ -26,9 +26,6 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
   } else
   if (medicine.shouldHave === totalQuantity) {
     highlight = 'warning';
-  } else
-  if (medicine.quantity / medicine.shouldHave <= 0.1) {
-    highlight = 'error';
   }
   return ((ready) ? (
     <Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
