@@ -16,11 +16,12 @@ const CurrentSupplies = ({ supply }) => {
   let highlight;
   if (supply.quantity < 10) {
     highlight = 'error';
-  } else
-  if (supply.quantity < 20) {
+  } else if (supply.quantity < 20) {
     highlight = 'warning';
+  } else {
+    highlight = 'positive';
   }
-  return (<Table.Row error={highlight === 'error'} warning={highlight === 'warning'}>
+  return (<Table.Row positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}>
     <Table.Cell>{supply.name}</Table.Cell>
     <Table.Cell>{supply.location}</Table.Cell>
     <Table.Cell style={{ color: getColor(supply.quantity) }}>{supply.quantity}</Table.Cell>
