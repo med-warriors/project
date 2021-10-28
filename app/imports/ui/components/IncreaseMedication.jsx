@@ -13,19 +13,32 @@ import {
   SubmitField,
   TextField,
 } from 'uniforms-semantic';
-import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
+import { acquiredType, locSpot, MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
+const inputState = ['Acted', 'Reserved'];
+
 const formSchema = new SimpleSchema({
+  lotNumber: String,
   medName: String,
-  quantityReceived: Number,
+  quantity: Number,
   sourceName: String,
-  aquired: {
+  acquire: {
     type: String,
-    allowedValues: ['Donated', 'Purchase'],
+    allowedValues: acquiredType,
   },
-  purchasedAmount: Number,
+  cost: Number,
+  location: {
+    type: String,
+    allowedValues: locSpot,
+  },
+  receiveDate: Date,
   expDate: Date,
+  state: {
+    type: String,
+    allowedValues: inputState,
+    defaultValue: 'Reserves',
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -33,9 +46,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const AddMedicineInventory = ({ mName }) => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { medName, quantityReceived, sourceName, aquired, purchasedAmount, expDate } = data;
+    const { lotNumber, quantity, sourceName, acquire, cost, location, receiveDate, expDate, state } = data;
     const collectionName = MedicineSource.getCollectionName();
-    const definitionData = { medName, quantityReceived, sourceName, aquired, purchasedAmount, expDate };
+    const medName = mName;
+    const definitionData = { lotNumber, medName, quantity, sourceName, acquire, cost, location, receiveDate, expDate, state };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -61,15 +75,23 @@ const AddMedicineInventory = ({ mName }) => {
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+          <h3>Adding New Inventory: {mName}</h3>
           <Form.Group widths='equal'>
-            <TextField label='Medicine Name' name='medName'/>
-            <NumField label='Amount Received' name='quantityReceived'/>
+            <TextField label='Lot Number' name='lotNumber'/>
+            <SelectField label='Location' name='location'/>
+          </Form.Group>
+          <Form.Group>
+            <SelectField label='State' name='state'/>
+            <DateField label='Expiration Date' name='expDate'/>
           </Form.Group>
           <Form.Group widths='equal'>
             <TextField name='sourceName'/>
-            <SelectField name='aquired'/>
-            <NumField name='purchasedAmount' />
-            <DateField name='expDate' />
+            <SelectField name='acquire'/>
+            <NumField name='cost' />
+          </Form.Group>
+          <Form.Group>
+            <NumField label='Amount Received' name='quantity'/>
+            <DateField name='receiveDate'/>
           </Form.Group>
           <SubmitField value='Submit' />
           <ErrorsField />
@@ -85,6 +107,8 @@ AddMedicineInventory.propTypes = {
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
 export default AddMedicineInventory;
+
+// Ignore content below for now. Main purpose below was to copy-paste if needed
 
 /* const formSchema = new SimpleSchema({
   medName: String,
