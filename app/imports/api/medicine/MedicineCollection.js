@@ -15,7 +15,7 @@ export const medType = [
   'Antimicrobials',
   'Cardiac/Cholesterol',
   'Dermatologic Preparations',
-  'Diabetes',
+  'Diabetes Meds',
   'Ear and Eye Preparations',
   'Emergency Kit',
   'GI Meds',

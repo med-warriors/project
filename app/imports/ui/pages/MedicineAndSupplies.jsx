@@ -49,8 +49,8 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
   // state functions for pagination
   const [activePage, setActivePage] = useState(1);
   // variables for rows of medicines from start to end
-  const medStart = (activePage * 10 - 10);
-  const medEnd = (activePage * 10);
+  const medStart = (activePage * 15 - 15);
+  const medEnd = (activePage * 15);
   // variables for rows of supplies from start to end
   const supplyStart = (activePage * 6 - 6);
   const supplyEnd = (activePage * 6);
@@ -141,7 +141,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
             <Pagination
               activePage={activePage}
               onPageChange={onChange}
-              totalPages={11}
+              totalPages={14}
               ellipsisItem={null}
             />
           </Tab.Pane>,
