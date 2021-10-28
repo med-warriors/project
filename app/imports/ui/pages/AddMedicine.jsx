@@ -51,7 +51,6 @@ const AddMedicine = () => {
             <Form.Group widths='equal'>
               <TextField label='Medicine Name' name='name'/>
               <SelectField label='Medicine Type' name='type'/>
-              <NumField name='quantity' decimal={false} />
             </Form.Group>
             <Form.Group widths='equal'>
               <NumField name='shouldHave' />
