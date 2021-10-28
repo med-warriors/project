@@ -9,9 +9,10 @@ import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
 import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
 
-const medicines = JSON.parse(Assets.getText('medicine.json'));
+// might use in the future
+/* const medicines = JSON.parse(Assets.getText('medicine.json'));
 const medInventory = JSON.parse(Assets.getText('medInventory.json'));
-const supplies = JSON.parse(Assets.getText('supplies.json'));
+const supplies = JSON.parse(Assets.getText('supplies.json')); */
 
 // Initialize the database with a default data document.
 function addData(data) {
@@ -44,9 +45,9 @@ function addMedicine(data) {
 
 // Initialize the MedicineCollection if empty.
 if (Medicines.count() === 0) {
-  if (medicines) {
+  if (Meteor.settings.defaultMedicines) {
     console.log('Creating default medicines data.');
-    medicines.map(data => addMedicine(data));
+    Meteor.settings.defaultMedicines.map(data => addMedicine(data));
   }
 }
 
@@ -58,9 +59,9 @@ function addMedicineInventory(data) {
 
 // Initialize the MedicineCollection if empty.
 if (MedicineSource.count() === 0) {
-  if (medInventory) {
+  if (Meteor.settings.defaultMedicineInventory) {
     console.log('Creating default medicines data.');
-    medInventory.map(data => addMedicineInventory(data));
+    Meteor.settings.defaultMedicineInventory.map(data => addMedicineInventory(data));
   }
 }
 
@@ -72,9 +73,9 @@ function addSupply(data) {
 
 // Initialize the SupplyCollection if empty.
 if (Supplies.count() === 0) {
-  if (supplies) {
+  if (Meteor.settings.defaultSupplies) {
     console.log('Creating default supplies data.');
-    supplies.map(data => addSupply(data));
+    Meteor.settings.defaultSupplies.map(data => addSupply(data));
   }
 }
 
