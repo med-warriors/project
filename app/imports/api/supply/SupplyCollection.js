@@ -20,6 +20,8 @@ class SupplyCollection extends BaseCollection {
         allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4']
       },
       quantity: Number,
+      source: String,
+      status: String,
     }));
   }
 
@@ -30,11 +32,13 @@ class SupplyCollection extends BaseCollection {
    * @param quantity how many.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity }) {
+  define({ name, location, quantity, source, status }) {
     const docID = this._collection.insert({
       name,
       location,
       quantity,
+      source,
+      status,
     });
     return docID;
   }
@@ -46,7 +50,7 @@ class SupplyCollection extends BaseCollection {
    * @param location the new location (optional).
    * @param quantity the new quantity (optional).
    */
-  update(docID, { name, location, quantity }) {
+  update(docID, { name, location, quantity, source, status }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -57,6 +61,12 @@ class SupplyCollection extends BaseCollection {
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
+    }
+    if (source) {
+      updateData.source = source;
+    }
+    if (status) {
+      updateData.status = status;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -141,7 +151,9 @@ class SupplyCollection extends BaseCollection {
     const name = doc.name;
     const quantity = doc.quantity;
     const location = doc.location;
-    return { name, quantity, location };
+    const source = doc.source;
+    const status = doc.status;
+    return { name, quantity, location, source, status };
   }
 }
 

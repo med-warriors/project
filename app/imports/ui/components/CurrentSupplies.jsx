@@ -27,7 +27,7 @@ const CurrentSupplies = ({ supply }) => {
     <Table.Cell style={{ color: getColor(supply.quantity) }}>{supply.quantity}</Table.Cell>
     <Table.Cell>
       <Button>
-        <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/edit/${supply._id}`}>Update</Link>
+        <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/update-sup/${supply._id}`}>Update</Link>
       </Button>
     </Table.Cell>
   </Table.Row>);

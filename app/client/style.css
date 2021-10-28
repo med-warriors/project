@@ -33,6 +33,24 @@ body {
   margin-top: 20px;
 }
 
+.ui.modal > .content {
+  background:  #EBFFEE !important;
+}
+
+.ui.modal > .header, .ui.modal > .actions {
+  background:  #25A18E !important;
+  color: white !important;
+}
+
+#information-label {
+  background-color: #25A18E;
+  color: white;
+}
+
+#update-button.ui.button {
+  background: white !important;
+}
+
 * {
   font-family: 'Verdana', sans-serif;
   text-align: center;
