@@ -18,7 +18,7 @@ const medTypeOptions = [
   { key: 'antimic', value: 'Antimicrobials', text: 'Antimicrobials' },
   { key: 'cardiac', value: 'Cardiac/Cholesterol', text: 'Cardiac/Cholesterol' },
   { key: 'derm', value: 'Dermatologic Preparations', text: 'Dermatologic Preparations' },
-  { key: 'diabetes', value: 'Diabetes', text: 'Diabetes' },
+  { key: 'diabetes', value: 'Diabetes Meds', text: 'Diabetes Meds' },
   { key: 'eareye', value: 'Ear and Eye Preparations', text: 'Ear and Eye Preparations' },
   { key: 'emerg', value: 'Emergency Kit', text: 'Emergency Kit' },
   { key: 'gi', value: 'GI Meds', text: 'GI Meds' },

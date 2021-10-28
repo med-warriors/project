@@ -21,7 +21,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
   }, 0);
 
   let highlight;
-  if (totalQuantity / medicine.shouldHave <= 0.5) {
+  if (totalQuantity / medicine.shouldHave <= 0.5 && totalQuantity / medicine.shouldHave > 0.1) {
     highlight = 'warning';
   } else if (totalQuantity / medicine.shouldHave <= 0.1 || totalQuantity / medicine.shouldHave === 0 || totalQuantity / medicine.shouldHave === undefined) {
     highlight = 'error';

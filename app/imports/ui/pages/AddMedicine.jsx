@@ -13,8 +13,21 @@ const formSchema = new SimpleSchema({
   name: String,
   type: {
     type: String,
-    allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
-    'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'],
+    allowedValues: [
+      'Allergy and Cold Medicines',
+      'Analgesics/Antiinflammatory',
+      'Antihypertensives',
+      'Antimicrobials',
+      'Cardiac/Cholesterol',
+      'Dermatologic Preparations',
+      'Diabetes Meds',
+      'Ear and Eye Preparations',
+      'Emergency Kit',
+      'GI Meds',
+      'GYN Meds',
+      'Pulmonary',
+      'Smoking Cessation',
+      'Vitamins and Supplements'],
   },
   shouldHave: Number,
   note: String,
@@ -51,14 +64,14 @@ const AddMedicine = () => {
             <Form.Group widths='equal'>
               <TextField label='Medicine Name' name='name'/>
               <SelectField label='Medicine Type' name='type'/>
-              <NumField name='quantity' decimal={false} />
+              <NumField name='quantity' decimal={false}/>
             </Form.Group>
             <Form.Group widths='equal'>
-              <NumField name='shouldHave' />
+              <NumField name='shouldHave'/>
               <TextField name='note'/>
             </Form.Group>
-            <SubmitField value='Submit' />
-            <ErrorsField />
+            <SubmitField value='Submit'/>
+            <ErrorsField/>
           </Segment>
         </AutoForm>
       </Grid.Column>

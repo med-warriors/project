@@ -8,8 +8,21 @@ import { ROLE } from '../role/Role';
 
 // All medical type of medicine given in excel document.
 // CONSIDER: creating a collection to insert more types
-export const medType = ['Allergy & Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
-  'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'];
+export const medType = [
+  'Allergy & Cold Medicines',
+  'Analgesics/Antiinflammatory',
+  'Antihypertensives',
+  'Antimicrobials',
+  'Cardiac/Cholesterol',
+  'Dermatologic Preparations',
+  'Diabetes',
+  'Ear and Eye Preparations',
+  'Emergency Kit',
+  'GI Meds',
+  'GYN Meds',
+  'Pulmonary',
+  'Smoking Cessation',
+  'Vitamins and Supplements'];
 
 export const medForm = ['tablets', 'solution', 'bottle'];
 

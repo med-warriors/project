@@ -14,7 +14,7 @@ const formSchema = new SimpleSchema({
   type: {
     type: String,
     allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol',
-      'Dermatologic Preparations', 'Diabetes', 'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation',
+      'Dermatologic Preparations', 'Diabetes Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation',
       'Vitamins and Supplements'] },
   location: {
     type: String,
