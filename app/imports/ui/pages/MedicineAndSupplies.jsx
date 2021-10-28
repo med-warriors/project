@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Table, Header, Loader, Tab, Input, Dropdown, Grid } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Tab, Input, Dropdown, Grid, Pagination } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -43,9 +43,21 @@ const supplyLocationOptions = [
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
 const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
-  // state functions
+  // state functions for search and filter
   const [filter, setFilter] = useState('');
   const [search, setSearch] = useState('');
+  // state functions for pagination
+  const [activePage, setActivePage] = useState(1);
+  // variables for rows of medicines from start to end
+  const medStart = (activePage * 10 - 10);
+  const medEnd = (activePage * 10);
+  // variables for rows of supplies from start to end
+  const supplyStart = (activePage * 6 - 6);
+  const supplyEnd = (activePage * 6);
+  // variable to let user go to different page
+  const onChange = (e, pageInfo) => {
+    setActivePage(Number(pageInfo.activePage));
+  };
   // variable to sort medicine
   let medSort = medicines;
   // variable to sort supplies
@@ -123,9 +135,15 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {medSort.map((medicine) => <CurrentMedicine key={medicine._id} medicine={medicine}/>)}
+                {medSort.map((medicine) => <CurrentMedicine key={medicine._id} medicine={medicine}/>).slice(medStart, medEnd)}
               </Table.Body>
             </Table>
+            <Pagination
+              activePage={activePage}
+              onPageChange={onChange}
+              totalPages={11}
+              ellipsisItem={null}
+            />
           </Tab.Pane>,
         },
         {
@@ -149,9 +167,15 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {supplySort.map((supply) => <CurrentSupplies key={supply._id} supply={supply}/>)}
+                {supplySort.map((supply) => <CurrentSupplies key={supply._id} supply={supply}/>).slice(supplyStart, supplyEnd)}
               </Table.Body>
             </Table>
+            <Pagination
+              activePage={activePage}
+              onPageChange={onChange}
+              totalPages={4}
+              ellipsisItem={null}
+            />
           </Tab.Pane>,
         }]}/>
     </Container>
