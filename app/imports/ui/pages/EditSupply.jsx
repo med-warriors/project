@@ -15,8 +15,12 @@ const bridge = new SimpleSchema2Bridge(Supplies._schema);
 
 const supplyLocation = [
   { label: 'Cabinet 2', value: 'Cabinet 2' },
+  { label: 'Back Cabinet', value: 'Back Cabinet' },
   { label: 'Case 4', value: 'Case 4' },
+  { label: 'Drawer 6', value: 'Drawer 6' },
+  { label: 'Drawer 9', value: 'Drawer 9' },
   { label: 'Refrigerator', value: 'Refrigerator' },
+  { label: 'Shower Closet', value: 'Shower Closet' },
   { label: 'Refrig Closet', value: 'Refrig Closet' },
 ];
 
@@ -33,7 +37,6 @@ const EditSupply = ({ doc, ready }) => {
       .then(() => swal('Success', 'Item updated successfully', 'success'));
   };
 
-  // need to add drop down fields for status, name. and use quantity to remove not update?
   return (ready) ? (
     <Grid id={PAGE_IDS.EDIT_STUFF} container centered>
       <Grid.Column>
@@ -43,7 +46,6 @@ const EditSupply = ({ doc, ready }) => {
             <TextField name='name' />
             <NumField name='quantity' decimal={false} />
             <SelectField name='location' options={supplyLocation} />
-            <TextField name='status' />
             <SubmitField value='Submit' />
             <ErrorsField />
           </Segment>
