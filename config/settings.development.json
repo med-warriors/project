@@ -1,68 +1,133 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP" },
-    { "email": "doctor@foo.com", "password": "changeme", "role": "DOCTOR", "firstName": "Doctor", "lastName": "Apollo" },
-    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "ADMIN",
+      "firstName": "Admin",
+      "lastName": "MATRP"
+    },
+    {
+      "email": "doctor@foo.com",
+      "password": "changeme",
+      "role": "DOCTOR",
+      "firstName": "Doctor",
+      "lastName": "Apollo"
+    },
+    {
+      "email": "john@foo.com",
+      "password": "changeme",
+      "role": "USER",
+      "firstName": "John",
+      "lastName": "Doe"
+    }
   ],
-
   "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+    {
+      "name": "Basket",
+      "quantity": 3,
+      "owner": "john@foo.com",
+      "condition": "excellent"
+    },
+    {
+      "name": "Bicycle",
+      "quantity": 2,
+      "owner": "john@foo.com",
+      "condition": "poor"
+    },
+    {
+      "name": "Banana",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "good"
+    },
+    {
+      "name": "Boogie Board",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "excellent"
+    }
   ],
-
   "defaultProfiles": [
-    { "username": "jfoo", "role": "student", "name": "John Foo", "idnumber": "12345678", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "john@foo.com" },
-    { "username": "doc", "role": "doctor", "name": "Doctor Apollo", "idnumber": "124541", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "doctor@foo.com" },
-    { "username": "admin", "role": "admin", "name": "Admin User", "idnumber": "87654321", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU", "owner": "admin@foo.com" }
+    {
+      "username": "jfoo",
+      "role": "student",
+      "name": "John Foo",
+      "idnumber": "12345678",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU",
+      "owner": "john@foo.com"
+    },
+    {
+      "username": "doc",
+      "role": "doctor",
+      "name": "Doctor Apollo",
+      "idnumber": "124541",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU",
+      "owner": "doctor@foo.com"
+    },
+    {
+      "username": "admin",
+      "role": "admin",
+      "name": "Admin User",
+      "idnumber": "87654321",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU",
+      "owner": "admin@foo.com"
+    }
   ],
-
   "defaultSupplySource": [
-    { "name": "Aloha", "location": "Aloha st", "phoneNumber": 808808808, "email": "aloha@aloha.com" },
-    { "name": "John", "location": "King st", "phoneNumber": 801111222, "email": "John@aloha.com" },
-    { "name": "Aaron", "location": "School st", "phoneNumber": 808666111, "email": "Aaron@aloha.com" },
-    { "name": "Mahalo", "location": "Mahalo st", "phoneNumber": 808333444, "email": "Mahalo@aloha.com" }
+    {
+      "name": "Aloha",
+      "location": "Aloha st",
+      "phoneNumber": 808808808,
+      "email": "aloha@aloha.com"
+    },
+    {
+      "name": "John",
+      "location": "King st",
+      "phoneNumber": 801111222,
+      "email": "John@aloha.com"
+    },
+    {
+      "name": "Aaron",
+      "location": "School st",
+      "phoneNumber": 808666111,
+      "email": "Aaron@aloha.com"
+    },
+    {
+      "name": "Mahalo",
+      "location": "Mahalo st",
+      "phoneNumber": 808333444,
+      "email": "Mahalo@aloha.com"
+    }
   ],
-
   "defaultPatientHistory": [
-    { "date": "2021-09-12T07:30", "id": "Xu8HM8EpsfLhP3"},
-    { "date": "2021-09-12T07:30", "id": "4CgJr3ZQ2xn7Uq"},
-    { "date": "2021-09-13T08:30", "id": "XZxwCqnFCkvJ7B"},
-    { "date": "2021-09-13T07:30", "id": "2XYRFenBbYCvbn"}
+    {
+      "date": "2021-09-12T07:30",
+      "id": "Xu8HM8EpsfLhP3"
+    },
+    {
+      "date": "2021-09-12T07:30",
+      "id": "4CgJr3ZQ2xn7Uq"
+    },
+    {
+      "date": "2021-09-13T08:30",
+      "id": "XZxwCqnFCkvJ7B"
+    },
+    {
+      "date": "2021-09-13T07:30",
+      "id": "2XYRFenBbYCvbn"
+    }
   ],
-
-  "defaultMedicines": [
-    {"name": "Benzonatate Capsules", "type": "Allergy & Cold Medicines", "shouldHave": 15, "note": "use for Cold"},
-    {"name": "Ibuprofen 800 mg tabs", "type": "Analgesics/Antiinflammatory", "shouldHave": 60, "note": "use for Headache"},
-    {"name": "Metoprolol 50 mg", "type": "Antihypertensives", "shouldHave": 30, "note": "use for High Blood Pressure"},
-    {"name": "Fluconazole 150 mg", "type": "Antimicrobials", "shouldHave": 3, "note": "use for Fungal Infection"}
-  ],
-
-  "defaultMedicineInventory": [
-    { "lotNumber": "a5", "medName": "Benzonatate Capsules", "location": "Case 2", "quantity": "19", "expDate": "2021-09-13T07:30", "sourceName": "sourceName",
-      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted"},
-    { "lotNumber": "b5", "medName": "Benzonatate Capsules", "location": "Case 1", "quantity": "30", "expDate": "2022-09-13T07:30", "sourceName": "sourceName",
-      "acquire": "Purchased", "cost": 100, "receiveDate": "2021-03-17T07:30", "state": "Reserves"},
-    { "lotNumber": "a42", "medName": "Ibuprofen 800 mg tabs", "location": "Case 4", "quantity": "60", "expDate": "2022-04-17T07:30", "sourceName": "sourceName",
-      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted"},
-    { "lotNumber": "a70", "medName": "Metoprolol 50 mg", "location": "Case 7", "quantity": "115", "expDate": "2022-04-30T07:30", "sourceName": "sourceName",
-      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted" },
-    { "lotNumber": "a95", "medName": "Fluconazole 150 mg", "location": "Freezer", "quantity": "3", "expDate": "2021-02-17T07:30", "sourceName": "sourceName",
-      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted"}
-  ],
-
-  "defaultSupplies": [
-    { "name": "Theraband - Green", "location": "Cabinet 2", "quantity": "1" , "source": "name"},
-    { "name": "Rapid Strep Strips", "location": "Refrig Closet", "quantity": "25" , "source": "name"},
-    { "name": "Pregnancy Tests", "location": "Refrigerator", "quantity": "20" , "source": "name"},
-    { "name": "Thermometers - Patient Supplies", "location": "Case 4", "quantity": "3" , "source": "name"}
-  ],
-
   "defaultTransationHistory": [
-    {"date": "2021-09-13T07:30", "transact": "Out", "type": "Medicine", "patientID": "2XYRFenBbYCvbn", "prescription": "tylenol 600mg", "employee":  "123456" }
+    {
+      "date": "2021-09-13T07:30",
+      "transact": "Out",
+      "type": "Medicine",
+      "patientID": "2XYRFenBbYCvbn",
+      "prescription": "tylenol 600mg",
+      "employee": "123456"
+    }
   ],
-
   "public": {
     "development": true
   }

@@ -7,17 +7,17 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 // Changes text to red, yellow, or green, based on quantity of supplies
 const getColor = (quantity) => {
   if (quantity >= 20) return '#25A18E';
-  if (quantity > 10 && quantity < 20) return '#A18E25';
+  if (quantity >= 10 && quantity < 20) return '#A18E25';
   return '#A12358';
 };
 
 /** Renders a single row in the List Supplies table. See pages/MedicineandSupplies.jsx. */
 const CurrentSupplies = ({ supply }) => {
   let highlight;
-  if (supply.quantity < 10) {
-    highlight = 'error';
-  } else if (supply.quantity < 20) {
+  if (supply.quantity >= 10 && supply.quantity < 20) {
     highlight = 'warning';
+  } else if (supply.quantity < 10) {
+    highlight = 'error';
   } else {
     highlight = 'positive';
   }
