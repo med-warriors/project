@@ -10,10 +10,6 @@ const InventoryItem = ({ inventories }) => (
     <Table.Cell>{inventories.medName}</Table.Cell>
     <Table.Cell>{inventories.quantity}</Table.Cell>
     <Table.Cell>{inventories.location}</Table.Cell>
-    <Table.Cell>{inventories.sourceName}</Table.Cell>
-    <Table.Cell>{inventories.acquire}</Table.Cell>
-    <Table.Cell>${inventories.cost}</Table.Cell>
-    <Table.Cell>{inventories.receiveDate.toDateString()}</Table.Cell>
     <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
     <Table.Cell>{inventories.state}</Table.Cell>
     <Button color='green' content= 'UPDATE'/>
