@@ -724,6 +724,606 @@
       "type": "Cardiac/Cholesterol",
       "shouldHave": 25,
       "note": "use for treating chest pain and anal fissures"
+    },
+    {
+      "name": "Bacitracin Ointment 15 gm tube",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for preventing infection of minor cuts, burns, and scrapes"
+    },
+    {
+      "name": "Bacitracin Ointment packets",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 30,
+      "note": "use for preventing infection of minor cuts, burns, and scrapes"
+    },
+    {
+      "name": "Benzoyl Peroxide 10% Lotion",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating mild to moderate acne"
+    },
+    {
+      "name": "Benzoyl Peroxide 10% Wash",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating mild to moderate acne"
+    },
+    {
+      "name": "Betamethasone 0.05% Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for treating itchy, irritated, and/or swollen skin"
+    },
+    {
+      "name": "Chapstick",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 5,
+      "note": "use for soothing dry chapped lips"
+    },
+    {
+      "name": "Clotrimazole 1% Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for Fungal Infection"
+    },
+    {
+      "name": "Desitin/Diaper Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating rashes"
+    },
+    {
+      "name": "Hydrocotisone Cream 1%",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for treating red, swollen, and/or itchy skin"
+    },
+    {
+      "name": "Ketoconazole 2% cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for skin infections and dandruff"
+    },
+    {
+      "name": "LacHydrin Lotion or Amlactin",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for treating dry, scaly skin conditions"
+    },
+    {
+      "name": "Medicated Lip Ointment",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 15,
+      "note": "use for relieving pain, itching, and discomfort of lip sores and blisters"
+    },
+    {
+      "name": "Molefoam Padding",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for preventing blisters"
+    },
+    {
+      "name": "Mupirocin 2% Ointment",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for skin infections"
+    },
+    {
+      "name": "Nystatin Ointment",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for fungal infections of skin"
+    },
+    {
+      "name": "Orasol Gel 20%",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 30,
+      "note": "use for relieving minor toothaches, cold sores, and other dental procedures"
+    },
+    {
+      "name": "Pain Relief Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for preventing pain from skin conditions"
+    },
+    {
+      "name": "Permethrin 1% Shampoo",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 5,
+      "note": "use for treating head lice"
+    },
+    {
+      "name": "Permethrin 5% Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating scabies"
+    },
+    {
+      "name": "Proctosol-HC 2.5% Cream/Preparation-H",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for relieving pain, itching, swelling, and discomfort caused by hemorrhoids"
+    },
+    {
+      "name": "Salicylic Acid Pads - Callus Remover",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating skin and foot warts"
+    },
+    {
+      "name": "Salicylic Acid Pads - Corn Remover",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating skin and foot warts"
+    },
+    {
+      "name": "Selenium Sulfide 2.5% Lotion",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating dandruff"
+    },
+    {
+      "name": "Silver Sulfadiazine Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for preventing serious skin infections with second- or third-degree burns"
+    },
+    {
+      "name": "Sting Kill",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for relieving animal stings and insect bites"
+    },
+    {
+      "name": "Tolnaftate Antifungal Powder",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for Fungal Infection"
+    },
+    {
+      "name": "Tolnaftate 1% Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for Fungal Infection"
+    },
+    {
+      "name": "Triamcinolone 0.025% Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for treating skin conditions"
+    },
+    {
+      "name": "Triamcinolone 0.1% Cream",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 2,
+      "note": "use for treating skin conditions"
+    },
+    {
+      "name": "Unna Boot 3&#34;",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for protecting ulcers or open wounds"
+    },
+    {
+      "name": "Unna Boot 4&#34;",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for protecting ulcers or open wounds"
+    },
+    {
+      "name": "Urea Lotion",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating skin conditions"
+    },
+    {
+      "name": "White Petrolatum USP",
+      "type": "Dermatologic Preparations",
+      "shouldHave": 1,
+      "note": "use for treating minor skin irritations"
+    },
+    {
+      "name": "Alogliptin/Metformin (12.5/500)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use for treating Type 2 Diabetes"
+    },
+    {
+      "name": "DPP-4 Inhibitors (Sitagliptin 100 mg)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use for lowering high blood glucose levels"
+    },
+    {
+      "name": "Glipizide 10 mg",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use for controlling blood sugar levels"
+    },
+    {
+      "name": "Glipizide 5 mg",
+      "type": "Diabetes Meds",
+      "shouldHave": 60,
+      "note": "use for controlling blood sugar levels"
+    },
+    {
+      "name": "Glucose Tablets",
+      "type": "Diabetes Meds",
+      "shouldHave": 25,
+      "note": "use for increasing low blood sugar for people with diabetes"
+    },
+    {
+      "name": "Metformin ER 500 mg tabs",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use for preventing Type 2 Diabetes"
+    },
+    {
+      "name": "SGLT2 Inhibitors (Dapagliflozin 10 mg)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+    },
+    {
+      "name": "SGLT2 Inhibitors (Dapagliflozin 5 mg)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+    },
+    {
+      "name": "SGLT2 Inhibitors/DPP4 Inhibitor (10mg/5mg)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+    },
+    {
+      "name": "SGLT2 Inhibitors/DPP4 Inhibitor (25mg/5mg)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+    },
+    {
+      "name": "Sitagliptin/Metformin 100/1000 (Janumet)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use for treating Type 2 Diabetes"
+    },
+    {
+      "name": "Sitagliptin/Metformin 50/500 (Janumet)",
+      "type": "Diabetes Meds",
+      "shouldHave": 30,
+      "note": "use for treating Type 2 Diabetes"
+    },
+    {
+      "name": "Antipyrine & Benzocaine Otic",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 1,
+      "note": "use for relieving ear pain and swelling"
+    },
+    {
+      "name": "Artificial Tears",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 2,
+      "note": "use for relieving dry, itchy, and/or watery eyes"
+    },
+    {
+      "name": "Carbamide Peroxide 6.5%",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 1,
+      "note": "use for treating earwax buildup"
+    },
+    {
+      "name": "Ear Plugs",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 30,
+      "note": "use for protecting ears from loud noises, water, foreign bodies, dust, or wind"
+    },
+    {
+      "name": "Gentamycin, Cipro, or Ofloxacin Ophthalmic Soln",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 2,
+      "note": "use for treating bacterial eye infections"
+    },
+    {
+      "name": "Napchon (Opticlear)",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 1,
+      "note": "use for relieving eye redness, puffiness, itching, and watering"
+    },
+    {
+      "name": "Neomycin/Polymyxin/Hydrocortisone (Cortisporin) Otic",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 1,
+      "note": "use for treating ear infections"
+    },
+    {
+      "name": "Sulfacetamide or Polymyxin B Ophthalmic Soln",
+      "type": "Ear and Eye Preparations",
+      "shouldHave": 2,
+      "note": "use for treating bacterial eye infections"
+    },
+    {
+      "name": "Ammonia Inhalant",
+      "type": "Emergency Kit",
+      "shouldHave": 2,
+      "note": "use for preventing and treating fainting, dizziness, and lightheadedness"
+    },
+    {
+      "name": "Diphenhydramine 50 mg/mL",
+      "type": "Emergency Kit",
+      "shouldHave": 1,
+      "note": "use for relieving red, irritated, itchy, and/or watery eyes, sneezing, and runny nose"
+    },
+    {
+      "name": "Epipen",
+      "type": "Emergency Kit",
+      "shouldHave": 2,
+      "note": "use for treating very serious allergic reactions"
+    },
+    {
+      "name": "Epipen Jr.",
+      "type": "Emergency Kit",
+      "shouldHave": 2,
+      "note": "use for treating very serious allergic reactions"
+    },
+    {
+      "name": "Medicaine Sting/Bite Swab",
+      "type": "Emergency Kit",
+      "shouldHave": 10,
+      "note": "use for temporary relief in pain/itching associated with insect bites/stings"
+    },
+    {
+      "name": "Antacid",
+      "type": "GI Meds",
+      "shouldHave": 50,
+      "note": "use for treating heartburn"
+    },
+    {
+      "name": "Bisacodyl Suppositories",
+      "type": "GI Meds",
+      "shouldHave": 5,
+      "note": "use for relieving constipation"
+    },
+    {
+      "name": "Docusate Sodium 100 mg",
+      "type": "GI Meds",
+      "shouldHave": 30,
+      "note": "use for treating constipation"
+    },
+    {
+      "name": "Lactulose Solution",
+      "type": "GI Meds",
+      "shouldHave": 1,
+      "note": "use for treating constipation"
+    },
+    {
+      "name": "Loperamide 2 mg",
+      "type": "GI Meds",
+      "shouldHave": 12,
+      "note": "use for treating diarrhea"
+    },
+    {
+      "name": "Pepto-Bismol",
+      "type": "GI Meds",
+      "shouldHave": 1,
+      "note": "use for nausea, heartburn (indigestion), upset stomach, and diarrhea"
+    },
+    {
+      "name": "Promethazine 25 mg",
+      "type": "GI Meds",
+      "shouldHave": 30,
+      "note": "use for relieving allergic reactions"
+    },
+    {
+      "name": "Proton Pump Inhibitor",
+      "type": "GI Meds",
+      "shouldHave": 50,
+      "note": "use for relieving acid reflux and treating stomach ulcers"
+    },
+    {
+      "name": "Ranitidine (or other H2blocker)",
+      "type": "GI Meds",
+      "shouldHave": 30,
+      "note": "use for treating ulcers and reducing stomach acid"
+    },
+    {
+      "name": "Apri Tabs",
+      "type": "GYN Meds",
+      "shouldHave": 2,
+      "note": "use for preventing pregnancy"
+    },
+    {
+      "name": "Depo-Provera",
+      "type": "GYN Meds",
+      "shouldHave": 1,
+      "note": "use for preventing pregnancy and manage medical conditions related to menstrual cycle"
+    },
+    {
+      "name": "Detrol LA (Tolterodin Tartate)",
+      "type": "GYN Meds",
+      "shouldHave": 30,
+      "note": "use for treating overactive bladders"
+    },
+    {
+      "name": "Medroxyprogesterone 10 mg",
+      "type": "GYN Meds",
+      "shouldHave": 10,
+      "note": "use for treating conditions such as absent/irregulate menstrual periods or abnormal uterine bleeding"
+    },
+    {
+      "name": "Miconazole Applicator Set",
+      "type": "GYN Meds",
+      "shouldHave": 1,
+      "note": "use for treating vaginal yeast infections"
+    },
+    {
+      "name": "PlanB",
+      "type": "GYN Meds",
+      "shouldHave": 1,
+      "note": "use for preventing unintended pregnancy"
+    },
+    {
+      "name": "Reclipsen Tabs",
+      "type": "GYN Meds",
+      "shouldHave": 2,
+      "note": "use for preventing pregnancy"
+    },
+    {
+      "name": "Albuterol HFA (Proair/Ventolin)",
+      "type": "Pulmonary",
+      "shouldHave": 2,
+      "note": "use for preventing wheezing and shortness of breath caused by breathing problems"
+    },
+    {
+      "name": "Albuterol Inhalation Soln.",
+      "type": "Pulmonary",
+      "shouldHave": 5,
+      "note": "use for preventing wheezing and shortness of breath caused by breathing problems"
+    },
+    {
+      "name": "Ipratropium Inhalation Soln.",
+      "type": "Pulmonary",
+      "shouldHave": 5,
+      "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
+    },
+    {
+      "name": "Ipratropium/Albuterol",
+      "type": "Pulmonary",
+      "shouldHave": 1,
+      "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
+    },
+    {
+      "name": "Steroid Inhaler",
+      "type": "Pulmonary",
+      "shouldHave": 1,
+      "note": "use for treating asthma and chronic obstructive pulmonary disease"
+    },
+    {
+      "name": "Steroid/Long Acting Beta Agonist (Adult)",
+      "type": "Pulmonary",
+      "shouldHave": 1,
+      "note": "use for treating asthma and chronic obstructive pulmonary disease"
+    },
+    {
+      "name": "Steroid/Long Acting Beta Agonist (Child)",
+      "type": "Pulmonary",
+      "shouldHave": 1,
+      "note": "use for treating asthma and chronic obstructive pulmonary disease"
+    },
+    {
+      "name": "Tiotropium or Ipratropium",
+      "type": "Pulmonary",
+      "shouldHave": 1,
+      "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
+    },
+    {
+      "name": "Buproprion ER 150 mg",
+      "type": "Smoking Cessation",
+      "shouldHave": 30,
+      "note": "used as an antidepressant for the brain"
+    },
+    {
+      "name": "Nicotine Gum 2 mg",
+      "type": "Smoking Cessation",
+      "shouldHave": 50,
+      "note": "use for helping people to quit smoking"
+    },
+    {
+      "name": "Nicotine Gum 4 mg",
+      "type": "Smoking Cessation",
+      "shouldHave": 50,
+      "note": "use for helping people to quit smoking"
+    },
+    {
+      "name": "Nicotine Patch 7 mg",
+      "type": "Smoking Cessation",
+      "shouldHave": 14,
+      "note": "use for helping people to quit smoking"
+    },
+    {
+      "name": "Nicotine Patch 14 mg",
+      "type": "Smoking Cessation",
+      "shouldHave": 14,
+      "note": "use for helping people to quit smoking"
+    },
+    {
+      "name": "Nicotine Patch 21 mg",
+      "type": "Smoking Cessation",
+      "shouldHave": 14,
+      "note": "use for helping people to quit smoking"
+    },
+    {
+      "name": "Calcium Supplements",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 30,
+      "note": "use for treating and preventing osteoporosis"
+    },
+    {
+      "name": "Fiber Capsules",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 60,
+      "note": "use for treating constipation"
+    },
+    {
+      "name": "Fluoride .5 mg",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 30,
+      "note": "use for preventing tooth decay"
+    },
+    {
+      "name": "Fluoride 0.25 mg drops",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 30,
+      "note": "use for preventing dental cavities"
+    },
+    {
+      "name": "Fluoride 1 mg",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 30,
+      "note": "use for preventing tooth decay"
+    },
+    {
+      "name": "Iron 27 mg",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 30,
+      "note": "use for preventing low blood levels of iron"
+    },
+    {
+      "name": "Melatonin 3 mg",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 30,
+      "note": "use for insomnia"
+    },
+    {
+      "name": "Multivitamins - Adult",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 50,
+      "note": "use for treating vitamin deficiencies"
+    },
+    {
+      "name": "Multivitamins - Adult Gummies",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 50,
+      "note": "use for treating vitamin deficiencies"
+    },
+    {
+      "name": "Multivitamins - Children's Gummies",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 50,
+      "note": "use for treating vitamin deficiencies"
+    },
+    {
+      "name": "Multivitamins - Kids Chewable",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 50,
+      "note": "use for treating vitamin deficiencies"
+    },
+    {
+      "name": "Prenatal Vitamins",
+      "type": "Vitamins and Supplements",
+      "shouldHave": 30,
+      "note": "use for giving healthy pregnancies"
     }
   ],
   "defaultMedicineInventory": [
@@ -1424,18 +2024,6 @@
       "state": "Acted"
     },
     {
-      "lotNumber": "d7",
-      "medName": "Chlorthalidone or Hydrochlorothiazide 25 mg tabs",
-      "location": "Case 7",
-      "quantity": "49",
-      "expDate": "2022-04-30T07:30",
-      "sourceName": "sourceName",
-      "acquire": "Purchased",
-      "cost": 100,
-      "receiveDate": "2021-02-17T07:30",
-      "state": "Reserves"
-    },
-    {
       "lotNumber": "c8",
       "medName": "Furosemide 20 mg",
       "location": "Case 7",
@@ -1566,18 +2154,6 @@
       "cost": 0,
       "receiveDate": "2021-02-17T07:30",
       "state": "Acted"
-    },
-    {
-      "lotNumber": "d18",
-      "medName": "Nebivolol 5 mg",
-      "location": "Case 7",
-      "quantity": "83",
-      "expDate": "2022-04-30T07:30",
-      "sourceName": "sourceName",
-      "acquire": "Purchased",
-      "cost": 200,
-      "receiveDate": "2021-02-17T07:30",
-      "state": "Reserves"
     },
     {
       "lotNumber": "c19",
@@ -1974,6 +2550,1206 @@
       "cost": 0,
       "receiveDate": "2021-07-21T07:30",
       "state": "Acted"
+    },
+    {
+      "lotNumber": "f1",
+      "medName": "Bacitracin Ointment 15 gm tube",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-02-22T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-08-10T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f2",
+      "medName": "Bacitracin Ointment packets",
+      "location": "Freezer-Derm",
+      "quantity": "67",
+      "expDate": "2022-02-22T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-08-10T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f3",
+      "medName": "Benzoyl Peroxide 10% Lotion",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-02-22T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-08-10T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f4",
+      "medName": "Benzoyl Peroxide 10% Wash",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-02-22T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-08-10T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f5",
+      "medName": "Betamethasone 0.05% Cream",
+      "location": "Freezer-Derm",
+      "quantity": "3",
+      "expDate": "2022-02-22T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-08-10T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f6",
+      "medName": "Chapstick",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f7",
+      "medName": "Clotrimazole 1% Cream",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f8",
+      "medName": "Desitin/Diaper Cream",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f9",
+      "medName": "Hydrocotisone Cream 1%",
+      "location": "Freezer-Derm",
+      "quantity": "3",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f10",
+      "medName": "Ketoconazole 2% cream",
+      "location": "Freezer-Derm",
+      "quantity": "3",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f11",
+      "medName": "LacHydrin Lotion or Amlactin",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f12",
+      "medName": "Medicated Lip Ointment",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f13",
+      "medName": "Molefoam Padding",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f14",
+      "medName": "Mupirocin 2% Ointment",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f15",
+      "medName": "Nystatin Ointment",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f16",
+      "medName": "Orasol Gel 20%",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f17",
+      "medName": "Pain Relief Cream",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f18",
+      "medName": "Permethrin 1% Shampoo",
+      "location": "Drawer 2-2",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f19",
+      "medName": "Permethrin 5% Cream",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f20",
+      "medName": "Proctosol-HC 2.5% Cream/Preparation-H",
+      "location": "Freezer-Derm",
+      "quantity": "1",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f21",
+      "medName": "Salicylic Acid Pads - Callus Remover",
+      "location": "Freezer-Derm",
+      "quantity": "1",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f22",
+      "medName": "Salicylic Acid Pads - Corn Remover",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f23",
+      "medName": "Selenium Sulfide 2.5% Lotion",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f24",
+      "medName": "Silver Sulfadiazine Cream",
+      "location": "Freezer-Derm",
+      "quantity": "4",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f25",
+      "medName": "Sting Kill",
+      "location": "Freezer-Derm",
+      "quantity": "6",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f26",
+      "medName": "Tolnaftate Antifungal Powder",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f27",
+      "medName": "Tolnaftate 1% Cream",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f28",
+      "medName": "Triamcinolone 0.025% Cream",
+      "location": "Freezer-Derm",
+      "quantity": "3",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f29",
+      "medName": "Triamcinolone 0.1% Cream",
+      "location": "Freezer-Derm",
+      "quantity": "4",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f30",
+      "medName": "Unna Boot 3&#34;",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f31",
+      "medName": "Unna Boot 4&#34;",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f32",
+      "medName": "Urea Lotion",
+      "location": "Freezer-Derm",
+      "quantity": "0",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "f33",
+      "medName": "White Petrolatum USP",
+      "location": "Freezer-Derm",
+      "quantity": "2",
+      "expDate": "2022-11-01T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-16T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g1",
+      "medName": "Alogliptin/Metformin (12.5/500)",
+      "location": "Case 8",
+      "quantity": "56",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g2",
+      "medName": "DPP-4 Inhibitors (Sitagliptin 100 mg)",
+      "location": "Case 8",
+      "quantity": "70",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g3",
+      "medName": "Glipizide 10 mg",
+      "location": "Case 8",
+      "quantity": "100",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g4",
+      "medName": "Glipizide 5 mg",
+      "location": "Case 8",
+      "quantity": "50",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g5",
+      "medName": "Glucose Tablets",
+      "location": "Case 8",
+      "quantity": "100",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g6",
+      "medName": "Metformin ER 500 mg tabs",
+      "location": "Case 8",
+      "quantity": "60",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g7",
+      "medName": "SGLT2 Inhibitors (Dapagliflozin 10 mg)",
+      "location": "Case 8",
+      "quantity": "42",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g8",
+      "medName": "SGLT2 Inhibitors (Dapagliflozin 5 mg)",
+      "location": "Case 8",
+      "quantity": "42",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g9",
+      "medName": "SGLT2 Inhibitors/DPP4 Inhibitor (10mg/5mg)",
+      "location": "Case 8",
+      "quantity": "28",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g10",
+      "medName": "SGLT2 Inhibitors/DPP4 Inhibitor (25mg/5mg)",
+      "location": "Case 8",
+      "quantity": "28",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g11",
+      "medName": "Sitagliptin/Metformin 100/1000 (Janumet)",
+      "location": "Case 8",
+      "quantity": "40",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "g12",
+      "medName": "Sitagliptin/Metformin 50/500 (Janumet)",
+      "location": "Case 8",
+      "quantity": "143",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h1",
+      "medName": "Antipyrine & Benzocaine Otic",
+      "location": "Case 1",
+      "quantity": "0",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h2",
+      "medName": "Artificial Tears",
+      "location": "Case 1",
+      "quantity": "2",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h3",
+      "medName": "Carbamide Peroxide 6.5%",
+      "location": "Case 1",
+      "quantity": "1",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h4",
+      "medName": "Ear Plugs",
+      "location": "Case 1",
+      "quantity": "35",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h5",
+      "medName": "Gentamycin, Cipro, or Ofloxacin Ophthalmic Soln",
+      "location": "Case 1",
+      "quantity": "2",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h6",
+      "medName": "Napchon (Opticlear)",
+      "location": "Case 1",
+      "quantity": "1",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h7",
+      "medName": "Neomycin/Polymyxin/Hydrocortisone (Cortisporin) Otic",
+      "location": "Case 1",
+      "quantity": "0",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "h8",
+      "medName": "Sulfacetamide or Polymyxin B Ophthalmic Soln",
+      "location": "Case 1",
+      "quantity": "2",
+      "expDate": "2022-11-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-04T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "i1",
+      "medName": "Ammonia Inhalant",
+      "location": "Emergency Kit",
+      "quantity": "2",
+      "expDate": "2022-12-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-02-14T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "i2",
+      "medName": "Diphenhydramine 50 mg/mL",
+      "location": "Emergency Kit",
+      "quantity": "1",
+      "expDate": "2022-12-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-02-14T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "i3",
+      "medName": "Epipen",
+      "location": "Emergency Kit",
+      "quantity": "0",
+      "expDate": "2022-12-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-02-14T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "i4",
+      "medName": "Epipen Jr.",
+      "location": "Emergency Kit",
+      "quantity": "0",
+      "expDate": "2022-12-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-02-14T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "i5",
+      "medName": "Medicaine Sting/Bite Swab",
+      "location": "Emergency Kit",
+      "quantity": "10",
+      "expDate": "2022-12-25T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-02-14T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j1",
+      "medName": "Antacid",
+      "location": "Case 3",
+      "quantity": "75",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j2",
+      "medName": "Bisacodyl Suppositories",
+      "location": "Case 3",
+      "quantity": "10",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j3",
+      "medName": "Docusate Sodium 100 mg",
+      "location": "Case 3",
+      "quantity": "200",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j4",
+      "medName": "Lactulose Solution",
+      "location": "Case 3",
+      "quantity": "1",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j5",
+      "medName": "Loperamide 2 mg",
+      "location": "Case 3",
+      "quantity": "12",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j6",
+      "medName": "Pepto-Bismol",
+      "location": "Case 3",
+      "quantity": "0",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j7",
+      "medName": "Promethazine 25 mg",
+      "location": "Case 3",
+      "quantity": "100",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j8",
+      "medName": "Proton Pump Inhibitor",
+      "location": "Case 3",
+      "quantity": "112",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "j9",
+      "medName": "Ranitidine (or other H2blocker)",
+      "location": "Case 3",
+      "quantity": "100",
+      "expDate": "2022-06-06T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-04-01T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "k1",
+      "medName": "Apri Tabs",
+      "location": "Case 3",
+      "quantity": "6",
+      "expDate": "2022-07-11T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-26T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "k2",
+      "medName": "Depo-Provera",
+      "location": "Case 3",
+      "quantity": "0",
+      "expDate": "2022-07-11T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-26T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "k3",
+      "medName": "Detrol LA (Tolterodin Tartate)",
+      "location": "Case 3",
+      "quantity": "0",
+      "expDate": "2022-07-11T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-26T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "k4",
+      "medName": "Medroxyprogesterone 10 mg",
+      "location": "Case 3",
+      "quantity": "100",
+      "expDate": "2022-07-11T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-26T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "k5",
+      "medName": "Miconazole Applicator Set",
+      "location": "Case 3",
+      "quantity": "2",
+      "expDate": "2022-07-11T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-26T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "k6",
+      "medName": "PlanB",
+      "location": "Case 3",
+      "quantity": "1",
+      "expDate": "2022-07-11T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-26T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "k7",
+      "medName": "Reclipsen Tabs",
+      "location": "Case 3",
+      "quantity": "6",
+      "expDate": "2022-07-11T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-26T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l1",
+      "medName": "Albuterol HFA (Proair/Ventolin)",
+      "location": "Case 1",
+      "quantity": "3",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l2",
+      "medName": "Albuterol Inhalation Soln.",
+      "location": "Refrigerator Closet",
+      "quantity": "0",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l3",
+      "medName": "Ipratropium Inhalation Soln.",
+      "location": "Refrigerator Closet",
+      "quantity": "0",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l4",
+      "medName": "Ipratropium/Albuterol",
+      "location": "Case 1",
+      "quantity": "2",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l5",
+      "medName": "Steroid Inhaler",
+      "location": "Case 1",
+      "quantity": "1",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l6",
+      "medName": "Steroid/Long Acting Beta Agonist (Adult)",
+      "location": "Case 1",
+      "quantity": "3",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l7",
+      "medName": "Steroid/Long Acting Beta Agonist (Child)",
+      "location": "Case 1",
+      "quantity": "2",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "l8",
+      "medName": "Tiotropium or Ipratropium",
+      "location": "Case 1",
+      "quantity": "1",
+      "expDate": "2022-01-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-07-11T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "m1",
+      "medName": "Buproprion ER 150 mg",
+      "location": "Case 5",
+      "quantity": "120",
+      "expDate": "2022-06-30T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-12-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "m2",
+      "medName": "Nicotine Gum 2 mg",
+      "location": "Case 5",
+      "quantity": "200",
+      "expDate": "2022-06-30T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-12-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "m3",
+      "medName": "Nicotine Gum 4 mg",
+      "location": "Case 5",
+      "quantity": "200",
+      "expDate": "2022-06-30T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-12-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "m4",
+      "medName": "Nicotine Patch 7 mg",
+      "location": "Case 5",
+      "quantity": "57",
+      "expDate": "2022-06-30T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-12-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "m5",
+      "medName": "Nicotine Patch 14 mg",
+      "location": "Case 5",
+      "quantity": "0",
+      "expDate": "2022-06-30T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-12-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "m6",
+      "medName": "Nicotine Patch 21 mg",
+      "location": "Case 5",
+      "quantity": "42",
+      "expDate": "2022-06-30T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-12-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n1",
+      "medName": "Calcium Supplements",
+      "location": "Refrigerator",
+      "quantity": "0",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n2",
+      "medName": "Fiber Capsules",
+      "location": "Case 6",
+      "quantity": "180",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n3",
+      "medName": "Fluoride .5 mg",
+      "location": "Case 6",
+      "quantity": "0",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n4",
+      "medName": "Fluoride 0.25 mg drops",
+      "location": "Case 6",
+      "quantity": "0",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n5",
+      "medName": "Fluoride 1 mg",
+      "location": "Case 6",
+      "quantity": "0",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n6",
+      "medName": "Iron 27 mg",
+      "location": "Case 6",
+      "quantity": "200",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n7",
+      "medName": "Melatonin 3 mg",
+      "location": "Case 6",
+      "quantity": "120",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n8",
+      "medName": "Multivitamins - Adult",
+      "location": "Case 6",
+      "quantity": "210",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n9",
+      "medName": "Multivitamins - Adult Gummies",
+      "location": "Refrigerator",
+      "quantity": "0",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n10",
+      "medName": "Multivitamins - Children's Gummies",
+      "location": "Refrigerator",
+      "quantity": "0",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n11",
+      "medName": "Multivitamins - Kids Chewable",
+      "location": "Case 6",
+      "quantity": "250",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
+    },
+    {
+      "lotNumber": "n12",
+      "medName": "Prenatal Vitamins",
+      "location": "Case 6",
+      "quantity": "100",
+      "expDate": "2022-12-31T07:30",
+      "sourceName": "sourceName",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-01-31T07:30",
+      "state": "Acted"
     }
   ],
   "defaultSupplies": [
@@ -1984,9 +3760,93 @@
       "source": "name"
     },
     {
+      "name": "Theraband - Yellow",
+      "location": "Cabinet 2",
+      "quantity": "1",
+      "source": "name"
+    },
+    {
+      "name": "Theraband - Red",
+      "location": "Cabinet 2",
+      "quantity": "1",
+      "source": "name"
+    },
+    {
+      "name": "Theraband - Beige",
+      "location": "Cabinet 2",
+      "quantity": "1",
+      "source": "name"
+    },
+    {
+      "name": "Hot Packs",
+      "location": "Back Cabinet",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "Cold Packs",
+      "location": "Refrigerator",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "ACE Wrap 2&#34;",
+      "location": "Cabinet 2",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "ACE Wrap 3&#34;",
+      "location": "Cabinet 2",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "ACE Wrap 4&#34;",
+      "location": "Cabinet 2",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "ACE Wrap 6&#34;",
+      "location": "Cabinet 2",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "Blood Pressure Monitors - Patient",
+      "location": "Back Cabinet",
+      "quantity": "3",
+      "source": "name"
+    },
+    {
+      "name": "Cavicide",
+      "location": "Shower Closet",
+      "quantity": "10",
+      "source": "name"
+    },
+    {
       "name": "Rapid Strep Strips",
       "location": "Refrig Closet",
       "quantity": "25",
+      "source": "name"
+    },
+    {
+      "name": "Emesis Basin",
+      "location": "Drawer 9",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "Hand Sanitizer - Large",
+      "location": "Back Cabinet",
+      "quantity": "10",
+      "source": "name"
+    },
+    {
+      "name": "Hand Sanitizer - Small for Patients",
+      "location": "Case 4",
+      "quantity": "20",
       "source": "name"
     },
     {
@@ -1996,9 +3856,33 @@
       "source": "name"
     },
     {
+      "name": "Urine Dip Sticks",
+      "location": "Refrig Closet",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
+      "name": "Sensi Wrap 2&#34;",
+      "location": "Drawer 6",
+      "quantity": "6",
+      "source": "name"
+    },
+    {
+      "name": "UnaBoot",
+      "location": "Back Cabinet",
+      "quantity": "0",
+      "source": "name"
+    },
+    {
       "name": "Thermometers - Patient Supplies",
       "location": "Case 4",
       "quantity": "3",
+      "source": "name"
+    },
+    {
+      "name": "Thermometer Sheaths",
+      "location": "Case 4",
+      "quantity": "2",
       "source": "name"
     }
   ],
