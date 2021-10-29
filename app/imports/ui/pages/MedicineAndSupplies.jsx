@@ -141,7 +141,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
             <Pagination
               activePage={activePage}
               onPageChange={onChange}
-              totalPages={7}
+              totalPages={Math.ceil(medSort.length / 15)}
               ellipsisItem={null}
             />
           </Tab.Pane>,
@@ -173,7 +173,7 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
             <Pagination
               activePage={activePage}
               onPageChange={onChange}
-              totalPages={4}
+              totalPages={Math.ceil(supplySort.length / 6)}
               ellipsisItem={null}
             />
           </Tab.Pane>,
