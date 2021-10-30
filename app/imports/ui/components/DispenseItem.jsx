@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const DispenseItem = ({ inventories}) => {
+const DispenseItem = ({ inventories, addDispense }) => {
+  const clickAdd = () => {
+    addDispense(inventories._id);
+  };
 
   return (
     <Table.Row>
@@ -14,7 +17,9 @@ const DispenseItem = ({ inventories}) => {
       <Table.Cell>{inventories.location}</Table.Cell>
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
-      <Button color='red' content= 'Add'/>
+      <Table.Cell>
+        <Button color='red' content='Add' onClick={clickAdd}/>
+      </Table.Cell>
     </Table.Row>
   );
 };
@@ -34,7 +39,7 @@ DispenseItem.propTypes = {
     state: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
-  setCellValue: PropTypes.func,
+  addDispense: PropTypes.func,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.

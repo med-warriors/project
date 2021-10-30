@@ -12,8 +12,10 @@ import DispenseList from '../components/DispenseList';
 const Prescription = ({ ready, medicines }) => {
   // state functions
   const [search, setSearch] = useState('');
+  const [cellDispense, setDispense] = useState([]);
   // variable to sort medicine
   let medSort = [];
+  let dispenseList = [];
 
   // variable that lets user to type name of medicine/supply in search bar
   const handleSearch = (e, data) => {
@@ -28,6 +30,11 @@ const Prescription = ({ ready, medicines }) => {
     const lowerCase = search.toLowerCase();
     // searches medicine item based on name
     return searchItem.medName.toLowerCase().startsWith(lowerCase);
+  };
+
+  const addDispense = (data) => {
+    const updateDispense = [...cellDispense, data];
+    setDispense(updateDispense);
   };
 
   if (ready) {
@@ -61,10 +68,11 @@ const Prescription = ({ ready, medicines }) => {
                 </Table.Header>
                 <Table.Body>
                   {medSort.map((inventories) => <DispenseItem
-                    key={inventories._id} inventories={inventories}
+                    key={inventories._id} inventories={inventories} addDispense={addDispense}
                   />)}
                 </Table.Body>
               </Table>
+              {cellDispense}
             </Grid.Row>
             <Grid.Row centered >
               <Header as="h4" textAlign="center">Dispense List</Header>
@@ -80,7 +88,7 @@ const Prescription = ({ ready, medicines }) => {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {medSort.map((inventories) => <DispenseList key={inventories._id} inventories={inventories}/>)}
+                  {dispenseList.map((inventories) => <DispenseList key={inventories._id} inventories={inventories}/>)}
                 </Table.Body>
               </Table>
             </Grid.Row>
