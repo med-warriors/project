@@ -17,15 +17,23 @@ const getColor = (quantity, threshold) => {
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
 const CurrentMedicine = ({ medicine, ready, source }) => {
   const totalQuantity = source.reduce(function (prev, current) {
+    // adds current quantity from way of acquiring medicine to default quantity
     return prev + current.quantity;
   }, 0);
 
   let highlight;
-  if (totalQuantity / medicine.shouldHave <= 0.5) {
+
+  if (totalQuantity / medicine.shouldHave <= 0.5 && totalQuantity / medicine.shouldHave > 0.1) {
+    // highlights in yellow when percentage of total quantity and should have columns is between 11% and 50%
+    highlight = 'warning';
+  } else if (totalQuantity / medicine.shouldHave <= 0.1 || totalQuantity / medicine.shouldHave === 0 || totalQuantity / medicine.shouldHave === undefined) {
+    // highlights in red when percentage of total quantity and should have columns is between 0% and 10% or undefined
+
     highlight = 'error';
   } else if (totalQuantity / medicine.shouldHave <= 0.1) {
     highlight = 'warning';
   } else {
+    // highlights in green when overall quantity of medicine is good (over 50%)
     highlight = 'positive';
   }
   return ((ready) ? (
@@ -36,13 +44,11 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
       <Table.Cell>{totalQuantity}</Table.Cell>
       <Table.Cell>{medicine.note}</Table.Cell>
       <Table.Cell>
-        <AddMedicineInventory mName={medicine.name}/>
-      </Table.Cell>
-      <Table.Cell>
-        <Button color='green' content= 'UPDATE'/>
-      </Table.Cell>
-      <Table.Cell>
-        <ListInventory medicine={medicine}/>
+        <Button.Group vertical>
+          <AddMedicineInventory mName={medicine.name}/>
+          <Button color='green' content='UPDATE'/>
+          <ListInventory medicine={medicine}/>
+        </Button.Group>
       </Table.Cell>
     </Table.Row>) : <Loader active>Getting data</Loader>);
 };
