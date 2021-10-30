@@ -12,7 +12,7 @@ import { Supplies } from '../../api/supply/SupplyCollection';
 // Options for medicine types for medicine dropdown
 const medTypeOptions = [
   { key: '', value: '', text: 'Choose a type' },
-  { key: 'allergy', value: 'Allergy and Cold Medicines', text: 'Allergy and Cold Medicines' },
+  { key: 'allergy', value: 'Allergy & Cold Medicines', text: 'Allergy & Cold Medicines' },
   { key: 'anal', value: 'Analgesics/Antiinflammatory', text: 'Analgesics/Antiinflammatory' },
   { key: 'antihyp', value: 'Antihypertensives', text: 'Antihypertensives' },
   { key: 'antimic', value: 'Antimicrobials', text: 'Antimicrobials' },

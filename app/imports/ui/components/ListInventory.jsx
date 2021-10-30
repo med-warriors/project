@@ -23,16 +23,12 @@ const ListInventory = ({ ready, inventory, medicine }) => {
         <Table celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>lotNumber</Table.HeaderCell>
-              <Table.HeaderCell>medName</Table.HeaderCell>
-              <Table.HeaderCell>quantity</Table.HeaderCell>
+              <Table.HeaderCell>Lot #</Table.HeaderCell>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Quantity</Table.HeaderCell>
               <Table.HeaderCell>location</Table.HeaderCell>
-              <Table.HeaderCell>sourceName</Table.HeaderCell>
-              <Table.HeaderCell>acquire</Table.HeaderCell>
-              <Table.HeaderCell>cost</Table.HeaderCell>
-              <Table.HeaderCell>receiveDate</Table.HeaderCell>
-              <Table.HeaderCell>expDate</Table.HeaderCell>
-              <Table.HeaderCell>state</Table.HeaderCell>
+              <Table.HeaderCell>ExpDate</Table.HeaderCell>
+              <Table.HeaderCell>State</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>

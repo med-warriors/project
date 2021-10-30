@@ -22,9 +22,9 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
 
   let highlight;
   if (totalQuantity / medicine.shouldHave <= 0.5) {
-    highlight = 'warning';
-  } else if (totalQuantity / medicine.shouldHave <= 0.1) {
     highlight = 'error';
+  } else if (totalQuantity / medicine.shouldHave <= 0.1) {
+    highlight = 'warning';
   } else {
     highlight = 'positive';
   }
@@ -69,7 +69,7 @@ export default withTracker(({ medicine }) => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const source = MedicineSource.find({ medName: medicine.name }, { sort: { name: 1 } }).fetch();
+  const source = MedicineSource.find({ medName: medicine.name, state: 'Acted' || 'Reserves' }, { sort: { name: 1 } }).fetch();
   return {
     source,
     ready,

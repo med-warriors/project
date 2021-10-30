@@ -45,7 +45,7 @@
     { "lotNumber": "b5", "medName": "Benzonatate Capsules", "location": "Case 1", "quantity": "30", "expDate": "2022-09-13T07:30", "sourceName": "sourceName",
       "acquire": "Purchased", "cost": 100, "receiveDate": "2021-03-17T07:30", "state": "Reserves"},
     { "lotNumber": "a42", "medName": "Ibuprofen 800 mg tabs", "location": "Case 4", "quantity": "60", "expDate": "2022-04-17T07:30", "sourceName": "sourceName",
-      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted"},
+      "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Return"},
     { "lotNumber": "a70", "medName": "Metoprolol 50 mg", "location": "Case 7", "quantity": "115", "expDate": "2022-04-30T07:30", "sourceName": "sourceName",
       "acquire": "Donated", "cost": 0, "receiveDate": "2021-02-17T07:30", "state": "Acted" },
     { "lotNumber": "a95", "medName": "Fluconazole 150 mg", "location": "Freezer", "quantity": "3", "expDate": "2021-02-17T07:30", "sourceName": "sourceName",

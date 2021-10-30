@@ -11,8 +11,6 @@ import { ROLE } from '../role/Role';
 export const medType = ['Allergy & Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol', 'Dermatologic Preparations', 'Diabetes' +
   'Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation', 'Vitamins and Supplements'];
 
-export const medForm = ['tablets', 'solution', 'bottle'];
-
 export const medicinePublications = {
   medicine: 'Medicine',
   medicineAdmin: 'MedicineAdmin',
