@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Table } from 'semantic-ui-react';
+import { Button, Input, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -16,6 +16,9 @@ const DispenseItem = ({ inventories }) => {
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
         <Input placeholder='Dispense quantity'/>
+      </Table.Cell>
+      <Table.Cell>
+        <Button color='yellow' content='Remove'/>
       </Table.Cell>
     </Table.Row>
   );

@@ -3,14 +3,13 @@ import { Grid, Segment, Header, Loader, Table, Input } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import { PAGE_IDS } from '../utilities/PageIDs';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import DispenseItem from '../components/DispenseItem';
 import DispenseList from '../components/DispenseList';
 import Dispense from '../components/Dispense';
 
 /** Renders the Page for adding a document. */
-const Prescription = ({ ready, medicines }) => {
+const Prescription2 = ({ ready, medicines }) => {
   // state functions
   const [search, setSearch] = useState('');
   const [cellDispense, setDispense] = useState([]);
@@ -34,6 +33,7 @@ const Prescription = ({ ready, medicines }) => {
   };
 
   const addDispense = (data) => {
+    // sets add Dispense state to added value
     const updateDispense = [...cellDispense, data];
     setDispense(updateDispense);
   };
@@ -43,10 +43,16 @@ const Prescription = ({ ready, medicines }) => {
       // filters medicine items by search value and sorts them by name
       medSort = _.sortBy(medicines.filter(medicine => medSearch(medicine)), 'medName');
     }
+    if (cellDispense) {
+      for (let i = 0; i < cellDispense.length; i++) {
+        const med = MedicineSource.findDoc(cellDispense[i]);
+        dispenseList.push(med);
+      }
+    }
   }
 
   return ((ready) ? (
-    <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
+    <Grid container centered>
       <Header as="h2" textAlign="center">Prescription</Header>
       <Grid.Row>
         <Segment>
@@ -73,7 +79,6 @@ const Prescription = ({ ready, medicines }) => {
                   />)}
                 </Table.Body>
               </Table>
-              {cellDispense}
             </Grid.Row>
             <Grid.Row centered>
               <Header as="h4" textAlign="center">Dispensing List</Header>
@@ -97,18 +102,12 @@ const Prescription = ({ ready, medicines }) => {
           </Grid>
         </Segment>
       </Grid.Row>
-      <Grid.Row>
-        <Segment color='blue'>
-          <Header as="h5" textAlign="center">Patient Prescription</Header>
-          <Dispense/>
-        </Segment>
-      </Grid.Row>
     </Grid>
   ) : <Loader active>Getting data</Loader>);
 };
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
-Prescription.propTypes = {
+Prescription2.propTypes = {
   medicines: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -125,4 +124,4 @@ export default withTracker(() => {
     medicines,
     ready,
   };
-})(Prescription);
+})(Prescription2);
