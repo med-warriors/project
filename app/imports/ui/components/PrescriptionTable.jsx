@@ -4,12 +4,11 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
-import DispenseItem from '../components/DispenseItem';
-import DispenseList from '../components/DispenseList';
-import Dispense from '../components/Dispense';
+import DispenseItem from './DispenseItem';
+import DispenseList from './DispenseList';
 
 /** Renders the Page for adding a document. */
-const Prescription2 = ({ ready, medicines }) => {
+const PrescriptionTable = ({ ready, medicines, medDispense }) => {
   // state functions
   const [search, setSearch] = useState('');
   const [cellDispense, setDispense] = useState([]);
@@ -49,67 +48,65 @@ const Prescription2 = ({ ready, medicines }) => {
         dispenseList.push(med);
       }
     }
+    medDispense = dispenseList;
   }
 
   return ((ready) ? (
     <Grid container centered>
-      <Header as="h2" textAlign="center">Prescription</Header>
-      <Grid.Row>
-        <Segment>
-          <Grid>
+      <Segment>
+        <Grid>
+          <Grid.Row centered>
             <Grid.Row centered>
-              <Grid.Row centered>
-                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
-                <Header as="h4" textAlign="center">Medicine & Supplies Item</Header>
-              </Grid.Row>
-              <Table celled color='red'>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>Lot #</Table.HeaderCell>
-                    <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Quantity</Table.HeaderCell>
-                    <Table.HeaderCell>location</Table.HeaderCell>
-                    <Table.HeaderCell>ExpDate</Table.HeaderCell>
-                    <Table.HeaderCell>State</Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {medSort.map((inventories) => <DispenseItem
-                    key={inventories._id} inventories={inventories} addDispense={addDispense}
-                  />)}
-                </Table.Body>
-              </Table>
+              <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+              <Header as="h4" textAlign="center">Medicine & Supplies Item</Header>
             </Grid.Row>
-            <Grid.Row centered>
-              <Header as="h4" textAlign="center">Dispensing List</Header>
-              <Table celled color='green'>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>Lot #</Table.HeaderCell>
-                    <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Quantity</Table.HeaderCell>
-                    <Table.HeaderCell>location</Table.HeaderCell>
-                    <Table.HeaderCell>ExpDate</Table.HeaderCell>
-                    <Table.HeaderCell>State</Table.HeaderCell>
-                    <Table.HeaderCell>Dispense quantity</Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {dispenseList.map((inventories) => <DispenseList key={inventories._id} inventories={inventories}/>)}
-                </Table.Body>
-              </Table>
-            </Grid.Row>
-          </Grid>
-        </Segment>
-      </Grid.Row>
+            <Table celled color='red'>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Lot #</Table.HeaderCell>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>location</Table.HeaderCell>
+                  <Table.HeaderCell>ExpDate</Table.HeaderCell>
+                  <Table.HeaderCell>State</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {medSort.map((inventories) => <DispenseItem
+                  key={inventories._id} inventories={inventories} addDispense={addDispense}
+                />)}
+              </Table.Body>
+            </Table>
+          </Grid.Row>
+          <Grid.Row centered>
+            <Header as="h4" textAlign="center">Dispensing List</Header>
+            <Table celled color='green'>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Lot #</Table.HeaderCell>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>location</Table.HeaderCell>
+                  <Table.HeaderCell>ExpDate</Table.HeaderCell>
+                  <Table.HeaderCell>State</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {dispenseList.map((inventories) => <DispenseList key={inventories._id} inventories={inventories}/>)}
+              </Table.Body>
+            </Table>
+          </Grid.Row>
+        </Grid>
+      </Segment>
     </Grid>
   ) : <Loader active>Getting data</Loader>);
 };
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
-Prescription2.propTypes = {
+PrescriptionTable.propTypes = {
   medicines: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  medDispense: PropTypes.object,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -124,4 +121,4 @@ export default withTracker(() => {
     medicines,
     ready,
   };
-})(Prescription2);
+})(PrescriptionTable);

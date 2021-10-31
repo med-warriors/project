@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Input, Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { NumField } from 'uniforms-semantic';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DispenseItem = ({ inventories }) => {
@@ -15,7 +16,7 @@ const DispenseItem = ({ inventories }) => {
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
-        <Input placeholder='Dispense quantity'/>
+        <NumField contect='Dispense quantity' name='prescriptionQuantity' decimal={false} />
       </Table.Cell>
       <Table.Cell>
         <Button color='yellow' content='Remove'/>
