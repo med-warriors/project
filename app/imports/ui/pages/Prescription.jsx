@@ -7,6 +7,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import DispenseItem from '../components/DispenseItem';
 import DispenseList from '../components/DispenseList';
+import Dispense from '../components/Dispense';
 
 /** Renders the Page for adding a document. */
 const Prescription = ({ ready, medicines }) => {
@@ -15,7 +16,7 @@ const Prescription = ({ ready, medicines }) => {
   const [cellDispense, setDispense] = useState([]);
   // variable to sort medicine
   let medSort = [];
-  let dispenseList = [];
+  const dispenseList = [];
 
   // variable that lets user to type name of medicine/supply in search bar
   const handleSearch = (e, data) => {
@@ -50,12 +51,12 @@ const Prescription = ({ ready, medicines }) => {
       <Grid.Row>
         <Segment>
           <Grid>
-            <Grid.Row centered >
+            <Grid.Row centered>
               <Grid.Row centered>
                 <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
                 <Header as="h4" textAlign="center">Medicine & Supplies Item</Header>
               </Grid.Row>
-              <Table celled>
+              <Table celled color='red'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Lot #</Table.HeaderCell>
@@ -74,9 +75,9 @@ const Prescription = ({ ready, medicines }) => {
               </Table>
               {cellDispense}
             </Grid.Row>
-            <Grid.Row centered >
-              <Header as="h4" textAlign="center">Dispense List</Header>
-              <Table celled>
+            <Grid.Row centered>
+              <Header as="h4" textAlign="center">Dispensing List</Header>
+              <Table celled color='green'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Lot #</Table.HeaderCell>
@@ -85,6 +86,7 @@ const Prescription = ({ ready, medicines }) => {
                     <Table.HeaderCell>location</Table.HeaderCell>
                     <Table.HeaderCell>ExpDate</Table.HeaderCell>
                     <Table.HeaderCell>State</Table.HeaderCell>
+                    <Table.HeaderCell>Dispense quantity</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -96,12 +98,9 @@ const Prescription = ({ ready, medicines }) => {
         </Segment>
       </Grid.Row>
       <Grid.Row>
-        <Segment>
+        <Segment color='blue'>
           <Header as="h5" textAlign="center">Patient Prescription</Header>
-          form
-          Patient id
-          location of the van
-          note
+          <Dispense/>
         </Segment>
       </Grid.Row>
     </Grid>

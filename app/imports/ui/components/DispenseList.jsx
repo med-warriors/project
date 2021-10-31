@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Input, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -14,7 +14,9 @@ const DispenseItem = ({ inventories }) => {
       <Table.Cell>{inventories.location}</Table.Cell>
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
-      Number of quantity input
+      <Table.Cell>
+        <Input placeholder='Dispense quantity'/>
+      </Table.Cell>
     </Table.Row>
   );
 };
