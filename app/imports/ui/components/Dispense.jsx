@@ -70,7 +70,7 @@ const Dispense = ({ cellDispense }) => {
         }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Segment>
-              <Header as="h5" textAlign="center">Patient Prescription</Header>
+              <Header as="h3" textAlign="center">Patient Prescription</Header>
               <Form.Group widths='equal'>
                 <TextField name='patientID'/>
                 <TextField name='outputLocation'/>

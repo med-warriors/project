@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const DispenseItem = ({ inventories, removeDispense }) => {
+const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
   const quantityOptions = [];
 
   const clickRemove = () => {
     removeDispense(inventories._id);
+  };
+
+  const outQuantity = (data) => {
+    outDispenseQuantity(inventories._id, data);
   };
 
   for (let i = 1; i <= inventories.quantity; i++) {
@@ -25,7 +29,7 @@ const DispenseItem = ({ inventories, removeDispense }) => {
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
-        <Select placeholder='Select quantity' options={quantityOptions} />
+        <Select placeholder='Select quantity' options={quantityOptions} onChange={outQuantity}/>
       </Table.Cell>
       <Table.Cell>
         <Button color='yellow' content='Remove' onClick={clickRemove}/>
@@ -50,6 +54,7 @@ DispenseItem.propTypes = {
     _id: PropTypes.string,
   }).isRequired,
   removeDispense: PropTypes.func,
+  outDispenseQuantity: PropTypes.func,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.

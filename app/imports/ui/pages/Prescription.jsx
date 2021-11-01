@@ -33,9 +33,20 @@ const Prescription = ({ ready, medicines }) => {
   };
 
   const addDispense = (data) => {
-    // sets add Dispense state to added value
-    const updateDispense = [...cellDispense, { medId: data, prescriptionQuantity: 0 }];
-    setDispense(updateDispense);
+    const iD = cellDispense.map(item => item.medId);
+    const found = iD.includes(data);
+    if (!found) {
+      // sets add Dispense state to added value
+      const updateDispense = [...cellDispense, { medId: data, prescriptionQuantity: 0 }];
+      setDispense(updateDispense);
+    }
+  };
+
+  const outDispenseQuantity = (data, outQuantity) => {
+    const index = cellDispense.findIndex(item => item.medId === data);
+    const newCellDispense = [...cellDispense];
+    newCellDispense[index].prescriptionQuantity = outQuantity;
+    setDispense(newCellDispense);
   };
 
   const removeDispense = (data) => {
@@ -58,58 +69,62 @@ const Prescription = ({ ready, medicines }) => {
 
   return ((ready) ? (
     <Grid container centered>
-      <Segment>
-        <Grid>
-          <Grid.Row centered>
+      <Grid.Column>
+        <Segment>
+          <Grid>
             <Grid.Row centered>
-              <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
-              <Header as="h4" textAlign="center">Medicine & Supplies Item</Header>
+              <Grid.Row centered>
+                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+                <Header as="h3" textAlign="center">Medicine & Supplies Item</Header>
+              </Grid.Row>
+              <Table celled color='red'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Lot #</Table.HeaderCell>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Quantity</Table.HeaderCell>
+                    <Table.HeaderCell>location</Table.HeaderCell>
+                    <Table.HeaderCell>ExpDate</Table.HeaderCell>
+                    <Table.HeaderCell>State</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {medSort.map((inventories) => <DispenseItem
+                    key={inventories._id} inventories={inventories} addDispense={addDispense}
+                  />)}
+                </Table.Body>
+              </Table>
             </Grid.Row>
-            <Table celled color='red'>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Lot #</Table.HeaderCell>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>location</Table.HeaderCell>
-                  <Table.HeaderCell>ExpDate</Table.HeaderCell>
-                  <Table.HeaderCell>State</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {medSort.map((inventories) => <DispenseItem
-                  key={inventories._id} inventories={inventories} addDispense={addDispense}
-                />)}
-              </Table.Body>
-            </Table>
-          </Grid.Row>
-          <Grid.Row centered>
-            <Header as="h4" textAlign="center">Dispensing List</Header>
-            <Table celled color='green'>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Lot #</Table.HeaderCell>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Quantity</Table.HeaderCell>
-                  <Table.HeaderCell>location</Table.HeaderCell>
-                  <Table.HeaderCell>ExpDate</Table.HeaderCell>
-                  <Table.HeaderCell>State</Table.HeaderCell>
-                  <Table.HeaderCell>Dispense Quantity</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {dispenseList.map((inventories) => <DispenseList
-                  key={inventories._id} inventories={inventories} removeDispense={removeDispense}/>)}
-              </Table.Body>
-            </Table>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-      <Grid.Row>
-        <Segment color='blue'>
-          <Dispense cellDispense={cellDispense} />
+            <Grid.Row centered>
+              <Header as="h3" textAlign="center">Dispensing List</Header>
+              <Table celled color='green'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Lot #</Table.HeaderCell>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Quantity</Table.HeaderCell>
+                    <Table.HeaderCell>location</Table.HeaderCell>
+                    <Table.HeaderCell>ExpDate</Table.HeaderCell>
+                    <Table.HeaderCell>State</Table.HeaderCell>
+                    <Table.HeaderCell>Dispense Quantity</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {dispenseList.map((inventories) => <DispenseList
+                    key={inventories._id} inventories={inventories}
+                    removeDispense={removeDispense} outDispenseQuantity={outDispenseQuantity}
+                  />)}
+                </Table.Body>
+              </Table>
+            </Grid.Row>
+          </Grid>
         </Segment>
-      </Grid.Row>
+        <Grid.Row>
+          <Segment color='blue'>
+            <Dispense cellDispense={cellDispense} />
+          </Segment>
+        </Grid.Row>
+      </Grid.Column>
     </Grid>
   ) : <Loader active>Getting data</Loader>);
 };
