@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Segment, Header, Form } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
@@ -7,14 +7,13 @@ import SimpleSchema from 'simpl-schema';
 import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import { Medicines } from '../../api/medicine/MedicineCollection';
 import PrescriptionTable from '../components/PrescriptionTable';
+import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   patientID: String,
   outputLocation: String,
-  prescriptionQuantity: Number,
   notes: String,
 });
 
@@ -23,6 +22,8 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 /** Renders the Page for adding a document. */
 
 const Prescription = () => {
+
+  const [cellDispense, setDispense] = useState([]);
 
   /*
   // On submit, insert the data to transaction history.
@@ -47,11 +48,11 @@ const Prescription = () => {
   };
   */
 
-  const submitMed = (data, fRef) => {
-    const { prescriptionQuantity } = data;
-    const collectionName = Medicines.getCollectionName();
-    const quantity = quantity - prescriptionQuantity;
-    const updateData = { id: _id, quantity };
+  const submitMed = (fRef) => {
+    const collectionName = MedicineSource.getCollectionName();
+    const med = MedicineSource.findDoc(cellDispense[0].medId);
+    const quantity = med.quantity - cellDispense[0].prescriptionQuantity;
+    const updateData = { id: med._id, quantity };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -73,7 +74,7 @@ const Prescription = () => {
         }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Grid.Row>
-              <PrescriptionTable/>
+              <PrescriptionTable cellDispense={cellDispense} setDispense={setDispense}/>
             </Grid.Row>
             <Segment>
               <Header as="h5" textAlign="center">Patient Prescription</Header>

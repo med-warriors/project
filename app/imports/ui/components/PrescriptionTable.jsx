@@ -8,10 +8,9 @@ import DispenseItem from './DispenseItem';
 import DispenseList from './DispenseList';
 
 /** Renders the Page for adding a document. */
-const PrescriptionTable = ({ ready, medicines }) => {
+const PrescriptionTable = ({ ready, medicines, cellDispense, setDispense}) => {
   // state functions
   const [search, setSearch] = useState('');
-  const [cellDispense, setDispense] = useState([]);
   // variable to sort medicine
   let medSort = [];
   const dispenseList = [];
@@ -33,13 +32,13 @@ const PrescriptionTable = ({ ready, medicines }) => {
 
   const addDispense = (data) => {
     // sets add Dispense state to added value
-    const updateDispense = [...cellDispense, data];
+    const updateDispense = [...cellDispense, { medId: data, prescriptionQuantity: 0 }];
     setDispense(updateDispense);
   };
 
   const removeDispense = (data) => {
     // sets add Dispense state to added value
-    setDispense(cellDispense.filter(item => item !== data));
+    setDispense(cellDispense.filter(item => item.medId !== data));
   };
 
   if (ready) {
@@ -49,7 +48,7 @@ const PrescriptionTable = ({ ready, medicines }) => {
     }
     if (cellDispense) {
       for (let i = 0; i < cellDispense.length; i++) {
-        const med = MedicineSource.findDoc(cellDispense[i]);
+        const med = MedicineSource.findDoc(cellDispense[i].medId);
         dispenseList.push(med);
       }
     }
@@ -93,6 +92,7 @@ const PrescriptionTable = ({ ready, medicines }) => {
                   <Table.HeaderCell>location</Table.HeaderCell>
                   <Table.HeaderCell>ExpDate</Table.HeaderCell>
                   <Table.HeaderCell>State</Table.HeaderCell>
+                  <Table.HeaderCell>Dispense Quantity</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -111,7 +111,8 @@ const PrescriptionTable = ({ ready, medicines }) => {
 PrescriptionTable.propTypes = {
   medicines: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  medDispense: PropTypes.object,
+  cellDispense: PropTypes.array,
+  setDispense: PropTypes.func,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker

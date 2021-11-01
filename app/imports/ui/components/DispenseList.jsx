@@ -1,14 +1,20 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Select, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { NumField } from 'uniforms-semantic';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DispenseItem = ({ inventories, removeDispense }) => {
+  const quantityOptions = [];
+
   const clickRemove = () => {
     removeDispense(inventories._id);
   };
+
+  for (let i = 1; i <= inventories.quantity; i++) {
+    const optionValue = { key: i, value: i, text: i };
+    quantityOptions.push(optionValue);
+  }
 
   return (
     <Table.Row>
@@ -19,7 +25,7 @@ const DispenseItem = ({ inventories, removeDispense }) => {
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
-        <NumField contect='Dispense quantity' name='prescriptionQuantity' decimal={false} />
+        <Select placeholder='Select quantity' options={quantityOptions} />
       </Table.Cell>
       <Table.Cell>
         <Button color='yellow' content='Remove' onClick={clickRemove}/>
