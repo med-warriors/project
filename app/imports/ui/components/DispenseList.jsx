@@ -5,7 +5,10 @@ import { withRouter } from 'react-router-dom';
 import { NumField } from 'uniforms-semantic';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const DispenseItem = ({ inventories }) => {
+const DispenseItem = ({ inventories, removeDispense }) => {
+  const clickRemove = () => {
+    removeDispense(inventories._id);
+  };
 
   return (
     <Table.Row>
@@ -19,7 +22,7 @@ const DispenseItem = ({ inventories }) => {
         <NumField contect='Dispense quantity' name='prescriptionQuantity' decimal={false} />
       </Table.Cell>
       <Table.Cell>
-        <Button color='yellow' content='Remove'/>
+        <Button color='yellow' content='Remove' onClick={clickRemove}/>
       </Table.Cell>
     </Table.Row>
   );
@@ -40,6 +43,7 @@ DispenseItem.propTypes = {
     state: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  removeDispense: PropTypes.func,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.

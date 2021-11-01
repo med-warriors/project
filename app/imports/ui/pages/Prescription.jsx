@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header, Form } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -46,13 +46,12 @@ const Prescription = () => {
       });
   };
   */
-  let med;
 
   const submitMed = (data, fRef) => {
     const { prescriptionQuantity } = data;
     const collectionName = Medicines.getCollectionName();
-    const quantity = med.quantity - prescriptionQuantity;
-    const updateData = { id: med._id, quantity };
+    const quantity = quantity - prescriptionQuantity;
+    const updateData = { id: _id, quantity };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -74,7 +73,7 @@ const Prescription = () => {
         }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Grid.Row>
-              <PrescriptionTable medDispense={med}/>
+              <PrescriptionTable/>
             </Grid.Row>
             <Segment>
               <Header as="h5" textAlign="center">Patient Prescription</Header>

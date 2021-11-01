@@ -8,7 +8,7 @@ import DispenseItem from './DispenseItem';
 import DispenseList from './DispenseList';
 
 /** Renders the Page for adding a document. */
-const PrescriptionTable = ({ ready, medicines, medDispense }) => {
+const PrescriptionTable = ({ ready, medicines }) => {
   // state functions
   const [search, setSearch] = useState('');
   const [cellDispense, setDispense] = useState([]);
@@ -37,6 +37,11 @@ const PrescriptionTable = ({ ready, medicines, medDispense }) => {
     setDispense(updateDispense);
   };
 
+  const removeDispense = (data) => {
+    // sets add Dispense state to added value
+    setDispense(cellDispense.filter(item => item !== data));
+  };
+
   if (ready) {
     if (search) {
       // filters medicine items by search value and sorts them by name
@@ -48,7 +53,6 @@ const PrescriptionTable = ({ ready, medicines, medDispense }) => {
         dispenseList.push(med);
       }
     }
-    medDispense = dispenseList;
   }
 
   return ((ready) ? (
@@ -92,7 +96,8 @@ const PrescriptionTable = ({ ready, medicines, medDispense }) => {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {dispenseList.map((inventories) => <DispenseList key={inventories._id} inventories={inventories}/>)}
+                {dispenseList.map((inventories) => <DispenseList
+                  key={inventories._id} inventories={inventories} removeDispense={removeDispense}/>)}
               </Table.Body>
             </Table>
           </Grid.Row>
