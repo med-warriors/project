@@ -20,7 +20,7 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Dispense = ({ cellDispense }) => {
+const Dispense = ({ cellDispense, dispenseList }) => {
 
   /*
   // On submit, insert the data to transaction history.
@@ -46,10 +46,11 @@ const Dispense = ({ cellDispense }) => {
   */
 
   const submitMed = (fRef) => {
+    const { lotNumber, medName, quantity, sourceName, acquire,
+      cost, receiveDate, expDate, state, _id } = MedicineSource.find(cellDispense[0].medId);
+    const newQuantity = quantity - cellDispense[0].prescriptionQuantity;
     const collectionName = MedicineSource.getCollectionName();
-    const med = MedicineSource.findDoc(cellDispense[0].medId);
-    const quantity = med.quantity - cellDispense[0].prescriptionQuantity;
-    const updateData = { id: med._id, quantity };
+    const updateData = { id: _id, lotNumber, medName, quantity: newQuantity, sourceName, acquire, cost, receiveDate, expDate, state };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -88,6 +89,7 @@ const Dispense = ({ cellDispense }) => {
 
 // Require a document to be passed to this component.
 Dispense.propTypes = {
+  dispenseList: PropTypes.array,
   cellDispense: PropTypes.array,
 };
 

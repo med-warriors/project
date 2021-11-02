@@ -7,6 +7,7 @@ import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import DispenseItem from '../components/DispenseItem';
 import DispenseList from '../components/DispenseList';
 import Dispense from '../components/Dispense';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders the Page for adding a document. */
 const Prescription = ({ ready, medicines }) => {
@@ -68,7 +69,7 @@ const Prescription = ({ ready, medicines }) => {
   }
 
   return ((ready) ? (
-    <Grid container centered>
+    <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
       <Grid.Column>
         <Segment>
           <Grid>
@@ -121,7 +122,7 @@ const Prescription = ({ ready, medicines }) => {
         </Segment>
         <Grid.Row>
           <Segment color='blue'>
-            <Dispense cellDispense={cellDispense} />
+            <Dispense dispenseList={dispenseList} cellDispense={cellDispense} />
           </Segment>
         </Grid.Row>
       </Grid.Column>
