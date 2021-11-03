@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
+import { _ } from 'meteor/underscore';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
@@ -72,37 +73,43 @@ class MedicineSourceCollection extends BaseCollection {
    * @param should_have the new quantity (optional).
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
-  update(docID, { lotNumber, name, type, location, quantity, should_have, expirationDate, source }) {
+   */
+  update(docID, { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;
     }
-    if (name) {
-      updateData.name = name;
+    if (medName) {
+      updateData.namedNameme = medName;
     }
-    if (type) {
-      updateData.type = type;
-    }
-    if (location) {
-      updateData.location = location;
+    if (sourceName) {
+      updateData.sourceName = sourceName;
     }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
     }
+    if (location) {
+      updateData.location = location;
+    }
+    if (acquire) {
+      updateData.acquire = acquire;
+    }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(should_have)) {
-      updateData.should_have = should_have;
+    if (_.isNumber(cost)) {
+      updateData.cost = cost;
     }
-    if (_.data(expirationDate)) {
-      updateData.expirationDate = expirationDate;
+    if (_.data(receiveDate)) {
+      updateData.receiveDate = receiveDate;
     }
-    if (source) {
-      updateData.source = source;
+    if (_.data(expDate)) {
+      updateData.receiveDate = expDate;
+    }
+    if (state) {
+      updateData.source = state;
     }
     this._collection.update(docID, { $set: updateData });
   }
-*/
 
   /**
    * A stricter form of remove that throws an error if the document or docID could not be found in this collection.

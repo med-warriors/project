@@ -71,6 +71,7 @@ const Prescription = ({ ready, medicines }) => {
   return ((ready) ? (
     <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
       <Grid.Column>
+        <Header as="h2" textAlign="center">Prescription</Header>
         <Segment>
           <Grid>
             <Grid.Row centered>
@@ -122,7 +123,7 @@ const Prescription = ({ ready, medicines }) => {
         </Segment>
         <Grid.Row>
           <Segment color='blue'>
-            <Dispense dispenseList={dispenseList} cellDispense={cellDispense} />
+            <Dispense cellDispense={cellDispense} />
           </Segment>
         </Grid.Row>
       </Grid.Column>

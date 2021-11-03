@@ -20,7 +20,7 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Dispense = ({ cellDispense, dispenseList }) => {
+const Dispense = ({ cellDispense }) => {
 
   /*
   // On submit, insert the data to transaction history.
@@ -46,9 +46,11 @@ const Dispense = ({ cellDispense, dispenseList }) => {
   */
 
   const submitMed = (fRef) => {
+    // const data = ;
+    const outQuantity = cellDispense[0].prescriptionQuantity;
     const { lotNumber, medName, quantity, sourceName, acquire,
-      cost, receiveDate, expDate, state, _id } = MedicineSource.find(cellDispense[0].medId);
-    const newQuantity = quantity - cellDispense[0].prescriptionQuantity;
+      cost, receiveDate, expDate, state, _id } = MedicineSource.findDoc(cellDispense[0].medId);
+    const newQuantity = quantity - outQuantity;
     const collectionName = MedicineSource.getCollectionName();
     const updateData = { id: _id, lotNumber, medName, quantity: newQuantity, sourceName, acquire, cost, receiveDate, expDate, state };
     // update the medicine.
@@ -68,7 +70,7 @@ const Dispense = ({ cellDispense, dispenseList }) => {
       <Grid.Column>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
+        }} schema={bridge} onSubmit={data => submitMed(fRef)}>
           <Grid.Row>
             <Segment>
               <Header as="h3" textAlign="center">Patient Prescription</Header>
@@ -89,7 +91,6 @@ const Dispense = ({ cellDispense, dispenseList }) => {
 
 // Require a document to be passed to this component.
 Dispense.propTypes = {
-  dispenseList: PropTypes.array,
   cellDispense: PropTypes.array,
 };
 
