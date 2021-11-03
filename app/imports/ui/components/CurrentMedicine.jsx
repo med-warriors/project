@@ -16,11 +16,8 @@ const getColor = (quantity, threshold) => {
 */
 /** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
 const CurrentMedicine = ({ medicine, ready, source }) => {
-  const totalQuantity = source.reduce(function (prev, current) {
-    // adds current quantity from way of acquiring medicine to default quantity
-    return prev + current.quantity;
-  }, 0);
-
+  // adds current quantity from way of acquiring medicine to default quantity
+  const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
   let highlight;
 
   if (totalQuantity / medicine.shouldHave <= 0.5 && totalQuantity / medicine.shouldHave > 0.1) {
