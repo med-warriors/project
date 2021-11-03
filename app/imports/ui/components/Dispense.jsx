@@ -47,12 +47,11 @@ const Dispense = ({ cellDispense }) => {
 
   const submitMed = (fRef) => {
     // const data = ;
-    const outQuantity = cellDispense[0].prescriptionQuantity;
-    const { lotNumber, medName, quantity, sourceName, acquire,
-      cost, receiveDate, expDate, state, _id } = MedicineSource.findDoc(cellDispense[0].medId);
-    const newQuantity = quantity - outQuantity;
+    const outQuantity = cellDispense.prescriptionQuantity;
+    const { lotNumber, medName, location, oldQuantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = MedicineSource.findDoc(cellDispense.medId);
+    const quantity = oldQuantity - outQuantity;
     const collectionName = MedicineSource.getCollectionName();
-    const updateData = { id: _id, lotNumber, medName, quantity: newQuantity, sourceName, acquire, cost, receiveDate, expDate, state };
+    const updateData = { id: _id, lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))

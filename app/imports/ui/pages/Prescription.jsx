@@ -38,7 +38,7 @@ const Prescription = ({ ready, medicines }) => {
     const found = iD.includes(data);
     if (!found) {
       // sets add Dispense state to added value
-      const updateDispense = [...cellDispense, { medId: data, prescriptionQuantity: 0 }];
+      const updateDispense = [...cellDispense, { medId: data, prescriptionQuantity: 1 }];
       setDispense(updateDispense);
     }
   };

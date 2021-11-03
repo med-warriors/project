@@ -99,10 +99,10 @@ class MedicineSourceCollection extends BaseCollection {
     if (_.isNumber(cost)) {
       updateData.cost = cost;
     }
-    if (_.data(receiveDate)) {
+    if (_.isDate(receiveDate)) {
       updateData.receiveDate = receiveDate;
     }
-    if (_.data(expDate)) {
+    if (_.isDate(expDate)) {
       updateData.receiveDate = expDate;
     }
     if (state) {
