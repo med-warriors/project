@@ -47,9 +47,10 @@ const Dispense = ({ cellDispense }) => {
 
   const submitMed = (fRef) => {
     // const data = ;
-    const outQuantity = cellDispense.prescriptionQuantity;
-    const { lotNumber, medName, location, oldQuantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = MedicineSource.findDoc(cellDispense.medId);
-    const quantity = oldQuantity - outQuantity;
+    const outQuantity = cellDispense[0].prescriptionQuantity;
+    // eslint-disable-next-line prefer-const
+    let { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = MedicineSource.findDoc(cellDispense[0].medId);
+    quantity -= outQuantity;
     const collectionName = MedicineSource.getCollectionName();
     const updateData = { id: _id, lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     // update the medicine.
@@ -69,7 +70,7 @@ const Dispense = ({ cellDispense }) => {
       <Grid.Column>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => submitMed(fRef)}>
+        }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
           <Grid.Row>
             <Segment>
               <Header as="h3" textAlign="center">Patient Prescription</Header>

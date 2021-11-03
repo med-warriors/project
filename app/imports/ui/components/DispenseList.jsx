@@ -11,8 +11,9 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
     removeDispense(inventories._id);
   };
 
-  const outQuantity = (data) => {
-    outDispenseQuantity(inventories._id, data);
+  const outQuantity = (e, data) => {
+    e.preventDefault();
+    outDispenseQuantity(inventories._id, data.value);
   };
 
   for (let i = 1; i <= inventories.quantity; i++) {
