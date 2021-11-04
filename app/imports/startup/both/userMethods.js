@@ -4,6 +4,7 @@ import { check } from 'meteor/check';
 import { ROLE } from '../../api/role/Role';
 
 Meteor.methods({
+  /** A change roles function where user can change to one role */
   changeRoles: function (userId, role) {
     check(userId, String);
     check(role, String);
@@ -17,6 +18,7 @@ Meteor.methods({
     Roles.setUserRoles(userId, role);
   },
 
+  /** A change roles function where user can change to two roles */
   changeRoles2: function (userId, role1, role2) {
     check(userId, String);
     check(role1, String);

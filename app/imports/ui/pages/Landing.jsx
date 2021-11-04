@@ -9,7 +9,7 @@ const Landing = () => (
     <Grid.Column textAlign='center'>
       <Icon name='clipboard' size='huge'/>
       <Header as='h1'>Inventory</Header>
-      <Header as='h3'>Inventory information about medications, vaccine, lab/testing supplies, and patient supplies.</Header>
+      <Header as='h3'>Inventory information about medications, vaccines, lab/testing supplies, and patient supplies.</Header>
     </Grid.Column>
 
     <Grid.Column textAlign='center'>
@@ -19,9 +19,9 @@ const Landing = () => (
     </Grid.Column>
 
     <Grid.Column textAlign='center'>
-      <Icon name='barcode' size='huge'/>
-      <Header as='h1'>Barcode</Header>
-      <Header as='h3'>A barcode for each item so it is easy to inventory.</Header>
+      <Icon name='sticky note' size='huge'/>
+      <Header as='h1'>Notes</Header>
+      <Header as='h3'>Write a note when prescribing medicine or when adding meds and supplies to the inventory.</Header>
     </Grid.Column>
 
   </Grid>

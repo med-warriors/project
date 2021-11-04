@@ -74,7 +74,7 @@ const ChangeRole = (propTypes) => {
   );
 };
 
-/** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
+/** Require the presence of a user document in the props object. Uniforms adds 'model' to the props, which we use. */
 ChangeRole.propTypes = {
   users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
