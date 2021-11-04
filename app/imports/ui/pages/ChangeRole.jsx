@@ -58,10 +58,11 @@ const ChangeRole = (propTypes) => {
   return (
     <Grid container centered style={changeRolePage} id='editrole-page'>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Change Role</Header>
+        <Header as="h2" textAlign="center">Change Roles</Header>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} >
           <Segment>
-            <TextField name='userEmail'/>
+            <TextField Label='User&apos;s Email' name='userEmail'/>
+            <Header as="h4" textAlign="center">Roles (Pick at least one)</Header>
             <BoolField name="doctor"/>
             <BoolField name="student"/>
             <BoolField name="admin"/>
