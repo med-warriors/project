@@ -30,12 +30,13 @@ class SupplySource extends React.Component {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
-              <Table.HeaderCell colSpan='3'>Contact Information</Table.HeaderCell>
+              <Table.HeaderCell colSpan='4'>Contact Information</Table.HeaderCell>
             </Table.Row>
             <Table.Row>
               <Table.HeaderCell>Location</Table.HeaderCell>
               <Table.HeaderCell>Phone Number</Table.HeaderCell>
               <Table.HeaderCell>Email</Table.HeaderCell>
+              <Table.HeaderCell>Edit</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
