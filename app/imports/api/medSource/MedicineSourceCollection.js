@@ -7,17 +7,14 @@ import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const medicinePublications = {
-  MedicineSource: 'MedicineSource',
-  MedicineSourceAdmin: 'MedicineSourceAdmin',
+  medicineSource: 'MedicineSource',
+  medicineSourceAdmin: 'MedicineSourceAdmin',
+  medicineSourceDoctor: 'MedicineSourceDoctor',
 };
-
-// All location of medicine given in excel document.
-// CONSIDER: creating a collection to insert more location spot
-export const locSpot = ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'];
 
 export const acquiredType = ['Donated', 'Purchased'];
 
-export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
+export const medState = ['Acted', 'Reserved', 'Disposal', 'Return'];
 
 class MedicineSourceCollection extends BaseCollection {
   constructor() {
@@ -31,16 +28,12 @@ class MedicineSourceCollection extends BaseCollection {
         allowedValues: acquiredType,
       },
       cost: Number,
-      location: {
-        type: String,
-        allowedValues: locSpot,
-      },
       receiveDate: Date,
       expDate: Date,
       state: {
         type: String,
         allowedValues: medState,
-        defaultValue: 'Reserves',
+        defaultValue: 'Reserved',
       },
     }));
   }
@@ -54,9 +47,9 @@ class MedicineSourceCollection extends BaseCollection {
    * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
+  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
     const docID = this._collection.insert({
-      lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
+      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
     });
     return docID;
   }
@@ -68,13 +61,12 @@ class MedicineSourceCollection extends BaseCollection {
    * @param lotNumber the new name (optional).
    * @param name the new name (optional).
    * @param type the new quantity (optional).
-   * @param location the new condition (optional).
    * @param quantity the new name (optional).
    * @param should_have the new quantity (optional).
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
    */
-  update(docID, { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
+  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;
@@ -88,9 +80,6 @@ class MedicineSourceCollection extends BaseCollection {
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
-    }
-    if (location) {
-      updateData.location = location;
     }
     if (acquire) {
       updateData.acquire = acquire;
@@ -132,7 +121,7 @@ class MedicineSourceCollection extends BaseCollection {
       // get the MedicineSourceCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(medicinePublications.MedicineSource, function publish() {
+      Meteor.publish(medicinePublications.medicineSource, function publish() {
         if (this.userId) {
           return instance._collection.find();
         }
@@ -140,8 +129,16 @@ class MedicineSourceCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(medicinePublications.MedicineSourceAdmin, function publish() {
+      Meteor.publish(medicinePublications.medicineSourceAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
+          return instance._collection.find();
+        }
+        return this.ready();
+      });
+
+      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
+      Meteor.publish(medicinePublications.medicineSourceDoctor, function publish() {
+        if (this.userId && Roles.userIsInRole(this.userId, ROLE.DOCTOR)) {
           return instance._collection.find();
         }
         return this.ready();
@@ -154,7 +151,7 @@ class MedicineSourceCollection extends BaseCollection {
    */
   subscribeMedicineSource() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.MedicineSource);
+      return Meteor.subscribe(medicinePublications.medicineSource);
     }
     return null;
   }
@@ -165,7 +162,18 @@ class MedicineSourceCollection extends BaseCollection {
    */
   subscribeMedicineSourceAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(medicinePublications.MedicineSourceAdmin);
+      return Meteor.subscribe(medicinePublications.medicineSourceAdmin);
+    }
+    return null;
+  }
+
+  /**
+   * Subscription method for Doctor users.
+   * It subscribes to the entire collection.
+   */
+  subscribeMedicineSourceDoctor() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(medicinePublications.medicineSourceDoctor);
     }
     return null;
   }
@@ -177,7 +185,7 @@ class MedicineSourceCollection extends BaseCollection {
    * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or User.
    */
   assertValidRoleForMethod(userId) {
-    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER, ROLE.DOCTOR]);
   }
 
   /**
