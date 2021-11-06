@@ -20,7 +20,6 @@ import UserProfile from '../pages/UserProfile';
 import ManageDatabase from '../pages/ManageDatabase';
 import Prescription from '../pages/Prescription';
 import HistoryReport from '../pages/HistoryReport';
-import SupplySource from '../pages/SupplySource';
 import AddMedicine from '../pages/AddMedicine';
 import AddSupply from '../pages/AddSupply';
 import { ROLE } from '../../api/role/Role';
@@ -51,7 +50,6 @@ class App extends React.Component {
             <ProtectedRoute path="/add-supply" component={AddSupply}/>
             <ProtectedRoute path="/patient-info" component={PatientInformation}/>
             <ProtectedRoute path="/prescription" component={Prescription}/>
-            <ProtectedRoute path="/supply-source" component={SupplySource}/>
             <ProtectedRoute path="/history-report" component={HistoryReport}/>
             <ProtectedRoute path="/edit/:_id" component={EditMedicine}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>

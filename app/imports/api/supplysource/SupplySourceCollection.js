@@ -14,7 +14,7 @@ export const supplyPublications = {
 
 class SupplySourceCollection extends BaseCollection {
   constructor() {
-    super('Supplies', new SimpleSchema({
+    super('SupplieSource', new SimpleSchema({
       supplyName: String,
       amountReceived: Number,
       sourceName: String,
@@ -37,12 +37,13 @@ class SupplySourceCollection extends BaseCollection {
    * @param receiveDate When it was receive
    * @return {String} the docID of the new document.
    */
-  define({ name, amountReceived, sourceName, acquire, receiveDate }) {
+  define({ supplyName, amountReceived, sourceName, acquire, cost, receiveDate }) {
     const docID = this._collection.insert({
-      name,
+      supplyName,
       amountReceived,
       sourceName,
       acquire,
+      cost,
       receiveDate,
     });
     return docID;
@@ -57,10 +58,10 @@ class SupplySourceCollection extends BaseCollection {
    * @param cost how much does it cost
    * @param receiveDate When it was receive
    */
-  update(docID, { name, amountReceived, sourceName, acquire, receiveDate }) {
+  update(docID, { supplyName, amountReceived, sourceName, acquire, cost, receiveDate }) {
     const updateData = {};
-    if (name) {
-      updateData.name = name;
+    if (supplyName) {
+      updateData.supplyName = supplyName;
     }
     if (_.isNumber(amountReceived)) {
       updateData.amountReceived = amountReceived;
@@ -70,6 +71,9 @@ class SupplySourceCollection extends BaseCollection {
     }
     if (acquire) {
       updateData.acquire = acquire;
+    }
+    if (_.isNumber(cost)) {
+      updateData.cost = cost;
     }
     if (receiveDate) {
       updateData.receiveDate = receiveDate;
@@ -183,4 +187,4 @@ class SupplySourceCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Supplies = new SupplySourceCollection();
+export const SupplySource = new SupplySourceCollection();

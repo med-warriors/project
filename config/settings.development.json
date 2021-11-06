@@ -74,32 +74,6 @@
       "owner": "admin@foo.com"
     }
   ],
-  "defaultSupplySource": [
-    {
-      "name": "Aloha",
-      "location": "Aloha st",
-      "phoneNumber": 808808808,
-      "email": "aloha@aloha.com"
-    },
-    {
-      "name": "John",
-      "location": "King st",
-      "phoneNumber": 801111222,
-      "email": "John@aloha.com"
-    },
-    {
-      "name": "Aaron",
-      "location": "School st",
-      "phoneNumber": 808666111,
-      "email": "Aaron@aloha.com"
-    },
-    {
-      "name": "Mahalo",
-      "location": "Mahalo st",
-      "phoneNumber": 808333444,
-      "email": "Mahalo@aloha.com"
-    }
-  ],
   "defaultPatientHistory": [
     {
       "date": "2021-09-12T07:30",
@@ -2085,6 +2059,16 @@
       "location": "Case 4",
       "quantity": "2",
       "source": "name"
+    }
+  ],
+  "defaultSupplySource": [
+    {
+      "supplyName": "Theraband - Green",
+      "amountReceived": 10,
+      "sourceName": "John",
+      "acquire": "Donated",
+      "cost": 0,
+      "receiveDate": "2021-02-17T07:30"
     }
   ],
   "defaultTransationHistory": [
