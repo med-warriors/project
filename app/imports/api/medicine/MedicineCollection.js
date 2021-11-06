@@ -61,10 +61,11 @@ class MedicineCollection extends BaseCollection {
    * @param note the detail information.
    * @return {String} the docID of the new document.
    */
-  define({ name, type, shouldHave, note }) {
+  define({ name, type, location, shouldHave, note }) {
     const docID = this._collection.insert({
       name,
       type,
+      location,
       shouldHave,
       note,
     });
@@ -79,13 +80,16 @@ class MedicineCollection extends BaseCollection {
    * @param should_have the new quantity (optional).
    * @param note the new name (optional).
    */
-  update(docID, { name, type, shouldHave, note }) {
+  update(docID, { name, type, location, shouldHave, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
     }
     if (type) {
       updateData.type = type;
+    }
+    if (location) {
+      updateData.location = location;
     }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(shouldHave)) {
