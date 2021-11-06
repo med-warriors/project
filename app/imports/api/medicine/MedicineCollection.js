@@ -24,6 +24,10 @@ export const medType = [
   'Smoking Cessation',
   'Vitamins and Supplements'];
 
+// All location of medicine given in excel document.
+// CONSIDER: creating a collection to insert more location spot
+export const locSpot = ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'];
+
 export const medicinePublications = {
   medicine: 'Medicine',
   medicineAdmin: 'MedicineAdmin',
@@ -40,6 +44,10 @@ class MedicineCollection extends BaseCollection {
         type: String,
         allowedValues: medType,
       },
+      location: {
+        type: String,
+        allowedValues: locSpot,
+      },
       shouldHave: Number,
       note: String,
     }));
@@ -52,10 +60,11 @@ class MedicineCollection extends BaseCollection {
    * @param note the detail information.
    * @return {String} the docID of the new document.
    */
-  define({ name, type, shouldHave, note }) {
+  define({ name, type, location, shouldHave, note }) {
     const docID = this._collection.insert({
       name,
       type,
+      location,
       shouldHave,
       note,
     });
@@ -70,13 +79,16 @@ class MedicineCollection extends BaseCollection {
    * @param should_have the new quantity (optional).
    * @param note the new name (optional).
    */
-  update(docID, { name, type, shouldHave, note }) {
+  update(docID, { name, type, location, shouldHave, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
     }
     if (type) {
       updateData.type = type;
+    }
+    if (location) {
+      updateData.location = location;
     }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(shouldHave)) {

@@ -11,10 +11,6 @@ export const medicinePublications = {
   MedicineSourceAdmin: 'MedicineSourceAdmin',
 };
 
-// All location of medicine given in excel document.
-// CONSIDER: creating a collection to insert more location spot
-export const locSpot = ['Case 1', 'Case 2', 'Case 3', 'Case 4', 'Case 5', 'Case 6', 'Case 7', 'Case 8', 'Refrigerator', 'Refrigerator Closet', 'Freezer', 'Freezer-Derm', 'Drawer 2-2', 'Drawer 2-3', 'Bottom Drawer', 'Emergency Kit'];
-
 export const acquiredType = ['Donated', 'Purchased'];
 
 export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
@@ -31,10 +27,6 @@ class MedicineSourceCollection extends BaseCollection {
         allowedValues: acquiredType,
       },
       cost: Number,
-      location: {
-        type: String,
-        allowedValues: locSpot,
-      },
       receiveDate: Date,
       expDate: Date,
       state: {
