@@ -822,7 +822,7 @@
       "acquire": "Purchased",
       "cost": 100,
       "receiveDate": "2021-03-17T07:30",
-      "state": "Reserved"
+      "state": "Reserves"
     },
     {
       "lotNumber": "a2",

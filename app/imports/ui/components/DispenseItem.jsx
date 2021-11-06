@@ -14,7 +14,6 @@ const DispenseItem = ({ inventories, addDispense }) => {
       <Table.Cell>{inventories.lotNumber}</Table.Cell>
       <Table.Cell>{inventories.medName}</Table.Cell>
       <Table.Cell>{inventories.quantity}</Table.Cell>
-      <Table.Cell>{inventories.location}</Table.Cell>
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
@@ -30,7 +29,6 @@ DispenseItem.propTypes = {
     lotNumber: PropTypes.string,
     medName: PropTypes.string,
     quantity: PropTypes.number,
-    location: PropTypes.string,
     sourceName: PropTypes.string,
     acquire: PropTypes.string,
     cost: PropTypes.number,

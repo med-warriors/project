@@ -6,11 +6,11 @@ import { _ } from 'meteor/underscore';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import DispenseItem from '../components/DispenseItem';
 import DispenseList from '../components/DispenseList';
-import Dispense from '../components/Dispense';
+import DispenseSubmit from '../components/DispenseSubmit';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders the Page for adding a document. */
-const Prescription = ({ ready, medicines }) => {
+const Dispense = ({ ready, medicines }) => {
   // state functions
   const [search, setSearch] = useState('');
   const [cellDispense, setDispense] = useState([]);
@@ -69,9 +69,9 @@ const Prescription = ({ ready, medicines }) => {
   }
 
   return ((ready) ? (
-    <Grid id={PAGE_IDS.PRESCRIPTION} container centered>
+    <Grid id={PAGE_IDS.DISPENSE} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Prescription</Header>
+        <Header as="h2" textAlign="center">Dispense</Header>
         <Segment>
           <Grid>
             <Grid.Row centered>
@@ -85,7 +85,6 @@ const Prescription = ({ ready, medicines }) => {
                     <Table.HeaderCell>Lot #</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Quantity</Table.HeaderCell>
-                    <Table.HeaderCell>location</Table.HeaderCell>
                     <Table.HeaderCell>ExpDate</Table.HeaderCell>
                     <Table.HeaderCell>State</Table.HeaderCell>
                   </Table.Row>
@@ -105,7 +104,6 @@ const Prescription = ({ ready, medicines }) => {
                     <Table.HeaderCell>Lot #</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Quantity</Table.HeaderCell>
-                    <Table.HeaderCell>location</Table.HeaderCell>
                     <Table.HeaderCell>ExpDate</Table.HeaderCell>
                     <Table.HeaderCell>State</Table.HeaderCell>
                     <Table.HeaderCell>Dispense Quantity</Table.HeaderCell>
@@ -123,7 +121,7 @@ const Prescription = ({ ready, medicines }) => {
         </Segment>
         <Grid.Row>
           <Segment color='blue'>
-            <Dispense cellDispense={cellDispense} />
+            <DispenseSubmit cellDispense={cellDispense} setDispense={setDispense}/>
           </Segment>
         </Grid.Row>
       </Grid.Column>
@@ -132,7 +130,7 @@ const Prescription = ({ ready, medicines }) => {
 };
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
-Prescription.propTypes = {
+Dispense.propTypes = {
   medicines: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -143,10 +141,14 @@ export default withTracker(() => {
   const subscription = MedicineSource.subscribeMedicineSource();
   // Determine if the subscription is ready
   const ready = subscription.ready();
+  const today = new Date();
   // Get the Medicine documents and sort them by name.
-  const medicines = MedicineSource.find({ state: 'Acted' || 'Reserves' }, { sort: { name: 1 } }).fetch();
+  const medicines = MedicineSource.find(
+    { state: { $in: ['Acted', 'Reserves'] }, quantity: { $gt: 0 }, expDate: { $gt: today } },
+    { sort: { name: 1 } },
+  ).fetch();
   return {
     medicines,
     ready,
   };
-})(Prescription);
+})(Dispense);

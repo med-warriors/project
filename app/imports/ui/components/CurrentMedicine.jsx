@@ -74,7 +74,7 @@ export default withTracker(({ medicine }) => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const source = MedicineSource.find({ medName: medicine.name, state: 'Acted' || 'Reserves' }, { sort: { name: 1 } }).fetch();
+  const source = MedicineSource.find({ medName: medicine.name, state: { $in: ['Acted', 'Reserves'] } }, { sort: { name: 1 } }).fetch();
   return {
     source,
     ready,

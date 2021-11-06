@@ -20,9 +20,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Dispense = ({ cellDispense }) => {
+const DispenseSubmit = ({ cellDispense, setDispense }) => {
 
   /*
+  // todo: edit the following code to submit a Dispense record.
   // On submit, insert the data to transaction history.
   const submitTran = (data, formRef) => {
     const { patientID, medicine } = data;
@@ -45,12 +46,12 @@ const Dispense = ({ cellDispense }) => {
   };
   */
 
-  const submitMed = (fRef) => {
-    // const data = ;
-    const outQuantity = cellDispense[0].prescriptionQuantity;
+  const submitMed = (med, outQuantity) => {
     // eslint-disable-next-line prefer-const
-    let { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = MedicineSource.findDoc(cellDispense[0].medId);
+    let { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = med;
+    // change value on submit the dispense.
     quantity -= outQuantity;
+    if (state === 'Reserves') { state = 'Acted'; }
     const collectionName = MedicineSource.getCollectionName();
     const updateData = { id: _id, lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     // update the medicine.
@@ -58,22 +59,35 @@ const Dispense = ({ cellDispense }) => {
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Item updated successfully', 'success');
-        fRef.reset();
       });
+  };
+
+  const submit = (data, formRef) => {
+    // Add record of dispense.
+    // todo: change the follow line to add new collection of record dispense.
+    const D = data;
+    // update the each medicine on submit from the list.
+    for (let i = 0; i < cellDispense.length; i++) {
+      const outQuantity = cellDispense[i].prescriptionQuantity;
+      const med = MedicineSource.findDoc(cellDispense[i].medId);
+      submitMed(med, outQuantity);
+    }
+    // empty the submit schema form.
+    formRef.reset();
+    setDispense([]);
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-
   return (
     <Grid container centered>
       <Grid.Column>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
+        }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Grid.Row>
             <Segment>
-              <Header as="h3" textAlign="center">Patient Prescription</Header>
+              <Header as="h3" textAlign="center">Patient Information</Header>
               <Form.Group widths='equal'>
                 <TextField name='patientID'/>
                 <TextField name='outputLocation'/>
@@ -90,8 +104,9 @@ const Dispense = ({ cellDispense }) => {
 };
 
 // Require a document to be passed to this component.
-Dispense.propTypes = {
+DispenseSubmit.propTypes = {
   cellDispense: PropTypes.array,
+  setDispense: PropTypes.func,
 };
 
-export default withRouter(Dispense);
+export default withRouter(DispenseSubmit);
