@@ -9,6 +9,11 @@ const PatientItem = ({ patient }) => (
   <Table.Row>
     <Table.Cell>{patient.date.toDateString()}</Table.Cell>
     <Table.Cell>{patient.id}</Table.Cell>
+    <Table.Cell>{patient.dispense}</Table.Cell>
+    <Table.Cell>{patient.note}</Table.Cell>
+    <Table.Cell>{patient.location}</Table.Cell>
+    <Table.Cell>{patient.employee}</Table.Cell>
+
     <Table.Cell>
       <Link to={`/edit/${patient._id}`}>Edit</Link>
     </Table.Cell>
@@ -20,6 +25,10 @@ PatientItem.propTypes = {
   patient: PropTypes.shape({
     date: PropTypes.instanceOf(Date),
     id: PropTypes.string,
+    dispense: PropTypes.string,
+    note: PropTypes.string,
+    location: PropTypes.string,
+    employee: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
