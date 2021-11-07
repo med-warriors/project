@@ -54,7 +54,6 @@ const NavBar = ({ currentUser }) => {
           <Dropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} text={currentUser} pointing="top right" icon={'user'}>
             <Dropdown.Menu>
               <Dropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} icon="sign out" text="Sign Out" as={NavLink} exact to="/signout" />
-              <Dropdown.Item id={COMPONENT_IDS.NAVBAR_VIEW_PROFILE} icon="user" text="View Profile" as={NavLink} exact to="/viewuser" key='viewuser'/>
             </Dropdown.Menu>
           </Dropdown>
         )}

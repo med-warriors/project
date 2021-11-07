@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Patients } from '../../api/patients/PatientCollection';
 // import { UserProfiles } from '../../api/profile/UserProfileCollection';
-import { Profiles } from '../../api/profile/Profile';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
@@ -18,12 +17,6 @@ const supplies = JSON.parse(Assets.getText('supplies.json')); */
 function addData(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Stuffs.define(data);
-}
-
-// Initialize the database with a default data document.
-function addProfile(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Profiles.collection.insert(data);
 }
 
 function addSource(data) {
@@ -92,13 +85,6 @@ if (Stuffs.count() === 0) {
     Meteor.settings.defaultData.map(data => addData(data));
   }
 
-}
-// Initialize the ProfilesCollection if empty.
-if (Profiles.collection.find().count() === 0) {
-  if (Meteor.settings.defaultProfiles) {
-    console.log('Creating default Profiles.');
-    Meteor.settings.defaultProfiles.map(data => addProfile(data));
-  }
 }
 
 if (SupplySource.count() === 0) {

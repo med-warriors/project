@@ -48,32 +48,6 @@
       "condition": "excellent"
     }
   ],
-  "defaultProfiles": [
-    {
-      "username": "jfoo",
-      "role": "student",
-      "name": "John Foo",
-      "idnumber": "12345678",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU",
-      "owner": "john@foo.com"
-    },
-    {
-      "username": "doc",
-      "role": "doctor",
-      "name": "Doctor Apollo",
-      "idnumber": "124541",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU",
-      "owner": "doctor@foo.com"
-    },
-    {
-      "username": "admin",
-      "role": "admin",
-      "name": "Admin User",
-      "idnumber": "87654321",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ggVVZdlAmWWPqd5hcnGWLaCz0rTHWbYvGQ&usqp=CAU",
-      "owner": "admin@foo.com"
-    }
-  ],
   "defaultPatientHistory": [
     {
       "date": "2021-09-12T07:30",

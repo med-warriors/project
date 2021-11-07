@@ -16,14 +16,12 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import MedicineAndSupplies from '../pages/MedicineAndSupplies';
 import PatientInformation from '../pages/PatientInformation';
-import UserProfile from '../pages/UserProfile';
 import ManageDatabase from '../pages/ManageDatabase';
 import Dispense from '../pages/Dispense';
 import HistoryReport from '../pages/HistoryReport';
 import AddMedicine from '../pages/AddMedicine';
 import AddSupply from '../pages/AddSupply';
 import { ROLE } from '../../api/role/Role';
-import EditProfile from '../pages/EditProfile';
 import EditSupply from '../pages/EditSupply';
 import EditMedicine from '../pages/EditMedicine';
 import ChangeRole from '../pages/ChangeRole';
@@ -40,8 +38,6 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
-            <ProtectedRoute path="/editprof" component={EditProfile}/>
-            <ProtectedRoute path="/viewuser" component={UserProfile}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/update-sup/:_id" component={EditSupply}/>
