@@ -77,19 +77,35 @@
   "defaultPatientHistory": [
     {
       "date": "2021-09-12T07:30",
-      "id": "Xu8HM8EpsfLhP3"
+      "id": "Xu8HM8EpsfLhP3",
+      "dispense": ["Cetirizine Soln", "Benzonatate Capsules"],
+      "note": "Take x times a day",
+      "location": "....",
+      "employee": "196432"
     },
     {
       "date": "2021-09-12T07:30",
-      "id": "4CgJr3ZQ2xn7Uq"
+      "id": "4CgJr3ZQ2xn7Uq",
+      "dispense": ["Cough Drops"],
+      "note": "Take x times a day",
+      "location": "....",
+      "employee": "635632"
     },
     {
       "date": "2021-09-13T08:30",
-      "id": "XZxwCqnFCkvJ7B"
+      "id": "dZx5twnFCkvJ7B",
+      "dispense": ["Cetirizine Soln", "Benzonatate Capsules"],
+      "note": "Take x times a day",
+      "location": "....",
+      "employee": "414372"
     },
     {
       "date": "2021-09-13T07:30",
-      "id": "2XYRFenBbYCvbn"
+      "id": "2XYRFeb7hgfvbn",
+      "dispense": ["Cold and Flu Syrup", "Benzonatate Capsules"],
+      "note": "Take x times a day",
+      "location": "....",
+      "employee": "344562"
     }
   ],
   "defaultMedicines": [
