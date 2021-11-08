@@ -25,10 +25,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
     highlight = 'warning';
   } else if (totalQuantity / medicine.shouldHave <= 0.1 || totalQuantity / medicine.shouldHave === 0 || totalQuantity / medicine.shouldHave === undefined) {
     // highlights in red when percentage of total quantity and should have columns is between 0% and 10% or undefined
-
     highlight = 'error';
-  } else if (totalQuantity / medicine.shouldHave <= 0.1) {
-    highlight = 'warning';
   } else {
     // highlights in green when overall quantity of medicine is good (over 50%)
     highlight = 'positive';
@@ -58,6 +55,7 @@ CurrentMedicine.propTypes = {
     type: PropTypes.string,
     location: PropTypes.string,
     shouldHave: PropTypes.number,
+    expDate: PropTypes.instanceOf(Date),
     note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
