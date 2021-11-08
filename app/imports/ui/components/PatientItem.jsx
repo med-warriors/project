@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, List, Table } from 'semantic-ui-react';
+import { Icon, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 // import { COMPONENT_IDS } from '../utilities/ComponentIDs';
