@@ -17,7 +17,7 @@ class PatientCollection extends BaseCollection {
       date: Date,
       id: String,
       note: String,
-      dispense: String,
+      dispense: [String],
       location: String,
       employee: String,
     }));
