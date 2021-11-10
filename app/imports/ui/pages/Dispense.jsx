@@ -7,7 +7,6 @@ import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import DispenseList from '../components/DispenseList';
 import DispenseSubmit from '../components/DispenseSubmit';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import { Supplies } from '../../api/supply/SupplyCollection';
 import DispenseSupply from '../components/DispenseSupply';
 import DispenseMedicine from '../components/DispenseMedicine';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
@@ -42,7 +41,7 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
     // allows user to type name of supply in lowercase
     const lowerCase = search.toLowerCase();
     // searches supply item based on name
-    return searchItem.name.toLowerCase().startsWith(lowerCase);
+    return searchItem.supplyName.toLowerCase().startsWith(lowerCase);
   };
 
   // add variable id and type into state array
@@ -51,7 +50,7 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
     const iD = cellDispense.map(item => item.id);
     // check if variable is/is not includes in the array
     const found = iD.includes(data);
-    // cerate a new object and add to state array
+    // create a new object and add to state array
     if (!found) {
       // sets add Dispense state to added value
       const updateDispense = [...cellDispense, { id: data, type: type, prescriptionQuantity: 0 }];
@@ -79,7 +78,7 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
     if (search) {
       // filters medicine items by search value and sorts them by name
       medSort = _.sortBy(medicines.filter(medicine => medSearch(medicine)), 'medName');
-      supSort = _.sortBy(supplies.filter(supply => supplySearch(supply)), 'name');
+      supSort = _.sortBy(supplies.filter(supply => supplySearch(supply)), 'supplyName');
     }
     if (cellDispense) {
       for (let i = 0; i < cellDispense.length; i++) {
@@ -136,8 +135,8 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
                           <Table.Header>
                             <Table.Row>
                               <Table.HeaderCell>Name</Table.HeaderCell>
-                              <Table.HeaderCell>Location</Table.HeaderCell>
                               <Table.HeaderCell>Quantity</Table.HeaderCell>
+                              <Table.HeaderCell>State</Table.HeaderCell>
                             </Table.Row>
                           </Table.Header>
                           <Table.Body>
@@ -158,7 +157,6 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
                     <Table.HeaderCell/>
                     <Table.HeaderCell>Lot #</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Location</Table.HeaderCell>
                     <Table.HeaderCell>Quantity</Table.HeaderCell>
                     <Table.HeaderCell>ExpDate</Table.HeaderCell>
                     <Table.HeaderCell>State</Table.HeaderCell>
@@ -197,7 +195,7 @@ Dispense.propTypes = {
 export default withTracker(() => {
   // Get access to Medicines documents.
   const subscriptionM = MedicineSource.subscribeMedicineSource();
-  const subscriptionS = Supplies.subscribeSupply();
+  const subscriptionS = SupplySource.subscribeSupply();
   // Determine if the subscription is ready
   const readyM = subscriptionM.ready();
   const readyS = subscriptionS.ready();
@@ -208,7 +206,10 @@ export default withTracker(() => {
     { sort: { medName: 1 } },
   ).fetch();
   // Get the Supply documents and sort them by name.
-  const supplies = SupplySource.find({ quantity: { $gt: 0 } }, { sort: { medName: 1 } }).fetch();
+  const supplies = SupplySource.find(
+    { quantity: { $gt: 0 } },
+    { sort: { supplyName: 1 } },
+  ).fetch();
   return {
     medicines,
     readyM,

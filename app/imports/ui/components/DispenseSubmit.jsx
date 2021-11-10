@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
-import { Supplies } from '../../api/supply/SupplyCollection';
+import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -65,11 +65,12 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
 
   const submitSup = (sup, outQuantity) => {
     // eslint-disable-next-line prefer-const
-    let { name, location, quantity, note, _id } = sup;
+    let { supplyName, quantity, sourceName, acquire, cost, receiveDate, state, _id } = sup;
     // change value on submit the dispense.
     quantity -= outQuantity;
-    const collectionName = Supplies.getCollectionName();
-    const updateData = { id: _id, name, location, quantity, note };
+    if (state === 'Reserves') { state = 'Acted'; }
+    const collectionName = SupplySource.getCollectionName();
+    const updateData = { id: _id, supplyName, quantity, sourceName, acquire, cost, receiveDate, state };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -90,7 +91,7 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
         submitMed(med, outQuantity);
       }
       if (cellDispense[i].type === 'Supply') {
-        const sup = Supplies.findDoc(cellDispense[i].id);
+        const sup = SupplySource.findDoc(cellDispense[i].id);
         submitSup(sup, outQuantity);
       }
     }

@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
   const quantityOptions = [];
-  let type; let lot; let name; let location; let expDate; let state;
+  let type; let lot; let name; let expDate;
 
   const clickRemove = () => {
     removeDispense(inventories._id);
@@ -26,17 +26,12 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
     type = <Icon name="pills"/>;
     lot = inventories.lotNumber;
     name = inventories.medName;
-    // todo: get medicine collection location.
-    location = '-';
     expDate = inventories.expDate.toDateString();
-    state = inventories.state;
   } else {
     type = <Icon name='band aid'/>;
     lot = '-';
-    name = inventories.name;
-    location = inventories.location;
+    name = inventories.supplyName;
     expDate = '-';
-    state = '-';
   }
 
   return (
@@ -44,10 +39,9 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
       <Table.Cell>{type}</Table.Cell>
       <Table.Cell>{lot}</Table.Cell>
       <Table.Cell>{name}</Table.Cell>
-      <Table.Cell>{location}</Table.Cell>
       <Table.Cell>{inventories.quantity}</Table.Cell>
       <Table.Cell>{expDate}</Table.Cell>
-      <Table.Cell>{state}</Table.Cell>
+      <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
         <Select placeholder='Select quantity' options={quantityOptions} onChange={outQuantity}/>
       </Table.Cell>
@@ -62,7 +56,7 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
 DispenseItem.propTypes = {
   inventories: PropTypes.shape({
     lotNumber: PropTypes.string,
-    name: PropTypes.string,
+    supplyName: PropTypes.string,
     medName: PropTypes.string,
     location: PropTypes.string,
     quantity: PropTypes.number,

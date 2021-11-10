@@ -11,9 +11,9 @@ const DispenseSupply = ({ inventories, addDispense }) => {
 
   return (
     <Table.Row>
-      <Table.Cell>{inventories.name}</Table.Cell>
-      <Table.Cell>{inventories.location}</Table.Cell>
+      <Table.Cell>{inventories.supplyName}</Table.Cell>
       <Table.Cell>{inventories.quantity}</Table.Cell>
+      <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
         <Button color='red' content='Add' onClick={clickAdd}/>
       </Table.Cell>
@@ -24,9 +24,13 @@ const DispenseSupply = ({ inventories, addDispense }) => {
 // Require a document to be passed to this component.
 DispenseSupply.propTypes = {
   inventories: PropTypes.shape({
-    name: PropTypes.string,
-    quantity: PropTypes.number,
-    location: PropTypes.string,
+    supplyName: String,
+    quantity: Number,
+    sourceName: String,
+    acquire: String,
+    cost: Number,
+    receiveDate: Date,
+    state: String,
     _id: PropTypes.string,
   }).isRequired,
   addDispense: PropTypes.func,
