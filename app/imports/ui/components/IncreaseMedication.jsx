@@ -6,17 +6,16 @@ import { SimpleSchema } from 'simpl-schema/dist/SimpleSchema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import {
   AutoForm,
-  DateField,
   ErrorsField,
   NumField,
   SelectField,
   SubmitField,
   TextField,
 } from 'uniforms-semantic';
-import { acquiredType, locSpot, MedicineSource } from '../../api/medSource/MedicineSourceCollection';
+import { acquiredType, MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
-const inputState = ['Acted', 'Reserved'];
+const inputState = ['Acted', 'Reserves'];
 
 const formSchema = new SimpleSchema({
   lotNumber: String,
@@ -28,10 +27,6 @@ const formSchema = new SimpleSchema({
     allowedValues: acquiredType,
   },
   cost: Number,
-  location: {
-    type: String,
-    allowedValues: locSpot,
-  },
   receiveDate: Date,
   expDate: Date,
   state: {
@@ -46,10 +41,9 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const AddMedicineInventory = ({ mName }) => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { lotNumber, quantity, sourceName, acquire, cost, location, receiveDate, expDate, state } = data;
+    const { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state } = data;
     const collectionName = MedicineSource.getCollectionName();
-    const medName = mName;
-    const definitionData = { lotNumber, medName, quantity, sourceName, acquire, cost, location, receiveDate, expDate, state };
+    const definitionData = { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -75,14 +69,13 @@ const AddMedicineInventory = ({ mName }) => {
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-          <h3>Adding New Inventory: {mName}</h3>
           <Form.Group widths='equal'>
+            <TextField disabled label='Medicine Name' name='medName' value={mName}/>
             <TextField label='Lot Number' name='lotNumber'/>
-            <SelectField label='Location' name='location'/>
           </Form.Group>
           <Form.Group>
             <SelectField label='State' name='state'/>
-            <DateField label='Expiration Date' name='expDate'/>
+            <TextField type='date' label='Expiration Date' name='receiveDate'/>
           </Form.Group>
           <Form.Group widths='equal'>
             <TextField name='sourceName'/>
@@ -91,7 +84,7 @@ const AddMedicineInventory = ({ mName }) => {
           </Form.Group>
           <Form.Group>
             <NumField label='Amount Received' name='quantity'/>
-            <DateField name='receiveDate'/>
+            <TextField type='date' label='Receive Date' name='expDate'/>
           </Form.Group>
           <SubmitField value='Submit' />
           <ErrorsField />

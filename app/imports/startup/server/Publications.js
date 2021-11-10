@@ -26,6 +26,7 @@ Meteor.publish(null, function () {
   return this.ready();
 });
 
+/** Allows admins to look for users in the database */
 Meteor.publish('adminPermission', function () {
   if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
     return Meteor.users.find({});

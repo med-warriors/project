@@ -37,5 +37,5 @@ export const COMPONENT_IDS = {
   NAVBAR_TRANSACTION_DROPDOWN: 'navbar-transaction-dropdown',
   NAVBAR_TRANSACTION_DROPDOWN_ADD_MEDICINE: 'navbar-transaction-dropdown-add-medicine',
   NAVBAR_TRANSACTION_DROPDOWN_ADD_SUPPLIES: 'navbar-transaction-dropdown-add-supplies',
-  NAVBAR_TRANSACTION_DROPDOWN_PRESCRIPTION: 'navbar-transaction-dropdown-prescription',
+  NAVBAR_TRANSACTION_DROPDOWN_DISPENSE: 'navbar-transaction-dropdown-dispense',
 };

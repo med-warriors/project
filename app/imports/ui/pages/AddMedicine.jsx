@@ -4,7 +4,7 @@ import { AutoForm, ErrorsField, NumField, SubmitField, TextField, SelectField } 
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Medicines } from '../../api/medicine/MedicineCollection';
+import { locSpot, Medicines } from '../../api/medicine/MedicineCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
@@ -14,7 +14,7 @@ const formSchema = new SimpleSchema({
   type: {
     type: String,
     allowedValues: [
-      'Allergy and Cold Medicines',
+      'Allergy & Cold Medicines',
       'Analgesics/Antiinflammatory',
       'Antihypertensives',
       'Antimicrobials',
@@ -29,6 +29,10 @@ const formSchema = new SimpleSchema({
       'Smoking Cessation',
       'Vitamins and Supplements'],
   },
+  location: {
+    type: String,
+    allowedValues: locSpot,
+  },
   shouldHave: Number,
   note: String,
 });
@@ -40,9 +44,9 @@ const AddMedicine = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, type, shouldHave, note } = data;
+    const { name, type, shouldHave, location, note } = data;
     const collectionName = Medicines.getCollectionName();
-    const definitionData = { name, type, shouldHave, note };
+    const definitionData = { name, type, shouldHave, location, note };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -64,10 +68,10 @@ const AddMedicine = () => {
             <Form.Group widths='equal'>
               <TextField label='Medicine Name' name='name'/>
               <SelectField label='Medicine Type' name='type'/>
-              <NumField name='quantity' decimal={false}/>
+              <NumField label='Required Quantity' name='shouldHave' decimal={false} min={0}/>
             </Form.Group>
             <Form.Group widths='equal'>
-              <NumField name='shouldHave'/>
+              <SelectField label='Location' name='location'/>
               <TextField name='note'/>
             </Form.Group>
             <SubmitField value='Submit'/>

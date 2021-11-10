@@ -19,7 +19,7 @@ class SupplyCollection extends BaseCollection {
         type: String,
         allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4'],
       },
-      quantity: Number,
+      note: String,
     }));
   }
 
@@ -27,14 +27,14 @@ class SupplyCollection extends BaseCollection {
    * Defines a new Supply item.
    * @param name the name of the item.
    * @param location the location of the item.
-   * @param quantity how many.
+   * @param note information of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity }) {
+  define({ name, location, note }) {
     const docID = this._collection.insert({
       name,
       location,
-      quantity,
+      note,
     });
     return docID;
   }
@@ -44,9 +44,9 @@ class SupplyCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param name the new name (optional).
    * @param location the new location (optional).
-   * @param quantity the new quantity (optional).
+   * @param note the new note (optional).
    */
-  update(docID, { name, location, quantity }) {
+  update(docID, { name, location, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -54,9 +54,8 @@ class SupplyCollection extends BaseCollection {
     if (location) {
       updateData.location = location;
     }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(quantity)) {
-      updateData.quantity = quantity;
+    if (note) {
+      updateData.note = note;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -134,14 +133,14 @@ class SupplyCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), condition: *, quantity: *, name}}
+   * @return {{owner: (*|number), condition: *, name}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const name = doc.name;
-    const quantity = doc.quantity;
     const location = doc.location;
-    return { name, quantity, location };
+    const note = doc.note;
+    return { name, location, note };
   }
 }
 

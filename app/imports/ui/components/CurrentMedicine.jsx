@@ -37,6 +37,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
     <Table.Row positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}>
       <Table.Cell>{medicine.name}</Table.Cell>
       <Table.Cell>{medicine.type}</Table.Cell>
+      <Table.Cell>{medicine.location}</Table.Cell>
       <Table.Cell>{medicine.shouldHave}</Table.Cell>
       <Table.Cell>{totalQuantity}</Table.Cell>
       <Table.Cell>{medicine.note}</Table.Cell>
@@ -55,6 +56,7 @@ CurrentMedicine.propTypes = {
   medicine: PropTypes.shape({
     name: PropTypes.string,
     type: PropTypes.string,
+    location: PropTypes.string,
     shouldHave: PropTypes.number,
     note: PropTypes.string,
     _id: PropTypes.string,
@@ -72,7 +74,7 @@ export default withTracker(({ medicine }) => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const source = MedicineSource.find({ medName: medicine.name, state: 'Acted' || 'Reserves' }, { sort: { name: 1 } }).fetch();
+  const source = MedicineSource.find({ medName: medicine.name, state: { $in: ['Acted', 'Reserves'] } }, { sort: { name: 1 } }).fetch();
   return {
     source,
     ready,

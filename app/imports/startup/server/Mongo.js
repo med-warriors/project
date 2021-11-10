@@ -3,7 +3,7 @@ import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Patients } from '../../api/patients/PatientCollection';
 // import { UserProfiles } from '../../api/profile/UserProfileCollection';
 import { Profiles } from '../../api/profile/Profile';
-import { SupplySourecs } from '../../api/source/SupplySourceCollection';
+import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
@@ -28,7 +28,7 @@ function addProfile(data) {
 
 function addSource(data) {
   console.log(`  Adding: ${data.name} `);
-  SupplySourecs.define(data);
+  SupplySource.define(data);
 }
 
 // Initialize the database with a default data document.
@@ -101,7 +101,7 @@ if (Profiles.collection.find().count() === 0) {
   }
 }
 
-if (SupplySourecs.count() === 0) {
+if (SupplySource.count() === 0) {
   if (Meteor.settings.defaultSupplySource) {
     console.log('Creating default sources data.');
     Meteor.settings.defaultSupplySource.map(data => addSource(data));

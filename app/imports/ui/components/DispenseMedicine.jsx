@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const DispenseItem = ({ inventories, addDispense }) => {
+const DispenseMedicine = ({ inventories, addDispense }) => {
   const clickAdd = () => {
-    addDispense(inventories._id);
+    addDispense(inventories._id, 'Medicine');
   };
 
   return (
@@ -14,7 +14,6 @@ const DispenseItem = ({ inventories, addDispense }) => {
       <Table.Cell>{inventories.lotNumber}</Table.Cell>
       <Table.Cell>{inventories.medName}</Table.Cell>
       <Table.Cell>{inventories.quantity}</Table.Cell>
-      <Table.Cell>{inventories.location}</Table.Cell>
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
@@ -25,12 +24,11 @@ const DispenseItem = ({ inventories, addDispense }) => {
 };
 
 // Require a document to be passed to this component.
-DispenseItem.propTypes = {
+DispenseMedicine.propTypes = {
   inventories: PropTypes.shape({
     lotNumber: PropTypes.string,
     medName: PropTypes.string,
     quantity: PropTypes.number,
-    location: PropTypes.string,
     sourceName: PropTypes.string,
     acquire: PropTypes.string,
     cost: PropTypes.number,
@@ -43,4 +41,4 @@ DispenseItem.propTypes = {
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(DispenseItem);
+export default withRouter(DispenseMedicine);

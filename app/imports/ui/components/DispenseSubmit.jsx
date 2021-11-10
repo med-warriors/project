@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
+import { Supplies } from '../../api/supply/SupplyCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -20,9 +21,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 
-const Dispense = ({ cellDispense }) => {
+const DispenseSubmit = ({ cellDispense, setDispense }) => {
 
   /*
+  // todo: edit the following code to submit a Dispense record.
   // On submit, insert the data to transaction history.
   const submitTran = (data, formRef) => {
     const { patientID, medicine } = data;
@@ -45,12 +47,12 @@ const Dispense = ({ cellDispense }) => {
   };
   */
 
-  const submitMed = (fRef) => {
-    // const data = ;
-    const outQuantity = cellDispense[0].prescriptionQuantity;
+  const submitMed = (med, outQuantity) => {
     // eslint-disable-next-line prefer-const
-    let { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = MedicineSource.findDoc(cellDispense[0].medId);
+    let { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = med;
+    // change value on submit the dispense.
     quantity -= outQuantity;
+    if (state === 'Reserves') { state = 'Acted'; }
     const collectionName = MedicineSource.getCollectionName();
     const updateData = { id: _id, lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     // update the medicine.
@@ -58,22 +60,56 @@ const Dispense = ({ cellDispense }) => {
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Item updated successfully', 'success');
-        fRef.reset();
       });
+  };
+
+  const submitSup = (sup, outQuantity) => {
+    // eslint-disable-next-line prefer-const
+    let { name, location, quantity, note, _id } = sup;
+    // change value on submit the dispense.
+    quantity -= outQuantity;
+    const collectionName = Supplies.getCollectionName();
+    const updateData = { id: _id, name, location, quantity, note };
+    // update the medicine.
+    updateMethod.callPromise({ collectionName, updateData })
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => {
+        swal('Success', 'Item updated successfully', 'success');
+      });
+  };
+
+  const submit = (data, formRef) => {
+    // Add record of dispense.
+    // todo: change the follow line to add new collection of record dispense.
+    const D = data;
+    // update the each medicine on submit from the list.
+    for (let i = 0; i < cellDispense.length; i++) {
+      const outQuantity = cellDispense[i].prescriptionQuantity;
+      if (cellDispense[i].type === 'Medicine') {
+        const med = MedicineSource.findDoc(cellDispense[i].id);
+        submitMed(med, outQuantity);
+      }
+      if (cellDispense[i].type === 'Supply') {
+        const sup = Supplies.findDoc(cellDispense[i].id);
+        submitSup(sup, outQuantity);
+      }
+    }
+    // empty the submit schema form.
+    formRef.reset();
+    setDispense([]);
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-
   return (
     <Grid container centered>
       <Grid.Column>
         <AutoForm ref={ref => {
           fRef = ref;
-        }} schema={bridge} onSubmit={data => submitMed(data, fRef)}>
+        }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Grid.Row>
             <Segment>
-              <Header as="h3" textAlign="center">Patient Prescription</Header>
+              <Header as="h3" textAlign="center">Patient Information</Header>
               <Form.Group widths='equal'>
                 <TextField name='patientID'/>
                 <TextField name='outputLocation'/>
@@ -90,8 +126,9 @@ const Dispense = ({ cellDispense }) => {
 };
 
 // Require a document to be passed to this component.
-Dispense.propTypes = {
+DispenseSubmit.propTypes = {
   cellDispense: PropTypes.array,
+  setDispense: PropTypes.func,
 };
 
-export default withRouter(Dispense);
+export default withRouter(DispenseSubmit);

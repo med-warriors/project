@@ -61,7 +61,8 @@ const ChangeRole = (propTypes) => {
         <Header as="h2" textAlign="center">Change Role</Header>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} >
           <Segment>
-            <TextField name='userEmail'/>
+            <TextField label='User&apos;s Email' name='userEmail'/>
+            <Header as="h4" textAlign="center">Roles (Pick at least one)</Header>
             <BoolField name="doctor"/>
             <BoolField name="student"/>
             <BoolField name="admin"/>
@@ -74,7 +75,7 @@ const ChangeRole = (propTypes) => {
   );
 };
 
-/** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
+/** Require the presence of a user document in the props object. Uniforms adds 'model' to the props, which we use. */
 ChangeRole.propTypes = {
   users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../stuff/StuffCollection';
-import { SupplySourecs } from '../source/SupplySourceCollection';
+import { SupplySource } from '../supplysource/SupplySourceCollection';
 import { Patients } from '../patients/PatientCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
@@ -23,7 +23,7 @@ class MATRPClass {
       AdminProfiles,
       DoctorProfiles,
       Stuffs,
-      SupplySourecs,
+      SupplySource,
       Patients,
       UserProfiles,
       Medicines,
@@ -38,7 +38,7 @@ class MATRPClass {
       AdminProfiles,
       UserProfiles,
       DoctorProfiles,
-      SupplySourecs,
+      SupplySource,
       Stuffs,
       Patients,
       Medicines,

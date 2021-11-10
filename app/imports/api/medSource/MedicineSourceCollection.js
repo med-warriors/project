@@ -95,7 +95,7 @@ class MedicineSourceCollection extends BaseCollection {
       updateData.receiveDate = expDate;
     }
     if (state) {
-      updateData.source = state;
+      updateData.state = state;
     }
     this._collection.update(docID, { $set: updateData });
   }
