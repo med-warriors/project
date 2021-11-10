@@ -207,7 +207,7 @@ export default withTracker(() => {
   ).fetch();
   // Get the Supply documents and sort them by name.
   const supplies = SupplySource.find(
-    { quantity: { $gt: 0 } },
+    { state: { $in: ['Acted', 'Reserves'] }, quantity: { $gt: 0 } },
     { sort: { supplyName: 1 } },
   ).fetch();
   return {
