@@ -12,7 +12,6 @@ export const supplyPublications = {
   supplySourceDoctor: 'SupplySourceDoctor',
 };
 
-
 export const supState = ['Acted', 'Reserves', 'Disposal', 'Return'];
 
 class SupplySourceCollection extends BaseCollection {
