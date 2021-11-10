@@ -65,12 +65,11 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
 
   const submitSup = (sup, outQuantity) => {
     // eslint-disable-next-line prefer-const
-    let { name, location, quantity, note, state, _id } = sup;
+    let { name, location, quantity, note, _id } = sup;
     // change value on submit the dispense.
     quantity -= outQuantity;
-    if (state === 'Reserves') { state = 'Acted'; }
     const collectionName = Supplies.getCollectionName();
-    const updateData = { id: _id, name, location, quantity, note, state };
+    const updateData = { id: _id, name, location, quantity, note };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))

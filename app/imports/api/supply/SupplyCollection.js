@@ -6,8 +6,6 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const supState = ['Acted', 'Reserves', 'Disposal'];
-
 export const supplyPublications = {
   supply: 'Supply',
   supplyAdmin: 'SupplyAdmin',
@@ -23,10 +21,6 @@ class SupplyCollection extends BaseCollection {
       },
       quantity: Number,
       note: String,
-      state: {
-        type: String,
-        allowedValues: supState,
-      },
     }));
   }
 
@@ -36,16 +30,14 @@ class SupplyCollection extends BaseCollection {
    * @param location the location of the item.
    * @param quantity how many.
    * @param note information of the item.
-   * @param state the state of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity, note, state }) {
+  define({ name, location, quantity, note }) {
     const docID = this._collection.insert({
       name,
       location,
       quantity,
       note,
-      state,
     });
     return docID;
   }
@@ -57,9 +49,8 @@ class SupplyCollection extends BaseCollection {
    * @param location the new location (optional).
    * @param quantity the new quantity (optional).
    * @param note the new note (optional).
-   * @param state the new state (optional).
    */
-  update(docID, { name, location, quantity, note, state }) {
+  update(docID, { name, location, quantity, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -73,9 +64,6 @@ class SupplyCollection extends BaseCollection {
     }
     if (note) {
       updateData.note = note;
-    }
-    if (state) {
-      updateData.state = state;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -161,8 +149,7 @@ class SupplyCollection extends BaseCollection {
     const quantity = doc.quantity;
     const location = doc.location;
     const note = doc.note;
-    const state = doc.state;
-    return { name, location, quantity, note, state };
+    return { name, location, quantity, note };
   }
 }
 
