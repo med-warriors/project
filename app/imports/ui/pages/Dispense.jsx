@@ -10,6 +10,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
 import DispenseSupply from '../components/DispenseSupply';
 import DispenseMedicine from '../components/DispenseMedicine';
+import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 
 /** Renders the Page for adding a document. */
 const Dispense = ({ readyM, medicines, readyS, supplies }) => {
@@ -87,7 +88,7 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
           dispenseList.push(med);
         }
         if (cellDispense[i].type === 'Supply') {
-          const sup = Supplies.findDoc(cellDispense[i].id);
+          const sup = SupplySource.findDoc(cellDispense[i].id);
           dispenseList.push(sup);
         }
       }
@@ -207,7 +208,7 @@ export default withTracker(() => {
     { sort: { medName: 1 } },
   ).fetch();
   // Get the Supply documents and sort them by name.
-  const supplies = Supplies.find({ quantity: { $gt: 0 } }, { sort: { medName: 1 } }).fetch();
+  const supplies = SupplySource.find({ quantity: { $gt: 0 } }, { sort: { medName: 1 } }).fetch();
   return {
     medicines,
     readyM,
