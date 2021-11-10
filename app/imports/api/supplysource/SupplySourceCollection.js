@@ -177,10 +177,13 @@ class SupplySourceCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const name = doc.name;
-    const quantity = doc.quantity;
-    const location = doc.location;
-    return { name, quantity, location };
+    const supplyName = doc.supplyName;
+    const amountReceived = doc.amountReceived;
+    const sourceName = doc.sourceName;
+    const acquire = doc.acquire;
+    const cost = doc.cost;
+    const receiveDate = doc.receiveDate;
+    return { supplyName, amountReceived, sourceName, acquire, cost, receiveDate };
   }
 }
 

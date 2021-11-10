@@ -198,9 +198,10 @@ class MedicineCollection extends BaseCollection {
     const doc = this.findDoc(docID);
     const name = doc.name;
     const type = doc.type;
+    const location = doc.location;
     const should_have = doc.should_have;
     const note = doc.note;
-    return { name, type, should_have, note };
+    return { name, type, location, should_have, note };
   }
 }
 

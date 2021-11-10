@@ -6,6 +6,8 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
+export const supState = ['Acted', 'Reserves', 'Disposal'];
+
 export const supplyPublications = {
   supply: 'Supply',
   supplyAdmin: 'SupplyAdmin',
@@ -20,6 +22,11 @@ class SupplyCollection extends BaseCollection {
         allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4'],
       },
       quantity: Number,
+      note: String,
+      state: {
+        type: String,
+        allowedValues: supState,
+      },
     }));
   }
 
@@ -28,13 +35,17 @@ class SupplyCollection extends BaseCollection {
    * @param name the name of the item.
    * @param location the location of the item.
    * @param quantity how many.
+   * @param note information of the item.
+   * @param state the state of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity }) {
+  define({ name, location, quantity, note, state }) {
     const docID = this._collection.insert({
       name,
       location,
       quantity,
+      note,
+      state,
     });
     return docID;
   }
@@ -45,8 +56,10 @@ class SupplyCollection extends BaseCollection {
    * @param name the new name (optional).
    * @param location the new location (optional).
    * @param quantity the new quantity (optional).
+   * @param note the new note (optional).
+   * @param state the new state (optional).
    */
-  update(docID, { name, location, quantity }) {
+  update(docID, { name, location, quantity, note, state }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -57,6 +70,12 @@ class SupplyCollection extends BaseCollection {
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
+    }
+    if (note) {
+      updateData.note = note;
+    }
+    if (state) {
+      updateData.state = state;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -141,7 +160,9 @@ class SupplyCollection extends BaseCollection {
     const name = doc.name;
     const quantity = doc.quantity;
     const location = doc.location;
-    return { name, quantity, location };
+    const note = doc.note;
+    const state = doc.state;
+    return { name, location, quantity, note, state };
   }
 }
 
