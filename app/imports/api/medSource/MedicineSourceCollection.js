@@ -14,7 +14,7 @@ export const medicinePublications = {
 
 export const acquiredType = ['Donated', 'Purchased'];
 
-export const medState = ['Acted', 'Reserved', 'Disposal', 'Return'];
+export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
 
 class MedicineSourceCollection extends BaseCollection {
   constructor() {
@@ -33,7 +33,7 @@ class MedicineSourceCollection extends BaseCollection {
       state: {
         type: String,
         allowedValues: medState,
-        defaultValue: 'Reserved',
+        defaultValue: 'Reserves',
       },
     }));
   }
