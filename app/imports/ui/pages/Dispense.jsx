@@ -44,9 +44,13 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
     return searchItem.name.toLowerCase().startsWith(lowerCase);
   };
 
+  // add variable id and type into state array
   const addDispense = (data, type) => {
+    // map all variable id in the state array
     const iD = cellDispense.map(item => item.id);
+    // check if variable is/is not includes in the array
     const found = iD.includes(data);
+    // cerate a new object and add to state array
     if (!found) {
       // sets add Dispense state to added value
       const updateDispense = [...cellDispense, { id: data, type: type, prescriptionQuantity: 0 }];
@@ -54,15 +58,19 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
     }
   };
 
+  // define output quantity of dispense
   const outDispenseQuantity = (data, outQuantity) => {
+    // Search variable index
     const index = cellDispense.findIndex(item => item.id === data);
     const newCellDispense = [...cellDispense];
+    // change output quantity of the set variable
     newCellDispense[index].prescriptionQuantity = outQuantity;
     setDispense(newCellDispense);
   };
 
+  // remove the variable from state array
   const removeDispense = (data) => {
-    // sets add Dispense state to added value
+    // sets Dispense state to remove value
     setDispense(cellDispense.filter(item => item.id !== data));
   };
 

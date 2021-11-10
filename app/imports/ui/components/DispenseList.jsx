@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
   const quantityOptions = [];
-  let type; let lot; let name; let location; let expDate;
+  let type; let lot; let name; let location; let expDate; let state;
 
   const clickRemove = () => {
     removeDispense(inventories._id);
@@ -26,15 +26,17 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
     type = <Icon name="pills"/>;
     lot = inventories.lotNumber;
     name = inventories.medName;
-    // todo: get medicine collocation.
+    // todo: get medicine collection location.
     location = '-';
     expDate = inventories.expDate.toDateString();
+    state = inventories.state;
   } else {
     type = <Icon name='band aid'/>;
     lot = '-';
     name = inventories.name;
     location = inventories.location;
     expDate = '-';
+    state = '-';
   }
 
   return (
@@ -45,7 +47,7 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
       <Table.Cell>{location}</Table.Cell>
       <Table.Cell>{inventories.quantity}</Table.Cell>
       <Table.Cell>{expDate}</Table.Cell>
-      <Table.Cell>{inventories.state}</Table.Cell>
+      <Table.Cell>{state}</Table.Cell>
       <Table.Cell>
         <Select placeholder='Select quantity' options={quantityOptions} onChange={outQuantity}/>
       </Table.Cell>
