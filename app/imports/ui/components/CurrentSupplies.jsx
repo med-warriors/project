@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Loader, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { withTracker } from 'meteor/react-meteor-data';
+import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
+import ListSupply from './ListSupply';
 
+/*
 // Changes text to red, yellow, or green, based on quantity of supplies
 const getColor = (quantity) => {
   // colors text in green
@@ -13,41 +15,63 @@ const getColor = (quantity) => {
   // colors text in red
   return '#A12358';
 };
-
+*/
 /** Renders a single row in the List Supplies table. See pages/MedicineandSupplies.jsx. */
-const CurrentSupplies = ({ supply }) => {
+const CurrentSupplies = ({ supply, ready, source }) => {
+  // adds current quantity from way of acquiring medicine to default quantity
+  const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
   let highlight;
-  if (supply.quantity >= 10 && supply.quantity < 20) {
-    // highlights in yellow when supply quantity is between 10 and 19
+
+  if (totalQuantity <= 0.5 && totalQuantity > 0.1) {
+    // highlights in yellow when percentage of total quantity and should have columns is between 11% and 50%
     highlight = 'warning';
-  } else if (supply.quantity < 10) {
-    // highlights in red when supply quantity is less than 10
+  } else if (totalQuantity <= 0.1 || totalQuantity === 0 || totalQuantity === undefined) {
+    // highlights in red when percentage of total quantity and should have columns is between 0% and 10% or undefined
     highlight = 'error';
+  } else if (totalQuantity <= 0.1) {
+    highlight = 'warning';
   } else {
-    // highlights in green when supply quantity is over 20
+    // highlights in green when overall quantity of medicine is good (over 50%)
     highlight = 'positive';
   }
-  return (<Table.Row positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}>
-    <Table.Cell>{supply.name}</Table.Cell>
-    <Table.Cell>{supply.location}</Table.Cell>
-    <Table.Cell style={{ color: getColor(supply.quantity) }}>{supply.quantity}</Table.Cell>
-    <Table.Cell>
-      <Button>
-        <Link className={COMPONENT_IDS.LIST_SUPPLY_EDIT} to={`/update-sup/${supply._id}`}>Update</Link>
-      </Button>
-    </Table.Cell>
-  </Table.Row>);
+  return ((ready) ? (
+    <Table.Row positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}>
+      <Table.Cell>{supply.name}</Table.Cell>
+      <Table.Cell>{supply.location}</Table.Cell>
+      <Table.Cell>{totalQuantity}</Table.Cell>
+      <Table.Cell>{supply.note}</Table.Cell>
+      <Table.Cell>
+        <Button.Group vertical>
+          <Button color='red' content='add'/>
+          <Button color='green' content='UPDATE'/>
+          <ListSupply supply={supply}/>
+        </Button.Group>
+      </Table.Cell>
+    </Table.Row>) : <Loader active>Getting data</Loader>);
 };
 
 // Require a document to be passed to this component.
 CurrentSupplies.propTypes = {
   supply: PropTypes.shape({
     name: PropTypes.string,
-    quantity: PropTypes.number,
     location: PropTypes.string,
+    note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  source: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
 };
 
-// Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(CurrentSupplies);
+// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+export default withTracker(({ supply }) => {
+  // Get access to Stuff documents.
+  const subscription = SupplySource.subscribeSupply();
+  // Determine if the subscription is ready
+  const ready = subscription.ready();
+  // Get the Stuff documents and sort them by name.
+  const source = SupplySource.find({ supplyName: supply.name, state: { $in: ['Acted', 'Reserves'] } }, { sort: { name: 1 } }).fetch();
+  return {
+    source,
+    ready,
+  };
+})(CurrentSupplies);

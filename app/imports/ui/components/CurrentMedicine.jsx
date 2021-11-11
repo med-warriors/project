@@ -25,7 +25,6 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
     highlight = 'warning';
   } else if (totalQuantity / medicine.shouldHave <= 0.1 || totalQuantity / medicine.shouldHave === 0 || totalQuantity / medicine.shouldHave === undefined) {
     // highlights in red when percentage of total quantity and should have columns is between 0% and 10% or undefined
-
     highlight = 'error';
   } else if (totalQuantity / medicine.shouldHave <= 0.1) {
     highlight = 'warning';
@@ -65,8 +64,6 @@ CurrentMedicine.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
-// Wrap this component in withRouter since we use the <Link> React Router element.
-// export default withRouter(CurrentMedicine);
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ medicine }) => {
   // Get access to Stuff documents.
