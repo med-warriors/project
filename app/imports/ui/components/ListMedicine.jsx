@@ -3,10 +3,10 @@ import { Table, Modal, Loader, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
-import InventoryItem from './InventoryItem';
+import MedicineItem from './MedicineItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const ListInventory = ({ ready, inventory, medicine }) => {
+const ListMedicine = ({ ready, inventory, medicine }) => {
 
   const [open, setOpen] = React.useState(false);
 
@@ -31,7 +31,7 @@ const ListInventory = ({ ready, inventory, medicine }) => {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {inventory.map((inventories) => <InventoryItem key={inventories._id} inventories={inventories} />)}
+            {inventory.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories} />)}
           </Table.Body>
         </Table>
       </Modal.Content>
@@ -40,7 +40,7 @@ const ListInventory = ({ ready, inventory, medicine }) => {
 };
 
 // Require an array of Stuff documents in the props.
-ListInventory.propTypes = {
+ListMedicine.propTypes = {
   medicine: PropTypes.shape({
     name: PropTypes.string,
     type: PropTypes.string,
@@ -64,4 +64,4 @@ export default withTracker(({ medicine }) => {
     inventory,
     ready,
   };
-})(ListInventory);
+})(ListMedicine);

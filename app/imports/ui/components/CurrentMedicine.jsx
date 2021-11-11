@@ -3,7 +3,7 @@ import { Button, Loader, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import AddMedicineInventory from './IncreaseMedication';
-import ListInventory from './ListInventory';
+import ListMedicine from './ListMedicine';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 
 // Changes text to red, yellow, or green, based on quantity of medicine
@@ -45,7 +45,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
         <Button.Group vertical>
           <AddMedicineInventory mName={medicine.name}/>
           <Button color='green' content='UPDATE'/>
-          <ListInventory medicine={medicine}/>
+          <ListMedicine medicine={medicine}/>
         </Button.Group>
       </Table.Cell>
     </Table.Row>) : <Loader active>Getting data</Loader>);
