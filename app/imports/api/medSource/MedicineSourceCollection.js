@@ -33,6 +33,7 @@ class MedicineSourceCollection extends BaseCollection {
       state: {
         type: String,
         allowedValues: medState,
+        defaultValue: 'Reserves',
       },
     }));
   }

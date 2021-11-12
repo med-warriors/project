@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, Select, Table } from 'semantic-ui-react';
+import { Button, Icon, Select, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
   const quantityOptions = [];
+  let type; let lot; let name; let expDate;
 
   const clickRemove = () => {
     removeDispense(inventories._id);
@@ -21,12 +22,25 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
     quantityOptions.push(optionValue);
   }
 
+  if (inventories.lotNumber) {
+    type = <Icon name="pills"/>;
+    lot = inventories.lotNumber;
+    name = inventories.medName;
+    expDate = inventories.expDate.toDateString();
+  } else {
+    type = <Icon name='band aid'/>;
+    lot = '-';
+    name = inventories.supplyName;
+    expDate = '-';
+  }
+
   return (
     <Table.Row>
-      <Table.Cell>{inventories.lotNumber}</Table.Cell>
-      <Table.Cell>{inventories.medName}</Table.Cell>
+      <Table.Cell>{type}</Table.Cell>
+      <Table.Cell>{lot}</Table.Cell>
+      <Table.Cell>{name}</Table.Cell>
       <Table.Cell>{inventories.quantity}</Table.Cell>
-      <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
+      <Table.Cell>{expDate}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
         <Select placeholder='Select quantity' options={quantityOptions} onChange={outQuantity}/>
@@ -42,7 +56,9 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
 DispenseItem.propTypes = {
   inventories: PropTypes.shape({
     lotNumber: PropTypes.string,
+    supplyName: PropTypes.string,
     medName: PropTypes.string,
+    location: PropTypes.string,
     quantity: PropTypes.number,
     sourceName: PropTypes.string,
     acquire: PropTypes.string,

@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
+import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -62,6 +63,22 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
       });
   };
 
+  const submitSup = (sup, outQuantity) => {
+    // eslint-disable-next-line prefer-const
+    let { supplyName, quantity, sourceName, acquire, cost, receiveDate, state, _id } = sup;
+    // change value on submit the dispense.
+    quantity -= outQuantity;
+    if (state === 'Reserves') { state = 'Acted'; }
+    const collectionName = SupplySource.getCollectionName();
+    const updateData = { id: _id, supplyName, quantity, sourceName, acquire, cost, receiveDate, state };
+    // update the medicine.
+    updateMethod.callPromise({ collectionName, updateData })
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => {
+        swal('Success', 'Item updated successfully', 'success');
+      });
+  };
+
   const submit = (data, formRef) => {
     // Add record of dispense.
     // todo: change the follow line to add new collection of record dispense.
@@ -69,8 +86,14 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
     // update the each medicine on submit from the list.
     for (let i = 0; i < cellDispense.length; i++) {
       const outQuantity = cellDispense[i].prescriptionQuantity;
-      const med = MedicineSource.findDoc(cellDispense[i].medId);
-      submitMed(med, outQuantity);
+      if (cellDispense[i].type === 'Medicine') {
+        const med = MedicineSource.findDoc(cellDispense[i].id);
+        submitMed(med, outQuantity);
+      }
+      if (cellDispense[i].type === 'Supply') {
+        const sup = SupplySource.findDoc(cellDispense[i].id);
+        submitSup(sup, outQuantity);
+      }
     }
     // empty the submit schema form.
     formRef.reset();

@@ -12,11 +12,13 @@ export const supplyPublications = {
   supplySourceDoctor: 'SupplySourceDoctor',
 };
 
+export const supState = ['Acted', 'Reserves', 'Disposal', 'Return'];
+
 class SupplySourceCollection extends BaseCollection {
   constructor() {
     super('SupplieSource', new SimpleSchema({
       supplyName: String,
-      amountReceived: Number,
+      quantity: Number,
       sourceName: String,
       acquire: {
         type: String,
@@ -24,27 +26,33 @@ class SupplySourceCollection extends BaseCollection {
       },
       cost: Number,
       receiveDate: Date,
+      state: {
+        type: String,
+        allowedValues: supState,
+      },
     }));
   }
 
   /**
    * Defines a new Supply item.
    * @param name the name of the item.
-   * @param amountReceived how many.
+   * @param quantity how many.
    * @param sourceName source of supply
    * @param acquire purchase or donated?
    * @param cost how much does it cost
    * @param receiveDate When it was receive
+   * @param state the state of the item.
    * @return {String} the docID of the new document.
    */
-  define({ supplyName, amountReceived, sourceName, acquire, cost, receiveDate }) {
+  define({ supplyName, quantity, sourceName, acquire, cost, receiveDate, state }) {
     const docID = this._collection.insert({
       supplyName,
-      amountReceived,
+      quantity,
       sourceName,
       acquire,
       cost,
       receiveDate,
+      state,
     });
     return docID;
   }
@@ -52,19 +60,20 @@ class SupplySourceCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param name the name of the item.
-   * @param amountReceived how many.
+   * @param quantity how many.
    * @param sourceName source of supply
    * @param acquire purchase or donated?
    * @param cost how much does it cost
    * @param receiveDate When it was receive
+   * @param state the new state (optional).
    */
-  update(docID, { supplyName, amountReceived, sourceName, acquire, cost, receiveDate }) {
+  update(docID, { supplyName, quantity, sourceName, acquire, cost, receiveDate, state }) {
     const updateData = {};
     if (supplyName) {
       updateData.supplyName = supplyName;
     }
-    if (_.isNumber(amountReceived)) {
-      updateData.amountReceived = amountReceived;
+    if (_.isNumber(quantity)) {
+      updateData.quantity = quantity;
     }
     if (sourceName) {
       updateData.sourceName = sourceName;
@@ -77,6 +86,9 @@ class SupplySourceCollection extends BaseCollection {
     }
     if (receiveDate) {
       updateData.receiveDate = receiveDate;
+    }
+    if (state) {
+      updateData.state = state;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -177,10 +189,14 @@ class SupplySourceCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const name = doc.name;
+    const supplyName = doc.supplyName;
     const quantity = doc.quantity;
-    const location = doc.location;
-    return { name, quantity, location };
+    const sourceName = doc.sourceName;
+    const acquire = doc.acquire;
+    const cost = doc.cost;
+    const receiveDate = doc.receiveDate;
+    const state = doc.state;
+    return { supplyName, quantity, sourceName, acquire, cost, receiveDate, state };
   }
 }
 
