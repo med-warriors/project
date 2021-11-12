@@ -14,10 +14,14 @@ const getColor = (quantity, threshold) => {
   return '#A12358';
 };
 */
-/** Renders a single row in the List Medicine table. See pages/MedicineandSupplies.jsx. */
+/** Renders a single row in the List Medicine table. See pages/MedicineAndSupplies.jsx. */
 const CurrentMedicine = ({ medicine, ready, source }) => {
   // adds current quantity from way of acquiring medicine to default quantity
   const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
+
+  // Gets the expiration date from settings.development.json
+  const currentDate = new Date().toLocaleDateString('en-US');
+
   let highlight;
 
   if (totalQuantity / medicine.shouldHave <= 0.5 && totalQuantity / medicine.shouldHave > 0.1) {
@@ -37,6 +41,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
       <Table.Cell>{medicine.location}</Table.Cell>
       <Table.Cell>{medicine.shouldHave}</Table.Cell>
       <Table.Cell>{totalQuantity}</Table.Cell>
+      <Table.Cell>{currentDate}</Table.Cell>
       <Table.Cell>{medicine.note}</Table.Cell>
       <Table.Cell>
         <Button.Group vertical>
