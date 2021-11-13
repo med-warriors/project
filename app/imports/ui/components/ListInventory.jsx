@@ -26,7 +26,7 @@ const ListInventory = ({ ready, inventory, medicine }) => {
               <Table.HeaderCell>Lot #</Table.HeaderCell>
               <Table.HeaderCell>Name</Table.HeaderCell>
               <Table.HeaderCell>Quantity</Table.HeaderCell>
-              <Table.HeaderCell>ExpDate</Table.HeaderCell>
+              <Table.HeaderCell>Exp Date</Table.HeaderCell>
               <Table.HeaderCell>State</Table.HeaderCell>
             </Table.Row>
           </Table.Header>

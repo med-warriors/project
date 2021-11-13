@@ -13,8 +13,9 @@ export const medicinePublications = {
 };
 
 export const acquiredType = ['Donated', 'Purchased'];
-
 export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
+export const quantityState = { good: 'good', ok: 'ok', bad: 'bad' };
+export const expState = { good: 'good', soon: 'soon', expired: 'expired' };
 
 class MedicineSourceCollection extends BaseCollection {
   constructor() {
@@ -30,6 +31,8 @@ class MedicineSourceCollection extends BaseCollection {
       cost: Number,
       receiveDate: Date,
       expDate: Date,
+      quantityStatus: String,
+      expStatus: String,
       state: {
         type: String,
         allowedValues: medState,
@@ -47,9 +50,9 @@ class MedicineSourceCollection extends BaseCollection {
    * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
+  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, quantityStatus, expStatus, state }) {
     const docID = this._collection.insert({
-      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
+      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, quantityStatus, expStatus, state,
     });
     return docID;
   }
@@ -66,7 +69,7 @@ class MedicineSourceCollection extends BaseCollection {
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
    */
-  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
+  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, expStatus, state }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;
@@ -92,7 +95,13 @@ class MedicineSourceCollection extends BaseCollection {
       updateData.receiveDate = receiveDate;
     }
     if (_.isDate(expDate)) {
-      updateData.receiveDate = expDate;
+      updateData.expDate = expDate;
+    }
+    if (_.isDate(quantityStatus)) {
+      updateData.quantityStatus = quantityStatus;
+    }
+    if (_.isDate(expStatus)) {
+      updateData.expStatus = expStatus;
     }
     if (state) {
       updateData.state = state;
@@ -110,6 +119,43 @@ class MedicineSourceCollection extends BaseCollection {
     check(doc, Object);
     this._collection.remove(doc._id);
     return true;
+  }
+
+  /**
+   * Compares the quantity and determines status
+   * @param quantity the amount of the inventory left
+   * @return the quantity status of the item
+   */
+  checkQuantityStatus(quantity) {
+    let quantityStatus;
+    if (quantity === 0 && quantity <= 10) {
+      quantityStatus = quantityState.bad;
+    } else if (quantity >= 11 && quantity < 50) {
+      quantityStatus = quantityState.ok;
+    } else {
+      quantityStatus = quantityState.good;
+    }
+    return quantityStatus;
+  }
+
+  /**
+   * Compares the current date to the expiration date and determines status
+   * @param expDate is the expiration date for the medicine
+   * @return the expired status of the item
+   */
+  checkExpStatus(expDate) {
+    const today = new Date();
+    const days = expDate - today;
+    const offset = (24 * 60 * 60 * 1000) * 7;
+    let expiredStatus;
+    if (days <= 0 && days > offset) {
+      expiredStatus = expState.expired;
+    } else if (days <= offset && days > 0) {
+      expiredStatus = expState.soon;
+    } else {
+      expiredStatus = expState.good;
+    }
+    return expiredStatus;
   }
 
   /**
