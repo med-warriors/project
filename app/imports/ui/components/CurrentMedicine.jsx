@@ -20,7 +20,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
   const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
 
   // Gets the expiration date from settings.development.json
-  const currentDate = new Date().toLocaleDateString('en-US');
+  // const currentDate = new Date().toLocaleDateString('en-US');
 
   let highlight;
 
@@ -41,7 +41,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
       <Table.Cell>{medicine.location}</Table.Cell>
       <Table.Cell>{medicine.shouldHave}</Table.Cell>
       <Table.Cell>{totalQuantity}</Table.Cell>
-      <Table.Cell>{currentDate}</Table.Cell>
+      <Table.Cell>{medicine.expDate}</Table.Cell>
       <Table.Cell>{medicine.note}</Table.Cell>
       <Table.Cell>
         <Button.Group vertical>
