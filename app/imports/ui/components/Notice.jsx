@@ -4,7 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Button, Loader, Modal, ItemDescription } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { MedicineSource, quantityState, expState } from '../../api/medSource/MedicineSourceCollection';
-import InventoryItem from './InventoryItem';
+import InventoryItem from './MedicineItem';
 
 const Notice = ({ ready, warning, medicine }) => {
   let note;
@@ -37,7 +37,7 @@ const Notice = ({ ready, warning, medicine }) => {
     >
       <Modal.Header>{medicine.name}</Modal.Header>
       <ItemDescription>
-        {warning.map((inventories) => <InventoryItem key={inventories._id} inventories={inventories}/>)}
+        {warning.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories}/>)}
       </ItemDescription>
       {note}
     </Modal>
