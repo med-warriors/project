@@ -18,6 +18,7 @@
     "lodash": "^4.17.21",
     "meteor": "^2.3.7",
     "meteor-node-stubs": "^1.1.0",
+    "npm": "^8.1.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

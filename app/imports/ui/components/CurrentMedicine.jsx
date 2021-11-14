@@ -3,8 +3,8 @@ import { Button, Loader, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import AddMedicineInventory from './IncreaseMedication';
-import ListInventory from './ListInventory';
 import Notice from './Notice';
+import ListMedicine from './ListMedicine';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 
 // Changes text to red, yellow, or green, based on quantity of medicine
@@ -44,7 +44,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
         <Button.Group vertical>
           <AddMedicineInventory mName={medicine.name}/>
           <Button color='green' content='UPDATE'/>
-          <ListInventory medicine={medicine}/>
+          <ListMedicine medicine={medicine}/>
           <Notice medicine={medicine}/>
         </Button.Group>
       </Table.Cell>
@@ -65,8 +65,6 @@ CurrentMedicine.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
-// Wrap this component in withRouter since we use the <Link> React Router element.
-// export default withRouter(CurrentMedicine);
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ medicine }) => {
   // Get access to Stuff documents.

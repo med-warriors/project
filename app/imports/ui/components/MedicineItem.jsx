@@ -6,7 +6,7 @@ import { MedicineSource, quantityState, expState } from '../../api/medSource/Med
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const InventoryItem = ({ inventories }) => {
+const MedicineItem = ({ inventories }) => {
   let status;
   const expStatus = MedicineSource.checkExpStatus(inventories.expDate);
   const quantityStatus = MedicineSource.checkQuantityStatus(inventories.quantity);
@@ -43,7 +43,7 @@ const InventoryItem = ({ inventories }) => {
 };
 
 // Require a document to be passed to this component.
-InventoryItem.propTypes = {
+MedicineItem.propTypes = {
   inventories: PropTypes.shape({
     lotNumber: PropTypes.string,
     medName: PropTypes.string,
@@ -62,4 +62,4 @@ InventoryItem.propTypes = {
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(InventoryItem);
+export default withRouter(MedicineItem);

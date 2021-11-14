@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-// import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
+import { _ } from 'meteor/underscore';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
@@ -16,6 +16,10 @@ class PatientCollection extends BaseCollection {
     super('Patients', new SimpleSchema({
       date: Date,
       id: String,
+      note: String,
+      dispense: [String],
+      location: String,
+      employee: String,
     }));
   }
 
@@ -23,12 +27,20 @@ class PatientCollection extends BaseCollection {
    * Defines a new Patient item.
    * @param date the date of visit
    * @param id the id of the patient.
+   * @param note the note of the patient.
+   * @param dispense the medicine dispensed to the patient.
+   * @param location the place of the medicine.
+   * @param employee the employee dispensing the medication.
    * @return {String} the docID of the new document.
    */
-  define({ date, id }) {
+  define({ date, id, note, dispense, location, employee }) {
     const docID = this._collection.insert({
       date,
       id,
+      note,
+      dispense,
+      location,
+      employee,
     });
     return docID;
   }
@@ -38,10 +50,25 @@ class PatientCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param id the new id (optional).
    */
-  update(docID, { id }) {
+  update(docID, { date, id, note, dispense, location, employee }) {
     const updateData = {};
     if (id) {
       updateData.id = id;
+    }
+    if (_.isDate(date)) {
+      updateData.date(date);
+    }
+    if (note) {
+      updateData.note(note);
+    }
+    if (dispense) {
+      updateData.dispense(dispense);
+    }
+    if (location) {
+      updateData.location(location);
+    }
+    if (employee) {
+      updateData.employee(employee);
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -126,7 +153,11 @@ class PatientCollection extends BaseCollection {
     const doc = this.findDoc(docID);
     const date = doc.date;
     const id = doc.id;
-    return { date, id };
+    const note = doc.note;
+    const dispense = doc.dispense;
+    const location = doc.location;
+    const employee = doc.employee;
+    return { date, id, note, dispense, location, employee };
   }
 }
 

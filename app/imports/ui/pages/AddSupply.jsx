@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Form, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -11,15 +11,10 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   name: String,
-  type: {
-    type: String,
-    allowedValues: ['Allergy and Cold Medicines', 'Analgesics/Antiinflammatory', 'Antihypertensives', 'Antimicrobials', 'Cardiac/Cholesterol',
-      'Dermatologic Preparations', 'Diabetes Meds', 'Ear and Eye Preparations', 'Emergency Kit', 'GI Meds', 'GYN Meds', 'Pulmonary', 'Smoking Cessation',
-      'Vitamins and Supplements'] },
   location: {
     type: String,
     allowedValues: ['Cabinet 2', 'Back Cabinet', 'Shower Closet', 'Refrig Closet', 'Refrigerator', 'Drawer 6', 'Drawer 9', 'Case 4'] },
-  quantity: Number,
+  note: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -29,9 +24,9 @@ const AddSupply = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, location, quantity } = data;
+    const { name, location, note } = data;
     const collectionName = Supplies.getCollectionName();
-    const definitionData = { name, location, quantity };
+    const definitionData = { name, location, note };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -45,16 +40,15 @@ const AddSupply = () => {
   return (
     <Grid id={PAGE_IDS.ADD_SUPPLY} container centered>
       <Grid.Column>
-        <Header as="h2" textAlign="center">Add Supplies</Header>
+        <Header as="h2" textAlign="center">Add New Supplies</Header>
         <AutoForm ref={ref => {
           fRef = ref;
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <Form.Group widths='equal'>
               <TextField name='name' />
-              <SelectField name='type' />
-              <NumField name='quantity' decimal={false} />
               <SelectField name='location' />
+              <TextField name='note' />
             </Form.Group>
             <SubmitField value='Submit'/>
             <ErrorsField />

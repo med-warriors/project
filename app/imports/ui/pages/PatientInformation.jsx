@@ -18,6 +18,10 @@ const PatientInformation = ({ ready, patients }) => {
           <Table.Row>
             <Table.HeaderCell>Date</Table.HeaderCell>
             <Table.HeaderCell>Patient ID</Table.HeaderCell>
+            <Table.HeaderCell>Dispensed Medication</Table.HeaderCell>
+            <Table.HeaderCell>Patient Notes</Table.HeaderCell>
+            <Table.HeaderCell>Location of Medicine</Table.HeaderCell>
+            <Table.HeaderCell>Employee</Table.HeaderCell>
             <Table.HeaderCell>Edit</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

@@ -12,6 +12,8 @@ export const supplyPublications = {
   supplySourceDoctor: 'SupplySourceDoctor',
 };
 
+export const acquiredType = ['Donated', 'Purchased'];
+
 export const supState = ['Acted', 'Reserves', 'Disposal', 'Return'];
 
 class SupplySourceCollection extends BaseCollection {
@@ -22,7 +24,7 @@ class SupplySourceCollection extends BaseCollection {
       sourceName: String,
       acquire: {
         type: String,
-        allowedValues: ['Donated', 'Purchased'],
+        allowedValues: acquiredType,
       },
       cost: Number,
       receiveDate: Date,
