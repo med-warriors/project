@@ -24,7 +24,6 @@ const InventoryItem = ({ inventories }) => {
     status =
       <Table.Cell style={{ backgroundColor: '#c9ba9b' }}>
         {inventories.expDate.toLocaleDateString()}
-        Expires within + now.getTime() + expires_in + days.
       </Table.Cell>;
   } else {
     status =

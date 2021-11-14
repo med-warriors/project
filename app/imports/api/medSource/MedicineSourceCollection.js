@@ -69,7 +69,7 @@ class MedicineSourceCollection extends BaseCollection {
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
    */
-  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, expStatus, state }) {
+  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, quantityStatus, expStatus, state }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;

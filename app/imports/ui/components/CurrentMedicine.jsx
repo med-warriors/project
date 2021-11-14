@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import AddMedicineInventory from './IncreaseMedication';
 import ListInventory from './ListInventory';
+import Notice from './Notice';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 
 // Changes text to red, yellow, or green, based on quantity of medicine
@@ -18,9 +19,6 @@ const getColor = (quantity, threshold) => {
 const CurrentMedicine = ({ medicine, ready, source }) => {
   // adds current quantity from way of acquiring medicine to default quantity
   const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
-
-  // Gets the expiration date from settings.development.json
-  // const currentDate = new Date().toLocaleDateString('en-US');
 
   let highlight;
 
@@ -41,13 +39,13 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
       <Table.Cell>{medicine.location}</Table.Cell>
       <Table.Cell>{medicine.shouldHave}</Table.Cell>
       <Table.Cell>{totalQuantity}</Table.Cell>
-      <Table.Cell>{medicine.expDate}</Table.Cell>
       <Table.Cell>{medicine.note}</Table.Cell>
       <Table.Cell>
         <Button.Group vertical>
           <AddMedicineInventory mName={medicine.name}/>
           <Button color='green' content='UPDATE'/>
           <ListInventory medicine={medicine}/>
+          <Notice medicine={medicine}/>
         </Button.Group>
       </Table.Cell>
     </Table.Row>) : <Loader active>Getting data</Loader>);
@@ -60,7 +58,6 @@ CurrentMedicine.propTypes = {
     type: PropTypes.string,
     location: PropTypes.string,
     shouldHave: PropTypes.number,
-    expDate: PropTypes.instanceOf(Date),
     note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
