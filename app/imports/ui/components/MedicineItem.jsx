@@ -7,7 +7,7 @@ import { updateMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MedicineItem = ({ inventories }) => {
-  let status;
+  let highlight;
   const expStatus = MedicineSource.checkExpStatus(inventories.expDate);
   const quantityStatus = MedicineSource.checkQuantityStatus(inventories.quantity);
   const collectionName = MedicineSource.getCollectionName();
@@ -16,27 +16,19 @@ const MedicineItem = ({ inventories }) => {
 
   // if medicine is expired or low quantity, medicine will not show up on Dispense field
   if (inventories.expStatus === expState.expired || inventories.quantityStatus === quantityState.bad) {
-    status =
-      <Table.Cell style={{ backgroundColor: '#e0b4b4' }}>
-        {inventories.expDate.toLocaleDateString()}
-      </Table.Cell>;
+    highlight = 'error';
   } else if (inventories.expStatus === expState.soon || inventories.quantityStatus === quantityState.ok) {
-    status =
-      <Table.Cell style={{ backgroundColor: '#c9ba9b' }}>
-        {inventories.expDate.toLocaleDateString()}
-      </Table.Cell>;
+    highlight = 'warning';
   } else {
-    status =
-      <Table.Cell style={{ backgroundColor: '#a3c293' }}>
-        {inventories.expDate.toLocaleDateString()}
-      </Table.Cell>;
+    highlight = 'positive';
   }
 
   return (
-    <Table.Row>
+    <Table.Row positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}>
       <Table.Cell>{inventories.lotNumber}</Table.Cell>
       <Table.Cell>{inventories.medName}</Table.Cell>
-      {status}
+      <Table.Cell>{inventories.quantity}</Table.Cell>
+      <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Button color='green' content='UPDATE'/>
     </Table.Row>);
