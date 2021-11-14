@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import ListSupply from './ListSupply';
+import AddSupplyInventory from './AddSupplyInventory';
 
 /*
 // Changes text to red, yellow, or green, based on quantity of supplies
@@ -42,7 +43,7 @@ const CurrentSupplies = ({ supply, ready, source }) => {
       <Table.Cell>{supply.note}</Table.Cell>
       <Table.Cell>
         <Button.Group vertical>
-          <Button color='red' content='add'/>
+          <AddSupplyInventory supName={supply.name}/>
           <Button color='green' content='UPDATE'/>
           <ListSupply supply={supply}/>
         </Button.Group>
