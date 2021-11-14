@@ -4,7 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Button, Loader, Modal, ItemDescription } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { MedicineSource, quantityState, expState } from '../../api/medSource/MedicineSourceCollection';
-import InventoryItem from './MedicineItem';
+import MedicineItem from './MedicineItem';
 
 const Notice = ({ ready, warning, medicine }) => {
   let note;
@@ -14,14 +14,12 @@ const Notice = ({ ready, warning, medicine }) => {
   if (warning.expStatus === expState.expired) {
     note =
       <ItemDescription>
-        Expiration date: {medicine.expDate}
-        This item has already been expired.
+        Expiration date: {medicine.expDate}.  This item has already been expired.
       </ItemDescription>;
   } else if (warning.expStatus === expState.soon) {
     note =
       <ItemDescription>
-        Expiration date: {medicine.expDate}
-        This item will expire within...
+        Expiration date: {medicine.expDate}.  This item will expire within...
       </ItemDescription>;
   } else {
     note = <ItemDescription>Expiration date: {medicine.expDate}</ItemDescription>;
