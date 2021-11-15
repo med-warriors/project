@@ -17,22 +17,20 @@ const getColor = (quantity) => {
   return '#A12358';
 };
 */
-/** Renders a single row in the List Supplies table. See pages/MedicineandSupplies.jsx. */
+/** Renders a single row in the List Supplies table. See pages/MedicineAndSupplies.jsx. */
 const CurrentSupplies = ({ supply, ready, source }) => {
-  // adds current quantity from way of acquiring medicine to default quantity
+  // adds current quantity from way of acquiring supplies to default quantity
   const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
   let highlight;
 
-  if (totalQuantity <= 0.5 && totalQuantity > 0.1) {
-    // highlights in yellow when percentage of total quantity and should have columns is between 11% and 50%
+  if (totalQuantity <= 50 && totalQuantity > 10) {
+    // highlights in yellow when total quantity column is between 11 and 50
     highlight = 'warning';
-  } else if (totalQuantity <= 0.1 || totalQuantity === 0 || totalQuantity === undefined) {
-    // highlights in red when percentage of total quantity and should have columns is between 0% and 10% or undefined
+  } else if (totalQuantity <= 10 || totalQuantity === 0 || totalQuantity === undefined) {
+    // highlights in red when percentage of total quantity column is between 0 and 10 or undefined
     highlight = 'error';
-  } else if (totalQuantity <= 0.1) {
-    highlight = 'warning';
   } else {
-    // highlights in green when overall quantity of medicine is good (over 50%)
+    // highlights in green when overall quantity of supplies is good (over 50)
     highlight = 'positive';
   }
   return ((ready) ? (
