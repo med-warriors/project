@@ -5,6 +5,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import ListSupply from './ListSupply';
 import AddSupplyInventory from './AddSupplyInventory';
+import { removeItMethod } from '../../api/base/BaseCollection.methods';
+import { Supplies } from '../../api/supply/SupplyCollection';
 
 /*
 // Changes text to red, yellow, or green, based on quantity of supplies
@@ -19,6 +21,11 @@ const getColor = (quantity) => {
 */
 /** Renders a single row in the List Supplies table. See pages/MedicineandSupplies.jsx. */
 const CurrentSupplies = ({ supply, ready, source }) => {
+  const handleChange = () => {
+    const collectionName = Supplies.getCollectionName();
+    const instance = supply._id;
+    removeItMethod.callPromise({ collectionName, instance });
+  };
   // adds current quantity from way of acquiring medicine to default quantity
   const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
   let highlight;
@@ -46,6 +53,7 @@ const CurrentSupplies = ({ supply, ready, source }) => {
           <AddSupplyInventory supName={supply.name}/>
           <Button color='green' content='UPDATE'/>
           <ListSupply supply={supply}/>
+          <Button color='orange' content='DELETE' onClick={handleChange}/>
         </Button.Group>
       </Table.Cell>
     </Table.Row>) : <Loader active>Getting data</Loader>);
