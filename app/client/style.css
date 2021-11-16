@@ -90,3 +90,6 @@ body {
   background-color: transparent !important;
 }
 
+#exp-description {
+  padding: 20px;
+}
