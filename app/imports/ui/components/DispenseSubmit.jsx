@@ -117,7 +117,7 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
                 <TextField name='patientID'/>
                 <TextField name='outputLocation'/>
               </Form.Group>
-              <LongTextField name='notes'/>
+              <LongTextField name='notes' id='note-dispense'/>
               <SubmitField value='Submit'/>
               <ErrorsField />
             </Segment>
