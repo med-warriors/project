@@ -31,8 +31,6 @@ class MedicineSourceCollection extends BaseCollection {
       cost: Number,
       receiveDate: Date,
       expDate: Date,
-      quantityStatus: String,
-      expStatus: String,
       state: {
         type: String,
         allowedValues: medState,

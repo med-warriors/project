@@ -3,7 +3,7 @@
     {
       "email": "admin@foo.com",
       "password": "changeme",
-      "role": ["ADMIN", "DOCTOR"],
+      "role": "ADMIN",
       "firstName": "Admin",
       "lastName": "MATRP"
     },
