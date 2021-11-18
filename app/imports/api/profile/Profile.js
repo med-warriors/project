@@ -33,6 +33,7 @@ class ProfilesCollection {
     this.adminPublicationName = `${this.name}.publication.admin`;
     this.public = `${this.name}.publication.value`;
     this.collection.allow({
+      // eslint-disable-next-line no-unused-vars
       update: function (userId, doc) {
         /* return true to allow update() */
         return true;

@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import faker from 'faker';
+// eslint-disable-next-line import/named
 import { Supplies } from './SupplySourceCollection';
 import { defineTestUser, withLoggedInUser, withSubscriptions } from '../../test-utilities/test-utilities';
 import { defineMethod, updateMethod, removeItMethod } from '../base/BaseCollection.methods';

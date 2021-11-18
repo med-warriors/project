@@ -6,6 +6,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line no-unused-vars
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
@@ -82,6 +83,7 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
   const submit = (data, formRef) => {
     // Add record of dispense.
     // todo: change the follow line to add new collection of record dispense.
+    // eslint-disable-next-line no-unused-vars
     const D = data;
     // update the each medicine on submit from the list.
     for (let i = 0; i < cellDispense.length; i++) {
