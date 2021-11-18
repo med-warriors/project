@@ -3,7 +3,6 @@ import { Button, Loader, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import AddMedicineInventory from './IncreaseMedication';
-import Notice from './Notice';
 import ListMedicine from './ListMedicine';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { removeItMethod } from '../../api/base/BaseCollection.methods';
@@ -52,7 +51,6 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
           <AddMedicineInventory mName={medicine.name}/>
           <Button color='green' content='UPDATE'/>
           <ListMedicine medicine={medicine}/>
-          <Notice medicine={medicine}/>
           <Button color='orange' content='DELETE' onClick={handleChange}/>
         </Button.Group>
       </Table.Cell>
