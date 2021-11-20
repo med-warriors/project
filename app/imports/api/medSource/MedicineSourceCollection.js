@@ -73,7 +73,7 @@ class MedicineSourceCollection extends BaseCollection {
       updateData.lotNumber = lotNumber;
     }
     if (medName) {
-      updateData.namedNameme = medName;
+      updateData.medName = medName;
     }
     if (sourceName) {
       updateData.sourceName = sourceName;
