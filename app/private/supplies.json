@@ -1,136 +1,112 @@
-{
-  "defaultSupplies": [
-    {
-      "name": "Theraband - Green",
-      "location": "Cabinet 2",
-      "quantity": "1",
-      "source": "name"
-    },
-    {
-      "name": "Theraband - Yellow",
-      "location": "Cabinet 2",
-      "quantity": "1",
-      "source": "name"
-    },
-    {
-      "name": "Theraband - Red",
-      "location": "Cabinet 2",
-      "quantity": "1",
-      "source": "name"
-    },
-    {
-      "name": "Theraband - Beige",
-      "location": "Cabinet 2",
-      "quantity": "1",
-      "source": "name"
-    },
-    {
-      "name": "Hot Packs",
-      "location": "Back Cabinet",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "Cold Packs",
-      "location": "Refrigerator",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "ACE Wrap 2\"",
-      "location": "Cabinet 2",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "ACE Wrap 3\"",
-      "location": "Cabinet 2",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "ACE Wrap 4\"",
-      "location": "Cabinet 2",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "ACE Wrap 6\"",
-      "location": "Cabinet 2",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "Blood Pressure Monitors - Patient",
-      "location": "Back Cabinet",
-      "quantity": "3",
-      "source": "name"
-    },
-    {
-      "name": "Cavicide",
-      "location": "Shower Closet",
-      "quantity": "10",
-      "source": "name"
-    },
-    {
-      "name": "Rapid Strep Strips",
-      "location": "Refrig Closet",
-      "quantity": "25",
-      "source": "name"
-    },
-    {
-      "name": "Emesis Basin",
-      "location": "Drawer 9",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "Hand Sanitizer - Large",
-      "location": "Back Cabinet",
-      "quantity": "10",
-      "source": "name"
-    },
-    {
-      "name": "Hand Sanitizer - Small for Patients",
-      "location": "Case 4",
-      "quantity": "20",
-      "source": "name"
-    },
-    {
-      "name": "Pregnancy Tests",
-      "location": "Refrigerator",
-      "quantity": "20",
-      "source": "name"
-    },
-    {
-      "name": "Urine Dip Sticks",
-      "location": "Refrig Closet",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "Sensi Wrap 2\"",
-      "location": "Drawer 6",
-      "quantity": "6",
-      "source": "name"
-    },
-    {
-      "name": "UnaBoot",
-      "location": "Back Cabinet",
-      "quantity": "0",
-      "source": "name"
-    },
-    {
-      "name": "Thermometers - Patient Supplies",
-      "location": "Case 4",
-      "quantity": "3",
-      "source": "name"
-    },
-    {
-      "name": "Thermometer Sheaths",
-      "location": "Case 4",
-      "quantity": "2",
-      "source": "name"
-    }
-  ]
-}
+[
+  {
+    "name": "Theraband - Green",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "Theraband - Yellow",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "Theraband - Red",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "Theraband - Beige",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "Hot Packs",
+    "location": "Back Cabinet",
+    "note": "note"
+  },
+  {
+    "name": "Cold Packs",
+    "location": "Refrigerator",
+    "note": "note"
+  },
+  {
+    "name": "ACE Wrap 2\"",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "ACE Wrap 3\"",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "ACE Wrap 4\"",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "ACE Wrap 6\"",
+    "location": "Cabinet 2",
+    "note": "note"
+  },
+  {
+    "name": "Blood Pressure Monitors - Patient",
+    "location": "Back Cabinet",
+    "note": "note"
+  },
+  {
+    "name": "Cavicide",
+    "location": "Shower Closet",
+    "note": "note"
+  },
+  {
+    "name": "Rapid Strep Strips",
+    "location": "Refrig Closet",
+    "note": "note"
+  },
+  {
+    "name": "Emesis Basin",
+    "location": "Drawer 9",
+    "note": "note"
+  },
+  {
+    "name": "Hand Sanitizer - Large",
+    "location": "Back Cabinet",
+    "note": "note"
+  },
+  {
+    "name": "Hand Sanitizer - Small for Patients",
+    "location": "Case 4",
+    "note": "note"
+  },
+  {
+    "name": "Pregnancy Tests",
+    "location": "Refrigerator",
+    "note": "note"
+  },
+  {
+    "name": "Urine Dip Sticks",
+    "location": "Refrig Closet",
+    "note": "note"
+  },
+  {
+    "name": "Sensi Wrap 2\"",
+    "location": "Drawer 6",
+    "note": "note"
+  },
+  {
+    "name": "UnaBoot",
+    "location": "Back Cabinet",
+    "note": "note"
+  },
+  {
+    "name": "Thermometers - Patient Supplies",
+    "location": "Case 4",
+    "note": "note"
+  },
+  {
+    "name": "Thermometer Sheaths",
+    "location": "Case 4",
+    "note": "note"
+  }
+]

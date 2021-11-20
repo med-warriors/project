@@ -10,9 +10,10 @@ import { Supplies } from '../../api/supply/SupplyCollection';
 import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
 
 // might use in the future
-/* const medicines = JSON.parse(Assets.getText('medicine.json'));
+const medicines = JSON.parse(Assets.getText('medicine.json'));
 const medInventory = JSON.parse(Assets.getText('medInventory.json'));
-const supplies = JSON.parse(Assets.getText('supplies.json')); */
+const supplies = JSON.parse(Assets.getText('supplies.json'));
+const supSource = JSON.parse(Assets.getText('supplySource.json'));
 
 // Initialize the database with a default data document.
 function addData(data) {
@@ -45,9 +46,9 @@ function addMedicine(data) {
 
 // Initialize the MedicineCollection if empty.
 if (Medicines.count() === 0) {
-  if (Meteor.settings.defaultMedicines) {
+  if (medicines) {
     console.log('Creating default medicines data.');
-    Meteor.settings.defaultMedicines.map(data => addMedicine(data));
+    medicines.map(data => addMedicine(data));
   }
 }
 
@@ -59,9 +60,9 @@ function addMedicineInventory(data) {
 
 // Initialize the MedicineCollection if empty.
 if (MedicineSource.count() === 0) {
-  if (Meteor.settings.defaultMedicineInventory) {
+  if (medInventory) {
     console.log('Creating default medicines data.');
-    Meteor.settings.defaultMedicineInventory.map(data => addMedicineInventory(data));
+    medInventory.map(data => addMedicineInventory(data));
   }
 }
 
@@ -73,9 +74,9 @@ function addSupply(data) {
 
 // Initialize the SupplyCollection if empty.
 if (Supplies.count() === 0) {
-  if (Meteor.settings.defaultSupplies) {
+  if (supplies) {
     console.log('Creating default supplies data.');
-    Meteor.settings.defaultSupplies.map(data => addSupply(data));
+    supplies.map(data => addSupply(data));
   }
 }
 
@@ -102,9 +103,9 @@ if (Profiles.collection.find().count() === 0) {
 }
 
 if (SupplySource.count() === 0) {
-  if (Meteor.settings.defaultSupplySource) {
+  if (supSource) {
     console.log('Creating default sources data.');
-    Meteor.settings.defaultSupplySource.map(data => addSource(data));
+    supSource.map(data => addSource(data));
   }
 }
 
