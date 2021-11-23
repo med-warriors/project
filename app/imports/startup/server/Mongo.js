@@ -98,16 +98,3 @@ if (SupplySource.count() === 0) {
   }
 }
 
-// Initialize the database with transaction history document.
-function addTransationHistory(transaction) {
-  console.log(`  Adding history: ${transaction.date}`);
-  TransationHistories.define(transaction);
-}
-
-// Initialize the SupplyCollection if empty.
-if (TransationHistories.count() === 0) {
-  if (Meteor.settings.defaultTransationHistory) {
-    console.log('Creating default history data.');
-    Meteor.settings.defaultTransationHistory.map(transaction => addTransationHistory(transaction));
-  }
-}

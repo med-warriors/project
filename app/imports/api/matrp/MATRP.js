@@ -7,7 +7,6 @@ import { UserProfiles } from '../user/UserProfileCollection';
 import { Medicines } from '../medicine/MedicineCollection';
 import { MedicineSource } from '../medSource/MedicineSourceCollection';
 import { Supplies } from '../supply/SupplyCollection';
-import { TransationHistories } from '../transaction/TransationHistoriesCollection';
 import { DoctorProfiles } from '../user/DoctorProfileCollection';
 
 class MATRPClass {
@@ -29,7 +28,6 @@ class MATRPClass {
       Medicines,
       MedicineSource,
       Supplies,
-      TransationHistories,
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -44,7 +42,6 @@ class MATRPClass {
       Medicines,
       MedicineSource,
       Supplies,
-      TransationHistories,
     ];
 
     /*
