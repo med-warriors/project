@@ -6,7 +6,6 @@ import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
-import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
 
 // variables to read off JSON files from /private directory
 const medicines = JSON.parse(Assets.getText('medicine.json'));
@@ -97,4 +96,3 @@ if (SupplySource.count() === 0) {
     supSource.map(supplysource => addSource(supplysource));
   }
 }
-
