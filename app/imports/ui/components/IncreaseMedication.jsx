@@ -13,6 +13,7 @@ import {
   TextField,
 } from 'uniforms-semantic';
 import { acquiredType, MedicineSource } from '../../api/medSource/MedicineSourceCollection';
+import { MedicineSourceRecord } from '../../api/record/medsourceRecord/MedicineSourceRecordCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 const inputState = ['Acted', 'Reserves'];
@@ -43,6 +44,7 @@ const AddMedicineInventory = ({ mName }) => {
   const submit = (data, formRef) => {
     const { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state } = data;
     const collectionName = MedicineSource.getCollectionName();
+    const collectionName2 = MedicineSourceRecord.getCollectionName();
     const definitionData = { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -50,6 +52,7 @@ const AddMedicineInventory = ({ mName }) => {
         swal('Success', 'Medicine Inventory added successfully', 'success');
         formRef.reset();
       });
+    defineMethod.callPromise({ collectionName2, definitionData });
   };
 
   const [open, setOpen] = React.useState(false);

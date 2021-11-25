@@ -33,6 +33,7 @@ export const COMPONENT_IDS = {
   NAVBAR_LIST_DROPDOWN_LOW_INVENTORY: 'navbar-list-dropdown-low-inventory',
   NAVBAR_LIST_DROPDOWN_HISTORY_REPORT: 'navbar-list-dropdown-history-report',
   NAVBAR_LIST_DROPDOWN_SUPPLY_SOURCE: 'navbar-list-dropdown-supply-source',
+  NAVBAR_RECORD: 'navbar-record',
   NAVBAR_VIEW_PROFILE: 'navbar-view-profile',
   NAVBAR_TRANSACTION_DROPDOWN: 'navbar-transaction-dropdown',
   NAVBAR_TRANSACTION_DROPDOWN_ADD_MEDICINE: 'navbar-transaction-dropdown-add-medicine',
