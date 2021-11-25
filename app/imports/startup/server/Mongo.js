@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Patients } from '../../api/patients/PatientCollection';
 // import { UserProfiles } from '../../api/profile/UserProfileCollection';
 import { Profiles } from '../../api/profile/Profile';
@@ -9,117 +8,106 @@ import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
 import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
 
-// might use in the future
-/* const medicines = JSON.parse(Assets.getText('medicine.json'));
+// variables to read off JSON files from /private directory
+const medicines = JSON.parse(Assets.getText('medicine.json'));
 const medInventory = JSON.parse(Assets.getText('medInventory.json'));
-const supplies = JSON.parse(Assets.getText('supplies.json')); */
+const supplies = JSON.parse(Assets.getText('supplies.json'));
+const supSource = JSON.parse(Assets.getText('supplySource.json'));
 
-// Initialize the database with a default data document.
-function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.define(data);
+// Initialize the database with profile document.
+function addProfile(profile) {
+  console.log(`  Adding: ${profile.name} (${profile.owner})`);
+  Profiles.collection.insert(profile);
 }
 
-// Initialize the database with a default data document.
-function addProfile(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Profiles.collection.insert(data);
-}
-
-function addSource(data) {
-  console.log(`  Adding: ${data.name} `);
-  SupplySource.define(data);
-}
-
-// Initialize the database with a default data document.
-function addPatients(data) {
-  console.log(`  Adding patient: ${data.date} (${data.name})`);
-  Patients.define(data);
-}
-
-// Initialize the database with a default data document.
-function addMedicine(data) {
-  console.log(`  Adding medicine: ${data.name} `);
-  Medicines.define(data);
-}
-
-// Initialize the MedicineCollection if empty.
-if (Medicines.count() === 0) {
-  if (Meteor.settings.defaultMedicines) {
-    console.log('Creating default medicines data.');
-    Meteor.settings.defaultMedicines.map(data => addMedicine(data));
-  }
-}
-
-// Initialize the database with a default data document.
-function addMedicineInventory(data) {
-  console.log(`  Adding inventory: ${data.lotNumber} (${data.name})`);
-  MedicineSource.define(data);
-}
-
-// Initialize the MedicineCollection if empty.
-if (MedicineSource.count() === 0) {
-  if (Meteor.settings.defaultMedicineInventory) {
-    console.log('Creating default medicines data.');
-    Meteor.settings.defaultMedicineInventory.map(data => addMedicineInventory(data));
-  }
-}
-
-// Initialize the database with a default data document.
-function addSupply(data) {
-  console.log(`  Adding supply: ${data.name} `);
-  Supplies.define(data);
-}
-
-// Initialize the SupplyCollection if empty.
-if (Supplies.count() === 0) {
-  if (Meteor.settings.defaultSupplies) {
-    console.log('Creating default supplies data.');
-    Meteor.settings.defaultSupplies.map(data => addSupply(data));
-  }
-}
-
-// Initialize the database with a default data document.
-function addTransationHistory(data) {
-  console.log(`  Adding history: ${data.date}`);
-  TransationHistories.define(data);
-}
-
-// Initialize the StuffsCollection if empty.
-if (Stuffs.count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
-  }
-
-}
 // Initialize the ProfilesCollection if empty.
 if (Profiles.collection.find().count() === 0) {
   if (Meteor.settings.defaultProfiles) {
     console.log('Creating default Profiles.');
-    Meteor.settings.defaultProfiles.map(data => addProfile(data));
+    Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
   }
 }
 
-if (SupplySource.count() === 0) {
-  if (Meteor.settings.defaultSupplySource) {
-    console.log('Creating default sources data.');
-    Meteor.settings.defaultSupplySource.map(data => addSource(data));
-  }
+// Initialize the database with patient document.
+function addPatients(patients) {
+  console.log(`  Adding patient: ${patients.date} (${patients.id})`);
+  Patients.define(patients);
 }
 
 // Initialize the PatientCollection if empty.
 if (Patients.count() === 0) {
   if (Meteor.settings.defaultPatientHistory) {
     console.log('Creating default patient data.');
-    Meteor.settings.defaultPatientHistory.map(data => addPatients(data));
+    Meteor.settings.defaultPatientHistory.map(patients => addPatients(patients));
   }
+}
+
+// Initialize the database with medicine document.
+function addMedicine(medicine) {
+  console.log(`  Adding medicine: ${medicine.name} `);
+  Medicines.define(medicine);
+}
+
+// Initialize the MedicineCollection if empty.
+if (Medicines.count() === 0) {
+  if (medicines) {
+    console.log('Creating default medicines data.');
+    medicines.map(medicine => addMedicine(medicine));
+  }
+}
+
+// Initialize the database with medicine inventory document.
+function addMedicineInventory(medSource) {
+  console.log(`  Adding inventory: ${medSource.lotNumber} (${medSource.medName})`);
+  MedicineSource.define(medSource);
+}
+
+// Initialize the MedicineCollection if empty.
+if (MedicineSource.count() === 0) {
+  if (medInventory) {
+    console.log('Creating default medicines data.');
+    medInventory.map(medSource => addMedicineInventory(medSource));
+  }
+}
+
+// Initialize the database with supply document.
+function addSupply(supply) {
+  console.log(`  Adding supply: ${supply.name} `);
+  Supplies.define(supply);
+}
+
+// Initialize the SupplyCollection if empty.
+if (Supplies.count() === 0) {
+  if (supplies) {
+    console.log('Creating default supplies data.');
+    supplies.map(supply => addSupply(supply));
+  }
+}
+
+// Initialize database with supply source document.
+function addSource(supplysource) {
+  console.log(`  Adding supply donated by ${supplysource.sourceName} `);
+  SupplySource.define(supplysource);
+}
+
+// Initialize SupplySourceCollection if empty.
+if (SupplySource.count() === 0) {
+  if (supSource) {
+    console.log('Creating default sources data.');
+    supSource.map(supplysource => addSource(supplysource));
+  }
+}
+
+// Initialize the database with transaction history document.
+function addTransationHistory(transaction) {
+  console.log(`  Adding history: ${transaction.date}`);
+  TransationHistories.define(transaction);
 }
 
 // Initialize the SupplyCollection if empty.
 if (TransationHistories.count() === 0) {
   if (Meteor.settings.defaultTransationHistory) {
     console.log('Creating default history data.');
-    Meteor.settings.defaultTransationHistory.map(data => addTransationHistory(data));
+    Meteor.settings.defaultTransationHistory.map(transaction => addTransationHistory(transaction));
   }
 }

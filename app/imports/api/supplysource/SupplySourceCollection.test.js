@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import faker from 'faker';
 import fc from 'fast-check';
+// eslint-disable-next-line import/named
 import { Supplies } from './SupplySourceCollection';
 import { removeAllEntities } from '../base/BaseUtilities';
 

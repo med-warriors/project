@@ -1,1210 +1,1409 @@
-{
-  "defaultMedicines": [
-    {
-      "name": "Benzonatate Capsules",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 15,
-      "note": "use for Cold"
-    },
-    {
-      "name": "Cetirizine 10 mg tablets",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 30,
-      "note": "use for relieving allergies"
-    },
-    {
-      "name": "Cetirizine Hydrochloride 5mg tablets",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 30,
-      "note": "use for relieving allergies"
-    },
-    {
-      "name": "Cetirizine Soln",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for relieving allergies"
-    },
-    {
-      "name": "Cold and Flu Syrup",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for Cold and Flu"
-    },
-    {
-      "name": "Cough Drops",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 30,
-      "note": "use for relieving sore throats or coughs"
-    },
-    {
-      "name": "Delsym cough syrup (Dextromethorphan Polistirex)",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for relieving coughs"
-    },
-    {
-      "name": "Diphenhydramine 25 mg tabs",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 50,
-      "note": "use for relieving allergies and colds"
-    },
-    {
-      "name": "Diphenhydramine Soln",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for relieving allergies and colds"
-    },
-    {
-      "name": "Guaifenesin 400 mg tabs",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 15,
-      "note": "use for treating coughs and chest congestion"
-    },
-    {
-      "name": "Guaifenesin Syrup",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for treating coughs and chest congestion"
-    },
-    {
-      "name": "Meclizine 12.5 mg",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 30,
-      "note": "use for treating nausea/motion sickness"
-    },
-    {
-      "name": "Meclizine 25 mg chew tabs",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 30,
-      "note": "use for treating nausea/motion sickness"
-    },
-    {
-      "name": "Montelukast 10mg",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 30,
-      "note": "use for preventing asthma"
-    },
-    {
-      "name": "Nasal Saline",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for treating/clearing your nose"
-    },
-    {
-      "name": "NetiPot",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for treating/clearing your nose"
-    },
-    {
-      "name": "Oxymetazoline (or Phenylephrine) Nasal Spray",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for treating/clearing your nose"
-    },
-    {
-      "name": "Patient digital thermometer",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for testing fevers"
-    },
-    {
-      "name": "Pseudoephedrine 30 mg Tabs",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 30,
-      "note": "use for treating stuffy noses"
-    },
-    {
-      "name": "Sore Throat Spray",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for sore throat"
-    },
-    {
-      "name": "Steroid Nasal Spray",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for treating/clearing your nose"
-    },
-    {
-      "name": "Thermometer probe covers",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for preventing contamination"
-    },
-    {
-      "name": "Tussin DM Cough Syrup",
-      "type": "Allergy & Cold Medicines",
-      "shouldHave": 1,
-      "note": "use for relieving coughs"
-    },
-    {
-      "name": "Acetaminophen 160mg/5 ml Susp",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 2,
-      "note": "use for treating minor aches/pains and reducing fever"
-    },
-    {
-      "name": "Acetaminophen 500 mg Caps",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 60,
-      "note": "Use for treating minor aches/pains and reducing fever. Take 2 for every 6 hours"
-    },
-    {
-      "name": "Acetaminophen 80 mg chewable tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "use for treating minor aches/pains and reducing fever"
-    },
-    {
-      "name": "Acetaminophen Infant Drops",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 2,
-      "note": "Use for treating minor aches/pains and reducing fever.  Never give your child more than 5 doses within 24 hours!"
-    },
-    {
-      "name": "Allopurinol 100 mg tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating gout and kidney stones.  Taken once a day or in divided doses"
-    },
-    {
-      "name": "Allopurinol 300 mg tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating gout and kidney stones.  Taken once a day or in divided doses"
-    },
-    {
-      "name": "Aspirin 81 mg",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for minor aches and pains.  Drink a full glass of water with each dose.  Take 4 to 8 tablets every four hours for ages 12 and up.  Do not take more than 48 tablets within 24 hours."
-    },
-    {
-      "name": "Aspirin 325 mg",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for minor aches and pains.  Drink a full glass of water with each dose.  Take 1 or 2 tablets every four hours for ages 12 and up.  Do not take more than 12 tablets within 24 hours."
-    },
-    {
-      "name": "Cyclobenzaprine 10 mg",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating pain and stiffness caused by muscle spasms.  For ages 15 and up, take it three times a day until treated."
-    },
-    {
-      "name": "Gabapentin 300 mg",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating seizures and pain caused by shingles."
-    },
-    {
-      "name": "Gabapentin 100 mg",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating seizures and pain caused by shingles."
-    },
-    {
-      "name": "Ibuprofen 200 mg tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 50,
-      "note": "use for Headache"
-    },
-    {
-      "name": "Ibuprofen 800 mg tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 60,
-      "note": "use for Headache"
-    },
-    {
-      "name": "Ibuprofen suspension 50 mg per 1.25 mL infant",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "use for Headache"
-    },
-    {
-      "name": "Ibuprofen Suspension 100 mg per 5 mL childrens",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "use for Headache"
-    },
-    {
-      "name": "Indomethacin 25 mg caps",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating moderate to severe pain caused by arthritis, gout, bursitis, and tendonitis.  For adults, take two to three times a day."
-    },
-    {
-      "name": "Indomethacin 50 mg caps",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating moderate to severe pain caused by arthritis, gout, bursitis, and tendonitis.  For adults, take three times a day."
-    },
-    {
-      "name": "Kenalog 40mg/ml Injectable",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "Use for treating joint pain"
-    },
-    {
-      "name": "Lidocaine Oral Topical Solution",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "Use for treating arrhythmia (irregular heartbeat)"
-    },
-    {
-      "name": "Lidocaine with Epi, injectable",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "Use for treating arrhythmia (irregular heartbeat)"
-    },
-    {
-      "name": "Lidocaine w/o Epi, injectable",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "Use for treating arrhythmia (irregular heartbeat)"
-    },
-    {
-      "name": "Medrol Dose Pack (Methylprednisolone 4 mg)",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "Use for relieving inflammation, treating types of arthritis and cancer."
-    },
-    {
-      "name": "Methylprednisolone Soln",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 1,
-      "note": "Use for relieving inflammation, treating types of arthritis and cancer."
-    },
-    {
-      "name": "Naproxen 500 mg tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 30,
-      "note": "Use for treating fever and pain.  Take once every 12 hours."
-    },
-    {
-      "name": "Phenazopyridine Tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 20,
-      "note": "Use for treating urinary symptoms"
-    },
-    {
-      "name": "Prednisone 20 mg tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 20,
-      "note": "Use for treating many conditions (arthritis, lupus, blood disorders, etc.)"
-    },
-    {
-      "name": "Tramadol 50 mg Tabs",
-      "type": "Analgesics/Antiinflammatory",
-      "shouldHave": 50,
-      "note": "Use for treating moderate to severe pain.  For ages 16 and up, take once for every 4 to 6 hours."
-    },
-    {
-      "name": "Amlodipine 5 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for treating chest pain and high blood pressure"
-    },
-    {
-      "name": "Amlodipine 10 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for treating chest pain and high blood pressure"
-    },
-    {
-      "name": "Amlodipine 5mg/ Atorvastatin 20 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for treating chest pain and high blood pressure"
-    },
-    {
-      "name": "Azilsartan 80mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High BLood Pressure"
-    },
-    {
-      "name": "Azilsartan/chlorthalidone 40mg/12.5mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High BLood Pressure"
-    },
-    {
-      "name": "Azilsartan/chlorthalidone 40mg/25mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High BLood Pressure"
-    },
-    {
-      "name": "Chlorthalidone or Hydrochlorothiazide 25 mg tabs",
-      "type": "Antihypertensives",
-      "shouldHave": 50,
-      "note": "use for high blood pressure to prevent strokes, heart attacks, and kidney problems"
-    },
-    {
-      "name": "Furosemide 20 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure, heart failure, and edema"
-    },
-    {
-      "name": "Lisinopril 10 mg tab",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure and heart failure"
-    },
-    {
-      "name": "Lisinopril 20 mg tab",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure and heart failure"
-    },
-    {
-      "name": "Lisinopril 5 mg tab",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure and heart failure"
-    },
-    {
-      "name": "Lisinopril and Hydrochlorothiazide tabs 10mg/12.5mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure and heart failure"
-    },
-    {
-      "name": "Lisinopril and Hydrochlorothiazide tabs 20mg/12.5mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure and heart failure"
-    },
-    {
-      "name": "Losartan 25 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure and reducing stroke"
-    },
-    {
-      "name": "Losartan potassium 50mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure and reducing stroke"
-    },
-    {
-      "name": "Metoprolol 25 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure"
-    },
-    {
-      "name": "Metoprolol 50 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure"
-    },
-    {
-      "name": "Nebivolol 5 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure"
-    },
-    {
-      "name": "Nebivolol 10 mg",
-      "type": "Antihypertensives",
-      "shouldHave": 30,
-      "note": "use for High Blood Pressure"
-    },
-    {
-      "name": "Amoxicillin 250 mg Chewables",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin 125 mg/5ml Susp",
-      "type": "Antimicrobials",
-      "shouldHave": 1,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin 250 mg/5ml Susp",
-      "type": "Antimicrobials",
-      "shouldHave": 1,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin 400 mg/5ml Susp",
-      "type": "Antimicrobials",
-      "shouldHave": 1,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin 500 mg Capsules",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin 875 mg Tab",
-      "type": "Antimicrobials",
-      "shouldHave": 20,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin/Clavulanate 875/125 Tabs",
-      "type": "Antimicrobials",
-      "shouldHave": 20,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin/Clavulanate 200/28.5/5 Susp",
-      "type": "Antimicrobials",
-      "shouldHave": 1,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Amoxicillin/Clavulanate 400/57/5 ml Susp",
-      "type": "Antimicrobials",
-      "shouldHave": 1,
-      "note": "use for treating bacterial infections and stomach ulcers"
-    },
-    {
-      "name": "Azithromycin 250 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 12,
-      "note": "use for treating chest infections"
-    },
-    {
-      "name": "Azithromycin 200/5cc Solution",
-      "type": "Antimicrobials",
-      "shouldHave": 12,
-      "note": "use for treating chest infections"
-    },
-    {
-      "name": "Ceftriaxone 500 mg Injection",
-      "type": "Antimicrobials",
-      "shouldHave": 2,
-      "note": "use for treating bacterial injections (E. coli, pneumonia, meningitis, etc.)"
-    },
-    {
-      "name": "Cephalexin 500 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 28,
-      "note": "use for treating bacterial injections"
-    },
-    {
-      "name": "Ciprofloxacin 500 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 60,
-      "note": "use for treating bacterial injections"
-    },
-    {
-      "name": "Clindamycin 300 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for treating skin and vaginal infections"
-    },
-    {
-      "name": "Doxycycline/Minocycline 100 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 20,
-      "note": "use for treating rosacea/severe acne and prevent malaria"
-    },
-    {
-      "name": "Fluconazole 150 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 3,
-      "note": "use for Fungal Infection"
-    },
-    {
-      "name": "Isoniazid 300 mg tabs",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for treating/preventing tuberculosis"
-    },
-    {
-      "name": "Ketoconazole 200 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for Fungal Infection"
-    },
-    {
-      "name": "Metronidazole 500 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for vaginal and bacterial/parasitic infections"
-    },
-    {
-      "name": "Penicillin VK 250mg/5ml Soln",
-      "type": "Antimicrobials",
-      "shouldHave": 1,
-      "note": "use for mild to moderate bacterial infections"
-    },
-    {
-      "name": "Penicillin VK 500 mg Tabs",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for mild to moderate bacterial infections"
-    },
-    {
-      "name": "Tamiflu 75 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 10,
-      "note": "use for influenza"
-    },
-    {
-      "name": "Terbinafine 250 mg Tabs",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for Fungal Infection"
-    },
-    {
-      "name": "Trimethoprim/Sulfamethoxazole 40/200 Susp",
-      "type": "Antimicrobials",
-      "shouldHave": 1,
-      "note": "use for urinary tract and ear infections"
-    },
-    {
-      "name": "Trimethroprim/Sulfamethoxazole (DS) 160/800",
-      "type": "Antimicrobials",
-      "shouldHave": 28,
-      "note": "use for urinary tract and ear infections"
-    },
-    {
-      "name": "Valtrex 500 mg",
-      "type": "Antimicrobials",
-      "shouldHave": 30,
-      "note": "use for herpes virus infections"
-    },
-    {
-      "name": "Lovastatin 20 mg",
-      "type": "Cardiac/Cholesterol",
-      "shouldHave": 30,
-      "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
-    },
-    {
-      "name": "Simvastatin 10 mg",
-      "type": "Cardiac/Cholesterol",
-      "shouldHave": 30,
-      "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
-    },
-    {
-      "name": "Simvastatin 20 mg",
-      "type": "Cardiac/Cholesterol",
-      "shouldHave": 30,
-      "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
-    },
-    {
-      "name": "Simvastatin 40 mg",
-      "type": "Cardiac/Cholesterol",
-      "shouldHave": 30,
-      "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
-    },
-    {
-      "name": "Nitroglycerin 0.4 mg tabs",
-      "type": "Cardiac/Cholesterol",
-      "shouldHave": 25,
-      "note": "use for treating chest pain and anal fissures"
-    },
-    {
-      "name": "Bacitracin Ointment 15 gm tube",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for preventing infection of minor cuts, burns, and scrapes"
-    },
-    {
-      "name": "Bacitracin Ointment packets",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 30,
-      "note": "use for preventing infection of minor cuts, burns, and scrapes"
-    },
-    {
-      "name": "Benzoyl Peroxide 10% Lotion",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating mild to moderate acne"
-    },
-    {
-      "name": "Benzoyl Peroxide 10% Wash",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating mild to moderate acne"
-    },
-    {
-      "name": "Betamethasone 0.05% Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for treating itchy, irritated, and/or swollen skin"
-    },
-    {
-      "name": "Chapstick",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 5,
-      "note": "use for soothing dry chapped lips"
-    },
-    {
-      "name": "Clotrimazole 1% Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for Fungal Infection"
-    },
-    {
-      "name": "Desitin/Diaper Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating rashes"
-    },
-    {
-      "name": "Hydrocotisone Cream 1%",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for treating red, swollen, and/or itchy skin"
-    },
-    {
-      "name": "Ketoconazole 2% cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for skin infections and dandruff"
-    },
-    {
-      "name": "LacHydrin Lotion or Amlactin",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for treating dry, scaly skin conditions"
-    },
-    {
-      "name": "Medicated Lip Ointment",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 15,
-      "note": "use for relieving pain, itching, and discomfort of lip sores and blisters"
-    },
-    {
-      "name": "Molefoam Padding",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for preventing blisters"
-    },
-    {
-      "name": "Mupirocin 2% Ointment",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for skin infections"
-    },
-    {
-      "name": "Nystatin Ointment",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for fungal infections of skin"
-    },
-    {
-      "name": "Orasol Gel 20%",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 30,
-      "note": "use for relieving minor toothaches, cold sores, and other dental procedures"
-    },
-    {
-      "name": "Pain Relief Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for preventing pain from skin conditions"
-    },
-    {
-      "name": "Permethrin 1% Shampoo",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 5,
-      "note": "use for treating head lice"
-    },
-    {
-      "name": "Permethrin 5% Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating scabies"
-    },
-    {
-      "name": "Proctosol-HC 2.5% Cream/Preparation-H",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for relieving pain, itching, swelling, and discomfort caused by hemorrhoids"
-    },
-    {
-      "name": "Salicylic Acid Pads - Callus Remover",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating skin and foot warts"
-    },
-    {
-      "name": "Salicylic Acid Pads - Corn Remover",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating skin and foot warts"
-    },
-    {
-      "name": "Selenium Sulfide 2.5% Lotion",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating dandruff"
-    },
-    {
-      "name": "Silver Sulfadiazine Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for preventing serious skin infections with second- or third-degree burns"
-    },
-    {
-      "name": "Sting Kill",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for relieving animal stings and insect bites"
-    },
-    {
-      "name": "Tolnaftate Antifungal Powder",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for Fungal Infection"
-    },
-    {
-      "name": "Tolnaftate 1% Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for Fungal Infection"
-    },
-    {
-      "name": "Triamcinolone 0.025% Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for treating skin conditions"
-    },
-    {
-      "name": "Triamcinolone 0.1% Cream",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 2,
-      "note": "use for treating skin conditions"
-    },
-    {
-      "name": "Unna Boot 3&#34;",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for protecting ulcers or open wounds"
-    },
-    {
-      "name": "Unna Boot 4&#34;",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for protecting ulcers or open wounds"
-    },
-    {
-      "name": "Urea Lotion",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating skin conditions"
-    },
-    {
-      "name": "White Petrolatum USP",
-      "type": "Dermatologic Preparations",
-      "shouldHave": 1,
-      "note": "use for treating minor skin irritations"
-    },
-    {
-      "name": "Alogliptin/Metformin (12.5/500)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use for treating Type 2 Diabetes"
-    },
-    {
-      "name": "DPP-4 Inhibitors (Sitagliptin 100 mg)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use for lowering high blood glucose levels"
-    },
-    {
-      "name": "Glipizide 10 mg",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use for controlling blood sugar levels"
-    },
-    {
-      "name": "Glipizide 5 mg",
-      "type": "Diabetes Meds",
-      "shouldHave": 60,
-      "note": "use for controlling blood sugar levels"
-    },
-    {
-      "name": "Glucose Tablets",
-      "type": "Diabetes Meds",
-      "shouldHave": 25,
-      "note": "use for increasing low blood sugar for people with diabetes"
-    },
-    {
-      "name": "Metformin ER 500 mg tabs",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use for preventing Type 2 Diabetes"
-    },
-    {
-      "name": "SGLT2 Inhibitors (Dapagliflozin 10 mg)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
-    },
-    {
-      "name": "SGLT2 Inhibitors (Dapagliflozin 5 mg)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
-    },
-    {
-      "name": "SGLT2 Inhibitors/DPP4 Inhibitor (10mg/5mg)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
-    },
-    {
-      "name": "SGLT2 Inhibitors/DPP4 Inhibitor (25mg/5mg)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
-    },
-    {
-      "name": "Sitagliptin/Metformin 100/1000 (Janumet)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use for treating Type 2 Diabetes"
-    },
-    {
-      "name": "Sitagliptin/Metformin 50/500 (Janumet)",
-      "type": "Diabetes Meds",
-      "shouldHave": 30,
-      "note": "use for treating Type 2 Diabetes"
-    },
-    {
-      "name": "Antipyrine & Benzocaine Otic",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 1,
-      "note": "use for relieving ear pain and swelling"
-    },
-    {
-      "name": "Artificial Tears",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 2,
-      "note": "use for relieving dry, itchy, and/or watery eyes"
-    },
-    {
-      "name": "Carbamide Peroxide 6.5%",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 1,
-      "note": "use for treating earwax buildup"
-    },
-    {
-      "name": "Ear Plugs",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 30,
-      "note": "use for protecting ears from loud noises, water, foreign bodies, dust, or wind"
-    },
-    {
-      "name": "Gentamycin, Cipro, or Ofloxacin Ophthalmic Soln",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 2,
-      "note": "use for treating bacterial eye infections"
-    },
-    {
-      "name": "Napchon (Opticlear)",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 1,
-      "note": "use for relieving eye redness, puffiness, itching, and watering"
-    },
-    {
-      "name": "Neomycin/Polymyxin/Hydrocortisone (Cortisporin) Otic",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 1,
-      "note": "use for treating ear infections"
-    },
-    {
-      "name": "Sulfacetamide or Polymyxin B Ophthalmic Soln",
-      "type": "Ear and Eye Preparations",
-      "shouldHave": 2,
-      "note": "use for treating bacterial eye infections"
-    },
-    {
-      "name": "Ammonia Inhalant",
-      "type": "Emergency Kit",
-      "shouldHave": 2,
-      "note": "use for preventing and treating fainting, dizziness, and lightheadedness"
-    },
-    {
-      "name": "Diphenhydramine 50 mg/mL",
-      "type": "Emergency Kit",
-      "shouldHave": 1,
-      "note": "use for relieving red, irritated, itchy, and/or watery eyes, sneezing, and runny nose"
-    },
-    {
-      "name": "Epipen",
-      "type": "Emergency Kit",
-      "shouldHave": 2,
-      "note": "use for treating very serious allergic reactions"
-    },
-    {
-      "name": "Epipen Jr.",
-      "type": "Emergency Kit",
-      "shouldHave": 2,
-      "note": "use for treating very serious allergic reactions"
-    },
-    {
-      "name": "Medicaine Sting/Bite Swab",
-      "type": "Emergency Kit",
-      "shouldHave": 10,
-      "note": "use for temporary relief in pain/itching associated with insect bites/stings"
-    },
-    {
-      "name": "Antacid",
-      "type": "GI Meds",
-      "shouldHave": 50,
-      "note": "use for treating heartburn"
-    },
-    {
-      "name": "Bisacodyl Suppositories",
-      "type": "GI Meds",
-      "shouldHave": 5,
-      "note": "use for relieving constipation"
-    },
-    {
-      "name": "Docusate Sodium 100 mg",
-      "type": "GI Meds",
-      "shouldHave": 30,
-      "note": "use for treating constipation"
-    },
-    {
-      "name": "Lactulose Solution",
-      "type": "GI Meds",
-      "shouldHave": 1,
-      "note": "use for treating constipation"
-    },
-    {
-      "name": "Loperamide 2 mg",
-      "type": "GI Meds",
-      "shouldHave": 12,
-      "note": "use for treating diarrhea"
-    },
-    {
-      "name": "Pepto-Bismol",
-      "type": "GI Meds",
-      "shouldHave": 1,
-      "note": "use for nausea, heartburn (indigestion), upset stomach, and diarrhea"
-    },
-    {
-      "name": "Promethazine 25 mg",
-      "type": "GI Meds",
-      "shouldHave": 30,
-      "note": "use for relieving allergic reactions"
-    },
-    {
-      "name": "Proton Pump Inhibitor",
-      "type": "GI Meds",
-      "shouldHave": 50,
-      "note": "use for relieving acid reflux and treating stomach ulcers"
-    },
-    {
-      "name": "Ranitidine (or other H2blocker)",
-      "type": "GI Meds",
-      "shouldHave": 30,
-      "note": "use for treating ulcers and reducing stomach acid"
-    },
-    {
-      "name": "Apri Tabs",
-      "type": "GYN Meds",
-      "shouldHave": 2,
-      "note": "use for preventing pregnancy"
-    },
-    {
-      "name": "Depo-Provera",
-      "type": "GYN Meds",
-      "shouldHave": 1,
-      "note": "use for preventing pregnancy and manage medical conditions related to menstrual cycle"
-    },
-    {
-      "name": "Detrol LA (Tolterodin Tartate)",
-      "type": "GYN Meds",
-      "shouldHave": 30,
-      "note": "use for treating overactive bladders"
-    },
-    {
-      "name": "Medroxyprogesterone 10 mg",
-      "type": "GYN Meds",
-      "shouldHave": 10,
-      "note": "use for treating conditions such as absent/irregulate menstrual periods or abnormal uterine bleeding"
-    },
-    {
-      "name": "Miconazole Applicator Set",
-      "type": "GYN Meds",
-      "shouldHave": 1,
-      "note": "use for treating vaginal yeast infections"
-    },
-    {
-      "name": "PlanB",
-      "type": "GYN Meds",
-      "shouldHave": 1,
-      "note": "use for preventing unintended pregnancy"
-    },
-    {
-      "name": "Reclipsen Tabs",
-      "type": "GYN Meds",
-      "shouldHave": 2,
-      "note": "use for preventing pregnancy"
-    },
-    {
-      "name": "Albuterol HFA (Proair/Ventolin)",
-      "type": "Pulmonary",
-      "shouldHave": 2,
-      "note": "use for preventing wheezing and shortness of breath caused by breathing problems"
-    },
-    {
-      "name": "Albuterol Inhalation Soln.",
-      "type": "Pulmonary",
-      "shouldHave": 5,
-      "note": "use for preventing wheezing and shortness of breath caused by breathing problems"
-    },
-    {
-      "name": "Ipratropium Inhalation Soln.",
-      "type": "Pulmonary",
-      "shouldHave": 5,
-      "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
-    },
-    {
-      "name": "Ipratropium/Albuterol",
-      "type": "Pulmonary",
-      "shouldHave": 1,
-      "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
-    },
-    {
-      "name": "Steroid Inhaler",
-      "type": "Pulmonary",
-      "shouldHave": 1,
-      "note": "use for treating asthma and chronic obstructive pulmonary disease"
-    },
-    {
-      "name": "Steroid/Long Acting Beta Agonist (Adult)",
-      "type": "Pulmonary",
-      "shouldHave": 1,
-      "note": "use for treating asthma and chronic obstructive pulmonary disease"
-    },
-    {
-      "name": "Steroid/Long Acting Beta Agonist (Child)",
-      "type": "Pulmonary",
-      "shouldHave": 1,
-      "note": "use for treating asthma and chronic obstructive pulmonary disease"
-    },
-    {
-      "name": "Tiotropium or Ipratropium",
-      "type": "Pulmonary",
-      "shouldHave": 1,
-      "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
-    },
-    {
-      "name": "Buproprion ER 150 mg",
-      "type": "Smoking Cessation",
-      "shouldHave": 30,
-      "note": "used as an antidepressant for the brain"
-    },
-    {
-      "name": "Nicotine Gum 2 mg",
-      "type": "Smoking Cessation",
-      "shouldHave": 50,
-      "note": "use for helping people to quit smoking"
-    },
-    {
-      "name": "Nicotine Gum 4 mg",
-      "type": "Smoking Cessation",
-      "shouldHave": 50,
-      "note": "use for helping people to quit smoking"
-    },
-    {
-      "name": "Nicotine Patch 7 mg",
-      "type": "Smoking Cessation",
-      "shouldHave": 14,
-      "note": "use for helping people to quit smoking"
-    },
-    {
-      "name": "Nicotine Patch 14 mg",
-      "type": "Smoking Cessation",
-      "shouldHave": 14,
-      "note": "use for helping people to quit smoking"
-    },
-    {
-      "name": "Nicotine Patch 21 mg",
-      "type": "Smoking Cessation",
-      "shouldHave": 14,
-      "note": "use for helping people to quit smoking"
-    },
-    {
-      "name": "Calcium Supplements",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 30,
-      "note": "use for treating and preventing osteoporosis"
-    },
-    {
-      "name": "Fiber Capsules",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 60,
-      "note": "use for treating constipation"
-    },
-    {
-      "name": "Fluoride .5 mg",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 30,
-      "note": "use for preventing tooth decay"
-    },
-    {
-      "name": "Fluoride 0.25 mg drops",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 30,
-      "note": "use for preventing dental cavities"
-    },
-    {
-      "name": "Fluoride 1 mg",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 30,
-      "note": "use for preventing tooth decay"
-    },
-    {
-      "name": "Iron 27 mg",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 30,
-      "note": "use for preventing low blood levels of iron"
-    },
-    {
-      "name": "Melatonin 3 mg",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 30,
-      "note": "use for insomnia"
-    },
-    {
-      "name": "Multivitamins - Adult",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 50,
-      "note": "use for treating vitamin deficiencies"
-    },
-    {
-      "name": "Multivitamins - Adult Gummies",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 50,
-      "note": "use for treating vitamin deficiencies"
-    },
-    {
-      "name": "Multivitamins - Children's Gummies",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 50,
-      "note": "use for treating vitamin deficiencies"
-    },
-    {
-      "name": "Multivitamins - Kids Chewable",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 50,
-      "note": "use for treating vitamin deficiencies"
-    },
-    {
-      "name": "Prenatal Vitamins",
-      "type": "Vitamins and Supplements",
-      "shouldHave": 30,
-      "note": "use for giving healthy pregnancies"
-    }
-  ]
-}
+[
+  {
+    "name": "Benzonatate Capsules",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 15,
+    "note": "use for Cold"
+  },
+  {
+    "name": "Cetirizine 10 mg tablets",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 30,
+    "note": "use for relieving allergies"
+  },
+  {
+    "name": "Cetirizine Hydrochloride 5mg tablets",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 30,
+    "note": "use for relieving allergies"
+  },
+  {
+    "name": "Cetirizine Soln",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 1,
+    "note": "use for relieving allergies"
+  },
+  {
+    "name": "Cold and Flu Syrup",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 1,
+    "note": "use for Cold and Flu"
+  },
+  {
+    "name": "Cough Drops",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 6",
+    "shouldHave": 30,
+    "note": "use for relieving sore throats or coughs"
+  },
+  {
+    "name": "Delsym cough syrup (Dextromethorphan Polistirex)",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 1,
+    "note": "use for relieving coughs"
+  },
+  {
+    "name": "Diphenhydramine 25 mg tabs",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 50,
+    "note": "use for relieving allergies and colds"
+  },
+  {
+    "name": "Diphenhydramine Soln",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 1,
+    "note": "use for relieving allergies and colds"
+  },
+  {
+    "name": "Guaifenesin 400 mg tabs",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 15,
+    "note": "use for treating coughs and chest congestion"
+  },
+  {
+    "name": "Guaifenesin Syrup",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 1,
+    "note": "use for treating coughs and chest congestion"
+  },
+  {
+    "name": "Meclizine 12.5 mg",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 30,
+    "note": "use for treating nausea/motion sickness"
+  },
+  {
+    "name": "Meclizine 25 mg chew tabs",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 30,
+    "note": "use for treating nausea/motion sickness"
+  },
+  {
+    "name": "Montelukast 10mg",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 30,
+    "note": "use for preventing asthma"
+  },
+  {
+    "name": "Nasal Saline",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating/clearing your nose"
+  },
+  {
+    "name": "NetiPot",
+    "type": "Allergy & Cold Medicines",
+    "location": "Refrigerator Closet",
+    "shouldHave": 1,
+    "note": "use for treating/clearing your nose"
+  },
+  {
+    "name": "Oxymetazoline (or Phenylephrine) Nasal Spray",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating/clearing your nose"
+  },
+  {
+    "name": "Patient digital thermometer",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 3",
+    "shouldHave": 1,
+    "note": "use for testing fevers"
+  },
+  {
+    "name": "Pseudoephedrine 30 mg Tabs",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 30,
+    "note": "use for treating stuffy noses"
+  },
+  {
+    "name": "Sore Throat Spray",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 6",
+    "shouldHave": 1,
+    "note": "use for sore throat"
+  },
+  {
+    "name": "Steroid Nasal Spray",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating/clearing your nose"
+  },
+  {
+    "name": "Thermometer probe covers",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 3",
+    "shouldHave": 1,
+    "note": "use for preventing contamination"
+  },
+  {
+    "name": "Tussin DM Cough Syrup",
+    "type": "Allergy & Cold Medicines",
+    "location": "Case 2",
+    "shouldHave": 1,
+    "note": "use for relieving coughs"
+  },
+  {
+    "name": "Acetaminophen 160mg/5 ml Susp",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 2,
+    "note": "use for treating minor aches/pains and reducing fever"
+  },
+  {
+    "name": "Acetaminophen 500 mg Caps",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 60,
+    "note": "Use for treating minor aches/pains and reducing fever. Take 2 for every 6 hours"
+  },
+  {
+    "name": "Acetaminophen 80 mg chewable tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "use for treating minor aches/pains and reducing fever"
+  },
+  {
+    "name": "Acetaminophen Infant Drops",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 2,
+    "note": "Use for treating minor aches/pains and reducing fever.  Never give your child more than 5 doses within 24 hours!"
+  },
+  {
+    "name": "Allopurinol 100 mg tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating gout and kidney stones.  Taken once a day or in divided doses"
+  },
+  {
+    "name": "Allopurinol 300 mg tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating gout and kidney stones.  Taken once a day or in divided doses"
+  },
+  {
+    "name": "Aspirin 81 mg",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for minor aches and pains.  Drink a full glass of water with each dose.  Take 4 to 8 tablets every four hours for ages 12 and up.  Do not take more than 48 tablets within 24 hours."
+  },
+  {
+    "name": "Aspirin 325 mg",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for minor aches and pains.  Drink a full glass of water with each dose.  Take 1 or 2 tablets every four hours for ages 12 and up.  Do not take more than 12 tablets within 24 hours."
+  },
+  {
+    "name": "Cyclobenzaprine 10 mg",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating pain and stiffness caused by muscle spasms.  For ages 15 and up, take it three times a day until treated."
+  },
+  {
+    "name": "Gabapentin 300 mg",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating seizures and pain caused by shingles."
+  },
+  {
+    "name": "Gabapentin 100 mg",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating seizures and pain caused by shingles."
+  },
+  {
+    "name": "Ibuprofen 200 mg tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 50,
+    "note": "use for Headache"
+  },
+  {
+    "name": "Ibuprofen 800 mg tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 60,
+    "note": "use for Headache"
+  },
+  {
+    "name": "Ibuprofen suspension 50 mg per 1.25 mL infant",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "use for Headache"
+  },
+  {
+    "name": "Ibuprofen Suspension 100 mg per 5 mL childrens",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "use for Headache"
+  },
+  {
+    "name": "Indomethacin 25 mg caps",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating moderate to severe pain caused by arthritis, gout, bursitis, and tendonitis.  For adults, take two to three times a day."
+  },
+  {
+    "name": "Indomethacin 50 mg caps",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating moderate to severe pain caused by arthritis, gout, bursitis, and tendonitis.  For adults, take three times a day."
+  },
+  {
+    "name": "Kenalog 40mg/ml Injectable",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "Use for treating joint pain"
+  },
+  {
+    "name": "Lidocaine Oral Topical Solution",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "Use for treating arrhythmia (irregular heartbeat)"
+  },
+  {
+    "name": "Lidocaine with Epi, injectable",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "Use for treating arrhythmia (irregular heartbeat)"
+  },
+  {
+    "name": "Lidocaine w/o Epi, injectable",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "Use for treating arrhythmia (irregular heartbeat)"
+  },
+  {
+    "name": "Medrol Dose Pack (Methylprednisolone 4 mg)",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "Use for relieving inflammation, treating types of arthritis and cancer."
+  },
+  {
+    "name": "Methylprednisolone Soln",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 1,
+    "note": "Use for relieving inflammation, treating types of arthritis and cancer."
+  },
+  {
+    "name": "Naproxen 500 mg tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 30,
+    "note": "Use for treating fever and pain.  Take once every 12 hours."
+  },
+  {
+    "name": "Phenazopyridine Tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 20,
+    "note": "Use for treating urinary symptoms"
+  },
+  {
+    "name": "Prednisone 20 mg tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 20,
+    "note": "Use for treating many conditions (arthritis, lupus, blood disorders, etc.)"
+  },
+  {
+    "name": "Tramadol 50 mg Tabs",
+    "type": "Analgesics/Antiinflammatory",
+    "location": "Case 4",
+    "shouldHave": 50,
+    "note": "Use for treating moderate to severe pain.  For ages 16 and up, take once for every 4 to 6 hours."
+  },
+  {
+    "name": "Amlodipine 5 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for treating chest pain and high blood pressure"
+  },
+  {
+    "name": "Amlodipine 10 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for treating chest pain and high blood pressure"
+  },
+  {
+    "name": "Amlodipine 5mg/ Atorvastatin 20 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for treating chest pain and high blood pressure"
+  },
+  {
+    "name": "Azilsartan 80mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High BLood Pressure"
+  },
+  {
+    "name": "Azilsartan/chlorthalidone 40mg/12.5mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High BLood Pressure"
+  },
+  {
+    "name": "Azilsartan/chlorthalidone 40mg/25mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High BLood Pressure"
+  },
+  {
+    "name": "Chlorthalidone or Hydrochlorothiazide 25 mg tabs",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 50,
+    "note": "use for high blood pressure to prevent strokes, heart attacks, and kidney problems"
+  },
+  {
+    "name": "Furosemide 20 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure, heart failure, and edema"
+  },
+  {
+    "name": "Lisinopril 10 mg tab",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure and heart failure"
+  },
+  {
+    "name": "Lisinopril 20 mg tab",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure and heart failure"
+  },
+  {
+    "name": "Lisinopril 5 mg tab",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure and heart failure"
+  },
+  {
+    "name": "Lisinopril and Hydrochlorothiazide tabs 10mg/12.5mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure and heart failure"
+  },
+  {
+    "name": "Lisinopril and Hydrochlorothiazide tabs 20mg/12.5mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure and heart failure"
+  },
+  {
+    "name": "Losartan 25 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure and reducing stroke"
+  },
+  {
+    "name": "Losartan potassium 50mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure and reducing stroke"
+  },
+  {
+    "name": "Metoprolol 25 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure"
+  },
+  {
+    "name": "Metoprolol 50 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure"
+  },
+  {
+    "name": "Nebivolol 5 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure"
+  },
+  {
+    "name": "Nebivolol 10 mg",
+    "type": "Antihypertensives",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "use for High Blood Pressure"
+  },
+  {
+    "name": "Amoxicillin 250 mg Chewables",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin 125 mg/5ml Susp",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 1,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin 250 mg/5ml Susp",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 1,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin 400 mg/5ml Susp",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 1,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin 500 mg Capsules",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin 875 mg Tab",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 20,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin/Clavulanate 875/125 Tabs",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 20,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin/Clavulanate 200/28.5/5 Susp",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 1,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Amoxicillin/Clavulanate 400/57/5 ml Susp",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 1,
+    "note": "use for treating bacterial infections and stomach ulcers"
+  },
+  {
+    "name": "Azithromycin 250 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 12,
+    "note": "use for treating chest infections"
+  },
+  {
+    "name": "Azithromycin 200/5cc Solution",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 12,
+    "note": "use for treating chest infections"
+  },
+  {
+    "name": "Ceftriaxone 500 mg Injection",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 2,
+    "note": "use for treating bacterial injections (E. coli, pneumonia, meningitis, etc.)"
+  },
+  {
+    "name": "Cephalexin 500 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 28,
+    "note": "use for treating bacterial injections"
+  },
+  {
+    "name": "Ciprofloxacin 500 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 60,
+    "note": "use for treating bacterial injections"
+  },
+  {
+    "name": "Clindamycin 300 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for treating skin and vaginal infections"
+  },
+  {
+    "name": "Doxycycline/Minocycline 100 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 20,
+    "note": "use for treating rosacea/severe acne and prevent malaria"
+  },
+  {
+    "name": "Fluconazole 150 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 3,
+    "note": "use for Fungal Infection"
+  },
+  {
+    "name": "Isoniazid 300 mg tabs",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for treating/preventing tuberculosis"
+  },
+  {
+    "name": "Ketoconazole 200 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for Fungal Infection"
+  },
+  {
+    "name": "Metronidazole 500 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for vaginal and bacterial/parasitic infections"
+  },
+  {
+    "name": "Penicillin VK 250mg/5ml Soln",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 1,
+    "note": "use for mild to moderate bacterial infections"
+  },
+  {
+    "name": "Penicillin VK 500 mg Tabs",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for mild to moderate bacterial infections"
+  },
+  {
+    "name": "Tamiflu 75 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 10,
+    "note": "use for influenza"
+  },
+  {
+    "name": "Terbinafine 250 mg Tabs",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for Fungal Infection"
+  },
+  {
+    "name": "Trimethoprim/Sulfamethoxazole 40/200 Susp",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 1,
+    "note": "use for urinary tract and ear infections"
+  },
+  {
+    "name": "Trimethroprim/Sulfamethoxazole (DS) 160/800",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 28,
+    "note": "use for urinary tract and ear infections"
+  },
+  {
+    "name": "Valtrex 500 mg",
+    "type": "Antimicrobials",
+    "location": "Freezer",
+    "shouldHave": 30,
+    "note": "use for herpes virus infections"
+  },
+  {
+    "name": "Lovastatin 20 mg",
+    "type": "Cardiac/Cholesterol",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
+  },
+  {
+    "name": "Simvastatin 10 mg",
+    "type": "Cardiac/Cholesterol",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
+  },
+  {
+    "name": "Simvastatin 20 mg",
+    "type": "Cardiac/Cholesterol",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
+  },
+  {
+    "name": "Simvastatin 40 mg",
+    "type": "Cardiac/Cholesterol",
+    "location": "Case 7",
+    "shouldHave": 30,
+    "note": "Use to lower cholesterol.  May reduce the risk of heart attack, stroke, and blood vessel problems."
+  },
+  {
+    "name": "Nitroglycerin 0.4 mg tabs",
+    "type": "Cardiac/Cholesterol",
+    "location": "Case 7",
+    "shouldHave": 25,
+    "note": "use for treating chest pain and anal fissures"
+  },
+  {
+    "name": "Bacitracin Ointment 15 gm tube",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for preventing infection of minor cuts, burns, and scrapes"
+  },
+  {
+    "name": "Bacitracin Ointment packets",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 30,
+    "note": "use for preventing infection of minor cuts, burns, and scrapes"
+  },
+  {
+    "name": "Benzoyl Peroxide 10% Lotion",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating mild to moderate acne"
+  },
+  {
+    "name": "Benzoyl Peroxide 10% Wash",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating mild to moderate acne"
+  },
+  {
+    "name": "Betamethasone 0.05% Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for treating itchy, irritated, and/or swollen skin"
+  },
+  {
+    "name": "Chapstick",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 5,
+    "note": "use for soothing dry chapped lips"
+  },
+  {
+    "name": "Clotrimazole 1% Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for Fungal Infection"
+  },
+  {
+    "name": "Desitin/Diaper Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating rashes"
+  },
+  {
+    "name": "Hydrocotisone Cream 1%",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for treating red, swollen, and/or itchy skin"
+  },
+  {
+    "name": "Ketoconazole 2% cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for skin infections and dandruff"
+  },
+  {
+    "name": "LacHydrin Lotion or Amlactin",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for treating dry, scaly skin conditions"
+  },
+  {
+    "name": "Medicated Lip Ointment",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 15,
+    "note": "use for relieving pain, itching, and discomfort of lip sores and blisters"
+  },
+  {
+    "name": "Molefoam Padding",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for preventing blisters"
+  },
+  {
+    "name": "Mupirocin 2% Ointment",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for skin infections"
+  },
+  {
+    "name": "Nystatin Ointment",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for fungal infections of skin"
+  },
+  {
+    "name": "Orasol Gel 20%",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 30,
+    "note": "use for relieving minor toothaches, cold sores, and other dental procedures"
+  },
+  {
+    "name": "Pain Relief Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for preventing pain from skin conditions"
+  },
+  {
+    "name": "Permethrin 1% Shampoo",
+    "type": "Dermatologic Preparations",
+    "location": "Drawer 2-2",
+    "shouldHave": 5,
+    "note": "use for treating head lice"
+  },
+  {
+    "name": "Permethrin 5% Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating scabies"
+  },
+  {
+    "name": "Proctosol-HC 2.5% Cream/Preparation-H",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for relieving pain, itching, swelling, and discomfort caused by hemorrhoids"
+  },
+  {
+    "name": "Salicylic Acid Pads - Callus Remover",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating skin and foot warts"
+  },
+  {
+    "name": "Salicylic Acid Pads - Corn Remover",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating skin and foot warts"
+  },
+  {
+    "name": "Selenium Sulfide 2.5% Lotion",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating dandruff"
+  },
+  {
+    "name": "Silver Sulfadiazine Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for preventing serious skin infections with second- or third-degree burns"
+  },
+  {
+    "name": "Sting Kill",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for relieving animal stings and insect bites"
+  },
+  {
+    "name": "Tolnaftate Antifungal Powder",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for Fungal Infection"
+  },
+  {
+    "name": "Tolnaftate 1% Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for Fungal Infection"
+  },
+  {
+    "name": "Triamcinolone 0.025% Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for treating skin conditions"
+  },
+  {
+    "name": "Triamcinolone 0.1% Cream",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 2,
+    "note": "use for treating skin conditions"
+  },
+  {
+    "name": "Unna Boot 3\"",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for protecting ulcers or open wounds"
+  },
+  {
+    "name": "Unna Boot 4\"",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for protecting ulcers or open wounds"
+  },
+  {
+    "name": "Urea Lotion",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating skin conditions"
+  },
+  {
+    "name": "White Petrolatum USP",
+    "type": "Dermatologic Preparations",
+    "location": "Freezer-Derm",
+    "shouldHave": 1,
+    "note": "use for treating minor skin irritations"
+  },
+  {
+    "name": "Alogliptin/Metformin (12.5/500)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use for treating Type 2 Diabetes"
+  },
+  {
+    "name": "DPP-4 Inhibitors (Sitagliptin 100 mg)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use for lowering high blood glucose levels"
+  },
+  {
+    "name": "Glipizide 10 mg",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use for controlling blood sugar levels"
+  },
+  {
+    "name": "Glipizide 5 mg",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 60,
+    "note": "use for controlling blood sugar levels"
+  },
+  {
+    "name": "Glucose Tablets",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 25,
+    "note": "use for increasing low blood sugar for people with diabetes"
+  },
+  {
+    "name": "Metformin ER 500 mg tabs",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use for preventing Type 2 Diabetes"
+  },
+  {
+    "name": "SGLT2 Inhibitors (Dapagliflozin 10 mg)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+  },
+  {
+    "name": "SGLT2 Inhibitors (Dapagliflozin 5 mg)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+  },
+  {
+    "name": "SGLT2 Inhibitors/DPP4 Inhibitor (10mg/5mg)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+  },
+  {
+    "name": "SGLT2 Inhibitors/DPP4 Inhibitor (25mg/5mg)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use with diet and exercise to lower blood sugar in adults with Type 2 Diabetes"
+  },
+  {
+    "name": "Sitagliptin/Metformin 100/1000 (Janumet)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use for treating Type 2 Diabetes"
+  },
+  {
+    "name": "Sitagliptin/Metformin 50/500 (Janumet)",
+    "type": "Diabetes Meds",
+    "location": "Case 8",
+    "shouldHave": 30,
+    "note": "use for treating Type 2 Diabetes"
+  },
+  {
+    "name": "Antipyrine & Benzocaine Otic",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for relieving ear pain and swelling"
+  },
+  {
+    "name": "Artificial Tears",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 2,
+    "note": "use for relieving dry, itchy, and/or watery eyes"
+  },
+  {
+    "name": "Carbamide Peroxide 6.5%",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating earwax buildup"
+  },
+  {
+    "name": "Ear Plugs",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 30,
+    "note": "use for protecting ears from loud noises, water, foreign bodies, dust, or wind"
+  },
+  {
+    "name": "Gentamycin, Cipro, or Ofloxacin Ophthalmic Soln",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 2,
+    "note": "use for treating bacterial eye infections"
+  },
+  {
+    "name": "Napchon (Opticlear)",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for relieving eye redness, puffiness, itching, and watering"
+  },
+  {
+    "name": "Neomycin/Polymyxin/Hydrocortisone (Cortisporin) Otic",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating ear infections"
+  },
+  {
+    "name": "Sulfacetamide or Polymyxin B Ophthalmic Soln",
+    "type": "Ear and Eye Preparations",
+    "location": "Case 1",
+    "shouldHave": 2,
+    "note": "use for treating bacterial eye infections"
+  },
+  {
+    "name": "Ammonia Inhalant",
+    "type": "Emergency Kit",
+    "location": "Emergency Kit",
+    "shouldHave": 2,
+    "note": "use for preventing and treating fainting, dizziness, and lightheadedness"
+  },
+  {
+    "name": "Diphenhydramine 50 mg/mL",
+    "type": "Emergency Kit",
+    "location": "Emergency Kit",
+    "shouldHave": 1,
+    "note": "use for relieving red, irritated, itchy, and/or watery eyes, sneezing, and runny nose"
+  },
+  {
+    "name": "Epipen",
+    "type": "Emergency Kit",
+    "location": "Emergency Kit",
+    "shouldHave": 2,
+    "note": "use for treating very serious allergic reactions"
+  },
+  {
+    "name": "Epipen Jr.",
+    "type": "Emergency Kit",
+    "location": "Emergency Kit",
+    "shouldHave": 2,
+    "note": "use for treating very serious allergic reactions"
+  },
+  {
+    "name": "Medicaine Sting/Bite Swab",
+    "type": "Emergency Kit",
+    "location": "Emergency Kit",
+    "shouldHave": 10,
+    "note": "use for temporary relief in pain/itching associated with insect bites/stings"
+  },
+  {
+    "name": "Antacid",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 50,
+    "note": "use for treating heartburn"
+  },
+  {
+    "name": "Bisacodyl Suppositories",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 5,
+    "note": "use for relieving constipation"
+  },
+  {
+    "name": "Docusate Sodium 100 mg",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 30,
+    "note": "use for treating constipation"
+  },
+  {
+    "name": "Lactulose Solution",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 1,
+    "note": "use for treating constipation"
+  },
+  {
+    "name": "Loperamide 2 mg",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 12,
+    "note": "use for treating diarrhea"
+  },
+  {
+    "name": "Pepto-Bismol",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 1,
+    "note": "use for nausea, heartburn (indigestion), upset stomach, and diarrhea"
+  },
+  {
+    "name": "Promethazine 25 mg",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 30,
+    "note": "use for relieving allergic reactions"
+  },
+  {
+    "name": "Proton Pump Inhibitor",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 50,
+    "note": "use for relieving acid reflux and treating stomach ulcers"
+  },
+  {
+    "name": "Ranitidine (or other H2blocker)",
+    "type": "GI Meds",
+    "location": "Case 3",
+    "shouldHave": 30,
+    "note": "use for treating ulcers and reducing stomach acid"
+  },
+  {
+    "name": "Apri Tabs",
+    "type": "GYN Meds",
+    "location": "Case 3",
+    "shouldHave": 2,
+    "note": "use for preventing pregnancy"
+  },
+  {
+    "name": "Depo-Provera",
+    "type": "GYN Meds",
+    "location": "Case 3",
+    "shouldHave": 1,
+    "note": "use for preventing pregnancy and manage medical conditions related to menstrual cycle"
+  },
+  {
+    "name": "Detrol LA (Tolterodin Tartate)",
+    "type": "GYN Meds",
+    "location": "Case 3",
+    "shouldHave": 30,
+    "note": "use for treating overactive bladders"
+  },
+  {
+    "name": "Medroxyprogesterone 10 mg",
+    "type": "GYN Meds",
+    "location": "Case 3",
+    "shouldHave": 10,
+    "note": "use for treating conditions such as absent/irregulate menstrual periods or abnormal uterine bleeding"
+  },
+  {
+    "name": "Miconazole Applicator Set",
+    "type": "GYN Meds",
+    "location": "Case 3",
+    "shouldHave": 1,
+    "note": "use for treating vaginal yeast infections"
+  },
+  {
+    "name": "PlanB",
+    "type": "GYN Meds",
+    "location": "Case 3",
+    "shouldHave": 1,
+    "note": "use for preventing unintended pregnancy"
+  },
+  {
+    "name": "Reclipsen Tabs",
+    "type": "GYN Meds",
+    "location": "Case 3",
+    "shouldHave": 2,
+    "note": "use for preventing pregnancy"
+  },
+  {
+    "name": "Albuterol HFA (Proair/Ventolin)",
+    "type": "Pulmonary",
+    "location": "Case 1",
+    "shouldHave": 2,
+    "note": "use for preventing wheezing and shortness of breath caused by breathing problems"
+  },
+  {
+    "name": "Albuterol Inhalation Soln.",
+    "type": "Pulmonary",
+    "location": "Refrigerator Closet",
+    "shouldHave": 5,
+    "note": "use for preventing wheezing and shortness of breath caused by breathing problems"
+  },
+  {
+    "name": "Ipratropium Inhalation Soln.",
+    "type": "Pulmonary",
+    "location": "Refrigerator Closet",
+    "shouldHave": 5,
+    "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
+  },
+  {
+    "name": "Ipratropium/Albuterol",
+    "type": "Pulmonary",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
+  },
+  {
+    "name": "Steroid Inhaler",
+    "type": "Pulmonary",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating asthma and chronic obstructive pulmonary disease"
+  },
+  {
+    "name": "Steroid/Long Acting Beta Agonist (Adult)",
+    "type": "Pulmonary",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating asthma and chronic obstructive pulmonary disease"
+  },
+  {
+    "name": "Steroid/Long Acting Beta Agonist (Child)",
+    "type": "Pulmonary",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for treating asthma and chronic obstructive pulmonary disease"
+  },
+  {
+    "name": "Tiotropium or Ipratropium",
+    "type": "Pulmonary",
+    "location": "Case 1",
+    "shouldHave": 1,
+    "note": "use for preventing wheezing and shortness of breath caused by chronic obstructive pulmonary disease"
+  },
+  {
+    "name": "Buproprion ER 150 mg",
+    "type": "Smoking Cessation",
+    "location": "Case 5",
+    "shouldHave": 30,
+    "note": "used as an antidepressant for the brain"
+  },
+  {
+    "name": "Nicotine Gum 2 mg",
+    "type": "Smoking Cessation",
+    "location": "Case 5",
+    "shouldHave": 50,
+    "note": "use for helping people to quit smoking"
+  },
+  {
+    "name": "Nicotine Gum 4 mg",
+    "type": "Smoking Cessation",
+    "location": "Case 5",
+    "shouldHave": 50,
+    "note": "use for helping people to quit smoking"
+  },
+  {
+    "name": "Nicotine Patch 7 mg",
+    "type": "Smoking Cessation",
+    "location": "Case 5",
+    "shouldHave": 14,
+    "note": "use for helping people to quit smoking"
+  },
+  {
+    "name": "Nicotine Patch 14 mg",
+    "type": "Smoking Cessation",
+    "location": "Case 5",
+    "shouldHave": 14,
+    "note": "use for helping people to quit smoking"
+  },
+  {
+    "name": "Nicotine Patch 21 mg",
+    "type": "Smoking Cessation",
+    "location": "Case 5",
+    "shouldHave": 14,
+    "note": "use for helping people to quit smoking"
+  },
+  {
+    "name": "Calcium Supplements",
+    "type": "Vitamins and Supplements",
+    "location": "Refrigerator",
+    "shouldHave": 30,
+    "note": "use for treating and preventing osteoporosis"
+  },
+  {
+    "name": "Fiber Capsules",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 60,
+    "note": "use for treating constipation"
+  },
+  {
+    "name": "Fluoride .5 mg",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 30,
+    "note": "use for preventing tooth decay"
+  },
+  {
+    "name": "Fluoride 0.25 mg drops",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 30,
+    "note": "use for preventing dental cavities"
+  },
+  {
+    "name": "Fluoride 1 mg",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 30,
+    "note": "use for preventing tooth decay"
+  },
+  {
+    "name": "Iron 27 mg",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 30,
+    "note": "use for preventing low blood levels of iron"
+  },
+  {
+    "name": "Melatonin 3 mg",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 30,
+    "note": "use for insomnia"
+  },
+  {
+    "name": "Multivitamins - Adult",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 50,
+    "note": "use for treating vitamin deficiencies"
+  },
+  {
+    "name": "Multivitamins - Adult Gummies",
+    "type": "Vitamins and Supplements",
+    "location": "Refrigerator",
+    "shouldHave": 50,
+    "note": "use for treating vitamin deficiencies"
+  },
+  {
+    "name": "Multivitamins - Children's Gummies",
+    "type": "Vitamins and Supplements",
+    "location": "Refrigerator",
+    "shouldHave": 50,
+    "note": "use for treating vitamin deficiencies"
+  },
+  {
+    "name": "Multivitamins - Kids Chewable",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 50,
+    "note": "use for treating vitamin deficiencies"
+  },
+  {
+    "name": "Prenatal Vitamins",
+    "type": "Vitamins and Supplements",
+    "location": "Case 6",
+    "shouldHave": 30,
+    "note": "use for giving healthy pregnancies"
+  }
+]

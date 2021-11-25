@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
@@ -206,3 +207,6 @@ class SupplySourceCollection extends BaseCollection {
  * Provides the singleton instance of this class to all other entities.
  */
 export const SupplySource = new SupplySourceCollection();
+
+export class Supplies {
+}

@@ -16,7 +16,7 @@ import { acquiredType, MedicineSource } from '../../api/medSource/MedicineSource
 import { MedicineSourceRecord } from '../../api/record/medsourceRecord/MedicineSourceRecordCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
-const inputState = ['Acted', 'Reserves'];
+const inputState = ['Acted', 'Reserved'];
 
 const formSchema = new SimpleSchema({
   lotNumber: String,
@@ -33,7 +33,7 @@ const formSchema = new SimpleSchema({
   state: {
     type: String,
     allowedValues: inputState,
-    defaultValue: 'Reserves',
+    defaultValue: 'Reserved',
   },
 });
 
@@ -78,7 +78,7 @@ const AddMedicineInventory = ({ mName }) => {
           </Form.Group>
           <Form.Group>
             <SelectField label='State' name='state'/>
-            <TextField type='date' label='Expiration Date' name='receiveDate'/>
+            <TextField type='date' label='Expiration Date' name='expDate'/>
           </Form.Group>
           <Form.Group widths='equal'>
             <TextField name='sourceName'/>
@@ -87,7 +87,7 @@ const AddMedicineInventory = ({ mName }) => {
           </Form.Group>
           <Form.Group>
             <NumField label='Amount Received' name='quantity'/>
-            <TextField type='date' label='Receive Date' name='expDate'/>
+            <TextField type='date' label='Receive Date' name='receiveDate'/>
           </Form.Group>
           <SubmitField value='Submit' />
           <ErrorsField />

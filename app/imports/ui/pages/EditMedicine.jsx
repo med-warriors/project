@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment, Form } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField, DateField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, DateField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
