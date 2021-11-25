@@ -20,6 +20,7 @@ const NavBar = ({ currentUser }) => {
         [<Dropdown id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN} item text="Information" key="list-dropdown">
           <Dropdown.Menu>
             <Dropdown.Item id={COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_MEDICINE_AND_SUPPLIES} as={NavLink} activeClassName="active" exact to="/medicine-and-supplies" key='medicine-and-supplies'><Icon name="medkit"/>Medicine And Supplies</Dropdown.Item>
+            <Dropdown.Item id={COMPONENT_IDS.NAVBAR_RECORD} as={NavLink} activeClassName="active" exact to="/record" key='record'><Icon name="book"/>Record</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>,
         <Dropdown id={COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN} item text="Transaction" key="transaction-dropdown">

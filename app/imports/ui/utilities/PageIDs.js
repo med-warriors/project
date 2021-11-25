@@ -11,6 +11,7 @@ export const PAGE_IDS = {
   LIST_STUFF_ADMIN: 'list-stuff-admin',
   LIST_MEDICINES: 'list-medicines',
   LIST_HISTORIES: 'list-histories',
+  LIST_RECORD: 'list-record',
   MANAGE_DATABASE: 'manage-database',
   NOT_FOUND: 'not-found',
   SIGN_IN: 'sigin-in',

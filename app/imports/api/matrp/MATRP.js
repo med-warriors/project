@@ -6,6 +6,7 @@ import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 import { Medicines } from '../medicine/MedicineCollection';
 import { MedicineSource } from '../medSource/MedicineSourceCollection';
+import { MedicineSourceRecord } from '../record/medsourceRecord/MedicineSourceRecordCollection';
 import { Supplies } from '../supply/SupplyCollection';
 import { TransationHistories } from '../transaction/TransationHistoriesCollection';
 import { DoctorProfiles } from '../user/DoctorProfileCollection';
@@ -28,6 +29,7 @@ class MATRPClass {
       UserProfiles,
       Medicines,
       MedicineSource,
+      MedicineSourceRecord,
       Supplies,
       TransationHistories,
     ];
@@ -43,6 +45,7 @@ class MATRPClass {
       Patients,
       Medicines,
       MedicineSource,
+      MedicineSourceRecord,
       Supplies,
       TransationHistories,
     ];
