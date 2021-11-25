@@ -93,3 +93,7 @@ body {
 #exp-description {
   padding: 20px;
 }
+
+#note-dispense {
+  text-align: left;
+}
