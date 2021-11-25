@@ -14,8 +14,6 @@ export const medicinePublications = {
 
 export const acquiredType = ['Donated', 'Purchased'];
 export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
-export const quantityState = { good: 'good', ok: 'ok', bad: 'bad' };
-export const expState = { good: 'good', soon: 'soon', expired: 'expired' };
 
 class MedicineSourceCollection extends BaseCollection {
   constructor() {
@@ -123,7 +121,6 @@ class MedicineSourceCollection extends BaseCollection {
    * Compares the quantity and determines status
    * @param quantity the amount of the inventory left
    * @return the quantity status of the item
-   */
   checkQuantityStatus(quantity) {
     let quantityStatus;
     if (quantity === 0 && quantity <= 10) {
@@ -135,12 +132,11 @@ class MedicineSourceCollection extends BaseCollection {
     }
     return quantityStatus;
   }
-
+  */
   /**
    * Compares the current date to the expiration date and determines status
    * @param expDate is the expiration date for the medicine
    * @return the expired status of the item
-   */
   checkExpStatus(expDate) {
     const today = new Date();
     const days = expDate - today;
@@ -155,7 +151,7 @@ class MedicineSourceCollection extends BaseCollection {
     }
     return expiredStatus;
   }
-
+   */
   /**
    * Default publication method for entities.
    * It publishes the entire collection for admin and just the stuff associated to an owner.
