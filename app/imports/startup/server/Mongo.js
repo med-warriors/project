@@ -6,7 +6,6 @@ import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
-import { TransationHistories } from '../../api/transaction/TransationHistoriesCollection';
 
 // variables to read off JSON files from /private directory
 const medicines = JSON.parse(Assets.getText('medicine.json'));
@@ -95,19 +94,5 @@ if (SupplySource.count() === 0) {
   if (supSource) {
     console.log('Creating default sources data.');
     supSource.map(supplysource => addSource(supplysource));
-  }
-}
-
-// Initialize the database with transaction history document.
-function addTransationHistory(transaction) {
-  console.log(`  Adding history: ${transaction.date}`);
-  TransationHistories.define(transaction);
-}
-
-// Initialize the SupplyCollection if empty.
-if (TransationHistories.count() === 0) {
-  if (Meteor.settings.defaultTransationHistory) {
-    console.log('Creating default history data.');
-    Meteor.settings.defaultTransationHistory.map(transaction => addTransationHistory(transaction));
   }
 }
