@@ -2,22 +2,15 @@ import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { MedicineSource, quantityState, expState } from '../../api/medSource/MedicineSourceCollection';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MedicineItem = ({ inventories }) => {
   let highlight;
-  const expStatus = MedicineSource.checkExpStatus(inventories.expDate);
-  const quantityStatus = MedicineSource.checkQuantityStatus(inventories.quantity);
-  const collectionName = MedicineSource.getCollectionName();
-  const updateData = { id: inventories._id, quantityStatus, expStatus };
-  updateMethod.callPromise({ collectionName, updateData });
 
   // if medicine is expired or low quantity, medicine will not show up on Dispense field
-  if (inventories.expStatus === expState.expired || inventories.quantityStatus === quantityState.bad) {
+  if (inventories.expStatus === 'expired' || inventories.quantityStatus === 'bad') {
     highlight = 'error';
-  } else if (inventories.expStatus === expState.soon || inventories.quantityStatus === quantityState.ok) {
+  } else if (inventories.expStatus === 'soon' || inventories.quantityStatus === 'ok') {
     highlight = 'warning';
   } else {
     highlight = 'positive';

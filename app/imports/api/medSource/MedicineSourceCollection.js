@@ -118,44 +118,10 @@ class MedicineSourceCollection extends BaseCollection {
   }
 
   /**
-   * Compares the quantity and determines status
-   * @param quantity the amount of the inventory left
-   * @return the quantity status of the item
-  checkQuantityStatus(quantity) {
-    let quantityStatus;
-    if (quantity === 0 && quantity <= 10) {
-      quantityStatus = quantityState.bad;
-    } else if (quantity >= 11 && quantity < 50) {
-      quantityStatus = quantityState.ok;
-    } else {
-      quantityStatus = quantityState.good;
-    }
-    return quantityStatus;
-  }
-  */
-  /**
-   * Compares the current date to the expiration date and determines status
-   * @param expDate is the expiration date for the medicine
-   * @return the expired status of the item
-  checkExpStatus(expDate) {
-    const today = new Date();
-    const days = expDate - today;
-    const offset = (24 * 60 * 60 * 1000) * 7;
-    let expiredStatus;
-    if (days <= 0 && days > offset) {
-      expiredStatus = expState.expired;
-    } else if (days <= offset && days > 0) {
-      expiredStatus = expState.soon;
-    } else {
-      expiredStatus = expState.good;
-    }
-    return expiredStatus;
-  }
-   */
-  /**
    * Default publication method for entities.
    * It publishes the entire collection for admin and just the stuff associated to an owner.
    */
+
   publish() {
     if (Meteor.isServer) {
       // get the MedicineSourceCollection instance.
