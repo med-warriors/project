@@ -26,7 +26,6 @@ import EditProfile from '../pages/EditProfile';
 import EditSupply from '../pages/EditSupply';
 import EditMedicine from '../pages/EditMedicine';
 import ChangeRole from '../pages/ChangeRole';
-import Record from '../pages/Record';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {

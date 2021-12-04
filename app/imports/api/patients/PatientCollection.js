@@ -35,13 +35,7 @@ class PatientCollection extends BaseCollection {
    */
   define({ date, id, note, dispense, location, employee }) {
     const docID = this._collection.insert({
-      date,
-      id,
-      note,
-      dispense,
-      location,
-      employee,
-    });
+      date, id, note, dispense, location, employee });
     return docID;
   }
 
@@ -56,19 +50,19 @@ class PatientCollection extends BaseCollection {
       updateData.id = id;
     }
     if (_.isDate(date)) {
-      updateData.date(date);
+      updateData.date = date;
     }
     if (note) {
-      updateData.note(note);
+      updateData.note = note;
     }
     if (dispense) {
-      updateData.dispense(dispense);
+      updateData.dispense = dispense;
     }
     if (location) {
-      updateData.location(location);
+      updateData.location = location;
     }
     if (employee) {
-      updateData.employee(employee);
+      updateData.employee = employee;
     }
     this._collection.update(docID, { $set: updateData });
   }

@@ -7,31 +7,28 @@ import PatientItem from '../components/PatientItem';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const PatientInformation = ({ ready, patients }) => {
-  console.log(patients);
-  return ((ready) ? (
+const PatientInformation = ({ ready, patients }) => ((ready) ? (
 
-    <Container id={PAGE_IDS.LIST_STUFF}>
-      <Header as="h2" textAlign="center">Patient History Information</Header>
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Date</Table.HeaderCell>
-            <Table.HeaderCell>Patient ID</Table.HeaderCell>
-            <Table.HeaderCell>Dispensed Medication</Table.HeaderCell>
-            <Table.HeaderCell>Patient Notes</Table.HeaderCell>
-            <Table.HeaderCell>Location of Medicine</Table.HeaderCell>
-            <Table.HeaderCell>Employee</Table.HeaderCell>
-            <Table.HeaderCell>Edit</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {patients.map((patient) => <PatientItem key={patient._id} patient={patient} />)}
-        </Table.Body>
-      </Table>
-    </Container>
-  ) : <Loader active>Getting data</Loader>);
-};
+  <Container id={PAGE_IDS.LIST_STUFF}>
+    <Header as="h2" textAlign="center">Patient History Information</Header>
+    <Table celled>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Date</Table.HeaderCell>
+          <Table.HeaderCell>Patient ID</Table.HeaderCell>
+          <Table.HeaderCell>Dispensed Medication</Table.HeaderCell>
+          <Table.HeaderCell>Patient Notes</Table.HeaderCell>
+          <Table.HeaderCell>Location of Medicine</Table.HeaderCell>
+          <Table.HeaderCell>Employee</Table.HeaderCell>
+          <Table.HeaderCell>Edit</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {patients.map((patient) => <PatientItem key={patient._id} patient={patient} />)}
+      </Table.Body>
+    </Table>
+  </Container>
+) : <Loader active>Getting data</Loader>);
 
 // Require an array of Stuff documents in the props.
 PatientInformation.propTypes = {
