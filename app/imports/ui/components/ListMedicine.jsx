@@ -7,7 +7,6 @@ import MedicineItem from './MedicineItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListMedicine = ({ ready, inventory, medicine, source }) => {
-  let note;
   const [open, setOpen] = React.useState(false);
 
   // adds current quantity from way of acquiring medicine to default quantity
