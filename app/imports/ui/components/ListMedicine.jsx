@@ -6,22 +6,16 @@ import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import MedicineItem from './MedicineItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const ListMedicine = ({ ready, inventory, medicine, source }) => {
+const ListMedicine = ({ ready, inventory, medicine, warning }) => {
+  let highlight;
   const [open, setOpen] = React.useState(false);
 
-  // adds current quantity from way of acquiring medicine to default quantity
-  const totalQuantity = source.reduce((prev, current) => (prev + current.quantity), 0);
-
-  let highlight;
-
-  if (totalQuantity / medicine.shouldHave <= 0.5 && totalQuantity / medicine.shouldHave > 0.1) {
-    // highlights in yellow when percentage of total quantity and should have columns is between 11% and 50%
-    highlight = 'warning';
-  } else if (totalQuantity / medicine.shouldHave <= 0.1 || totalQuantity / medicine.shouldHave === 0 || totalQuantity / medicine.shouldHave === undefined) {
-    // highlights in red when percentage of total quantity and should have columns is between 0% and 10% or undefined
+  // Highlights row in different color based on expiration status
+  if (warning.expStatus === 'expired' || warning.quantityStatus === 'bad') {
     highlight = 'error';
+  } else if (warning.expStatus === 'soon' || warning.quantityStatus === 'ok') {
+    highlight = 'warning';
   } else {
-    // highlights in green when overall quantity of medicine is good (over 50%)
     highlight = 'positive';
   }
 
@@ -45,8 +39,8 @@ const ListMedicine = ({ ready, inventory, medicine, source }) => {
               <Table.HeaderCell>State</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          <Table.Body positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}>
-            {inventory.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories}/>)}
+          <Table.Body>
+            {inventory.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories} positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}/>)}
           </Table.Body>
         </Table>
       </Modal.Content>
@@ -60,12 +54,12 @@ ListMedicine.propTypes = {
     name: PropTypes.string,
     type: PropTypes.string,
     location: PropTypes.string,
-    shouldHave: PropTypes.number,
+    should_have: PropTypes.number,
     note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
   inventory: PropTypes.array.isRequired,
-  source: PropTypes.array.isRequired,
+  warning: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -78,10 +72,12 @@ export default withTracker(({ medicine }) => {
   // Get the Stuff documents and sort them by name.
   const inventory = MedicineSource.find({ medName: medicine.name }, { sort: { name: 1 } }).fetch();
   // Provides the Medicine Source documents and sorts them by name.
-  const source = MedicineSource.find({ medName: medicine.name, state: { $in: ['Acted', 'Reserves'] } }, { sort: { name: 1 } }).fetch();
+  const warning = MedicineSource.find({
+    expStatus: { $in: ['expired', 'soon'] },
+  }).fetch().reverse();
   return {
     inventory,
-    source,
+    warning,
     ready,
   };
 })(ListMedicine);
