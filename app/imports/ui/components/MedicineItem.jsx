@@ -7,15 +7,6 @@ import { withRouter } from 'react-router-dom';
 const MedicineItem = ({ inventories }) => {
   let highlight;
 
-  // if medicine is expired or low quantity, medicine will not show up on Dispense field
-  if (inventories.expStatus === 'expired' || inventories.quantityStatus === 'bad') {
-    highlight = 'error';
-  } else if (inventories.expStatus === 'soon' || inventories.quantityStatus === 'ok') {
-    highlight = 'warning';
-  } else {
-    highlight = 'positive';
-  }
-
   return (
     <Table.Row positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}>
       <Table.Cell>{inventories.lotNumber}</Table.Cell>
@@ -39,8 +30,6 @@ MedicineItem.propTypes = {
     cost: PropTypes.number,
     receiveDate: PropTypes.instanceOf(Date),
     expDate: PropTypes.instanceOf(Date),
-    expStatus: PropTypes.string,
-    quantityStatus: PropTypes.string,
     state: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,

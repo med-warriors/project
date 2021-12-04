@@ -46,9 +46,9 @@ class MedicineSourceCollection extends BaseCollection {
    * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, quantityStatus, expStatus, state }) {
+  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
     const docID = this._collection.insert({
-      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, quantityStatus, expStatus, state,
+      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
     });
     return docID;
   }
@@ -65,7 +65,7 @@ class MedicineSourceCollection extends BaseCollection {
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
    */
-  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, quantityStatus, expStatus, state }) {
+  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;
@@ -92,12 +92,6 @@ class MedicineSourceCollection extends BaseCollection {
     }
     if (_.isDate(expDate)) {
       updateData.expDate = expDate;
-    }
-    if (_.isDate(quantityStatus)) {
-      updateData.quantityStatus = quantityStatus;
-    }
-    if (_.isDate(expStatus)) {
-      updateData.expStatus = expStatus;
     }
     if (state) {
       updateData.state = state;

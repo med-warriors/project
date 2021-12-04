@@ -6,18 +6,8 @@ import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import MedicineItem from './MedicineItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const ListMedicine = ({ ready, inventory, medicine, warning }) => {
-  let highlight;
+const ListMedicine = ({ ready, inventory, medicine }) => {
   const [open, setOpen] = React.useState(false);
-
-  // Highlights row in different color based on expiration status
-  if (warning.expStatus === 'expired' || warning.quantityStatus === 'bad') {
-    highlight = 'error';
-  } else if (warning.expStatus === 'soon' || warning.quantityStatus === 'ok') {
-    highlight = 'warning';
-  } else {
-    highlight = 'positive';
-  }
 
   return ((ready) ? (
     <Modal
@@ -40,7 +30,7 @@ const ListMedicine = ({ ready, inventory, medicine, warning }) => {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {inventory.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories} positive={highlight === 'positive'} warning={highlight === 'warning'} error={highlight === 'error'}/>)}
+            {inventory.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories}/>)}
           </Table.Body>
         </Table>
       </Modal.Content>
@@ -59,7 +49,6 @@ ListMedicine.propTypes = {
     _id: PropTypes.string,
   }).isRequired,
   inventory: PropTypes.array.isRequired,
-  warning: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -71,13 +60,8 @@ export default withTracker(({ medicine }) => {
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
   const inventory = MedicineSource.find({ medName: medicine.name }, { sort: { name: 1 } }).fetch();
-  // Provides the Medicine Source documents and sorts them by name.
-  const warning = MedicineSource.find({
-    expStatus: { $in: ['expired', 'soon'] },
-  }).fetch().reverse();
   return {
     inventory,
-    warning,
     ready,
   };
 })(ListMedicine);
