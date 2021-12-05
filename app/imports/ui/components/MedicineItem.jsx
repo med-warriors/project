@@ -5,8 +5,6 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-// bring should have value to highlight individual quantity
-// ListMedicine connects to INFO Button
 const MedicineItem = ({ inventories }) => {
   let highlight;
   let note;
@@ -17,7 +15,7 @@ const MedicineItem = ({ inventories }) => {
 
   if (days <= 0) {
     // reminder when medicine has already expired
-    note = `This item has expired ${days} days ago.`;
+    note = `This item has expired ${Math.abs(days)} days ago.`;
   } else if (days >= 1 && days <= 14) {
     // reminder when medicine is about to expire within two weeks
     note = `This item will expire in ${days} days.`;
