@@ -42,9 +42,11 @@ const ListMedicine = ({ ready, inventory, medicine }) => {
 ListMedicine.propTypes = {
   medicine: PropTypes.shape({
     name: PropTypes.string,
+    quantity: PropTypes.number,
     type: PropTypes.string,
     location: PropTypes.string,
-    should_have: PropTypes.number,
+    shouldHave: PropTypes.number,
+    expDate: PropTypes.instanceOf(Date),
     note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
