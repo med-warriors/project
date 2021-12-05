@@ -11,6 +11,7 @@ const DispenseMedicine = ({ inventories, addDispense }) => {
 
   let highlight;
 
+  // if medicine is expired or low quantity, medicine will not show up on Dispense field
   if (inventories.quantity <= 50 && inventories.quantity > 10) {
     // highlights in yellow when quantity is between 11 and 50
     highlight = 'warning';

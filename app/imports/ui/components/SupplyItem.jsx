@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const MedicineItem = ({ inventories }) => (
+const SupplyItem = ({ inventories }) => (
   <Table.Row>
     <Table.Cell>{inventories.supplyName}</Table.Cell>
     <Table.Cell>{inventories.quantity}</Table.Cell>
@@ -14,7 +14,7 @@ const MedicineItem = ({ inventories }) => (
 );
 
 // Require a document to be passed to this component.
-MedicineItem.propTypes = {
+SupplyItem.propTypes = {
   inventories: PropTypes.shape({
     supplyName: PropTypes.string,
     quantity: PropTypes.number,
@@ -28,4 +28,4 @@ MedicineItem.propTypes = {
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(MedicineItem);
+export default withRouter(SupplyItem);

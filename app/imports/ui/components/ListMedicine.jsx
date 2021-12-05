@@ -15,7 +15,7 @@ const ListMedicine = ({ ready, inventory, medicine }) => {
       onOpen={() => setOpen(true)}
       open={open}
       size={'large'}
-      trigger={<Button color='blue'>DI</Button>}
+      trigger={<Button color='blue'>INFO</Button>}
     >
       <Modal.Header>{medicine.name}</Modal.Header>
       <Modal.Content>

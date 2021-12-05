@@ -16,7 +16,7 @@ const ListSupply = ({ ready, inventory, supply }) => {
       onOpen={() => setOpen(true)}
       open={open}
       size={'large'}
-      trigger={<Button color='blue'>DI</Button>}
+      trigger={<Button color='blue'>INFO</Button>}
     >
       <Modal.Header>{supply.name}</Modal.Header>
       <Modal.Content>
