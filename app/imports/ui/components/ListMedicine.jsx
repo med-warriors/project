@@ -27,6 +27,7 @@ const ListMedicine = ({ ready, inventory, medicine }) => {
               <Table.HeaderCell>Quantity</Table.HeaderCell>
               <Table.HeaderCell>Exp Date</Table.HeaderCell>
               <Table.HeaderCell>State</Table.HeaderCell>
+              <Table.HeaderCell>Reminder</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
