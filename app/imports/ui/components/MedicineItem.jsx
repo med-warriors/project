@@ -2,10 +2,18 @@ import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
+import { removeItMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MedicineItem = ({ inventories }) => {
   let highlight;
+
+  const handleChange = () => {
+    const collectionName = MedicineSource.getCollectionName();
+    const instance = inventories._id;
+    removeItMethod.callPromise({ collectionName, instance });
+  };
 
   // if medicine is expired or low quantity, medicine will not show up on Dispense field
   if (inventories.expStatus === 'expired' || inventories.quantityStatus === 'bad') {
@@ -23,7 +31,10 @@ const MedicineItem = ({ inventories }) => {
       <Table.Cell>{inventories.quantity}</Table.Cell>
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
-      <Button color='green' content='UPDATE'/>
+      <Button.Group vertical>
+        <Button color='green' content='UPDATE'/>
+        <Button color='orange' content='DELETE' onClick={handleChange}/>
+      </Button.Group>
     </Table.Row>);
 };
 
