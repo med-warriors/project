@@ -10,6 +10,7 @@ import AddSupplyInventory from './AddSupplyInventory';
 import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Supplies } from '../../api/supply/SupplyCollection';
 import { ROLE } from '../../api/role/Role';
+import UpdateSupply from './UpdateSupply';
 /*
 // Changes text to red, yellow, or green, based on quantity of supplies
 const getColor = (quantity) => {
@@ -52,7 +53,7 @@ const CurrentSupplies = ({ supply, ready, source }) => {
       <Table.Cell>
         <Button.Group vertical>
           <AddSupplyInventory supName={supply.name}/>
-          <Button color='green' content='UPDATE'/>
+          <UpdateSupply supply={supply}/>
           <ListSupply supply={supply}/>
           {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
             <Button color='orange' content='DELETE' onClick={handleChange}/>
