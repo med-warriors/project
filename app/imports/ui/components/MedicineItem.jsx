@@ -3,11 +3,18 @@ import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
+import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
+import { removeItMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MedicineItem = ({ inventories }) => {
   let highlight;
   let note;
+  const handleChange = () => {
+    const collectionName = MedicineSource.getCollectionName();
+    const instance = inventories._id;
+    removeItMethod.callPromise({ collectionName, instance });
+  };
   // variable for today's date
   const today = new Date().toDateString();
   // variable to compare today's date with expiration date
@@ -42,7 +49,10 @@ const MedicineItem = ({ inventories }) => {
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>{note}</Table.Cell>
-      <Button color='green' content='UPDATE'/>
+      <Button.Group vertical>
+        <Button color='green' content='UPDATE'/>
+        <Button color='orange' content='DELETE' onClick={handleChange}/>
+      </Button.Group>
     </Table.Row>);
 };
 

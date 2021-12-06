@@ -2,11 +2,14 @@ import React from 'react';
 import { Button, Loader, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import AddMedicineInventory from './IncreaseMedication';
 import ListMedicine from './ListMedicine';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Medicines } from '../../api/medicine/MedicineCollection';
+import { ROLE } from '../../api/role/Role';
 
 // Changes text to red, yellow, or green, based on quantity of medicine
 /*
@@ -51,7 +54,9 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
           <AddMedicineInventory mName={medicine.name}/>
           <Button color='green' content='UPDATE'/>
           <ListMedicine medicine={medicine}/>
-          <Button color='orange' content='DELETE' onClick={handleChange}/>
+          {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
+            <Button color='orange' content='DELETE' onClick={handleChange}/>
+          ) : ''}
         </Button.Group>
       </Table.Cell>
     </Table.Row>) : <Loader active>Getting data</Loader>);
@@ -78,7 +83,7 @@ export default withTracker(({ medicine }) => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const source = MedicineSource.find({ medName: medicine.name, state: { $in: ['Acted', 'Reserves'] } }, { sort: { name: 1 } }).fetch();
+  const source = MedicineSource.find({ medName: medicine.name }, { sort: { name: 1 } }).fetch();
   return {
     source,
     ready,
