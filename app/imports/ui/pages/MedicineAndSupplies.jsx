@@ -140,10 +140,14 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
               </Table.Body>
             </Table>
             <Pagination
+              boundaryRange={0}
               activePage={activePage}
               onPageChange={onChange}
               totalPages={Math.ceil(medSort.length / 15)}
               ellipsisItem={null}
+              firstItem={null}
+              lastItem={null}
+              siblingRange={1}
             />
           </Tab.Pane>,
         },
@@ -173,10 +177,14 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
               </Table.Body>
             </Table>
             <Pagination
+              boundaryRange={0}
               activePage={activePage}
               onPageChange={onChange}
               totalPages={Math.ceil(supplySort.length / 6)}
               ellipsisItem={null}
+              firstItem={null}
+              lastItem={null}
+              siblingRange={1}
             />
           </Tab.Pane>,
         }]}/>
