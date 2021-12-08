@@ -9,6 +9,7 @@ import { MedicineSourceRecord } from '../../api/medsourceRecord/MedicineSourceRe
 import { SupplySourceRecord } from '../../api/supplysourceRecord/SupplySourceRecordCollection';
 import SupplyRecordItem from '../components/SupplyRecordItem';
 import MedicineRecordItem from '../components/MedicineRecordItem';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a table containing all of the Medicine And Supplies documents. Use <MedicineAndSuppliesItem> to render each row. */
 
@@ -20,7 +21,7 @@ const Record = ({ readyM, medicines, readyS, supplies, readyP, patient }) => {
       <Tab panes={[
         {
           // eslint-disable-next-line react/display-name
-          menuItem: 'Medicine', render: () => <Tab.Pane>
+          menuItem: 'Medicine', render: () => <Tab.Pane id={COMPONENT_IDS.RECORD_MED_TAB}>
             <Grid id='med-supply' centered doubling columns={2}>
             </Grid>
             <Table>
@@ -43,7 +44,7 @@ const Record = ({ readyM, medicines, readyS, supplies, readyP, patient }) => {
         },
         {
           // eslint-disable-next-line react/display-name
-          menuItem: 'Supplies', render: () => <Tab.Pane>
+          menuItem: 'Supplies', render: () => <Tab.Pane id={COMPONENT_IDS.RECORD_SUPPLY_TAB}>
             <Grid id='med-supply' centered doubling columns={2}>
             </Grid>
             <Table>
@@ -65,7 +66,7 @@ const Record = ({ readyM, medicines, readyS, supplies, readyP, patient }) => {
           </Tab.Pane>,
         }, {
           // eslint-disable-next-line react/display-name
-          menuItem: 'Dispense', render: () => <Tab.Pane>
+          menuItem: 'Dispense', render: () => <Tab.Pane id={COMPONENT_IDS.RECORD_DISPENSE_TAB}>
             <Grid id='med-supply' centered doubling columns={2}>
             </Grid>
             <Table>

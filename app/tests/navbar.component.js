@@ -66,6 +66,13 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_DROPDOWN_MEDICINE_AND_SUPPLIES}`);
   }
 
+  /** Go to the record page. */
+  async gotoRecordPage() {
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_RECORD}`);
+  }
+
   /** Pull down login menu, go to sign up page. */
   async gotoSignupPage() {
     await this.ensureLogout();

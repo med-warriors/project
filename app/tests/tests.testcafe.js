@@ -1,5 +1,5 @@
 import { t } from 'testcafe';
-import { viewProfilePage, manageDatabasePage, signOutPage } from './simple.page';
+import { recordPage, viewProfilePage, manageDatabasePage, signOutPage } from './simple.page';
 import { signInPage } from './signin.page';
 // import { changeRolePage } from './change.role.page';
 import { addMedPage } from './add.med.page';
@@ -132,4 +132,15 @@ test('Test that admin/user can dispense', async () => {
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.gotoDispensePage();
   await dispensePage.fillOutDispense('cet', '444', 'Honolulu', 'Take one pill every night');
+});
+
+test('Test that admin/user can display record page', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoRecordPage();
+  await recordPage.isDisplayed();
+  await navBar.logout();
+  await signOutPage.isDisplayed();
+  await t.wait(1000);
 });
