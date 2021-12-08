@@ -21,8 +21,8 @@ const UpdateMedicine = ({ medicine }) => {
   const submit = (data) => {
     const { name, type, location, note, _id } = data;
     const collectionName = Medicines.getCollectionName();
-    const definitionData = { id: _id, name, type, location, note };
-    updateMethod.callPromise({ collectionName, definitionData })
+    const updateData = { id: _id, name, type, location, note };
+    updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Medicine update successfully', 'success');
