@@ -21,8 +21,8 @@ const UpdateSupply = ({ supply }) => {
   const submit = (data) => {
     const { name, location, note, _id } = data;
     const collectionName = Supplies.getCollectionName();
-    const definitionData = { id: _id, name, location, note };
-    updateMethod.callPromise({ collectionName, definitionData })
+    const updateData = { id: _id, name, location, note };
+    updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Supply update successfully', 'success');
@@ -46,6 +46,7 @@ const UpdateSupply = ({ supply }) => {
             <SelectField name='location'/>
           </Form.Group>
           <TextField name='note'/>
+          <TextField name='_id'/>
           <SubmitField value='Update' />
           <ErrorsField />
         </AutoForm>

@@ -207,6 +207,3 @@ class SupplySourceCollection extends BaseCollection {
  * Provides the singleton instance of this class to all other entities.
  */
 export const SupplySource = new SupplySourceCollection();
-
-export class Supplies {
-}

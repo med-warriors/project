@@ -13,15 +13,15 @@ import {
 } from 'uniforms-semantic';
 import { withRouter } from 'react-router-dom';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
-import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
+import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 
-const bridge = new SimpleSchema2Bridge(SupplySource._schema);
+const bridge = new SimpleSchema2Bridge(MedicineSource._schema);
 
-const UpdateSupplyInventory = ({ supply }) => {
+const UpdateMedicineInventory = ({ medicine }) => {
   // On submit, insert the data.
   const submit = (data) => {
     const { supplyName, quantity, sourceName, acquire, cost, state, receiveDate, _id } = data;
-    const collectionName = SupplySource.getCollectionName();
+    const collectionName = MedicineSource.getCollectionName();
     const updateData = { id: _id, supplyName, quantity, sourceName, acquire, cost, receiveDate, state };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -39,17 +39,21 @@ const UpdateSupplyInventory = ({ supply }) => {
       open={update}
       trigger={<Button color='green'>UPDATE</Button>}
     >
-      <Modal.Header>Update {supply.supplyName} Inventory</Modal.Header>
+      <Modal.Header>Update {medicine.medName} Inventory</Modal.Header>
       <Modal.Content>
-        <AutoForm schema={bridge} onSubmit={data => submit(data)} model={supply}>
-          <TextField disabled label='Supply Name' name='supplyName'/>
+        <AutoForm schema={bridge} onSubmit={data => submit(data)} model={medicine}>
+          <TextField disabled label='Medicine Name' name='medName'/>
           <Form.Group widths='equal'>
+            <TextField name='lotNumber'/>
             <TextField name='sourceName'/>
             <SelectField name='acquire'/>
-            <NumField name='cost' />
           </Form.Group>
           <Form.Group widths='equal'>
             <NumField label='Amount Received' name='quantity'/>
+            <NumField name='cost' />
+          </Form.Group>
+          <Form.Group widths='equal'>
+            <TextField type='date' label='Expiration Date' name='expDate'/>
             <SelectField label='State' name='state'/>
           </Form.Group>
           <SubmitField value='Update' />
@@ -60,18 +64,20 @@ const UpdateSupplyInventory = ({ supply }) => {
   );
 };
 
-UpdateSupplyInventory.propTypes = {
-  supply: PropTypes.shape({
-    supplyName: PropTypes.string,
+UpdateMedicineInventory.propTypes = {
+  medicine: PropTypes.shape({
+    lotNumber: PropTypes.string,
+    medName: PropTypes.string,
     quantity: PropTypes.number,
     sourceName: PropTypes.string,
     acquire: PropTypes.string,
     cost: PropTypes.number,
     receiveDate: PropTypes.instanceOf(Date),
+    expDate: PropTypes.instanceOf(Date),
     state: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(UpdateSupplyInventory);
+export default withRouter(UpdateMedicineInventory);
