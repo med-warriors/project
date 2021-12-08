@@ -78,12 +78,16 @@ CurrentMedicine.propTypes = {
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ medicine }) => {
+  const today = new Date();
   // Get access to Stuff documents.
   const subscription = MedicineSource.subscribeMedicineSource();
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const source = MedicineSource.find({ medName: medicine.name }, { sort: { name: 1 } }).fetch();
+  const source = MedicineSource.find(
+    { medName: medicine.name, state: { $in: ['Acted', 'Reserves'] }, expDate: { $gt: today } },
+    { sort: { medName: 1 } },
+  ).fetch();
   return {
     source,
     ready,
