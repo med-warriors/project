@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import { Supplies } from '../../api/supply/SupplyCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -46,11 +47,11 @@ const AddSupply = () => {
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <Form.Group widths='equal'>
-              <TextField name='name' />
-              <SelectField name='location' />
-              <TextField name='note' />
+              <TextField name='name' id={COMPONENT_IDS.ADD_SUPPLIES_FORM_NAME}/>
+              <SelectField name='location' id={COMPONENT_IDS.ADD_SUPPLIES_FORM_LOCATION}/>
+              <TextField name='note' id={COMPONENT_IDS.ADD_SUPPLIES_FORM_NOTE}/>
             </Form.Group>
-            <SubmitField value='Submit'/>
+            <SubmitField value='Submit' id={COMPONENT_IDS.ADD_SUPPLIES_FORM_SUBMIT}/>
             <ErrorsField />
           </Segment>
         </AutoForm>

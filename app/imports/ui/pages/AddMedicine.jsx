@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import { locSpot, Medicines } from '../../api/medicine/MedicineCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -66,15 +67,15 @@ const AddMedicine = () => {
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Segment>
             <Form.Group widths='equal'>
-              <TextField label='Medicine Name' name='name'/>
-              <SelectField label='Medicine Type' name='type'/>
-              <NumField label='Required Quantity' name='shouldHave' decimal={false} min={0}/>
+              <TextField label='Medicine Name' name='name' id={COMPONENT_IDS.ADD_MEDICINE_FORM_NAME}/>
+              <SelectField label='Medicine Type' name='type' id={COMPONENT_IDS.ADD_MEDICINE_FORM_TYPE}/>
+              <NumField label='Required Quantity' name='shouldHave' decimal={false} min={0} id={COMPONENT_IDS.ADD_MEDICINE_FORM_QUANTITY}/>
             </Form.Group>
             <Form.Group widths='equal'>
-              <SelectField label='Location' name='location'/>
-              <TextField name='note'/>
+              <SelectField label='Location' name='location' id={COMPONENT_IDS.ADD_MEDICINE_FORM_LOCATION}/>
+              <TextField name='note' id={COMPONENT_IDS.ADD_MEDICINE_FORM_NOTE}/>
             </Form.Group>
-            <SubmitField value='Submit'/>
+            <SubmitField value='Submit' id={COMPONENT_IDS.ADD_MEDICINE_FORM_SUBMIT}/>
             <ErrorsField/>
           </Segment>
         </AutoForm>

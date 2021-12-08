@@ -2,6 +2,9 @@ import { t } from 'testcafe';
 import { viewProfilePage, manageDatabasePage, signOutPage } from './simple.page';
 import { signInPage } from './signin.page';
 import { changeRolePage } from './change.role.page';
+import { addMedPage } from './add.med.page';
+import { addSupplyPage } from './add.supply.page';
+import { medSupplyPage } from './med.supply.page';
 import { navBar } from './navbar.component';
 // import { signUpPage } from './signup.page';
 import { landingPage } from './landing.page';
@@ -62,4 +65,31 @@ test('Test that admin pages show up', async () => {
   await t.wait(500);
   await navBar.gotoChangeRolePage();
   await changeRolePage.changeRoleAssign('admin@foo.com');
+});
+
+test('Test that admin/user can add medicine', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoAddMedicinePage();
+  await addMedPage.fillOutAddMed('Tylenol', '50', 'Take one pill every night');
+});
+
+test('Test that admin/user can search for new medicine added', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoMedSupplyPage();
+  await medSupplyPage.medSearch('Tylenol');
+  await navBar.logout();
+  await signOutPage.isDisplayed();
+  await t.wait(1000);
+});
+
+test('Test that admin/user can add supply', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoAddSupplyPage();
+  await addSupplyPage.fillOutAddSupply('Wooden Tongue Sticks', 'note');
 });

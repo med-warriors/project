@@ -8,6 +8,7 @@ import CurrentMedicine from '../components/CurrentMedicine';
 import CurrentSupplies from '../components/CurrentSupplies';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Supplies } from '../../api/supply/SupplyCollection';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // Options for medicine types for medicine dropdown
 const medTypeOptions = [
@@ -114,13 +115,13 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
       <Tab panes={[
         {
           // eslint-disable-next-line react/display-name
-          menuItem: 'Medicine', render: () => <Tab.Pane>
+          menuItem: 'Medicine', render: () => <Tab.Pane id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_MED_TAB}>
             <Grid id='med-supply' centered doubling columns={2}>
               <Grid.Column>
                 <Dropdown placeholder='Choose a type' search selection options={medTypeOptions} onChange={handleChange}/>
               </Grid.Column>
               <Grid.Column>
-                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch} id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_MED_SEARCH}/>
               </Grid.Column>
             </Grid>
             <Table>
@@ -153,13 +154,13 @@ const MedicineAndSupplies = ({ readyM, medicines, readyS, supplies }) => {
         },
         {
           // eslint-disable-next-line react/display-name
-          menuItem: 'Supplies', render: () => <Tab.Pane>
+          menuItem: 'Supplies', render: () => <Tab.Pane id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_SUPPLY_TAB}>
             <Grid id='med-supply' centered doubling columns={2}>
               <Grid.Column>
                 <Dropdown placeholder='Pick a location' search selection options={supplyLocationOptions} onChange={handleChange}/>
               </Grid.Column>
               <Grid.Column>
-                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+                <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch} id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_SUPPLY_SEARCH}/>
               </Grid.Column>
             </Grid>
             <Table>
