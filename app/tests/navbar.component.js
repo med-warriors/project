@@ -31,6 +31,13 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_SIGN_OUT}`);
   }
 
+  /** Go to the view profile page. */
+  async gotoViewProfilePage() {
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_VIEW_PROFILE}`);
+  }
+
   /** Pull down login menu, go to sign up page. */
   async gotoSignupPage() {
     await this.ensureLogout();
@@ -43,6 +50,13 @@ class NavBar {
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
     await t.click(`#${COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE}`);
+  }
+
+  /** Go to the change role page. Must be admin. */
+  async gotoChangeRolePage() {
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_CHANGE_ROLE}`);
   }
 }
 

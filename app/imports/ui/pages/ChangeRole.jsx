@@ -8,6 +8,8 @@ import SimpleSchema from 'simpl-schema';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { ROLE } from '../../api/role/Role';
+import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const formSchema = new SimpleSchema({
   userEmail: String,
@@ -56,17 +58,17 @@ const ChangeRole = (propTypes) => {
   let fRef = null;
   const changeRolePage = { paddingTop: '15px', paddingBottom: '20px' };
   return (
-    <Grid container centered style={changeRolePage} id='editrole-page'>
+    <Grid container centered style={changeRolePage} id={PAGE_IDS.CHANGE_ROLE}>
       <Grid.Column>
         <Header as="h2" textAlign="center">Change Roles</Header>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} >
           <Segment>
-            <TextField label='User&apos;s Email' name='userEmail'/>
+            <TextField label='User&apos;s Email' name='userEmail' id={COMPONENT_IDS.CHANGE_ROLE_FORM_EMAIL}/>
             <Header as="h4" textAlign="center">Roles (Pick at least one)</Header>
-            <BoolField name="doctor"/>
-            <BoolField name="student"/>
-            <BoolField name="admin"/>
-            <SubmitField value='Submit'/>
+            <BoolField name="doctor" id={COMPONENT_IDS.CHANGE_ROLE_FORM_DOCTOR_OPTION}/>
+            <BoolField name="student" id={COMPONENT_IDS.CHANGE_ROLE_FORM_STUDENT_OPTION}/>
+            <BoolField name="admin" id={COMPONENT_IDS.CHANGE_ROLE_FORM_ADMIN_OPTION}/>
+            <SubmitField value='Submit' id={COMPONENT_IDS.CHANGE_ROLE_FORM_SUBMIT}/>
             <ErrorsField/>
           </Segment>
         </AutoForm>

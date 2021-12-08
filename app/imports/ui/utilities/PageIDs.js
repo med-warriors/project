@@ -3,6 +3,7 @@ export const PAGE_IDS = {
   ADD_STUFF: 'add-stuff',
   ADD_MEDICINE: 'add-medicine',
   ADD_SUPPLY: 'add-supply',
+  CHANGE_ROLE: 'change-role',
   EDIT_STUFF: 'edit-stuff',
   EDIT_SUPPLY: 'edit-supply',
   EDIT_MEDICINE: 'edit-medicine',
@@ -17,5 +18,6 @@ export const PAGE_IDS = {
   SIGN_IN: 'sigin-in',
   SIGN_OUT: 'sign-out',
   SIGN_UP: 'sign-up',
+  VIEW_PROFILE: 'view-profile',
   DISPENSE: 'dispense',
 };

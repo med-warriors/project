@@ -1,6 +1,7 @@
 import { t } from 'testcafe';
-import { manageDatabasePage, signOutPage } from './simple.page';
+import { viewProfilePage, manageDatabasePage, signOutPage } from './simple.page';
 import { signInPage } from './signin.page';
+import { changeRolePage } from './change.role.page';
 import { navBar } from './navbar.component';
 // import { signUpPage } from './signup.page';
 import { landingPage } from './landing.page';
@@ -16,6 +17,7 @@ fixture('matrp localhost test with default db')
   .page('http://localhost:3000');
 
 test('Test that landing page shows up', async () => {
+  await t.wait(15000);
   await landingPage.isDisplayed();
 });
 
@@ -40,6 +42,9 @@ test('Test that user pages show up', async () => {
   await navBar.gotoSigninPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoViewProfilePage();
+  await viewProfilePage.isDisplayed();
+  await t.wait(500);
   await navBar.logout();
   await signOutPage.isDisplayed();
   await t.wait(1000);
@@ -49,10 +54,12 @@ test('Test that admin pages show up', async () => {
   await navBar.gotoSigninPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoViewProfilePage();
+  await viewProfilePage.isDisplayed();
+  await t.wait(500);
   await navBar.gotoManageDatabasePage();
   await manageDatabasePage.isDisplayed();
-  await t.wait(5000);
-  await navBar.logout();
-  await signOutPage.isDisplayed();
-  await t.wait(1000);
+  await t.wait(500);
+  await navBar.gotoChangeRolePage();
+  await changeRolePage.changeRoleAssign('admin@foo.com');
 });

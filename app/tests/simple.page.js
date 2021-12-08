@@ -16,5 +16,6 @@ class SimplePage {
   }
 }
 
+export const viewProfilePage = new SimplePage(PAGE_IDS.VIEW_PROFILE);
 export const manageDatabasePage = new SimplePage(PAGE_IDS.MANAGE_DATABASE);
 export const signOutPage = new SimplePage(PAGE_IDS.SIGN_OUT);

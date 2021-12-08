@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import ProfileItem from '../components/ProfileItem';
 import { Profiles } from '../../api/profile/Profile';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a table containing all of the Profile documents. */
 class UserProfile extends React.Component {
@@ -17,7 +18,7 @@ class UserProfile extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Grid container verticalAlign='middle' centered>
+      <Grid container verticalAlign='middle' centered id={PAGE_IDS.VIEW_PROFILE}>
         {this.props.profiles.map((profile, index) => <ProfileItem key={index}
           profile={profile}/>)}
       </Grid>
