@@ -47,7 +47,7 @@ const UpdateMedicine = ({ medicine }) => {
             <SelectField name='location'/>
           </Form.Group>
           <TextField name='note'/>
-          <SubmitField value='Submit' />
+          <SubmitField value='Update' />
           <ErrorsField />
         </AutoForm>
       </Modal.Content>
