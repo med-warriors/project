@@ -110,14 +110,17 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
     const id = patientID;
     const location = outputLocation;
     const dispense = [];
+    let passDispense = true;
 
     if ((cellDispense.length === 0)) {
       swal('Error', 'No dispense medicine and/or supply', 'error');
+      passDispense = false;
     } else {
       for (let i = 0; i < cellDispense.length; i++) {
         const outQuantity = cellDispense[i].prescriptionQuantity;
         if ((outQuantity === 0)) {
           swal('Error', 'Item dispensing quantity is invalid', 'error');
+          passDispense = false;
         } else {
           if (cellDispense[i].type === 'Medicine') {
             const med = MedicineSource.findDoc(cellDispense[i].id);
@@ -127,18 +130,20 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
             const sup = SupplySource.findDoc(cellDispense[i].id);
             dispense.push(sup.supplyName.concat(': ', outQuantity));
           }
-          // Get the current employee ID number.
-          const employee = Meteor.user() ? Meteor.user().username : '';
-          const collectionName = Patients.getCollectionName();
-          const definitionData = { date, id, note, dispense, location, employee };
-          // add prescription as new transaction.
-          defineMethod.callPromise({ collectionName, definitionData })
-            .catch(error => swal('Error', error.message, 'error'))
-            .then(() => {
-              swal('Success', 'Prescription output successfully', 'success');
-              submitDispense(formRef);
-            });
         }
+      }
+      if (passDispense) {
+        // Get the current employee ID number.
+        const employee = Meteor.user() ? Meteor.user().username : '';
+        const collectionName = Patients.getCollectionName();
+        const definitionData = { date, id, note, dispense, location, employee };
+        // add prescription as new transaction.
+        defineMethod.callPromise({ collectionName, definitionData })
+          .catch(error => swal('Error', error.message, 'error'))
+          .then(() => {
+            swal('Success', 'Prescription output successfully', 'success');
+            submitDispense(formRef);
+          });
       }
     }
   };
