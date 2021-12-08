@@ -11,7 +11,6 @@ import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { ROLE } from '../../api/role/Role';
 import UpdateMedicine from './UpdateMedicine';
-import UpdateSupply from "./UpdateSupply";
 
 // Changes text to red, yellow, or green, based on quantity of medicine
 /*
