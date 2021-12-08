@@ -1,0 +1,30 @@
+[
+  {
+    "lotNumber":"c121",
+    "medName":"Acetaminophen 160mg/5 ml Susp",
+    "quantity":20,
+    "sourceName":"sourceName",
+    "acquire":"Donated",
+    "cost":0,
+    "receiveDate":"2021-12-08T20:51:19.515Z",
+    "expDate":"2021-12-18T00:00:00.000Z",
+    "state":"Reserves",
+    "editDate":"2021-12-08T20:51:19.540Z",
+    "employee":"admin@foo.com",
+    "action":"In",
+    "change":"-"
+  },
+  {
+    "lotNumber":"f5",
+    "medName":"Betamethasone 0.05% Cream",
+    "quantity":1,
+    "sourceName":"sourceName",
+    "acquire":"Donated","cost":0,
+    "receiveDate":"2021-08-10T17:30:00.000Z",
+    "expDate":"2022-02-22T17:30:00.000Z",
+    "state":"Acted",
+    "editDate":"2021-12-08T20:52:42.457Z",
+    "employee":"admin@foo.com",
+    "action":"Out",
+    "change":"Dispensed 2 Betamethasone 0.05% Cream(f5)"}
+]

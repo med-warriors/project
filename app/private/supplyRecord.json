@@ -1,0 +1,21 @@
+[
+  {"supplyName":"Blood Pressure Monitors - Patient",
+    "quantity":2,"sourceName":"John",
+    "acquire":"Donated","cost":0,
+    "receiveDate":"2021-02-17T17:30:00.000Z",
+    "state":"Acted","editDate":"2021-12-08T20:52:42.459Z",
+    "employee":"admin@foo.com",
+    "action":"Out",
+    "change":"Dispensed 1 Blood Pressure Monitors - Patient"},
+  {"supplyName":"Cavicide",
+    "quantity":5,
+    "sourceName":"sourceName",
+    "acquire":"Purchased",
+    "cost":10,
+    "receiveDate":"2021-12-08T20:51:36.523Z",
+    "state":"Acted",
+    "editDate":"2021-12-08T20:51:36.532Z",
+    "employee":"admin@foo.com",
+    "action":"In",
+    "change":"-"}
+]

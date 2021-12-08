@@ -6,12 +6,16 @@ import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { Supplies } from '../../api/supply/SupplyCollection';
+import { MedicineSourceRecord } from '../../api/medsourceRecord/MedicineSourceRecordCollection';
+import { SupplySourceRecord } from '../../api/supplysourceRecord/SupplySourceRecordCollection';
 
 // variables to read off JSON files from /private directory
 const medicines = JSON.parse(Assets.getText('medicine.json'));
 const medInventory = JSON.parse(Assets.getText('medInventory.json'));
+const medRecord = JSON.parse(Assets.getText('medRecord.json'));
 const supplies = JSON.parse(Assets.getText('supplies.json'));
 const supSource = JSON.parse(Assets.getText('supplySource.json'));
+const supRecord = JSON.parse(Assets.getText('supplyRecord.json'));
 
 // Initialize the database with profile document.
 function addProfile(profile) {
@@ -94,5 +98,33 @@ if (SupplySource.count() === 0) {
   if (supSource) {
     console.log('Creating default sources data.');
     supSource.map(supplysource => addSource(supplysource));
+  }
+}
+
+// Initialize database with supply source document.
+function addMedRecord(medicineRecord) {
+  console.log(`  Adding medicine record donated by ${medicineRecord.sourceName} `);
+  MedicineSourceRecord.define(medicineRecord);
+}
+
+// Initialize SupplySourceCollection if empty.
+if (MedicineSourceRecord.count() === 0) {
+  if (medRecord) {
+    console.log('Creating default sources data.');
+    medRecord.map(medicineRecord => addMedRecord(medicineRecord));
+  }
+}
+
+// Initialize database with supply source document.
+function addSourceRecord(supplyRecord) {
+  console.log(`  Adding supply record donated by ${supplyRecord.sourceName} `);
+  SupplySourceRecord.define(supplyRecord);
+}
+
+// Initialize SupplySourceCollection if empty.
+if (SupplySourceRecord.count() === 0) {
+  if (supRecord) {
+    console.log('Creating default sources data.');
+    supRecord.map(supplyRecord => addSourceRecord(supplyRecord));
   }
 }
