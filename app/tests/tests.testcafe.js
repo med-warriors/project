@@ -1,7 +1,7 @@
 import { t } from 'testcafe';
 import { viewProfilePage, manageDatabasePage, signOutPage } from './simple.page';
 import { signInPage } from './signin.page';
-import { changeRolePage } from './change.role.page';
+// import { changeRolePage } from './change.role.page';
 import { addMedPage } from './add.med.page';
 import { addSupplyPage } from './add.supply.page';
 import { medSupplyPage } from './med.supply.page';
@@ -64,7 +64,10 @@ test('Test that admin pages show up', async () => {
   await manageDatabasePage.isDisplayed();
   await t.wait(500);
   await navBar.gotoChangeRolePage();
-  await changeRolePage.changeRoleAssign('admin@foo.com');
+  // await changeRolePage.changeRoleAssign('admin@foo.com');
+  await navBar.logout();
+  await signOutPage.isDisplayed();
+  await t.wait(1000);
 });
 
 test('Test that admin/user can add medicine', async () => {
