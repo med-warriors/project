@@ -12,12 +12,27 @@ import {
   TextField,
 } from 'uniforms-semantic';
 import { withRouter } from 'react-router-dom';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
+import { Meteor } from 'meteor/meteor';
+import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
+import { SupplySourceRecord } from '../../api/supplysourceRecord/SupplySourceRecordCollection';
 
 const bridge = new SimpleSchema2Bridge(SupplySource._schema);
 
 const UpdateSupplyInventory = ({ supply }) => {
+
+  const submitSupRecord = (data) => {
+    const { supplyName, quantity, sourceName, acquire, cost, receiveDate, state } = data;
+    const editDate = new Date();
+    const action = 'Update';
+    const change = 'Updated the information';
+    // Get the current employee ID number.
+    const employee = Meteor.user() ? Meteor.user().username : '';
+    const collectionName = SupplySourceRecord.getCollectionName();
+    const definitionData = { supplyName, quantity, sourceName, acquire, cost, receiveDate, state, editDate, employee, action, change };
+    defineMethod.callPromise({ collectionName, definitionData });
+  };
+
   // On submit, insert the data.
   const submit = (data) => {
     const { supplyName, quantity, sourceName, acquire, cost, state, receiveDate, _id } = data;
@@ -27,6 +42,7 @@ const UpdateSupplyInventory = ({ supply }) => {
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Supply Inventory update successfully', 'success');
+        submitSupRecord(data);
       });
   };
 
