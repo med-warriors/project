@@ -7,7 +7,7 @@ import {
   withSubscriptions,
 } from '../../test-utilities/test-utilities';
 import { defineMethod, updateMethod, removeItMethod } from '../base/BaseCollection.methods';
-import { DoctorProfiles } from './DoctorProfileCollection';
+import { GuestProfiles } from './GuestProfileCollection';
 
 /* eslint prefer-arrow-callback: "off",  no-unused-expressions: "off" */
 /* eslint-env mocha */
@@ -18,15 +18,15 @@ if (Meteor.isClient) {
       const { username, password } = await defineTestDoctorUser.callPromise();
       await withLoggedInUser({ username, password });
       await withSubscriptions();
-      const collectionName = DoctorProfiles.getCollectionName();
+      const collectionName = GuestProfiles.getCollectionName();
       const definitionData = {};
       definitionData.email = faker.internet.email();
       definitionData.firstName = faker.name.firstName();
       definitionData.lastName = faker.name.lastName();
       // console.log(collectionName, definitionData);
       const docID = await defineMethod.callPromise({ collectionName, definitionData });
-      expect(DoctorProfiles.isDefined(docID)).to.be.true;
-      let doc = DoctorProfiles.findDoc(docID);
+      expect(GuestProfiles.isDefined(docID)).to.be.true;
+      let doc = GuestProfiles.findDoc(docID);
       expect(doc.email).to.equal(definitionData.email);
       expect(doc.firstName).to.equal(definitionData.firstName);
       expect(doc.lastName).to.equal(definitionData.lastName);
@@ -35,12 +35,12 @@ if (Meteor.isClient) {
       updateData.firstName = faker.name.firstName();
       updateData.lastName = faker.name.lastName();
       await updateMethod.callPromise({ collectionName, updateData });
-      doc = DoctorProfiles.findDoc(docID);
+      doc = GuestProfiles.findDoc(docID);
       expect(doc.email).to.equal(definitionData.email);
       expect(doc.firstName).to.equal(updateData.firstName);
       expect(doc.lastName).to.equal(updateData.lastName);
       await removeItMethod.callPromise({ collectionName, instance: docID });
-      expect(DoctorProfiles.isDefined(docID)).to.be.false;
+      expect(GuestProfiles.isDefined(docID)).to.be.false;
     });
   });
 }

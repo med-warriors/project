@@ -27,6 +27,7 @@ import EditSupply from '../pages/EditSupply';
 import EditMedicine from '../pages/EditMedicine';
 import ChangeRole from '../pages/ChangeRole';
 import Record from '../pages/Record';
+import MedicineAndSuppliesGuest from '../pages/MedicineAndSuppliesGuest';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -46,11 +47,12 @@ class App extends React.Component {
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/update-sup/:_id" component={EditSupply}/>
             <ProtectedRoute path="/medicine-and-supplies" component={MedicineAndSupplies}/>
+            <ProtectedRoute path="/medicine-and-supplies2" component={MedicineAndSuppliesGuest}/>
             <ProtectedRoute path="/record" component={Record}/>
-            <ProtectedRoute path="/add-new-medicine" component={AddMedicine}/>
-            <ProtectedRoute path="/add-new-supply" component={AddSupply}/>
+            <UserProtectedRoute path="/add-new-medicine" component={AddMedicine}/>
+            <UserProtectedRoute path="/add-new-supply" component={AddSupply}/>
             <ProtectedRoute path="/patient-info" component={PatientInformation}/>
-            <DoctorProtectedRoute path="/dispense" component={Dispense}/>
+            <UserProtectedRoute path="/dispense" component={Dispense}/>
             <ProtectedRoute path="/edit/:_id" component={EditMedicine}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
@@ -106,13 +108,14 @@ const AdminProtectedRoute = ({ component: Component, ...rest }) => (
  * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
-const DoctorProtectedRoute = ({ component: Component, ...rest }) => (
+const UserProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
       const isLogged = Meteor.userId() !== null;
-      const isDoctor = Roles.userIsInRole(Meteor.userId(), ROLE.DOCTOR);
-      return (isLogged && isDoctor) ?
+      const isUser = Roles.userIsInRole(Meteor.userId(), ROLE.USER);
+      const isAdmin = Roles.userIsInRole(Meteor.userId(), ROLE.ADMIN);
+      return ((isLogged && isUser) || (isLogged && isAdmin)) ?
         (<Component {...props} />) :
         (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
         );
@@ -133,7 +136,7 @@ AdminProtectedRoute.propTypes = {
 };
 
 // Require a component and location to be passed to each AdminProtectedRoute.
-DoctorProtectedRoute.propTypes = {
+UserProtectedRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   location: PropTypes.object,
 };
