@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Modal, Loader, Button } from 'semantic-ui-react';
+import { Table, Modal, Loader, Button, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
@@ -31,7 +31,7 @@ const ListMedicine = ({ ready, inventory, medicine }) => {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {inventory.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories}/>)}
+            {inventory.map((inventories) => <MedicineItem key={inventories._id} inventories={inventories} shouldHave={medicine.shouldHave}/>)}
           </Table.Body>
         </Table>
       </Modal.Content>

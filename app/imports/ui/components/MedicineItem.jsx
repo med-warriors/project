@@ -7,7 +7,7 @@ import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { removeItMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const MedicineItem = ({ inventories }) => {
+const MedicineItem = ({ inventories, shouldHave }) => {
   let highlight;
   let note;
   const handleChange = () => {
@@ -30,10 +30,10 @@ const MedicineItem = ({ inventories }) => {
     note = 'This item is OK for now.';
   }
 
-  if (days <= 0 || (inventories.quantity <= 10 || inventories.quantity === 0 || inventories.quantity === undefined)) {
+  if (days <= 0 || (inventories.quantity / shouldHave <= 0.1 || inventories.quantity / shouldHave === 0 || inventories.quantity === undefined)) {
     // highlights in red when quantity is between 0 and 10 or undefined or medicine has expired
     highlight = 'error';
-  } else if ((days >= 1 && days <= 14) || (inventories.quantity <= 50 && inventories.quantity > 10)) {
+  } else if ((days >= 1 && days <= 14) || (inventories.quantity / shouldHave <= 0.5 && inventories.quantity / shouldHave > 0.1)) {
     // highlights in yellow when quantity is between 11 and 50 or when medicine is about to expire
     highlight = 'warning';
   } else {
@@ -72,6 +72,7 @@ MedicineItem.propTypes = {
     note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  shouldHave: PropTypes.number,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
