@@ -17,7 +17,7 @@ import { acquiredType, MedicineSource } from '../../api/medSource/MedicineSource
 import { MedicineSourceRecord } from '../../api/medsourceRecord/MedicineSourceRecordCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
-const inputState = ['Acted', 'Reserved'];
+const inputState = ['Acted', 'Reserves'];
 
 const formSchema = new SimpleSchema({
   lotNumber: String,
@@ -33,7 +33,7 @@ const formSchema = new SimpleSchema({
   state: {
     type: String,
     allowedValues: inputState,
-    defaultValue: 'Reserved',
+    defaultValue: 'Reserves',
   },
 });
 
