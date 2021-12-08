@@ -13,6 +13,7 @@ import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { Patients } from '../../api/patients/PatientCollection';
 import { SupplySourceRecord } from '../../api/supplysourceRecord/SupplySourceRecordCollection';
 import { MedicineSourceRecord } from '../../api/medsourceRecord/MedicineSourceRecordCollection';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -155,7 +156,7 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
                 <TextField name='patientID'/>
                 <TextField name='outputLocation'/>
               </Form.Group>
-              <LongTextField name='note' id='note-dispense'/>
+              <LongTextField name='note' className='note-dispense'/>
               <SubmitField value='Submit'/>
               <ErrorsField />
             </Segment>
