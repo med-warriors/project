@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { removeItMethod } from '../../api/base/BaseCollection.methods';
+import UpdateMedicineInventory from './UpdateMedicineInventory';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MedicineItem = ({ inventories, shouldHave }) => {
@@ -50,7 +51,7 @@ const MedicineItem = ({ inventories, shouldHave }) => {
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>{note}</Table.Cell>
       <Button.Group vertical>
-        <Button color='green' content='UPDATE'/>
+        <UpdateMedicineInventory medicine={inventories}/>
         <Button color='orange' content='DELETE' onClick={handleChange}/>
       </Button.Group>
     </Table.Row>);
@@ -62,14 +63,12 @@ MedicineItem.propTypes = {
     lotNumber: PropTypes.string,
     medName: PropTypes.string,
     quantity: PropTypes.number,
-    location: PropTypes.string,
     sourceName: PropTypes.string,
     acquire: PropTypes.string,
     cost: PropTypes.number,
     receiveDate: PropTypes.instanceOf(Date),
     expDate: PropTypes.instanceOf(Date),
     state: PropTypes.string,
-    note: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
   shouldHave: PropTypes.number,
