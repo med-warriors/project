@@ -8,9 +8,9 @@
       "lastName": "MATRP"
     },
     {
-      "email": "doctor@foo.com",
+      "email": "guest@foo.com",
       "password": "changeme",
-      "role": "DOCTOR",
+      "role": "GUEST",
       "firstName": "Doctor",
       "lastName": "Apollo"
     },

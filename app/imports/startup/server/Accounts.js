@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { ROLE } from '../../api/role/Role';
 import { AdminProfiles } from '../../api/user/AdminProfileCollection';
 import { UserProfiles } from '../../api/user/UserProfileCollection';
-import { DoctorProfiles } from '../../api/user/DoctorProfileCollection';
+import { GuestProfiles } from '../../api/user/GuestProfileCollection';
 
 /* eslint-disable no-console */
 
@@ -13,7 +13,7 @@ function createUser(email, role, firstName, lastName, password) {
   } else if (role === ROLE.USER) { // everyone else is just a user.
     UserProfiles.define({ email, firstName, lastName, password });
   } else {
-    DoctorProfiles.define({ email, firstName, lastName, password });
+    GuestProfiles.define({ email, firstName, lastName, password });
   }
 }
 

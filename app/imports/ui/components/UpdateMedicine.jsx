@@ -11,21 +11,21 @@ import {
   TextField,
 } from 'uniforms-semantic';
 import { withRouter } from 'react-router-dom';
-import { Supplies } from '../../api/supply/SupplyCollection';
+import { Medicines } from '../../api/medicine/MedicineCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 
-const bridge = new SimpleSchema2Bridge(Supplies._schema);
+const bridge = new SimpleSchema2Bridge(Medicines._schema);
 
-const UpdateSupply = ({ supply }) => {
+const UpdateMedicine = ({ medicine }) => {
   // On submit, insert the data.
   const submit = (data) => {
-    const { name, location, note, _id } = data;
-    const collectionName = Supplies.getCollectionName();
-    const definitionData = { id: _id, name, location, note };
+    const { name, type, location, note, _id } = data;
+    const collectionName = Medicines.getCollectionName();
+    const definitionData = { id: _id, name, type, location, note };
     updateMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        swal('Success', 'Supply update successfully', 'success');
+        swal('Success', 'Medicine update successfully', 'success');
       });
   };
 
@@ -38,11 +38,12 @@ const UpdateSupply = ({ supply }) => {
       open={update}
       trigger={<Button color='green'>UPDATE</Button>}
     >
-      <Modal.Header>Update {supply.name}</Modal.Header>
+      <Modal.Header>Update {medicine.name}</Modal.Header>
       <Modal.Content>
-        <AutoForm schema={bridge} onSubmit={data => submit(data)} model={supply}>
+        <AutoForm schema={bridge} onSubmit={data => submit(data)} model={medicine}>
           <Form.Group widths='equal'>
             <TextField name='name'/>
+            <SelectField name='type'/>
             <SelectField name='location'/>
           </Form.Group>
           <TextField name='note'/>
@@ -54,9 +55,10 @@ const UpdateSupply = ({ supply }) => {
   );
 };
 
-UpdateSupply.propTypes = {
-  supply: PropTypes.shape({
+UpdateMedicine.propTypes = {
+  medicine: PropTypes.shape({
     name: PropTypes.string,
+    type: PropTypes.string,
     location: PropTypes.string,
     note: PropTypes.string,
     _id: PropTypes.string,
@@ -64,4 +66,4 @@ UpdateSupply.propTypes = {
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(UpdateSupply);
+export default withRouter(UpdateMedicine);

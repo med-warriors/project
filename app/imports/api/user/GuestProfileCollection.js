@@ -4,13 +4,13 @@ import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
 
-class DoctorProfileCollection extends BaseProfileCollection {
+class GuestProfileCollection extends BaseProfileCollection {
   constructor() {
-    super('DoctorProfile', new SimpleSchema({}));
+    super('GuestProfile', new SimpleSchema({}));
   }
 
   /**
-   * Defines the profile associated with an Doctor and the associated Meteor account.
+   * Defines the profile associated with an Guest and the associated Meteor account.
    * @param email The email associated with this profile. Will be the username.
    * @param password The password for this user.
    * @param firstName The first name.
@@ -22,7 +22,7 @@ class DoctorProfileCollection extends BaseProfileCollection {
       const username = email;
       const user = this.findOne({ email, firstName, lastName });
       if (!user) {
-        const role = ROLE.DOCTOR;
+        const role = ROLE.GUEST;
         const profileID = this._collection.insert({ email, firstName, lastName, userID: this.getFakeUserId(), role });
         const userID = Users.define({ username, role, password });
         this._collection.update(profileID, { $set: { userID } });
@@ -34,8 +34,8 @@ class DoctorProfileCollection extends BaseProfileCollection {
   }
 
   /**
-   * Updates the DoctorProfile. You cannot change the email or role.
-   * @param docID the id of the DoctorProfile
+   * Updates the GuestProfile. You cannot change the email or role.
+   * @param docID the id of the GuestProfile
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
    */
@@ -64,13 +64,13 @@ class DoctorProfileCollection extends BaseProfileCollection {
   }
 
   /**
-   * Implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Doctor or Doctor.
+   * Implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Guest or Guest.
    * This is used in the define, update, and removeIt Meteor methods associated with each class.
    * @param userId The userId of the logged in user. Can be null or undefined
-   * @throws { Meteor.Error } If there is no logged in user, or the user is not an Doctor or Doctor.
+   * @throws { Meteor.Error } If there is no logged in user, or the user is not an Guest or Guest.
    */
   assertValidRoleForMethod(userId) {
-    this.assertRole(userId, [ROLE.DOCTOR]);
+    this.assertRole(userId, [ROLE.GUEST]);
   }
 
   /**
@@ -82,16 +82,16 @@ class DoctorProfileCollection extends BaseProfileCollection {
   checkIntegrity() {
     const problems = [];
     this.find().forEach((doc) => {
-      if (doc.role !== ROLE.DOCTOR) {
-        problems.push(`DoctorProfile instance does not have ROLE.DOCTOR: ${doc}`);
+      if (doc.role !== ROLE.GUEST) {
+        problems.push(`GuestProfile instance does not have ROLE.GUEST: ${doc}`);
       }
     });
     return problems;
   }
 
   /**
-   * Returns an object representing the DoctorProfile docID in a format acceptable to define().
-   * @param docID The docID of a DOCTORProfile
+   * Returns an object representing the GuestProfile docID in a format acceptable to define().
+   * @param docID The docID of a GUESTProfile
    * @returns { Object } An object representing the definition of docID.
    */
   dumpOne(docID) {
@@ -105,6 +105,6 @@ class DoctorProfileCollection extends BaseProfileCollection {
 
 /**
  * Profides the singleton instance of this class to all other entities.
- * @type {DoctorProfileCollection}
+ * @type {GuestProfileCollection}
  */
-export const DoctorProfiles = new DoctorProfileCollection();
+export const GuestProfiles = new GuestProfileCollection();

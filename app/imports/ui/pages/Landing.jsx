@@ -14,8 +14,8 @@ const Landing = () => (
 
     <Grid.Column textAlign='center'>
       <Icon name='chart bar' size='huge'/>
-      <Header as='h1'>Reports</Header>
-      <Header as='h3'>Generate reports of our usage and when stocks are getting low.</Header>
+      <Header as='h1'>Records</Header>
+      <Header as='h3'>Records the history and timeline of adding and removing items from inventory.</Header>
     </Grid.Column>
 
     <Grid.Column textAlign='center'>

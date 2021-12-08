@@ -8,7 +8,7 @@ import { Medicines } from '../medicine/MedicineCollection';
 import { MedicineSource } from '../medSource/MedicineSourceCollection';
 import { MedicineSourceRecord } from '../medsourceRecord/MedicineSourceRecordCollection';
 import { Supplies } from '../supply/SupplyCollection';
-import { DoctorProfiles } from '../user/DoctorProfileCollection';
+import { GuestProfiles } from '../user/GuestProfileCollection';
 import { SupplySourceRecord } from '../supplysourceRecord/SupplySourceRecordCollection';
 
 class MATRPClass {
@@ -22,7 +22,7 @@ class MATRPClass {
     // list of all the MATRP collections
     this.collections = [
       AdminProfiles,
-      DoctorProfiles,
+      GuestProfiles,
       Stuffs,
       SupplySource,
       Patients,
@@ -39,7 +39,7 @@ class MATRPClass {
     this.collectionLoadSequence = [
       AdminProfiles,
       UserProfiles,
-      DoctorProfiles,
+      GuestProfiles,
       SupplySource,
       Stuffs,
       Patients,

@@ -9,13 +9,13 @@ import { Stuffs } from '../api/stuff/StuffCollection';
 import { ROLE } from '../api/role/Role';
 import { AdminProfiles } from '../api/user/AdminProfileCollection';
 import { UserProfiles } from '../api/user/UserProfileCollection';
-import { DoctorProfiles } from '../api/user/DoctorProfileCollection';
+import { GuestProfiles } from '../api/user/GuestProfileCollection';
 
 export function withSubscriptions() {
   return new Promise((resolve => {
     // Add the collections to subscribe to.
     AdminProfiles.subscribe();
-    DoctorProfiles.subscribe();
+    GuestProfiles.subscribe();
     Stuffs.subscribeStuff();
     UserProfiles.subscribe();
     const poll = Meteor.setInterval(() => {
