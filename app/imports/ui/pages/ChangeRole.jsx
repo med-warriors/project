@@ -28,7 +28,7 @@ const ChangeRole = (propTypes) => {
       swal('Error', 'Did not pick a role to change to', 'error');
     } else if (guest === true && users === true) {
       swal('Error', 'Guest cannot be user', 'error');
-    } else if (guest === true && users === true) {
+    } else if (guest === true && admin === true) {
       swal('Error', 'Guest cannot be admin', 'error');
     } else if (user1) {
       if (guest === true && users === false && admin === false) {
