@@ -21,7 +21,7 @@ if (Meteor.isServer) {
     it('Can define and removeIt', function test1(done) {
       fc.assert(
         fc.property(fc.integer(1, 10), fc.lorem(2), fc.integer(1, 10), fc.lorem(2), fc.lorem(2), fc.lorem(4), fc.lorem(1),
-          ( name, type, should_have, unity, form, note, owner) => {
+          (name, type, should_have, unity, form, note, owner) => {
             const docID = Medicines.define({
               name,
               type,
