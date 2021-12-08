@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Modal, Loader, Button, Icon } from 'semantic-ui-react';
+import { Table, Modal, Loader, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
