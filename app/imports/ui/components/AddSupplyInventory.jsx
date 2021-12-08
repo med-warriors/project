@@ -73,7 +73,7 @@ const AddSupplyInventory = ({ supName }) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button color='red'>Add</Button>}
+      trigger={<Button color='red'>ADD</Button>}
     >
       <Modal.Header>Add {supName} Inventory</Modal.Header>
       <Modal.Content>
