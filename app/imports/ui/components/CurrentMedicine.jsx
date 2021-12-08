@@ -11,6 +11,7 @@ import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { ROLE } from '../../api/role/Role';
 import UpdateMedicine from './UpdateMedicine';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // Changes text to red, yellow, or green, based on quantity of medicine
 /*
@@ -56,7 +57,7 @@ const CurrentMedicine = ({ medicine, ready, source }) => {
           <UpdateMedicine medicine={medicine}/>
           <ListMedicine medicine={medicine}/>
           {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-            <Button color='orange' content='DELETE' onClick={handleChange}/>
+            <Button color='orange' content='DELETE' onClick={handleChange} id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_MED_DELETE}/>
           ) : ''}
         </Button.Group>
       </Table.Cell>

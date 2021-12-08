@@ -5,6 +5,7 @@ import { signInPage } from './signin.page';
 import { addMedPage } from './add.med.page';
 import { addSupplyPage } from './add.supply.page';
 import { medSupplyPage } from './med.supply.page';
+import { dispensePage } from './dispense.page';
 import { navBar } from './navbar.component';
 // import { signUpPage } from './signup.page';
 import { landingPage } from './landing.page';
@@ -95,4 +96,40 @@ test('Test that admin/user can add supply', async () => {
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.gotoAddSupplyPage();
   await addSupplyPage.fillOutAddSupply('Wooden Tongue Sticks', 'note');
+});
+
+test('Test that admin/user can add quantity for medicine', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoMedSupplyPage();
+  await medSupplyPage.medEdit();
+});
+
+test('Test that admin/user can update medicine', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoMedSupplyPage();
+  await medSupplyPage.medUpdate();
+});
+
+test('Test that admin/user can display info and delete medicine', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoMedSupplyPage();
+  await medSupplyPage.medInfo();
+  await medSupplyPage.medDelete();
+  await navBar.logout();
+  await signOutPage.isDisplayed();
+  await t.wait(1000);
+});
+
+test('Test that admin/user can dispense', async () => {
+  await navBar.gotoSigninPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoDispensePage();
+  await dispensePage.fillOutDispense('cet', '444', 'Honolulu', 'Take one pill every night');
 });

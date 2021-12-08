@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DispenseMedicine = ({ inventories, addDispense }) => {
@@ -31,7 +32,7 @@ const DispenseMedicine = ({ inventories, addDispense }) => {
       <Table.Cell>{inventories.expDate.toDateString()}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
-        <Button color='red' content='Add' onClick={clickAdd}/>
+        <Button color='red' content='Add' onClick={clickAdd} id={COMPONENT_IDS.DISPENSE_ADD}/>
       </Table.Cell>
     </Table.Row>
   );

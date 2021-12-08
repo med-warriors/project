@@ -10,6 +10,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import DispenseSupply from '../components/DispenseSupply';
 import DispenseMedicine from '../components/DispenseMedicine';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders the Page for adding a document. */
 const Dispense = ({ readyM, medicines, readyS, supplies }) => {
@@ -103,7 +104,7 @@ const Dispense = ({ readyM, medicines, readyS, supplies }) => {
             <Grid.Row centered>
               <Grid.Column>
                 <Grid.Row centered>
-                  <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch}/>
+                  <Input type='search' placeholder='Search by name' icon='search' onChange={handleSearch} id={COMPONENT_IDS.DISPENSE_SEARCH}/>
                   <Header as="h3" textAlign="center">Medicine & Supplies Item</Header>
                 </Grid.Row>
                 <Tab grid={{ paneWidth: 14, tabWidth: 2 }}

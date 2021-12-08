@@ -38,6 +38,13 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_VIEW_PROFILE}`);
   }
 
+  /** Go to the dispense page. */
+  async gotoDispensePage() {
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_TRANSACTION_DROPDOWN_DISPENSE}`);
+  }
+
   /** Go to the add medicine page. */
   async gotoAddMedicinePage() {
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();

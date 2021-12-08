@@ -4,6 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import MedicineItem from './MedicineItem';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListMedicine = ({ ready, inventory, medicine }) => {
@@ -15,7 +16,7 @@ const ListMedicine = ({ ready, inventory, medicine }) => {
       onOpen={() => setOpen(true)}
       open={open}
       size={'large'}
-      trigger={<Button color='blue'>INFO</Button>}
+      trigger={<Button color='blue' id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_MED_INFO}>INFO</Button>}
     >
       <Modal.Header>{medicine.name}</Modal.Header>
       <Modal.Content>

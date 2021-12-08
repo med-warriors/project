@@ -153,11 +153,11 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
             <Segment>
               <Header as="h3" textAlign="center">Patient Information</Header>
               <Form.Group widths='equal'>
-                <TextField name='patientID'/>
-                <TextField name='outputLocation'/>
+                <TextField name='patientID' id={COMPONENT_IDS.DISPENSE_ID}/>
+                <TextField name='outputLocation' id={COMPONENT_IDS.DISPENSE_LOCATION}/>
               </Form.Group>
-              <LongTextField name='note' className='note-dispense'/>
-              <SubmitField value='Submit'/>
+              <LongTextField name='note' className='note-dispense' id={COMPONENT_IDS.DISPENSE_NOTE}/>
+              <SubmitField value='Submit' id={COMPONENT_IDS.DISPENSE_SUBMIT}/>
               <ErrorsField />
             </Segment>
           </Grid.Row>

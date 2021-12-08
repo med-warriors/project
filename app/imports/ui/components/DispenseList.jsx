@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Icon, Select, Table } from 'semantic-ui-react';
+import { Button, Icon, Dropdown, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
@@ -43,7 +44,7 @@ const DispenseItem = ({ inventories, removeDispense, outDispenseQuantity }) => {
       <Table.Cell>{expDate}</Table.Cell>
       <Table.Cell>{inventories.state}</Table.Cell>
       <Table.Cell>
-        <Select placeholder='Select quantity' options={quantityOptions} onChange={outQuantity}/>
+        <Dropdown placeholder='Select quantity' search selection options={quantityOptions} onChange={outQuantity} id={COMPONENT_IDS.DISPENSE_QUANTITY}/>
       </Table.Cell>
       <Table.Cell>
         <Button color='yellow' content='Remove' onClick={clickRemove}/>

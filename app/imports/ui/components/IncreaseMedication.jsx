@@ -16,6 +16,7 @@ import {
 import { acquiredType, MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { MedicineSourceRecord } from '../../api/medsourceRecord/MedicineSourceRecordCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const inputState = ['Acted', 'Reserves'];
 
@@ -77,7 +78,7 @@ const AddMedicineInventory = ({ mName }) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button color='red'>ADD</Button>}
+      trigger={<Button color='red' id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_MED_ADD}>ADD</Button>}
     >
       <Modal.Header>Add {mName} Inventory</Modal.Header>
       <Modal.Content>
@@ -86,21 +87,21 @@ const AddMedicineInventory = ({ mName }) => {
         }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Form.Group widths='equal'>
             <TextField disabled label='Medicine Name' name='medName' value={mName}/>
-            <TextField label='Lot Number' name='lotNumber'/>
+            <TextField label='Lot Number' name='lotNumber' id={COMPONENT_IDS.MED_ADD_LOT_NUMBER}/>
           </Form.Group>
           <Form.Group>
-            <SelectField label='State' name='state'/>
-            <TextField type='date' label='Expiration Date' name='expDate'/>
+            <SelectField label='State' name='state' id={COMPONENT_IDS.MED_ADD_STATE}/>
+            <TextField type='date' label='Expiration Date' name='expDate' id={COMPONENT_IDS.MED_ADD_EXP_DATE}/>
           </Form.Group>
           <Form.Group widths='equal'>
-            <TextField name='sourceName'/>
-            <SelectField name='acquire'/>
+            <TextField name='sourceName' id={COMPONENT_IDS.MED_ADD_SOURCE_NAME}/>
+            <SelectField name='acquire' id={COMPONENT_IDS.MED_ADD_ACQUIRE}/>
           </Form.Group>
           <Form.Group>
-            <NumField name='cost' />
-            <NumField label='Amount Received' name='quantity'/>
+            <NumField name='cost' id={COMPONENT_IDS.MED_ADD_COST}/>
+            <NumField label='Amount Received' name='quantity' id={COMPONENT_IDS.MED_ADD_QUANTITY}/>
           </Form.Group>
-          <SubmitField value='Submit' />
+          <SubmitField value='Submit' id={COMPONENT_IDS.MED_ADD_SUBMIT}/>
           <ErrorsField />
         </AutoForm>
       </Modal.Content>

@@ -13,6 +13,7 @@ import {
 import { withRouter } from 'react-router-dom';
 import { Medicines } from '../../api/medicine/MedicineCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const bridge = new SimpleSchema2Bridge(Medicines._schema);
 
@@ -36,18 +37,18 @@ const UpdateMedicine = ({ medicine }) => {
       onClose={() => setUpdate(false)}
       onOpen={() => setUpdate(true)}
       open={update}
-      trigger={<Button color='green'>UPDATE</Button>}
+      trigger={<Button color='green' id={COMPONENT_IDS.MEDICINE_AND_SUPPLIES_MED_UPDATE}>UPDATE</Button>}
     >
       <Modal.Header>Update {medicine.name}</Modal.Header>
       <Modal.Content>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={medicine}>
           <Form.Group widths='equal'>
-            <TextField name='name'/>
-            <SelectField name='type'/>
-            <SelectField name='location'/>
+            <TextField name='name' id={COMPONENT_IDS.MED_UPDATE_NAME}/>
+            <SelectField name='type' id={COMPONENT_IDS.MED_UPDATE_TYPE}/>
+            <SelectField name='location' id={COMPONENT_IDS.MED_UPDATE_LOCATION}/>
           </Form.Group>
-          <TextField name='note'/>
-          <SubmitField value='Update' />
+          <TextField name='note' id={COMPONENT_IDS.MED_UPDATE_NOTE}/>
+          <SubmitField value='Update' id={COMPONENT_IDS.MED_UPDATE_SUBMIT}/>
           <ErrorsField />
         </AutoForm>
       </Modal.Content>
