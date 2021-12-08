@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { Button, Form, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -14,6 +15,7 @@ import {
 } from 'uniforms-semantic';
 import { acquiredType, SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { SupplySourceRecord } from '../../api/supplysourceRecord/SupplySourceRecordCollection';
 
 const inputState = ['Acted', 'Reserves'];
 
@@ -36,6 +38,18 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 const AddSupplyInventory = ({ supName }) => {
+  const submitRecord = (data, receiveDate) => {
+    const { supplyName, quantity, sourceName, acquire, cost, state } = data;
+    const editDate = new Date();
+    const action = 'In';
+    const change = '-';
+    // Get the current employee ID number.
+    const employee = Meteor.user() ? Meteor.user().username : '';
+    const collectionName = SupplySourceRecord.getCollectionName();
+    const definitionData = { supplyName, quantity, sourceName, acquire, cost, receiveDate, state, editDate, employee, action, change };
+    defineMethod.callPromise({ collectionName, definitionData });
+  };
+
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { supplyName, quantity, sourceName, acquire, cost, state } = data;
@@ -46,6 +60,7 @@ const AddSupplyInventory = ({ supName }) => {
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Supply Inventory added successfully', 'success');
+        submitRecord(data, receiveDate);
         formRef.reset();
       });
   };

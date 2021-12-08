@@ -7,16 +7,17 @@ import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const supplyPublications = {
-  supplySource: 'SupplySource',
-  supplySourceAdmin: 'SupplySourceAdmin',
-  supplySourceDoctor: 'SupplySourceDoctor',
+  SupplySourceRecord: 'SupplySourceRecord',
+  SupplySourceRecordAdmin: 'SupplySourceRecordAdmin',
+  SupplySourceRecordDoctor: 'SupplySourceRecordDoctor',
 };
 
 export const acquiredType = ['Donated', 'Purchased'];
 
 export const supState = ['Acted', 'Reserves', 'Disposal', 'Return'];
+export const supChange = ['In', 'Out', 'Update'];
 
-class SupplySourceCollectionRecord extends BaseCollection {
+class SupplySourceRecordCollection extends BaseCollection {
   constructor() {
     super('SuppliesSource', new SimpleSchema({
       supplyName: String,
@@ -32,6 +33,13 @@ class SupplySourceCollectionRecord extends BaseCollection {
         type: String,
         allowedValues: supState,
       },
+      editDate: Date,
+      employee: String,
+      action: {
+        type: String,
+        allowedValues: supChange,
+      },
+      change: String,
     }));
   }
 
@@ -46,7 +54,7 @@ class SupplySourceCollectionRecord extends BaseCollection {
    * @param state the state of the item.
    * @return {String} the docID of the new document.
    */
-  define({ supplyName, quantity, sourceName, acquire, cost, receiveDate, state }) {
+  define({ supplyName, quantity, sourceName, acquire, cost, receiveDate, state, editDate, employee, action, change }) {
     const docID = this._collection.insert({
       supplyName,
       quantity,
@@ -55,6 +63,10 @@ class SupplySourceCollectionRecord extends BaseCollection {
       cost,
       receiveDate,
       state,
+      editDate,
+      employee,
+      action,
+      change,
     });
     return docID;
   }
@@ -69,7 +81,7 @@ class SupplySourceCollectionRecord extends BaseCollection {
    * @param receiveDate When it was receive
    * @param state the new state (optional).
    */
-  update(docID, { supplyName, quantity, sourceName, acquire, cost, receiveDate, state }) {
+  update(docID, { supplyName, quantity, sourceName, acquire, cost, receiveDate, state, editDate, employee, action, change }) {
     const updateData = {};
     if (supplyName) {
       updateData.supplyName = supplyName;
@@ -89,8 +101,20 @@ class SupplySourceCollectionRecord extends BaseCollection {
     if (receiveDate) {
       updateData.receiveDate = receiveDate;
     }
+    if (editDate) {
+      updateData.editDate = editDate;
+    }
     if (state) {
       updateData.state = state;
+    }
+    if (employee) {
+      updateData.employee = employee;
+    }
+    if (action) {
+      updateData.action = action;
+    }
+    if (change) {
+      updateData.change = change;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -113,10 +137,10 @@ class SupplySourceCollectionRecord extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      // get the SupplySourceCollectionRecord instance.
+      // get the SupplySourceRecordCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(supplyPublications.supplySource, function publish() {
+      Meteor.publish(supplyPublications.SupplySourceRecord, function publish() {
         if (this.userId) {
           // const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find();
@@ -125,7 +149,7 @@ class SupplySourceCollectionRecord extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(supplyPublications.supplySourceAdmin, function publish() {
+      Meteor.publish(supplyPublications.SupplySourceRecordAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -133,7 +157,7 @@ class SupplySourceCollectionRecord extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(supplyPublications.supplySourceDoctor, function publish() {
+      Meteor.publish(supplyPublications.SupplySourceRecordDoctor, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.DOCTOR)) {
           return instance._collection.find();
         }
@@ -145,9 +169,9 @@ class SupplySourceCollectionRecord extends BaseCollection {
   /**
    * Subscription method for stuff owned by the current user.
    */
-  subscribeSupply() {
+  subscribeSupplyRecord() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(supplyPublications.supplySource);
+      return Meteor.subscribe(supplyPublications.SupplySourceRecord);
     }
     return null;
   }
@@ -156,9 +180,9 @@ class SupplySourceCollectionRecord extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeSupplyAdmin() {
+  subscribeSupplyRecordAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(supplyPublications.supplySourceAdmin);
+      return Meteor.subscribe(supplyPublications.SupplySourceRecordAdmin);
     }
     return null;
   }
@@ -167,9 +191,9 @@ class SupplySourceCollectionRecord extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeSupplyDoctor() {
+  subscribeSupplyRecordDoctor() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(supplyPublications.supplySourceDoctor);
+      return Meteor.subscribe(supplyPublications.SupplySourceRecordDoctor);
     }
     return null;
   }
@@ -198,11 +222,15 @@ class SupplySourceCollectionRecord extends BaseCollection {
     const cost = doc.cost;
     const receiveDate = doc.receiveDate;
     const state = doc.state;
-    return { supplyName, quantity, sourceName, acquire, cost, receiveDate, state };
+    const editDate = doc.editDate;
+    const employee = doc.employee;
+    const action = doc.action;
+    const change = doc.change;
+    return { supplyName, quantity, sourceName, acquire, cost, receiveDate, state, editDate, employee, action, change };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const SupplySourceRecord = new SupplySourceCollectionRecord();
+export const SupplySourceRecord = new SupplySourceRecordCollection();

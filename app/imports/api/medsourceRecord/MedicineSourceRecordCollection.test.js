@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import faker from 'faker';
 import fc from 'fast-check';
 import { MedicineSource } from './MedicineSourceourceCollection';
-import { removeAllEntities } from '../../base/BaseUtilities';
+import { removeAllEntities } from '../base/BaseUtilities';
 
 /* eslint prefer-arrow-callback: "off",  no-unused-expressions: "off" */
 /* eslint-env mocha */

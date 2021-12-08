@@ -11,6 +11,8 @@ import { defineMethod, updateMethod } from '../../api/base/BaseCollection.method
 import { MedicineSource } from '../../api/medSource/MedicineSourceCollection';
 import { SupplySource } from '../../api/supplysource/SupplySourceCollection';
 import { Patients } from '../../api/patients/PatientCollection';
+import { SupplySourceRecord } from '../../api/supplysourceRecord/SupplySourceRecordCollection';
+import { MedicineSourceRecord } from '../../api/medsourceRecord/MedicineSourceRecordCollection';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -25,17 +27,44 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 const DispenseSubmit = ({ cellDispense, setDispense }) => {
 
+  const submitMedRecord = (data, outQuantity, quantity) => {
+    const { lotNumber, medName, sourceName, acquire, cost, receiveDate, expDate, state } = data;
+    const editDate = new Date();
+    const action = 'Out';
+    const change = `Dispensed ${outQuantity.toString()} ${medName}(${lotNumber})`;
+    // Get the current employee ID number.
+    const employee = Meteor.user() ? Meteor.user().username : '';
+    const collectionName = MedicineSourceRecord.getCollectionName();
+    const definitionData = { lotNumber, medName, quantity, sourceName, acquire, cost, expDate, receiveDate, state, editDate, employee, action, change };
+    defineMethod.callPromise({ collectionName, definitionData });
+  };
+
   const submitMed = (med, outQuantity) => {
     // eslint-disable-next-line prefer-const
-    let { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = med;
+    let { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state, _id } = med;
     // change value on submit the dispense.
     quantity -= outQuantity;
     if (state === 'Reserves') { state = 'Acted'; }
     const collectionName = MedicineSource.getCollectionName();
-    const updateData = { id: _id, lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
+    const updateData = { id: _id, lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
-      .catch(error => swal('Error', error.message, 'error'));
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => {
+        submitMedRecord(med, outQuantity, quantity);
+      });
+  };
+
+  const submitSupRecord = (data, outQuantity, quantity) => {
+    const { supplyName, sourceName, acquire, cost, receiveDate, state } = data;
+    const editDate = new Date();
+    const action = 'Out';
+    const change = `Dispensed ${outQuantity.toString()} ${supplyName}`;
+    // Get the current employee ID number.
+    const employee = Meteor.user() ? Meteor.user().username : '';
+    const collectionName = SupplySourceRecord.getCollectionName();
+    const definitionData = { supplyName, quantity, sourceName, acquire, cost, receiveDate, state, editDate, employee, action, change };
+    defineMethod.callPromise({ collectionName, definitionData });
   };
 
   const submitSup = (sup, outQuantity) => {
@@ -48,7 +77,10 @@ const DispenseSubmit = ({ cellDispense, setDispense }) => {
     const updateData = { id: _id, supplyName, quantity, sourceName, acquire, cost, receiveDate, state };
     // update the medicine.
     updateMethod.callPromise({ collectionName, updateData })
-      .catch(error => swal('Error', error.message, 'error'));
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => {
+        submitSupRecord(sup, outQuantity, quantity);
+      });
   };
 
   const submitDispense = (formRef) => {

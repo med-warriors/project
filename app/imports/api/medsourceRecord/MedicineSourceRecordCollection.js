@@ -3,8 +3,8 @@ import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import { _ } from 'meteor/underscore';
-import BaseCollection from '../../base/BaseCollection';
-import { ROLE } from '../../role/Role';
+import BaseCollection from '../base/BaseCollection';
+import { ROLE } from '../role/Role';
 
 export const medicinePublications = {
   medicineSourceRecord: 'MedicineSourceRecord',
@@ -15,6 +15,7 @@ export const medicinePublications = {
 export const acquiredType = ['Donated', 'Purchased'];
 
 export const medState = ['Acted', 'Reserves', 'Disposal', 'Return'];
+export const supChange = ['In', 'Out', 'Update'];
 
 class MedicineSourceRecordCollection extends BaseCollection {
   constructor() {
@@ -35,6 +36,13 @@ class MedicineSourceRecordCollection extends BaseCollection {
         allowedValues: medState,
         defaultValue: 'Reserves',
       },
+      editDate: Date,
+      employee: String,
+      action: {
+        type: String,
+        allowedValues: supChange,
+      },
+      change: String,
     }));
   }
 
@@ -47,9 +55,9 @@ class MedicineSourceRecordCollection extends BaseCollection {
    * @param purchasedAmount
    * @return {String} the docID of the new document.
    */
-  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
+  define({ lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state, editDate, employee, action, change }) {
     const docID = this._collection.insert({
-      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state,
+      lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state, editDate, employee, action, change,
     });
     return docID;
   }
@@ -66,7 +74,7 @@ class MedicineSourceRecordCollection extends BaseCollection {
    * @param expirationDate the new condition (optional).
    * @param source the new name (optional).
    */
-  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state }) {
+  update(docID, { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state, editDate, employee, action, change }) {
     const updateData = {};
     if (lotNumber) {
       updateData.lotNumber = lotNumber;
@@ -92,10 +100,22 @@ class MedicineSourceRecordCollection extends BaseCollection {
       updateData.receiveDate = receiveDate;
     }
     if (_.isDate(expDate)) {
-      updateData.receiveDate = expDate;
+      updateData.expDate = expDate;
+    }
+    if (_.isDate(editDate)) {
+      updateData.editDate = editDate;
     }
     if (state) {
-      updateData.source = state;
+      updateData.state = state;
+    }
+    if (employee) {
+      updateData.employee = employee;
+    }
+    if (action) {
+      updateData.action = action;
+    }
+    if (change) {
+      updateData.change = change;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -206,7 +226,11 @@ class MedicineSourceRecordCollection extends BaseCollection {
     const receiveDate = doc.receiveDate;
     const expDate = doc.expDate;
     const state = doc.state;
-    return { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
+    const editDate = doc.editDate;
+    const employee = doc.employee;
+    const action = doc.action;
+    const change = doc.change;
+    return { lotNumber, medName, location, quantity, sourceName, acquire, cost, receiveDate, expDate, state, editDate, employee, action, change };
   }
 }
 

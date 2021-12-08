@@ -2,8 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { expect } from 'chai';
 import faker from 'faker';
 import { MedicineSource } from './MedicineSourceourceCollection';
-import { defineTestUser, withLoggedInUser, withSubscriptions } from '../../../test-utilities/test-utilities';
-import { defineMethod, updateMethod, removeItMethod } from '../../base/BaseCollection.methods';
+import { defineTestUser, withLoggedInUser, withSubscriptions } from '../../test-utilities/test-utilities';
+import { defineMethod, updateMethod, removeItMethod } from '../base/BaseCollection.methods';
 
 /* eslint prefer-arrow-callback: "off",  no-unused-expressions: "off" */
 /* eslint-env mocha */

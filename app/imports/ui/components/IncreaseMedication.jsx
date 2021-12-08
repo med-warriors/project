@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { Button, Form, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -13,7 +14,7 @@ import {
   TextField,
 } from 'uniforms-semantic';
 import { acquiredType, MedicineSource } from '../../api/medSource/MedicineSourceCollection';
-import { MedicineSourceRecord } from '../../api/record/medsourceRecord/MedicineSourceRecordCollection';
+import { MedicineSourceRecord } from '../../api/medsourceRecord/MedicineSourceRecordCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 const inputState = ['Acted', 'Reserved'];
@@ -28,7 +29,6 @@ const formSchema = new SimpleSchema({
     allowedValues: acquiredType,
   },
   cost: Number,
-  receiveDate: Date,
   expDate: Date,
   state: {
     type: String,
@@ -40,19 +40,31 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 const AddMedicineInventory = ({ mName }) => {
+  const submitRecord = (data, receiveDate) => {
+    const { lotNumber, medName, quantity, sourceName, acquire, cost, expDate, state } = data;
+    const editDate = new Date();
+    const action = 'In';
+    const change = '-';
+    // Get the current employee ID number.
+    const employee = Meteor.user() ? Meteor.user().username : '';
+    const collectionName = MedicineSourceRecord.getCollectionName();
+    const definitionData = { lotNumber, medName, quantity, sourceName, acquire, cost, expDate, receiveDate, state, editDate, employee, action, change };
+    defineMethod.callPromise({ collectionName, definitionData });
+  };
+
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state } = data;
+    const { lotNumber, medName, quantity, sourceName, acquire, cost, expDate, state } = data;
+    const receiveDate = new Date();
     const collectionName = MedicineSource.getCollectionName();
-    const collectionName2 = MedicineSourceRecord.getCollectionName();
     const definitionData = { lotNumber, medName, quantity, sourceName, acquire, cost, receiveDate, expDate, state };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Medicine Inventory added successfully', 'success');
+        submitRecord(data, receiveDate);
         formRef.reset();
       });
-    defineMethod.callPromise({ collectionName2, definitionData });
   };
 
   const [open, setOpen] = React.useState(false);
@@ -83,11 +95,10 @@ const AddMedicineInventory = ({ mName }) => {
           <Form.Group widths='equal'>
             <TextField name='sourceName'/>
             <SelectField name='acquire'/>
-            <NumField name='cost' />
           </Form.Group>
           <Form.Group>
+            <NumField name='cost' />
             <NumField label='Amount Received' name='quantity'/>
-            <TextField type='date' label='Receive Date' name='receiveDate'/>
           </Form.Group>
           <SubmitField value='Submit' />
           <ErrorsField />
