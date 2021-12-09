@@ -46,7 +46,6 @@ const UpdateSupply = ({ supply }) => {
             <SelectField name='location'/>
           </Form.Group>
           <TextField name='note'/>
-          <TextField name='_id'/>
           <SubmitField value='Update' />
           <ErrorsField />
         </AutoForm>
